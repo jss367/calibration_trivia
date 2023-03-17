@@ -2,15 +2,16 @@ const quizContainer = document.getElementById('quiz-container');
 const submitButton = document.getElementById('submit-button');
 const resultsContainer = document.getElementById('results-container');
 
-const questions = [
-  {
-    question: 'What is the capital of France?',
-    correctAnswer: 'Paris',
-  },
-  // Add more questions here
-];
+function loadQuestions() {
+  return fetch('questions.json')
+    .then(response => response.json())
+    .then(questions => {
+      displayQuestions(questions);
+      return questions;
+    });
+}
 
-function displayQuestions() {
+function displayQuestions(questions) {
   questions.forEach((question, index) => {
     const questionElement = document.createElement('div');
     questionElement.innerHTML = `
@@ -22,15 +23,13 @@ function displayQuestions() {
   });
 }
 
-displayQuestions();
+const questionsPromise = loadQuestions();
 
 submitButton.addEventListener('click', () => {
-  // We'll implement the submit functionality in the next steps
+  questionsPromise.then(submitQuiz);
 });
 
-submitButton.addEventListener('click', submitQuiz);
-
-function submitQuiz() {
+function submitQuiz(questions) {
   let score = 0;
   let brierScore = 0;
 

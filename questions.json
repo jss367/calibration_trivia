@@ -1,0 +1,15 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "correctAnswer": "Paris"
+  },
+  {
+    "question": "Which planet is known as the 'Red Planet'?",
+    "correctAnswer": "Mars"
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "correctAnswer": "Pacific Ocean"
+  }
+  // Add more questions here
+]
