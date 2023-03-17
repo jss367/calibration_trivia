@@ -12,16 +12,31 @@ function loadQuestions() {
 }
 
 function displayQuestions(questions) {
-  questions.forEach((question, index) => {
-    const questionElement = document.createElement('div');
-    questionElement.innerHTML = `
-      <h2>Question ${index + 1}: ${question.question}</h2>
-      <input type="text" id="answer-${index}" placeholder="Your answer">
-      <input type="number" id="confidence-${index}" min="0" max="100" step="1" value="50">%
-    `;
-    quizContainer.appendChild(questionElement);
-  });
-}
+    questions.forEach((question, index) => {
+      const questionElement = document.createElement('div');
+      questionElement.innerHTML = `<h2>Question ${index + 1}: ${question.question}</h2>`;
+      
+      if (question.type === 'text') {
+        questionElement.innerHTML += `
+          <input type="text" id="answer-${index}" placeholder="Your answer">
+          <input type="number" id="confidence-${index}" min="0" max="100" step="1" value="50">%
+        `;
+      } else if (question.type === 'multiple_choice') {
+        question.options.forEach((option, optionIndex) => {
+          questionElement.innerHTML += `
+            <input type="radio" id="answer-${index}-${optionIndex}" name="answer-${index}" value="${option}">
+            <label for="answer-${index}-${optionIndex}">${option}</label>
+          `;
+        });
+        questionElement.innerHTML += `
+          <input type="number" id="confidence-${index}" min="0" max="100" step="1" value="50">%
+        `;
+      }
+      
+      quizContainer.appendChild(questionElement);
+    });
+  }
+  
 
 const questionsPromise = loadQuestions();
 
