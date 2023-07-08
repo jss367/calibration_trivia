@@ -17,13 +17,13 @@
     {
       "question": "Which of these elements is a Noble Gas?",
       "correctAnswer": "Helium",
-      "type": "multiple_choice",
+      "type": "multiple-choice",
       "options": ["Hydrogen", "Helium", "Oxygen", "Nitrogen"]
     },
     {
       "question": "Which country is known as the Land of the Rising Sun?",
       "correctAnswer": "Japan",
-      "type": "multiple_choice",
+      "type": "multiple-choice",
       "options": ["China", "South Korea", "Japan", "India"]
     }
   ]

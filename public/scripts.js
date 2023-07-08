@@ -19,10 +19,33 @@ function loadQuestions() {
 
 function displayQuestion(index) {
   const question = questions[index];
+  const type = question.type;
+  const quizContainer = document.getElementById('quiz-container');
+
+  // Initialize the answer input HTML
+  let answerInputHTML = '';
+
+  if (type === 'text') {
+    // If the question is of type 'text', create a text input field
+    answerInputHTML = '<input type="text" id="answer" placeholder="Your answer">';
+  } else if (type === 'multiple-choice') {
+    // If the question is of type 'multiple-choice', create a list of options
+    const options = ['A', 'B', 'C', 'D'];
+    answerInputHTML = question.options.map((option, index) => `
+      <div>
+        <input type="radio" id="option-${options[index]}" name="answer" value="${option}">
+        <label for="option-${options[index]}">${options[index]}: ${option}</label>
+      </div>
+    `).join('');
+  } else {
+    answerInputHTML = '<input type="text" id="answer" placeholder="I think there has been a problem">';
+  }
+
   quizContainer.innerHTML = `
-    <input type="text" id="answer" placeholder="Your answer">
-    <input type="number" id="confidence" min="0" max="100" step="1" value="50">%
-  `;
+  ${answerInputHTML}
+  <input type="number" id="confidence" min="0" max="100" step="1" value="50">%
+`;
+
   nextButton.style.display = 'block';
 }
 
@@ -37,11 +60,24 @@ nextButton.addEventListener('click', () => {
 });
 
 function submitAnswer() {
-  const answerElement = document.getElementById('answer');
+  let userAnswer;
+  const questionType = questions[currentQuestionIndex].type;
+  const correctAnswer = questions[currentQuestionIndex].correctAnswer.toLowerCase();
   const confidenceElement = document.getElementById('confidence');
 
-  const userAnswer = answerElement.value.trim().toLowerCase();
-  const correctAnswer = questions[currentQuestionIndex].correctAnswer.toLowerCase();
+  if (questionType === 'text') {
+    const answerElement = document.getElementById('answer');
+    userAnswer = answerElement.value.trim().toLowerCase();
+  } else if (questionType === 'multiple-choice') {
+    const options = ['A', 'B', 'C', 'D'];
+    options.forEach(option => {
+      const optionElement = document.getElementById(`option-${option}`);
+      if (optionElement.checked) {
+        userAnswer = optionElement.value;
+      }
+    });
+  }
+
   const userConfidence = parseInt(confidenceElement.value, 10) / 100;
 
   if (userAnswer === correctAnswer) {
@@ -59,8 +95,9 @@ function submitAnswer() {
     correctAnswer,
     userConfidence,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-})
+  })
 };
+
 
 function displayResults() {
   quizContainer.style.display = 'none';
