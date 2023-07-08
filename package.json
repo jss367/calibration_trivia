@@ -1,0 +1,26 @@
+{
+  "name": "calibration_trivia",
+  "version": "1.0.0",
+  "description": "## TODO",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jss367/calibration_trivia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jss367/calibration_trivia/issues"
+  },
+  "homepage": "https://github.com/jss367/calibration_trivia#readme",
+  "devDependencies": {
+    "jest": "^29.6.1"
+  }
+}

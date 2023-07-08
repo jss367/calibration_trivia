@@ -5,6 +5,10 @@ const resultsContainer = document.getElementById('results-container');
 const usernameContainer = document.getElementById('username-container');
 const startQuizButton = document.getElementById('start-quiz');
 const leaderboardContainer = document.getElementById('leaderboard-container');
+const QUESTION_TYPE = {
+  TEXT: 'text',
+  MULTIPLE_CHOICE: 'multiple-choice',
+};
 // Firebase Firestore initialization
 const db = firebase.firestore();
 let currentQuestionIndex = 0;
@@ -13,6 +17,7 @@ let score = 0;
 let brierScore = 0;
 let userAnswers = [];
 let correctAnswers = [];
+let userConfidences = [];
 
 startQuizButton.addEventListener('click', () => {
   usernameContainer.style.display = 'none';
@@ -22,16 +27,24 @@ startQuizButton.addEventListener('click', () => {
 
 function loadQuestions() {
   return fetch('questions.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(loadedQuestions => {
       questions = loadedQuestions;
       displayQuestion(currentQuestionIndex);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
 }
 
 function displayQuestion(index) {
   const question = questions[index];
-  const type = question.type;
+  const { type } = question;  // same as const type = question.type;
 
   // Create a new div for the question
   const questionDiv = document.createElement('div');
@@ -39,25 +52,25 @@ function displayQuestion(index) {
   // Initialize the answer input HTML
   let answerInputHTML = '';
 
-  if (type === 'text') {
+  if (type === QUESTION_TYPE.TEXT) {
     // If the question is of type 'text', create a text input field
-    answerInputHTML = '<input type="text" id="answer" placeholder="Your answer">';
-  } else if (type === 'multiple-choice') {
+    answerInputHTML = '<input type="text" id="answer" class="input-large" placeholder="Your answer">';
+  } else if (type === QUESTION_TYPE.MULTIPLE_CHOICE) {
     // If the question is of type 'multiple-choice', create a list of options
     const options = ['A', 'B', 'C', 'D'];
     answerInputHTML = question.options.map((option, index) => `
       <div>
-        <input type="radio" id="option-${options[index]}" name="answer" value="${option}">
+        <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
         <label for="option-${options[index]}">${options[index]}: ${option}</label>
       </div>
     `).join('');
   } else {
-    answerInputHTML = '<input type="text" id="answer" placeholder="I think there has been a problem">';
+    answerInputHTML = '<input type="text" id="answer" class="input-large" placeholder="I think there has been a problem">';
   }
 
   questionDiv.innerHTML = `
     ${answerInputHTML}
-    <input type="number" id="confidence" min="0" max="100" step="1" value="50">%
+    <input type="number" id="confidence" class="input-small" min="0" max="100" step="1" value="50">%
   `;
 
   questionContainer.innerHTML = ''; // Clear previous question
@@ -65,6 +78,8 @@ function displayQuestion(index) {
 
   nextButton.style.display = 'block';
 }
+
+nextButton.classList.add('button-spacing');
 
 nextButton.addEventListener('click', () => {
   submitAnswer();
@@ -78,9 +93,8 @@ nextButton.addEventListener('click', () => {
 
 function submitAnswer() {
   let userAnswer;
-  console.log(questions[currentQuestionIndex].correctAnswer);
+  // console.log(questions[currentQuestionIndex].correctAnswer);
   const questionType = questions[currentQuestionIndex].type;
-  // const correctAnswers = questions[currentQuestionIndex].correctAnswer.map(answer => answer.toLowerCase())
   const currentCorrectAnswers = questions[currentQuestionIndex].correctAnswer.map(answer => answer.toLowerCase())
   const confidenceElement = document.getElementById('confidence');
 
@@ -114,6 +128,7 @@ function submitAnswer() {
   // Save user's answer
   userAnswers.push(userAnswer);
   correctAnswers.push(currentCorrectAnswers);
+  userConfidences.push(userConfidence);
   const username = document.getElementById('username').value.trim();
   db.collection('answers').add({
     username,
@@ -125,28 +140,64 @@ function submitAnswer() {
   })
 };
 
-function displayIndividualResults() {
-  for (let i = 0; i < questions.length; i++) {
-    const resultPara = document.createElement('p');
-    const isCorrect = correctAnswers[i].includes(userAnswers[i]);
-    resultPara.style.color = isCorrect ? 'green' : 'red';
-    resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswers[i]} and the correct answer(s) is/are ${correctAnswers[i].join(", ")}. You were ${isCorrect ? 'correct' : 'wrong'}.`;
-    resultsContainer.appendChild(resultPara);
-  }
+
+
+function calculateConfidenceDecileScores(answers) {
+  /**
+   * The answers that comes in is pulled from the entire database, so it contains answers from all users.
+   */
+  // Create an array to store scores for each decile
+  console.log("Your values for answers is: ", answers);
+  const decileScores = Array(10).fill(0);
+  const decileCounts = Array(10).fill(0);
+
+  answers.forEach(answer => {
+    // Find the decile for the confidence level (0-10)
+    const decile = Math.min(Math.floor(answer.userConfidence * 10), 9);
+
+    decileCounts[decile]++;
+    if (answer.correctAnswer.includes(answer.userAnswer)) {
+      decileScores[decile]++;
+    }
+  });
+
+  return decileScores.map((score, index) => ({
+    decileRange: `${index * 10}-${(index + 1) * 10}`,
+    score: decileCounts[index] ? score / decileCounts[index] : null
+  }));
 }
 
 
+
 function displayResults() {
+  /**
+   * This should be the individual results, not the group ones
+   */
   quizContainer.style.display = 'none';
 
   brierScore /= questions.length;
 
+
+  // const answers = snapshot.docs.map(doc => doc.data());
+  const answers = userAnswers.map((userAnswer, index) => ({
+    userAnswer,
+    correctAnswer: correctAnswers[index],
+    userConfidence: userConfidences[index],
+  }));
+  console.log("Your values for answers in displayResults is: ", answers);
+
+  const confidenceDecileScores = calculateConfidenceDecileScores(answers);
+  console.log("Your values for confidenceDecileScores is: ", confidenceDecileScores);
+
   resultsContainer.innerHTML = `
-    <h2>Results</h2>
-    <p>Correct answers: ${score} / ${questions.length}</p>
-    <p>Brier score: ${brierScore.toFixed(2)}</p>
-    <button id="show-leaderboard">Show Leaderboard</button>
-  `;
+        <h2>Results</h2>
+        <p>Correct answers: ${score} / ${questions.length}</p>
+        <p>Brier score: ${brierScore.toFixed(2)}</p>
+        ${confidenceDecileScores.map(({ decileRange, score }) => `
+          <p>When you were ${decileRange}% confident, you were ${score !== null ? `correct ${Math.round(score * 100)}% of the time` : 'did not answer any questions'}.</p>
+        `).join('')}
+        <button id="show-leaderboard">Show Leaderboard</button>
+      `;
 
   resultsContainer.style.display = 'block';
   displayIndividualResults();
@@ -158,6 +209,18 @@ function displayResults() {
     calculateScores().then(displayLeaderboard);
   });
 }
+
+function displayIndividualResults() {
+  for (let i = 0; i < questions.length; i++) {
+    const resultPara = document.createElement('p');
+    const isCorrect = correctAnswers[i].includes(userAnswers[i]);
+    const userConfidence = parseInt(document.getElementById('confidence').value, 10);
+    resultPara.style.color = isCorrect ? 'green' : 'red';
+    resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence. The correct answer(s) is/are ${correctAnswers[i].join(", ")}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+    resultsContainer.appendChild(resultPara);
+  }
+}
+
 
 function calculateScores() {
   return db.collection('answers').get()
@@ -179,7 +242,7 @@ function calculateScores() {
         let score = 0;
         let brierScore = 0;
         users[username].forEach(answer => {
-          const userConfidence = answer.userConfidence;
+          const { userConfidence } = answer;
           if (answer.userAnswer === answer.correctAnswer) {
             score++;
             brierScore += Math.pow(1 - userConfidence, 2);
@@ -197,12 +260,48 @@ function calculateScores() {
     });
 }
 
-function displayLeaderboard(scores) {
+function sortScores(scores, orderBy = 'brierScore') {
+  const scoreEntries = Object.entries(scores);
+  scoreEntries.sort((a, b) => {
+    if (orderBy === 'username') {
+      return a[0].localeCompare(b[0]);  // Compare the usernames
+    }
+    if (orderBy === 'correctAnswers') {
+      return b[1].score - a[1].score; // Compare the scores
+    }
+    return a[1].brierScore - b[1].brierScore;  // Compare the brier scores
+  });
 
-  leaderboardContainer.innerHTML = `
-    <h2>Leaderboard</h2>
-    ${Object.entries(scores).map(([username, { score, brierScore }]) => `
-      <p>${username}: ${score} correct, Brier score ${brierScore.toFixed(2)}</p>
+  return scoreEntries;
+}
+
+
+let latestScores = {};  // global variable to store latest scores
+
+document.getElementById("score-header").addEventListener('click', function () {
+  displayLeaderboard(latestScores, 'correctAnswers');
+});
+
+document.getElementById("brier-header").addEventListener('click', function () {
+  displayLeaderboard(latestScores, 'brierScore');
+});
+
+document.getElementById("username-header").addEventListener('click', function () {
+  displayLeaderboard(latestScores, 'username');
+});
+
+function displayLeaderboard(scores, orderBy = 'brierScore') {
+  latestScores = scores;  // update the global variable
+  const sortedScores = sortScores(scores, orderBy);
+
+  const leaderboardBody = document.getElementById("leaderboard-body");
+  leaderboardBody.innerHTML = `
+    ${sortedScores.map(([username, { score, brierScore }]) => `
+      <tr>
+        <td>${username}</td>
+        <td>${score}</td>
+        <td>${brierScore.toFixed(2)}</td>
+      </tr>
     `).join('')}
   `;
   leaderboardContainer.style.display = 'block';

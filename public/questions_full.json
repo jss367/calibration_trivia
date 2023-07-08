@@ -1,19 +1,30 @@
 [
     {
+      "question": "What is the capital of France?",
+      "correctAnswer": ["Paris"],
+      "type": "text"
+    },
+    {
+      "question": "Which planet is known as the 'Red Planet'?",
+      "correctAnswer": ["Mars"],
+      "type": "text"
+    },
+    {
       "question": "What is the largest ocean on Earth?",
       "correctAnswer": ["Pacific Ocean", "Pacific"],
       "type": "text"
+    },
+    {
+      "question": "Which of these elements is a Noble Gas?",
+      "correctAnswer": ["Helium"],
+      "type": "multiple-choice",
+      "options": ["Hydrogen", "Helium", "Oxygen", "Nitrogen"]
     },
     {
       "question": "Which country is known as the Land of the Rising Sun?",
       "correctAnswer": ["Japan"],
       "type": "multiple-choice",
       "options": ["China", "South Korea", "Japan", "India"]
-    },
-    {
-        "question": "What is the capital city of New Zealand?",
-        "correctAnswer": ["Wellington"],
-        "type": "text"
     },
     {
         "question": "Which of these is not a type of cloud?",
@@ -34,10 +45,28 @@
         "options": ["AND", "OR", "NOT", "XOR"]
       },
       {
+        "question": "Who proposed the theory of evolution by natural selection?",
+        "correctAnswer": ["Charles Darwin"],
+        "type": "multiple-choice",
+        "options": ["Isaac Newton", "Charles Darwin", "Albert Einstein", "Galileo Galilei"]
+      },
+      {
+        "question": "What is the atomic number of Hydrogen?",
+        "correctAnswer": ["1"],
+        "type": "multiple-choice",
+        "options": ["1", "2", "3", "4"]
+      },
+      {
         "question": "What is the speed of light in vacuum, approximately?",
         "correctAnswer": ["299,792 km/s"],
         "type": "multiple-choice",
         "options": ["100,000 km/s", "299,792 km/s", "1,000 km/s", "3,000 km/s"]
+      },
+      {
+        "question": "What term is used to describe the phenomenon where light or other electromagnetic radiation from an object is increased in wavelength, or shifted to the red end of the spectrum?",
+        "correctAnswer": ["Redshift"],
+        "type": "multiple-choice",
+        "options": ["Blueshift", "Redshift", "Greenshift", "Purpleshift"]
       },
       {
         "question": "What is the principle that states that the total energy in a closed system is constant?",
@@ -46,8 +75,19 @@
         "options": ["Uncertainty principle", "Conservation of momentum", "Conservation of energy", "Quantum superposition"]
       },
       {
+        "question": "Who proposed the theory of general relativity?",
+        "correctAnswer": ["Albert Einstein"],
+        "type": "multiple-choice",
+        "options": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Max Planck"]
+      },
+      {
         "question": "What is the term for the capacity to do work?",
         "correctAnswer": ["Energy"],
+        "type": "text"
+      },
+      {
+        "question": "Who is often called the father of computer science?",
+        "correctAnswer": ["Alan Turing"],
         "type": "text"
       },
       {
@@ -71,6 +111,11 @@
         "type": "text"
       },
       {
+        "question": "What is the term for the science of classification, in biology, the arrangement of all life forms into a hierarchical order?",
+        "correctAnswer": ["Taxonomy"],
+        "type": "text"
+      },
+      {
         "question": "What is the longest bone in the human body?",
         "correctAnswer": ["Femur"],
         "type": "text"
@@ -90,6 +135,12 @@
         "correctAnswer": ["Harry Potter and the Methods of Rationality"],
         "type": "multiple-choice",
         "options": ["Harry Potter and the Magic of Reason", "Harry Potter and the Methods of Rationality", "Harry Potter and the Rational Minds", "Harry's Power: Mastery of Rationality"]
+      },
+      {
+        "question": "Who is the author of SlateStarCodex?",
+        "correctAnswer": ["Scott Alexander"],
+        "type": "multiple-choice",
+        "options": ["Scott Adams", "Scott Alexander", "Eliezer Yudkowsky", "Robert Hanson"]
       },
       {
         "question": "What concept from LessWrong discusses the idea that one can't purposefully make oneself believe something one knows isn't true?",
@@ -139,6 +190,16 @@
         "type": "text"
       },
       {
+        "question": "In the context of rationality and decision making, what does 'Aumann's agreement theorem' state?",
+        "correctAnswer": ["Two agents acting rationally and with common knowledge of each other's beliefs cannot agree to disagree"],
+        "type": "text"
+      },
+      {
+        "question": "What is the 'Litany of Tarski'?",
+        "correctAnswer": ["If the box contains a diamond, I desire to believe that the box contains a diamond. If the box does not contain a diamond, I desire to believe that the box does not contain a diamond. Let me not become attached to beliefs I may not want."],
+        "type": "text"
+      },
+      {
         "question": "What is the term for a mistaken belief that, upon being confronted with contradicting evidence, leads to adopting new beliefs that explain why the mistaken belief was held in the first place?",
         "correctAnswer": ["Epicycles"],
         "type": "text"
@@ -183,10 +244,22 @@
         "options": ["Sydney", "Melbourne", "Brisbane", "Canberra"]
       },
       {
+        "question": "Which physicist is credited with the discovery of the law of universal gravitation?",
+        "correctAnswer": ["Isaac Newton"],
+        "type": "multiple-choice",
+        "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Johannes Kepler"]
+      },
+      {
         "question": "Who painted 'The Scream'?",
         "correctAnswer": ["Edvard Munch"],
         "type": "multiple-choice",
         "options": ["Vincent van Gogh", "Pablo Picasso", "Edvard Munch", "Salvador Dalí"]
+      },
+      {
+        "question": "What is the deepest part of the world's oceans?",
+        "correctAnswer": ["Mariana Trench"],
+        "type": "multiple-choice",
+        "options": ["Puerto Rico Trench", "Java Trench", "Kuril-Kamchatka Trench", "Mariana Trench"]
       },
       {
         "question": "Which country is known as the 'Pearl of Africa'?",
@@ -201,8 +274,24 @@
         "options": ["Emily Bronte", "Charlotte Bronte", "Jane Austen", "Louisa May Alcott"]
       },
       {
+        "question": "Which nation was known as Persia until 1935?",
+        "correctAnswer": ["Iran"],
+        "type": "multiple-choice",
+        "options": ["Iraq", "Iran", "Afghanistan", "Turkey"]
+      },
+      {
         "question": "What is the tallest mountain in the world?",
-        "correctAnswer": ["Mount Everest", "Everest", "Mt. Everest"],
+        "correctAnswer": ["Mount Everest"],
+        "type": "text"
+      },
+      {
+        "question": "What is the capital city of New Zealand?",
+        "correctAnswer": ["Wellington"],
+        "type": "text"
+      },
+      {
+        "question": "What is the third planet from the sun in our solar system?",
+        "correctAnswer": ["Earth"],
         "type": "text"
       },
       {
@@ -212,12 +301,12 @@
       },
       {
         "question": "What is the largest desert in the world?",
-        "correctAnswer": ["Antarctic", "Antarctic Desert"],
+        "correctAnswer": ["Antarctic Desert"],
         "type": "text"
       },
       {
         "question": "Who is the author of the 'A Song of Ice and Fire' series, which 'Game of Thrones' is based on?",
-        "correctAnswer": ["George R. R. Martin", "George Martin"],
+        "correctAnswer": ["George R. R. Martin"],
         "type": "text"
       }
   ]  

@@ -14,6 +14,7 @@ https://console.cloud.google.com/apis/api/firestore.googleapis.com/metrics?proje
 ## See what's the in database
 https://console.cloud.google.com/firestore/databases/-default-/data/panel?project=calibration-trivia
 
+This is where you go to wipe the database.
 
 ## Database security rules:
 

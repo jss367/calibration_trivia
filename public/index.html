@@ -24,8 +24,8 @@
 <body>
     <h1>Calibration Trivia</h1>
     <div id="username-container">
-        <input type="text" id="username" placeholder="Enter your name">
-        <button id="start-quiz">Start Quiz</button>
+        <input type="text" id="username" class="input-large" placeholder="Enter your name">
+        <button id="start-quiz">Start</button>
     </div>
 
     <div id="quiz-container" style="display: none;">
@@ -41,8 +41,21 @@
     </div>
 
     <div id="leaderboard-container" style="display: none;">
-        <!-- Leaderboard will be displayed here -->
-    </div>
+        <h2>Leaderboard</h2>
+        <table>
+          <thead>
+            <tr>
+              <th id="username-header">Username</th>
+              <th id="score-header">Score</th>
+              <th id="brier-header">Brier Score</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body">
+            <!-- Table body will be populated here -->
+          </tbody>
+        </table>
+      </div>
+      
 
     <script defer src="scripts.js"></script>
   </body>
