@@ -59,7 +59,8 @@ function submitAnswer() {
     correctAnswer,
     userConfidence,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-}
+})
+};
 
 function displayResults() {
   quizContainer.style.display = 'none';
