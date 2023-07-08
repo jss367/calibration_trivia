@@ -1,12 +1,24 @@
 const quizContainer = document.getElementById('quiz-container');
+const questionContainer = document.getElementById('question-container');
 const nextButton = document.getElementById('next-button');
 const resultsContainer = document.getElementById('results-container');
+const usernameContainer = document.getElementById('username-container');
+const startQuizButton = document.getElementById('start-quiz');
+const leaderboardContainer = document.getElementById('leaderboard-container');
 // Firebase Firestore initialization
 const db = firebase.firestore();
 let currentQuestionIndex = 0;
 let questions = [];
 let score = 0;
 let brierScore = 0;
+let userAnswers = [];
+let correctAnswers = [];
+
+startQuizButton.addEventListener('click', () => {
+  usernameContainer.style.display = 'none';
+  quizContainer.style.display = 'block';
+  loadQuestions();
+});
 
 function loadQuestions() {
   return fetch('questions.json')
@@ -20,7 +32,9 @@ function loadQuestions() {
 function displayQuestion(index) {
   const question = questions[index];
   const type = question.type;
-  const quizContainer = document.getElementById('quiz-container');
+
+  // Create a new div for the question
+  const questionDiv = document.createElement('div');
 
   // Initialize the answer input HTML
   let answerInputHTML = '';
@@ -41,10 +55,13 @@ function displayQuestion(index) {
     answerInputHTML = '<input type="text" id="answer" placeholder="I think there has been a problem">';
   }
 
-  quizContainer.innerHTML = `
-  ${answerInputHTML}
-  <input type="number" id="confidence" min="0" max="100" step="1" value="50">%
-`;
+  questionDiv.innerHTML = `
+    ${answerInputHTML}
+    <input type="number" id="confidence" min="0" max="100" step="1" value="50">%
+  `;
+
+  questionContainer.innerHTML = ''; // Clear previous question
+  questionContainer.appendChild(questionDiv); // Append new question
 
   nextButton.style.display = 'block';
 }
@@ -61,9 +78,17 @@ nextButton.addEventListener('click', () => {
 
 function submitAnswer() {
   let userAnswer;
+  console.log(questions[currentQuestionIndex].correctAnswer);
   const questionType = questions[currentQuestionIndex].type;
-  const correctAnswer = questions[currentQuestionIndex].correctAnswer.toLowerCase();
+  // const correctAnswers = questions[currentQuestionIndex].correctAnswer.map(answer => answer.toLowerCase())
+  const currentCorrectAnswers = questions[currentQuestionIndex].correctAnswer.map(answer => answer.toLowerCase())
   const confidenceElement = document.getElementById('confidence');
+
+  let correctAnswer;
+  if (questions[currentQuestionIndex].correctAnswer.length > 0) {
+    correctAnswer = questions[currentQuestionIndex].correctAnswer[0].toLowerCase();
+  }
+
 
   if (questionType === 'text') {
     const answerElement = document.getElementById('answer');
@@ -73,20 +98,22 @@ function submitAnswer() {
     options.forEach(option => {
       const optionElement = document.getElementById(`option-${option}`);
       if (optionElement.checked) {
-        userAnswer = optionElement.value;
+        userAnswer = optionElement.value.toLowerCase();
       }
     });
   }
 
   const userConfidence = parseInt(confidenceElement.value, 10) / 100;
 
-  if (userAnswer === correctAnswer) {
+  if (currentCorrectAnswers.includes(userAnswer)) {
     score++;
     brierScore += Math.pow(1 - userConfidence, 2);
   } else {
     brierScore += Math.pow(0 - userConfidence, 2);
   }
   // Save user's answer
+  userAnswers.push(userAnswer);
+  correctAnswers.push(currentCorrectAnswers);
   const username = document.getElementById('username').value.trim();
   db.collection('answers').add({
     username,
@@ -98,10 +125,19 @@ function submitAnswer() {
   })
 };
 
+function displayIndividualResults() {
+  for (let i = 0; i < questions.length; i++) {
+    const resultPara = document.createElement('p');
+    const isCorrect = correctAnswers[i].includes(userAnswers[i]);
+    resultPara.style.color = isCorrect ? 'green' : 'red';
+    resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswers[i]} and the correct answer(s) is/are ${correctAnswers[i].join(", ")}. You were ${isCorrect ? 'correct' : 'wrong'}.`;
+    resultsContainer.appendChild(resultPara);
+  }
+}
+
 
 function displayResults() {
   quizContainer.style.display = 'none';
-  nextButton.style.display = 'none';
 
   brierScore /= questions.length;
 
@@ -109,9 +145,18 @@ function displayResults() {
     <h2>Results</h2>
     <p>Correct answers: ${score} / ${questions.length}</p>
     <p>Brier score: ${brierScore.toFixed(2)}</p>
+    <button id="show-leaderboard">Show Leaderboard</button>
   `;
 
   resultsContainer.style.display = 'block';
+  displayIndividualResults();
+
+  const showLeaderboardButton = document.getElementById('show-leaderboard');
+  showLeaderboardButton.addEventListener('click', () => {
+    resultsContainer.style.display = 'none';
+    leaderboardContainer.style.display = 'block';
+    calculateScores().then(displayLeaderboard);
+  });
 }
 
 function calculateScores() {
@@ -153,18 +198,12 @@ function calculateScores() {
 }
 
 function displayLeaderboard(scores) {
-  const leaderboardContainer = document.getElementById('leaderboard-container');
+
   leaderboardContainer.innerHTML = `
     <h2>Leaderboard</h2>
-    ${Object.entries(scores).map(([username, {score, brierScore}]) => `
+    ${Object.entries(scores).map(([username, { score, brierScore }]) => `
       <p>${username}: ${score} correct, Brier score ${brierScore.toFixed(2)}</p>
     `).join('')}
   `;
   leaderboardContainer.style.display = 'block';
 }
-
-// Display the leaderboard after the results
-calculateScores().then(displayLeaderboard);
-
-
-loadQuestions();

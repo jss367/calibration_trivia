@@ -1,28 +1,28 @@
 [
     {
       "question": "What is the capital of France?",
-      "correctAnswer": "Paris",
+      "correctAnswer": ["Paris"],
       "type": "text"
     },
     {
       "question": "Which planet is known as the 'Red Planet'?",
-      "correctAnswer": "Mars",
+      "correctAnswer": ["Mars"],
       "type": "text"
     },
     {
       "question": "What is the largest ocean on Earth?",
-      "correctAnswer": "Pacific Ocean",
+      "correctAnswer": ["Pacific Ocean", "Pacific"],
       "type": "text"
     },
     {
       "question": "Which of these elements is a Noble Gas?",
-      "correctAnswer": "Helium",
+      "correctAnswer": ["Helium"],
       "type": "multiple-choice",
       "options": ["Hydrogen", "Helium", "Oxygen", "Nitrogen"]
     },
     {
       "question": "Which country is known as the Land of the Rising Sun?",
-      "correctAnswer": "Japan",
+      "correctAnswer": ["Japan"],
       "type": "multiple-choice",
       "options": ["China", "South Korea", "Japan", "India"]
     }
