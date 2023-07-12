@@ -1,312 +1,407 @@
 [
     {
-      "question": "What is the capital of France?",
-      "correctAnswer": ["Paris"],
-      "type": "text"
-    },
+  "question": "What is the capital of France?",
+  "correctAnswer": ["Paris"],
+  "category": "geography",
+  "options": ["Paris", "Berlin", "Rome", "Madrid"]
+},
+{
+  "question": "Which planet is known as the 'Red Planet'?",
+  "correctAnswer": ["Mars"],
+  "category": "space",
+  "options": ["Mars", "Venus", "Earth", "Jupiter"]
+},
+{
+  "question": "What is the largest ocean on Earth?",
+  "correctAnswer": ["Pacific Ocean", "Pacific"],
+  "category": "geography",
+  "options": ["Pacific Ocean", "Indian Ocean", "Atlantic Ocean", "Arctic Ocean"]
+},
+{
+  "question": "Which of these elements is a Noble Gas?",
+  "correctAnswer": ["Helium"],
+  "category": "science",
+  "options": ["Hydrogen", "Helium", "Oxygen", "Nitrogen"]
+},
+{
+  "question": "Which country is known as the Land of the Rising Sun?",
+  "correctAnswer": ["Japan"],
+  "category": "geography",
+  "options": ["China", "South Korea", "Japan", "India"]
+},
+{
+  "question": "Which of these is not a type of cloud?",
+  "correctAnswer": ["Calibra"],
+  "category": "science",
+  "options": ["Cirrus", "Stratus", "Cumulus", "Calibra"]
+},
+{
+  "question": "Which planet in our solar system has the most gravity?",
+  "correctAnswer": ["Jupiter"],
+  "category": "space",
+  "options": ["Earth", "Jupiter", "Saturn", "Venus"]
+},
+{
+  "question": "What type of logic gate outputs true only when all its inputs are true?",
+  "correctAnswer": ["AND"],
+  "category": "computer science",
+  "options": ["AND", "OR", "NOT", "XOR"]
+},
+{
+  "question": "Who proposed the theory of evolution by natural selection?",
+  "correctAnswer": ["Charles Darwin"],
+  "category": "science",
+  "options": ["Isaac Newton", "Charles Darwin", "Albert Einstein", "Galileo Galilei"]
+},
+{
+  "question": "What is the atomic number of Hydrogen?",
+  "correctAnswer": ["1"],
+  "category": "science",
+  "options": ["1", "2", "3", "4"]
+},
+{
+  "question": "What is the speed of light in vacuum, approximately?",
+  "correctAnswer": ["299,792 km/s"],
+  "category": "physics",
+  "options": ["100,000 km/s", "299,792 km/s", "1,000 km/s", "3,000 km/s"]
+},
+{
+  "question": "What term is used to describe the phenomenon where light or other electromagnetic radiation from an object is increased in wavelength, or shifted to the red end of the spectrum?",
+  "correctAnswer": ["Redshift"],
+  "category": "physics",
+  "options": ["Blueshift", "Redshift", "Greenshift", "Purpleshift"]
+},
+{
+  "question": "What is the principle that states that the total energy in a closed system is constant?",
+  "correctAnswer": ["Conservation of energy"],
+  "category": "physics",
+  "options": ["Uncertainty principle", "Conservation of momentum", "Conservation of energy", "Quantum superposition"]
+},
+{
+  "question": "Who proposed the theory of general relativity?",
+  "correctAnswer": ["Albert Einstein"],
+  "category": "physics",
+  "options": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Max Planck"]
+},
+{
+  "question": "What is the term for the capacity to do work?",
+  "correctAnswer": ["Energy"],
+  "category": "physics",
+  "options": ["Energy", "Power", "Force", "Work"]
+},
+{
+  "question": "Who is often called the father of computer science?",
+  "correctAnswer": ["Alan Turing"],
+  "category": "computer science",
+  "options": ["Alan Turing", "Charles Babbage", "John von Neumann", "Donald Knuth"]
+},
+{
+  "question": "What is the process by which a solid turns into a gas without passing through a liquid stage called?",
+  "correctAnswer": ["Sublimation"],
+  "category": "chemistry",
+  "options": ["Sublimation", "Deposition", "Condensation", "Evaporation"]
+},
+{
+  "question": "What does DNA stand for?",
+  "correctAnswer": ["Deoxyribonucleic acid"],
+  "category": "biology",
+  "options": ["Deoxyribonucleic acid", "Dinitrogen oxide acid", "Dinucleotide acetic acid", "Dioxynucleic acid"]
+},
+{
+  "question": "What is the chemical symbol for Gold?",
+  "correctAnswer": ["Au"],
+  "category": "chemistry",
+  "options": ["Au", "Ag", "Fe", "Gd"]
+},
+{
+  "question": "What is the fundamental particle of light called?",
+  "correctAnswer": ["Photon"],
+  "category": "physics",
+  "options": ["Photon", "Proton", "Neutron", "Electron"]
+},
+{
+  "question": "What is the term for the science of classification, in biology, the arrangement of all life forms into a hierarchical order?",
+  "correctAnswer": ["Taxonomy"],
+  "category": "biology",
+  "options": ["Taxonomy", "Phylogeny", "Cladistics", "Typology"]
+},
+{
+  "question": "What is the longest bone in the human body?",
+  "correctAnswer": ["Femur"],
+  "category": "biology",
+  "options": ["Femur", "Humerus", "Tibia", "Spine"]
+},
+{
+  "question": "What type of astronomical object results from the explosive death of certain types of stars?",
+  "correctAnswer": ["Supernova"],
+  "category": "astronomy",
+  "options": ["Supernova", "Black hole", "Nebula", "White dwarf"]
+},
+{
+  "question": "What is the smallest unit of matter that retains the properties of an element?",
+  "correctAnswer": ["Atom"],
+  "category": "chemistry",
+  "options": ["Atom", "Electron", "Proton", "Neutron"]
+},
+{
+  "question": "What does 'HPMOR' stand for?",
+  "correctAnswer": ["Harry Potter and the Methods of Rationality"],
+  "category": "literature",
+  "options": ["Harry Potter and the Magic of Reason", "Harry Potter and the Methods of Rationality", "Harry Potter and the Rational Minds", "Harry's Power: Mastery of Rationality"]
+},
+{
+  "question": "Who is the author of SlateStarCodex?",
+  "correctAnswer": ["Scott Alexander"],
+  "category": "literature",
+  "options": ["Scott Adams", "Scott Alexander", "Eliezer Yudkowsky", "Robert Hanson"]
+},
+{
+  "question": "What concept from LessWrong discusses the idea that one can't purposefully make oneself believe something one knows isn't true?",
+  "correctAnswer": ["Belief in belief"],
+  "category": "philosophy",
+  "options": ["Belief in belief", "Sunk cost fallacy", "Bayesian probability", "Roko's Basilisk"]
+},
+{
+  "question": "What is the term often used on LessWrong to refer to the idea of an AI that perfectly aligns with human values?",
+  "correctAnswer": ["Friendly AI"],
+  "category": "computer science",
+  "options": ["Friendly AI", "Powerful AI", "Super AI", "Benevolent AI"]
+},
     {
-      "question": "Which planet is known as the 'Red Planet'?",
-      "correctAnswer": ["Mars"],
-      "type": "text"
-    },
-    {
-      "question": "What is the largest ocean on Earth?",
-      "correctAnswer": ["Pacific Ocean", "Pacific"],
-      "type": "text"
-    },
-    {
-      "question": "Which of these elements is a Noble Gas?",
-      "correctAnswer": ["Helium"],
+      "question": "What is the speed of light in vacuum, approximately?",
+      "correctAnswer": ["299,792 km/s"],
       "type": "multiple-choice",
-      "options": ["Hydrogen", "Helium", "Oxygen", "Nitrogen"]
+      "options": ["100,000 km/s", "299,792 km/s", "1,000 km/s", "3,000 km/s"]
     },
     {
-      "question": "Which country is known as the Land of the Rising Sun?",
-      "correctAnswer": ["Japan"],
+      "question": "What term is used to describe the phenomenon where light or other electromagnetic radiation from an object is increased in wavelength, or shifted to the red end of the spectrum?",
+      "correctAnswer": ["Redshift"],
       "type": "multiple-choice",
-      "options": ["China", "South Korea", "Japan", "India"]
+      "options": ["Blueshift", "Redshift", "Greenshift", "Purpleshift"]
     },
     {
-        "question": "Which of these is not a type of cloud?",
-        "correctAnswer": ["Calibra"],
-        "type": "multiple-choice",
-        "options": ["Cirrus", "Stratus", "Cumulus", "Calibra"]
-      },
-      {
-        "question": "Which planet in our solar system has the most gravity?",
-        "correctAnswer": ["Jupiter"],
-        "type": "multiple-choice",
-        "options": ["Earth", "Jupiter", "Saturn", "Venus"]
-      },
-      {
-        "question": "What type of logic gate outputs true only when all its inputs are true?",
-        "correctAnswer": ["AND"],
-        "type": "multiple-choice",
-        "options": ["AND", "OR", "NOT", "XOR"]
-      },
-      {
-        "question": "Who proposed the theory of evolution by natural selection?",
-        "correctAnswer": ["Charles Darwin"],
-        "type": "multiple-choice",
-        "options": ["Isaac Newton", "Charles Darwin", "Albert Einstein", "Galileo Galilei"]
-      },
-      {
-        "question": "What is the atomic number of Hydrogen?",
-        "correctAnswer": ["1"],
-        "type": "multiple-choice",
-        "options": ["1", "2", "3", "4"]
-      },
-      {
-        "question": "What is the speed of light in vacuum, approximately?",
-        "correctAnswer": ["299,792 km/s"],
-        "type": "multiple-choice",
-        "options": ["100,000 km/s", "299,792 km/s", "1,000 km/s", "3,000 km/s"]
-      },
-      {
-        "question": "What term is used to describe the phenomenon where light or other electromagnetic radiation from an object is increased in wavelength, or shifted to the red end of the spectrum?",
-        "correctAnswer": ["Redshift"],
-        "type": "multiple-choice",
-        "options": ["Blueshift", "Redshift", "Greenshift", "Purpleshift"]
-      },
-      {
-        "question": "What is the principle that states that the total energy in a closed system is constant?",
-        "correctAnswer": ["Conservation of energy"],
-        "type": "multiple-choice",
-        "options": ["Uncertainty principle", "Conservation of momentum", "Conservation of energy", "Quantum superposition"]
-      },
-      {
-        "question": "Who proposed the theory of general relativity?",
-        "correctAnswer": ["Albert Einstein"],
-        "type": "multiple-choice",
-        "options": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Max Planck"]
-      },
-      {
-        "question": "What is the term for the capacity to do work?",
-        "correctAnswer": ["Energy"],
-        "type": "text"
-      },
-      {
-        "question": "Who is often called the father of computer science?",
-        "correctAnswer": ["Alan Turing"],
-        "type": "text"
-      },
-      {
-        "question": "What is the process by which a solid turns into a gas without passing through a liquid stage called?",
-        "correctAnswer": ["Sublimation"],
-        "type": "text"
-      },
-      {
-        "question": "What does DNA stand for?",
-        "correctAnswer": ["Deoxyribonucleic acid"],
-        "type": "text"
-      },
-      {
-        "question": "What is the chemical symbol for Gold?",
-        "correctAnswer": ["Au"],
-        "type": "text"
-      },
-      {
-        "question": "What is the fundamental particle of light called?",
-        "correctAnswer": ["Photon"],
-        "type": "text"
-      },
-      {
-        "question": "What is the term for the science of classification, in biology, the arrangement of all life forms into a hierarchical order?",
-        "correctAnswer": ["Taxonomy"],
-        "type": "text"
-      },
-      {
-        "question": "What is the longest bone in the human body?",
-        "correctAnswer": ["Femur"],
-        "type": "text"
-      },
-      {
-        "question": "What type of astronomical object results from the explosive death of certain types of stars?",
-        "correctAnswer": ["Supernova"],
-        "type": "text"
-      },
-      {
-        "question": "What is the smallest unit of matter that retains the properties of an element?",
-        "correctAnswer": ["Atom"],
-        "type": "text"
-      },
-      {
-        "question": "What does 'HPMOR' stand for?",
-        "correctAnswer": ["Harry Potter and the Methods of Rationality"],
-        "type": "multiple-choice",
-        "options": ["Harry Potter and the Magic of Reason", "Harry Potter and the Methods of Rationality", "Harry Potter and the Rational Minds", "Harry's Power: Mastery of Rationality"]
-      },
-      {
-        "question": "Who is the author of SlateStarCodex?",
-        "correctAnswer": ["Scott Alexander"],
-        "type": "multiple-choice",
-        "options": ["Scott Adams", "Scott Alexander", "Eliezer Yudkowsky", "Robert Hanson"]
-      },
-      {
-        "question": "What concept from LessWrong discusses the idea that one can't purposefully make oneself believe something one knows isn't true?",
-        "correctAnswer": ["Belief in belief"],
-        "type": "multiple-choice",
-        "options": ["Belief in belief", "Sunk cost fallacy", "Bayesian probability", "Roko's Basilisk"]
-      },
-      {
-        "question": "What is the term often used on LessWrong to refer to the idea of an AI that perfectly aligns with human values?",
-        "correctAnswer": ["Friendly AI"],
-        "type": "multiple-choice",
-        "options": ["Friendly AI", "Powerful AI", "Super AI", "Benevolent AI"]
-      },
-      {
-        "question": "What principle, discussed on LessWrong, suggests that one should update their beliefs proportional to the evidence?",
-        "correctAnswer": ["Bayes' theorem"],
-        "type": "multiple-choice",
-        "options": ["Occam's razor", "Hume's fork", "Kant's categorical imperative", "Bayes' theorem"]
-      },
-      {
-        "question": "Which blog on rationality is known for hosting 'open threads' where readers can discuss anything they want?",
-        "correctAnswer": ["SlateStarCodex"],
-        "type": "multiple-choice",
-        "options": ["LessWrong", "Overcoming Bias", "SlateStarCodex", "RationalWiki"]
-      },
-      {
-        "question": "In HPMOR, who teaches Harry Potter about rationality?",
-        "correctAnswer": ["Petunia and Michael Evans-Verres"],
-        "type": "multiple-choice",
-        "options": ["Albus Dumbledore", "Severus Snape", "Petunia and Michael Evans-Verres", "Hermione Granger"]
-      },
-      {
-        "question": "What concept refers to the hypothetical future event when AI surpasses human intelligence, creating drastic changes to civilization?",
-        "correctAnswer": ["Technological singularity"],
-        "type": "multiple-choice",
-        "options": ["Roko's Basilisk", "Technological singularity", "The Bostrom paradox", "The Yudkowsky paradox"]
-      },
-      {
-        "question": "What is the name of the book written by Eliezer Yudkowsky and published by the Machine Intelligence Research Institute (MIRI) that compiles his essays on rationality?",
-        "correctAnswer": ["Rationality: From AI to Zombies"],
-        "type": "multiple-choice",
-        "options": ["LessWrong: The Sequences", "Rationality: From AI to Zombies", "Overcoming Bias: A Guide", "How To Be Rational"]
-      },
-      {
-        "question": "What term from HPMOR refers to the ability to lose, to accept that you have lost, and to move on?",
-        "correctAnswer": ["The Losing Side"],
-        "type": "text"
-      },
-      {
-        "question": "In the context of rationality and decision making, what does 'Aumann's agreement theorem' state?",
-        "correctAnswer": ["Two agents acting rationally and with common knowledge of each other's beliefs cannot agree to disagree"],
-        "type": "text"
-      },
-      {
-        "question": "What is the 'Litany of Tarski'?",
-        "correctAnswer": ["If the box contains a diamond, I desire to believe that the box contains a diamond. If the box does not contain a diamond, I desire to believe that the box does not contain a diamond. Let me not become attached to beliefs I may not want."],
-        "type": "text"
-      },
-      {
-        "question": "What is the term for a mistaken belief that, upon being confronted with contradicting evidence, leads to adopting new beliefs that explain why the mistaken belief was held in the first place?",
-        "correctAnswer": ["Epicycles"],
-        "type": "text"
-      },
-      {
-        "question": "What term, originating from LessWrong, refers to a hypothetical dangerous AI thought experiment that can't be discussed on the website?",
-        "correctAnswer": ["Roko's Basilisk"],
-        "type": "text"
-      },
-      {
-        "question": "What term, popularized by Eliezer Yudkowsky, refers to the idea that everything in the universe operates according to the laws of physics, including the mind?",
-        "correctAnswer": ["Materialism"],
-        "type": "text"
-      },
-      {
-        "question": "What is the term for a hypothetical device that perfectly predicts its own actions?",
-        "correctAnswer": ["Omega"],
-        "type": "text"
-      },
-      {
-        "question": "In what year was the first manned mission to the moon?",
-        "correctAnswer": ["1969"],
-        "type": "multiple-choice",
-        "options": ["1965", "1967", "1969", "1971"]
-      },
-      {
-        "question": "Which chemical element has the symbol 'Au'?",
-        "correctAnswer": ["Gold"],
-        "type": "multiple-choice",
-        "options": ["Silver", "Gold", "Aluminum", "Argon"]
-      },
-      {
-        "question": "In what year was the first manned mission to the moon?",
-        "correctAnswer": ["1969"],
-        "type": "multiple-choice",
-        "options": ["1965", "1967", "1969", "1971"]
-      },
-      {
-        "question": "What is the capital city of Australia?",
-        "correctAnswer": ["Canberra"],
-        "type": "multiple-choice",
-        "options": ["Sydney", "Melbourne", "Brisbane", "Canberra"]
-      },
-      {
-        "question": "Which physicist is credited with the discovery of the law of universal gravitation?",
-        "correctAnswer": ["Isaac Newton"],
-        "type": "multiple-choice",
-        "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Johannes Kepler"]
-      },
-      {
-        "question": "Who painted 'The Scream'?",
-        "correctAnswer": ["Edvard Munch"],
-        "type": "multiple-choice",
-        "options": ["Vincent van Gogh", "Pablo Picasso", "Edvard Munch", "Salvador Dalí"]
-      },
-      {
-        "question": "What is the deepest part of the world's oceans?",
-        "correctAnswer": ["Mariana Trench"],
-        "type": "multiple-choice",
-        "options": ["Puerto Rico Trench", "Java Trench", "Kuril-Kamchatka Trench", "Mariana Trench"]
-      },
-      {
-        "question": "Which country is known as the 'Pearl of Africa'?",
-        "correctAnswer": ["Uganda"],
-        "type": "multiple-choice",
-        "options": ["Uganda", "Kenya", "Rwanda", "Tanzania"]
-      },
-      {
-        "question": "Who is the author of 'Pride and Prejudice'?",
-        "correctAnswer": ["Jane Austen"],
-        "type": "multiple-choice",
-        "options": ["Emily Bronte", "Charlotte Bronte", "Jane Austen", "Louisa May Alcott"]
-      },
-      {
-        "question": "Which nation was known as Persia until 1935?",
-        "correctAnswer": ["Iran"],
-        "type": "multiple-choice",
-        "options": ["Iraq", "Iran", "Afghanistan", "Turkey"]
-      },
-      {
-        "question": "What is the tallest mountain in the world?",
-        "correctAnswer": ["Mount Everest"],
-        "type": "text"
-      },
-      {
-        "question": "What is the capital city of New Zealand?",
-        "correctAnswer": ["Wellington"],
-        "type": "text"
-      },
-      {
-        "question": "What is the third planet from the sun in our solar system?",
-        "correctAnswer": ["Earth"],
-        "type": "text"
-      },
-      {
-        "question": "What is the most populous country in the world?",
-        "correctAnswer": ["China"],
-        "type": "text"
-      },
-      {
-        "question": "What is the largest desert in the world?",
-        "correctAnswer": ["Antarctic Desert"],
-        "type": "text"
-      },
-      {
-        "question": "Who is the author of the 'A Song of Ice and Fire' series, which 'Game of Thrones' is based on?",
-        "correctAnswer": ["George R. R. Martin"],
-        "type": "text"
-      }
-  ]  
+      "question": "What is the principle that states that the total energy in a closed system is constant?",
+      "correctAnswer": ["Conservation of energy"],
+      "type": "multiple-choice",
+      "options": ["Uncertainty principle", "Conservation of momentum", "Conservation of energy", "Quantum superposition"]
+    },
+    {
+      "question": "Who proposed the theory of general relativity?",
+      "correctAnswer": ["Albert Einstein"],
+      "type": "multiple-choice",
+      "options": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Max Planck"]
+    },
+    {
+      "question": "What is the term for the capacity to do work?",
+      "correctAnswer": ["Energy"],
+      "type": "text"
+    },
+    {
+      "question": "Who is often called the father of computer science?",
+      "correctAnswer": ["Alan Turing"],
+      "type": "text"
+    },
+    {
+      "question": "What is the process by which a solid turns into a gas without passing through a liquid stage called?",
+      "correctAnswer": ["Sublimation"],
+      "type": "text"
+    },
+    {
+      "question": "What does DNA stand for?",
+      "correctAnswer": ["Deoxyribonucleic acid"],
+      "type": "text"
+    },
+    {
+      "question": "What is the chemical symbol for Gold?",
+      "correctAnswer": ["Au"],
+      "type": "text"
+    },
+    {
+      "question": "What is the fundamental particle of light called?",
+      "correctAnswer": ["Photon"],
+      "type": "text"
+    },
+    {
+      "question": "What is the term for the science of classification, in biology, the arrangement of all life forms into a hierarchical order?",
+      "correctAnswer": ["Taxonomy"],
+      "type": "text"
+    },
+    {
+      "question": "What is the longest bone in the human body?",
+      "correctAnswer": ["Femur"],
+      "type": "text"
+    },
+    {
+      "question": "What type of astronomical object results from the explosive death of certain types of stars?",
+      "correctAnswer": ["Supernova"],
+      "type": "text"
+    },
+    {
+      "question": "What is the smallest unit of matter that retains the properties of an element?",
+      "correctAnswer": ["Atom"],
+      "type": "text"
+    },
+    {
+      "question": "What does 'HPMOR' stand for?",
+      "correctAnswer": ["Harry Potter and the Methods of Rationality"],
+      "type": "multiple-choice",
+      "options": ["Harry Potter and the Magic of Reason", "Harry Potter and the Methods of Rationality", "Harry Potter and the Rational Minds", "Harry's Power: Mastery of Rationality"]
+    },
+    {
+      "question": "Who is the author of SlateStarCodex?",
+      "correctAnswer": ["Scott Alexander"],
+      "type": "multiple-choice",
+      "options": ["Scott Adams", "Scott Alexander", "Eliezer Yudkowsky", "Robert Hanson"]
+    },
+    {
+      "question": "What concept from LessWrong discusses the idea that one can't purposefully make oneself believe something one knows isn't true?",
+      "correctAnswer": ["Belief in belief"],
+      "type": "multiple-choice",
+      "options": ["Belief in belief", "Sunk cost fallacy", "Bayesian probability", "Roko's Basilisk"]
+    },
+    {
+      "question": "What is the term often used on LessWrong to refer to the idea of an AI that perfectly aligns with human values?",
+      "correctAnswer": ["Friendly AI"],
+      "type": "multiple-choice",
+      "options": ["Friendly AI", "Powerful AI", "Super AI", "Benevolent AI"]
+    },
+    {
+      "question": "What principle, discussed on LessWrong, suggests that one should update their beliefs proportional to the evidence?",
+      "correctAnswer": ["Bayes' theorem"],
+      "type": "multiple-choice",
+      "options": ["Occam's razor", "Hume's fork", "Kant's categorical imperative", "Bayes' theorem"]
+    },
+    {
+      "question": "Which blog on rationality is known for hosting 'open threads' where readers can discuss anything they want?",
+      "correctAnswer": ["SlateStarCodex"],
+      "type": "multiple-choice",
+      "options": ["LessWrong", "Overcoming Bias", "SlateStarCodex", "RationalWiki"]
+    },
+    {
+      "question": "In HPMOR, who teaches Harry Potter about rationality?",
+      "correctAnswer": ["Petunia and Michael Evans-Verres"],
+      "type": "multiple-choice",
+      "options": ["Albus Dumbledore", "Severus Snape", "Petunia and Michael Evans-Verres", "Hermione Granger"]
+    },
+    {
+      "question": "What concept refers to the hypothetical future event when AI surpasses human intelligence, creating drastic changes to civilization?",
+      "correctAnswer": ["Technological singularity"],
+      "type": "multiple-choice",
+      "options": ["Roko's Basilisk", "Technological singularity", "The Bostrom paradox", "The Yudkowsky paradox"]
+    },
+    {
+      "question": "What is the name of the book written by Eliezer Yudkowsky and published by the Machine Intelligence Research Institute (MIRI) that compiles his essays on rationality?",
+      "correctAnswer": ["Rationality: From AI to Zombies"],
+      "type": "multiple-choice",
+      "options": ["LessWrong: The Sequences", "Rationality: From AI to Zombies", "Overcoming Bias: A Guide", "How To Be Rational"]
+    },
+
+ {
+      "question": "What is the speed of light in vacuum, approximately?",
+      "correctAnswer": ["299,792 km/s"],
+      "category": "Physics",
+      "options": ["100,000 km/s", "299,792 km/s", "1,000 km/s", "3,000 km/s"]
+    },
+    {
+      "question": "What term is used to describe the phenomenon where light or other electromagnetic radiation from an object is increased in wavelength, or shifted to the red end of the spectrum?",
+      "correctAnswer": ["Redshift"],
+      "category": "Physics",
+      "options": ["Blueshift", "Redshift", "Greenshift", "Purpleshift"]
+    },
+    {
+      "question": "What is the principle that states that the total energy in a closed system is constant?",
+      "correctAnswer": ["Conservation of energy"],
+      "category": "Physics",
+      "options": ["Uncertainty principle", "Conservation of momentum", "Conservation of energy", "Quantum superposition"]
+    },
+    {
+      "question": "Who proposed the theory of general relativity?",
+      "correctAnswer": ["Albert Einstein"],
+      "category": "Physics",
+      "options": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Max Planck"]
+    },
+    {
+      "question": "What is the term for the capacity to do work?",
+      "correctAnswer": ["Energy"],
+      "category": "Physics",
+      "options": ["Power", "Force", "Energy", "Work"]
+    },
+    {
+      "question": "Who is often called the father of computer science?",
+      "correctAnswer": ["Alan Turing"],
+      "category": "Computer Science",
+      "options": ["Charles Babbage", "Alan Turing", "John von Neumann", "Ada Lovelace"]
+    },
+    {
+      "question": "What is the process by which a solid turns into a gas without passing through a liquid stage called?",
+      "correctAnswer": ["Sublimation"],
+      "category": "Chemistry",
+      "options": ["Evaporation", "Condensation", "Sublimation", "Transpiration"]
+    },
+    {
+      "question": "What does DNA stand for?",
+      "correctAnswer": ["Deoxyribonucleic acid"],
+      "category": "Biology",
+      "options": ["Deoxyribonucleic acid", "Dioxyribonucleic acid", "Dioxyribose deoxyacid", "Deoxyribose dioxyacid"]
+    },
+    {
+      "question": "What is the chemical symbol for Gold?",
+      "correctAnswer": ["Au"],
+      "category": "Chemistry",
+      "options": ["Ag", "Gd", "Au", "Go"]
+    },
+    {
+      "question": "What is the fundamental particle of light called?",
+      "correctAnswer": ["Photon"],
+      "category": "Physics",
+      "options": ["Neutron", "Electron", "Proton", "Photon"]
+    },
+    {
+      "question": "What is the term for the science of classification, in biology, the arrangement of all life forms into a hierarchical order?",
+      "correctAnswer": ["Taxonomy"],
+      "category": "Biology",
+      "options": ["Ecology", "Genetics", "Taxonomy", "Zoology"]
+    },
+    {
+      "question": "What is the longest bone in the human body?",
+      "correctAnswer": ["Femur"],
+      "category": "Biology",
+      "options": ["Humerus", "Tibia", "Femur", "Spine"]
+    },
+    {
+      "question": "What type of astronomical object results from the explosive death of certain types of stars?",
+      "correctAnswer": ["Supernova"],
+      "category": "Astronomy",
+      "options": ["Nebula", "Pulsar", "Black hole", "Supernova"]
+    },
+    {
+      "question": "What is the smallest unit of matter that retains the properties of an element?",
+      "correctAnswer": ["Atom"],
+      "category": "Chemistry",
+      "options": ["Molecule", "Proton", "Neutron", "Atom"]
+    },
+    {
+      "question": "What does 'HPMOR' stand for?",
+      "correctAnswer": ["Harry Potter and the Methods of Rationality"],
+      "category": "Literature",
+      "options": ["Harry Potter and the Magic of Reason", "Harry Potter and the Methods of Rationality", "Harry Potter and the Rational Minds", "Harry's Power: Mastery of Rationality"]
+    },
+    {
+      "question": "Who is the author of SlateStarCodex?",
+      "correctAnswer": ["Scott Alexander"],
+      "category": "Blogs",
+      "options": ["Scott Adams", "Scott Alexander", "Eliezer Yudkowsky", "Robert Hanson"]
+    },
+    {
+      "question": "What concept from LessWrong discusses the idea that one can't purposefully make oneself believe something one knows isn't true?",
+      "correctAnswer": ["Belief in belief"],
+      "category": "Rationality",
+      "options": ["Belief in belief", "Sunk cost fallacy", "Bayesian probability", "Roko's Basilisk"]
+    },
+    {
+      "question": "What is the term often used on LessWrong to refer to the idea of an AI that perfectly aligns with human values?",
+      "correctAnswer": ["Friendly AI"],
+      "category": "AI Safety",
+      "options": ["Friendly AI", "Powerful AI", "Super AI", "Cooperative AI"]
+    }
+]
