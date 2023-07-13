@@ -28,4 +28,24 @@
         "question": "What is the capital city of New Zealand?",
         "correctAnswer": ["Wellington"],
     },
+            {
+        "question": "What is the capital city of Australia?",
+        "correctAnswer": ["Canberra"],
+        "options": ["Sydney", "Melbourne", "Brisbane", "Canberra"]
+      },
+      {
+        "question": "Who painted 'The Scream'?",
+        "correctAnswer": ["Edvard Munch"],
+        "options": ["Vincent van Gogh", "Pablo Picasso", "Edvard Munch", "Salvador Dalí"]
+      },
+      {
+        "question": "Which country is known as the 'Pearl of Africa'?",
+        "correctAnswer": ["Uganda"],
+        "options": ["Uganda", "Kenya", "Rwanda", "Tanzania"]
+      },
+      {
+        "question": "Who is the author of 'Pride and Prejudice'?",
+        "correctAnswer": ["Jane Austen"],
+        "options": ["Emily Bronte", "Charlotte Bronte", "Jane Austen", "Louisa May Alcott"]
+      },
 ]
