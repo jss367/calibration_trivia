@@ -1,0 +1,70 @@
+[
+      {
+        "question": "Which of these is not a type of cloud?",
+        "correctAnswer": ["Calibra"],
+        "options": ["Cirrus", "Stratus", "Cumulus", "Calibra"]
+      },
+      {
+        "question": "Which planet in our solar system has the most gravity?",
+        "correctAnswer": ["Jupiter"],
+        "options": ["Earth", "Jupiter", "Saturn", "Venus"]
+      },
+      {
+        "question": "What type of logic gate outputs true only when all its inputs are true?",
+        "correctAnswer": ["AND"],
+        "options": ["AND", "OR", "NOT", "XOR"]
+      },
+      {
+        "question": "What is the speed of light in vacuum, approximately?",
+        "correctAnswer": ["299,792 km/s"],
+        "options": ["100,000 km/s", "299,792 km/s", "1,000 km/s", "3,000 km/s"]
+      },
+      {
+        "question": "What is the principle that states that the total energy in a closed system is constant?",
+        "correctAnswer": ["Conservation of energy"],
+        "options": ["Uncertainty principle", "Conservation of momentum", "Conservation of energy", "Quantum superposition"]
+      },
+      {
+        "question": "What is the term for the capacity to do work?",
+        "correctAnswer": ["Energy"],
+      },
+      {
+        "question": "What is the process by which a solid turns into a gas without passing through a liquid stage called?",
+        "correctAnswer": ["Sublimation"],
+      },
+      {
+        "question": "What does DNA stand for?",
+        "correctAnswer": ["Deoxyribonucleic acid"],
+      },
+      {
+        "question": "What is the chemical symbol for Gold?",
+        "correctAnswer": ["Au"],
+      },
+      {
+        "question": "What is the fundamental particle of light called?",
+        "correctAnswer": ["Photon"],
+      },
+      {
+        "question": "What is the longest bone in the human body?",
+        "correctAnswer": ["Femur"],
+      },
+      {
+        "question": "What type of astronomical object results from the explosive death of certain types of stars?",
+        "correctAnswer": ["Supernova"],
+      },
+      {
+        "question": "What is the smallest unit of matter that retains the properties of an element?",
+        "correctAnswer": ["Atom"],
+      },
+
+      {
+        "question": "In what year was the first manned mission to the moon?",
+        "correctAnswer": ["1969"],
+        "options": ["1965", "1967", "1969", "1971"]
+      },
+      {
+        "question": "Which chemical element has the symbol 'Au'?",
+        "correctAnswer": ["Gold"],
+        "options": ["Silver", "Gold", "Aluminum", "Argon"]
+      }
+]
