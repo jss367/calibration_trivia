@@ -2,66 +2,54 @@
       {
         "question": "What does 'HPMOR' stand for?",
         "correctAnswer": ["Harry Potter and the Methods of Rationality"],
-        "type": "multiple-choice",
         "options": ["Harry Potter and the Magic of Reason", "Harry Potter and the Methods of Rationality", "Harry Potter and the Rational Minds", "Harry's Power: Mastery of Rationality"]
       },
             {
         "question": "What concept from LessWrong discusses the idea that one can't purposefully make oneself believe something one knows isn't true?",
         "correctAnswer": ["Belief in belief"],
-        "type": "multiple-choice",
         "options": ["Belief in belief", "Sunk cost fallacy", "Bayesian probability", "Roko's Basilisk"]
       },
             {
         "question": "What is the term often used on LessWrong to refer to the idea of an AI that perfectly aligns with human values?",
         "correctAnswer": ["Friendly AI"],
-        "type": "multiple-choice",
         "options": ["Friendly AI", "Powerful AI", "Super AI", "Benevolent AI"]
       },
             {
         "question": "What principle, discussed on LessWrong, suggests that one should update their beliefs proportional to the evidence?",
         "correctAnswer": ["Bayes' theorem"],
-        "type": "multiple-choice",
         "options": ["Occam's razor", "Hume's fork", "Kant's categorical imperative", "Bayes' theorem"]
       },
       {
         "question": "Which blog on rationality is known for hosting 'open threads' where readers can discuss anything they want?",
         "correctAnswer": ["SlateStarCodex"],
-        "type": "multiple-choice",
         "options": ["LessWrong", "Overcoming Bias", "SlateStarCodex", "RationalWiki"]
       },
       {
         "question": "In HPMOR, who teaches Harry Potter about rationality?",
         "correctAnswer": ["Petunia and Michael Evans-Verres"],
-        "type": "multiple-choice",
         "options": ["Albus Dumbledore", "Severus Snape", "Petunia and Michael Evans-Verres", "Hermione Granger"]
       },
-      
       {
         "question": "What concept refers to the hypothetical future event when AI surpasses human intelligence, creating drastic changes to civilization?",
         "correctAnswer": ["Technological singularity"],
-        "type": "multiple-choice",
         "options": ["Roko's Basilisk", "Technological singularity", "The Bostrom paradox", "The Yudkowsky paradox"]
       },
       {
         "question": "What is the name of the book written by Eliezer Yudkowsky and published by the Machine Intelligence Research Institute (MIRI) that compiles his essays on rationality?",
         "correctAnswer": ["Rationality: From AI to Zombies"],
-        "type": "multiple-choice",
         "options": ["LessWrong: The Sequences", "Rationality: From AI to Zombies", "Overcoming Bias: A Guide", "How To Be Rational"]
       },
       {
         "question": "What term from HPMOR refers to the ability to lose, to accept that you have lost, and to move on?",
         "correctAnswer": ["The Losing Side"],
-        "type": "text"
       },
             {
         "question": "What term, originating from LessWrong, refers to a hypothetical dangerous AI thought experiment that can't be discussed on the website?",
         "correctAnswer": ["Roko's Basilisk"],
-        "type": "text"
       },
       {
         "question": "What term, popularized by Eliezer Yudkowsky, refers to the idea that everything in the universe operates according to the laws of physics, including the mind?",
         "correctAnswer": ["Materialism"],
-        "type": "text"
       },
       
 ]
