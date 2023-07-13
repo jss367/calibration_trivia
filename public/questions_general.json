@@ -2,33 +2,39 @@
       {
         "question": "What is the tallest mountain in the world?",
         "correctAnswer": ["Mount Everest", "Everest", "Mt. Everest"],
+        "options": ["Mount Kilimanjaro", "K2", "Mount Everest", "Mount Fuji"]
       },
       {
         "question": "What is the most populous country in the world?",
         "correctAnswer": ["China"],
+        "options": ["India", "United States", "China", "Brazil"]
       },
       {
         "question": "What is the largest desert in the world?",
         "correctAnswer": ["Antarctic", "Antarctic Desert"],
+        "options": ["Sahara Desert", "Gobi Desert", "Arabian Desert", "Antarctic Desert"]
       },
       {
         "question": "Who is the author of the 'A Song of Ice and Fire' series, which 'Game of Thrones' is based on?",
         "correctAnswer": ["George R. R. Martin", "George Martin"],
-      }
+        "options": ["J.K. Rowling", "Stephen King", "George R. R. Martin", "J.R.R. Tolkien"]
+      },
       {
-      "question": "What is the largest ocean on Earth?",
-      "correctAnswer": ["Pacific Ocean", "Pacific"],
-    },
-    {
-      "question": "Which country is known as the Land of the Rising Sun?",
-      "correctAnswer": ["Japan"],
-      "options": ["China", "South Korea", "Japan", "India"]
-    },
-    {
+        "question": "What is the largest ocean on Earth?",
+        "correctAnswer": ["Pacific Ocean", "Pacific"],
+        "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"]
+      },
+      {
+        "question": "Which country is known as the Land of the Rising Sun?",
+        "correctAnswer": ["Japan"],
+        "options": ["China", "South Korea", "Japan", "India"]
+      },
+      {
         "question": "What is the capital city of New Zealand?",
         "correctAnswer": ["Wellington"],
-    },
-            {
+        "options": ["Wellington", "Auckland", "Christchurch", "Hamilton"]
+      },
+      {
         "question": "What is the capital city of Australia?",
         "correctAnswer": ["Canberra"],
         "options": ["Sydney", "Melbourne", "Brisbane", "Canberra"]
@@ -47,5 +53,5 @@
         "question": "Who is the author of 'Pride and Prejudice'?",
         "correctAnswer": ["Jane Austen"],
         "options": ["Emily Bronte", "Charlotte Bronte", "Jane Austen", "Louisa May Alcott"]
-      },
+      }
 ]
