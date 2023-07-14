@@ -209,16 +209,20 @@ function displayResults() {
 function displayIndividualResults() {
   for (let i = 0; i < questions.length; i++) {
     const resultPara = document.createElement('p');
-    
+
     if (typeof correctAnswers[i] === 'object') {
+      console.log("It was an object: ", correctAnswers[i])
       const userAnswerString = userAnswers[i].toString(); // Convert user's answer to string
       const isCorrect = correctAnswers[i].includes(userAnswerString);
       resultPara.style.color = isCorrect ? 'green' : 'red';
-      resultPara.textContent = `Question ${i + 1}: ${questions[i]} Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+      resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+
     } else {
+      console.log("It was an string: ", correctAnswers[i])
       const isCorrect = correctAnswers[i] === userAnswers[i];
       resultPara.style.color = isCorrect ? 'green' : 'red';
-      resultPara.textContent = `Question ${i + 1}: ${questions[i]} Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+      resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+
     }
 
     resultsContainer.appendChild(resultPara);
