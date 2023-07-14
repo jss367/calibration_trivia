@@ -1,27 +1,27 @@
 [
       {
         "question": "What is the tallest mountain in the world?",
-        "correctAnswer": ["Mount Everest", "Everest", "Mt. Everest"],
+        "correctAnswer": ["Mount Everest"],
         "options": ["Mount Kilimanjaro", "K2", "Mount Everest", "Mount Fuji"]
       },
       {
         "question": "What is the most populous country in the world?",
-        "correctAnswer": ["China"],
+        "correctAnswer": ["India"],
         "options": ["India", "United States", "China", "Brazil"]
       },
       {
         "question": "What is the largest desert in the world?",
-        "correctAnswer": ["Antarctic", "Antarctic Desert"],
+        "correctAnswer": ["Antarctic Desert"],
         "options": ["Sahara Desert", "Gobi Desert", "Arabian Desert", "Antarctic Desert"]
       },
       {
         "question": "Who is the author of the 'A Song of Ice and Fire' series, which 'Game of Thrones' is based on?",
-        "correctAnswer": ["George R. R. Martin", "George Martin"],
+        "correctAnswer": ["George R. R. Martin"],
         "options": ["J.K. Rowling", "Stephen King", "George R. R. Martin", "J.R.R. Tolkien"]
       },
       {
         "question": "What is the largest ocean on Earth?",
-        "correctAnswer": ["Pacific Ocean", "Pacific"],
+        "correctAnswer": ["Pacific Ocean"],
         "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"]
       },
       {

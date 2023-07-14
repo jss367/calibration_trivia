@@ -41,6 +41,9 @@ function loadQuestions() {
       // Flatten the array of arrays into a single array
       questions = [].concat(...loadedQuestionsArrays);
       
+      // Shuffle questions array here
+      shuffleArray(questions);
+
       // Only keep as many questions as the user requested
       questions = questions.slice(0, questionCount);
       
@@ -49,6 +52,13 @@ function loadQuestions() {
     .catch((error) => {
       console.error('Error:', error);
     });
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 
@@ -188,18 +198,11 @@ function displayResults() {
         ${confidenceDecileScores.map(({ decileRange, score }) => `
           <p>When you were ${decileRange}% confident, you were ${score !== null ? `correct ${Math.round(score * 100)}% of the time` : 'did not answer any questions'}.</p>
         `).join('')}
-        <button id="show-leaderboard">Show Leaderboard</button>
       `;
 
   resultsContainer.style.display = 'block';
   displayIndividualResults();
 
-  const showLeaderboardButton = document.getElementById('show-leaderboard');
-  showLeaderboardButton.addEventListener('click', () => {
-    resultsContainer.style.display = 'none';
-    leaderboardContainer.style.display = 'block';
-    calculateScores();
-  });
 }
 
 function displayIndividualResults() {
@@ -208,7 +211,7 @@ function displayIndividualResults() {
     const isCorrect = correctAnswers[i].includes(userAnswers[i]);
     const userConfidence = parseInt(document.getElementById('confidence').value, 10);
     resultPara.style.color = isCorrect ? 'green' : 'red';
-    resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence. The correct answer(s) is/are ${correctAnswers[i].join(", ")}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+    resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i].join(", ")}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
     resultsContainer.appendChild(resultPara);
   }
 }
