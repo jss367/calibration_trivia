@@ -209,109 +209,18 @@ function displayResults() {
 function displayIndividualResults() {
   for (let i = 0; i < questions.length; i++) {
     const resultPara = document.createElement('p');
-    console.log('User answer:', userAnswers[i], 'Type:', typeof userAnswers[i]);
-    console.log('Correct answer:', correctAnswers[i], 'Type:', typeof correctAnswers[i]);
-
+    
     if (typeof correctAnswers[i] === 'object') {
       const userAnswerString = userAnswers[i].toString(); // Convert user's answer to string
       const isCorrect = correctAnswers[i].includes(userAnswerString);
       resultPara.style.color = isCorrect ? 'green' : 'red';
-      resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+      resultPara.textContent = `Question ${i + 1}: ${questions[i]} Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
     } else {
       const isCorrect = correctAnswers[i] === userAnswers[i];
       resultPara.style.color = isCorrect ? 'green' : 'red';
-      resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+      resultPara.textContent = `Question ${i + 1}: ${questions[i]} Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
     }
 
     resultsContainer.appendChild(resultPara);
   }
-}
-
-
-
-
-function calculateScores() {
-  return db.collection('answers').get()
-    .then(snapshot => {
-      const answers = snapshot.docs.map(doc => doc.data());
-      const users = {};
-
-      // Group answers by user
-      answers.forEach(answer => {
-        if (!(answer.username in users)) {
-          users[answer.username] = [];
-        }
-        users[answer.username].push(answer);
-      });
-
-      // Calculate each user's score
-      const scores = {};
-      for (const username in users) {
-        let score = 0;
-        let brierScore = 0;
-        users[username].forEach(answer => {
-          const { userConfidence } = answer;
-          if (answer.userAnswer === answer.correctAnswer) {
-            score++;
-            brierScore += Math.pow(1 - userConfidence, 2);
-          } else {
-            brierScore += Math.pow(0 - userConfidence, 2);
-          }
-        });
-        scores[username] = {
-          score,
-          brierScore: brierScore / users[username].length,
-        };
-      }
-
-      return scores;
-    });
-}
-
-function sortScores(scores, orderBy = 'brierScore') {
-  const scoresCopy = structuredClone(scores);
-  const scoreEntries = Object.entries(scoresCopy);
-  scoreEntries.sort((a, b) => {
-    if (orderBy === 'username') {
-      return a[0].localeCompare(b[0]);  // Compare the usernames
-    }
-    if (orderBy === 'correctAnswers') {
-      return b[1].score - a[1].score; // Compare the scores
-    }
-    return a[1].brierScore - b[1].brierScore;  // Compare the brier scores
-  });
-
-  return scoreEntries;
-}
-
-
-let latestScores = {};  // global variable to store latest scores
-
-document.getElementById("score-header").addEventListener('click', function () {
-  displayLeaderboard(latestScores, 'correctAnswers');
-});
-
-document.getElementById("brier-header").addEventListener('click', function () {
-  displayLeaderboard(latestScores, 'brierScore');
-});
-
-document.getElementById("username-header").addEventListener('click', function () {
-  displayLeaderboard(latestScores, 'username');
-});
-
-function displayLeaderboard(scores, orderBy = 'brierScore') {
-  latestScores = scores;  // update the global variable
-  const sortedScores = sortScores(scores, orderBy);
-
-  const leaderboardBody = document.getElementById("leaderboard-body");
-  leaderboardBody.innerHTML = `
-    ${sortedScores.map(([username, { score, brierScore }]) => `
-      <tr>
-        <td>${username}</td>
-        <td>${score}</td>
-        <td>${brierScore.toFixed(2)}</td>
-      </tr>
-    `).join('')}
-  `;
-  leaderboardContainer.style.display = 'block';
 }
