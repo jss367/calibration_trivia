@@ -5,10 +5,7 @@ const resultsContainer = document.getElementById('results-container');
 const usernameContainer = document.getElementById('username-container');
 const startQuizButton = document.getElementById('start-quiz');
 const leaderboardContainer = document.getElementById('leaderboard-container');
-const QUESTION_TYPE = {
-  TEXT: 'text',
-  MULTIPLE_CHOICE: 'multiple-choice',
-};
+
 // Firebase Firestore initialization
 const db = firebase.firestore();
 let currentQuestionIndex = 0;
@@ -21,30 +18,39 @@ let userConfidences = [];
 
 startQuizButton.addEventListener('click', () => {
   usernameContainer.style.display = 'none';
+  document.getElementById('question-count-container').style.display = 'none';
   quizContainer.style.display = 'block';
   loadQuestions();
 });
 
+
 function loadQuestions() {
+  const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const files = ['questions_science.json', 'questions_general.json', 'questions_rationality.json'];
 
   const promises = files.map(file => fetch(file).then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok for file ${file}');
+        throw new Error(`Network response was not ok for file ${file}`);
       }
       return response.json();
     })
   );
+
   Promise.all(promises)
     .then(loadedQuestionsArrays => {
       // Flatten the array of arrays into a single array
       questions = [].concat(...loadedQuestionsArrays);
+      
+      // Only keep as many questions as the user requested
+      questions = questions.slice(0, questionCount);
+      
       displayQuestion(currentQuestionIndex);
     })
     .catch((error) => {
       console.error('Error:', error);
     });
 }
+
 
 function displayQuestion(index) {
   const question = questions[index];
@@ -55,7 +61,6 @@ function displayQuestion(index) {
   // Initialize the answer input HTML
   let answerInputHTML = '';
 
-    // If the question is of type 'multiple-choice', create a list of options
     const options = ['A', 'B', 'C', 'D'];
     answerInputHTML = question.options.map((option, index) => `
       <div>
@@ -90,7 +95,6 @@ nextButton.addEventListener('click', () => {
 
 function submitAnswer() {
   let userAnswer;
-  // console.log(questions[currentQuestionIndex].correctAnswer);
   const questionType = questions[currentQuestionIndex].type;
   const currentCorrectAnswers = questions[currentQuestionIndex].correctAnswer.map(answer => answer.toLowerCase())
   const confidenceElement = document.getElementById('confidence');
@@ -99,12 +103,6 @@ function submitAnswer() {
   if (questions[currentQuestionIndex].correctAnswer.length > 0) {
     correctAnswer = questions[currentQuestionIndex].correctAnswer[0].toLowerCase();
   }
-
-
-  if (questionType === 'text') {
-    const answerElement = document.getElementById('answer');
-    userAnswer = answerElement.value.trim().toLowerCase();
-  } else if (questionType === 'multiple-choice') {
     const options = ['A', 'B', 'C', 'D'];
     options.forEach(option => {
       const optionElement = document.getElementById(`option-${option}`);
@@ -112,7 +110,6 @@ function submitAnswer() {
         userAnswer = optionElement.value.toLowerCase();
       }
     });
-  }
 
   const userConfidence = parseInt(confidenceElement.value, 10) / 100;
 
@@ -134,10 +131,8 @@ function submitAnswer() {
     correctAnswer,
     userConfidence,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-  })
-};
-
-
+  });
+}
 
 function calculateConfidenceDecileScores(answers) {
   /**
@@ -203,7 +198,7 @@ function displayResults() {
   showLeaderboardButton.addEventListener('click', () => {
     resultsContainer.style.display = 'none';
     leaderboardContainer.style.display = 'block';
-    calculateScores().then(displayLeaderboard);
+    calculateScores();
   });
 }
 
@@ -258,7 +253,8 @@ function calculateScores() {
 }
 
 function sortScores(scores, orderBy = 'brierScore') {
-  const scoreEntries = Object.entries(scores);
+  const scoresCopy = structuredClone(scores);
+  const scoreEntries = Object.entries(scoresCopy);
   scoreEntries.sort((a, b) => {
     if (orderBy === 'username') {
       return a[0].localeCompare(b[0]);  // Compare the usernames
