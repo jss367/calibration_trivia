@@ -26,7 +26,7 @@ startQuizButton.addEventListener('click', () => {
 
 function loadQuestions() {
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
-  const files = ['questions_science.json', 'questions_general.json', 'questions_rationality.json'];
+  const files = ['questions_science.json', 'questions_general.json', 'questions_rationality.json', 'questions_economics.json'];
 
   const promises = files.map(file => fetch(file).then(response => {
       if (!response.ok) {
@@ -106,24 +106,24 @@ nextButton.addEventListener('click', () => {
 function submitAnswer() {
   let userAnswer;
   const questionType = questions[currentQuestionIndex].type;
-  const currentCorrectAnswers = questions[currentQuestionIndex].correctAnswer.map(answer => answer.toLowerCase())
+  const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
   const confidenceElement = document.getElementById('confidence');
 
   let correctAnswer;
   if (questions[currentQuestionIndex].correctAnswer.length > 0) {
-    correctAnswer = questions[currentQuestionIndex].correctAnswer[0].toLowerCase();
+    correctAnswer = questions[currentQuestionIndex].correctAnswer;
   }
     const options = ['A', 'B', 'C', 'D'];
     options.forEach(option => {
       const optionElement = document.getElementById(`option-${option}`);
       if (optionElement.checked) {
-        userAnswer = optionElement.value.toLowerCase();
+        userAnswer = optionElement.value;
       }
     });
 
   const userConfidence = parseInt(confidenceElement.value, 10) / 100;
 
-  if (currentCorrectAnswers.includes(userAnswer)) {
+  if (currentCorrectAnswer === userAnswer) {
     score++;
     brierScore += Math.pow(1 - userConfidence, 2);
   } else {
@@ -131,7 +131,7 @@ function submitAnswer() {
   }
   // Save user's answer
   userAnswers.push(userAnswer);
-  correctAnswers.push(currentCorrectAnswers);
+  correctAnswers.push(currentCorrectAnswer);
   userConfidences.push(userConfidence);
   const username = document.getElementById('username').value.trim();
   db.collection('answers').add({
@@ -143,6 +143,7 @@ function submitAnswer() {
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
   });
 }
+
 
 function calculateConfidenceDecileScores(answers) {
   /**
@@ -208,13 +209,25 @@ function displayResults() {
 function displayIndividualResults() {
   for (let i = 0; i < questions.length; i++) {
     const resultPara = document.createElement('p');
-    const isCorrect = correctAnswers[i].includes(userAnswers[i]);
-    const userConfidence = parseInt(document.getElementById('confidence').value, 10);
-    resultPara.style.color = isCorrect ? 'green' : 'red';
-    resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i].join(", ")}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+    console.log('User answer:', userAnswers[i], 'Type:', typeof userAnswers[i]);
+    console.log('Correct answer:', correctAnswers[i], 'Type:', typeof correctAnswers[i]);
+
+    if (typeof correctAnswers[i] === 'object') {
+      const userAnswerString = userAnswers[i].toString(); // Convert user's answer to string
+      const isCorrect = correctAnswers[i].includes(userAnswerString);
+      resultPara.style.color = isCorrect ? 'green' : 'red';
+      resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+    } else {
+      const isCorrect = correctAnswers[i] === userAnswers[i];
+      resultPara.style.color = isCorrect ? 'green' : 'red';
+      resultPara.textContent = `Question ${i + 1}: Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence. The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+    }
+
     resultsContainer.appendChild(resultPara);
   }
 }
+
+
 
 
 function calculateScores() {
