@@ -13,3 +13,8 @@ single player vs group version?
 Switch all questions to multiple choice.
 
 Log in to a particular session? That way everyone around you can do consensus scoring with only people from that session and not worry about mixing with other sessions.
+
+
+## Deployment
+
+firebase deploy

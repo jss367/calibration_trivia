@@ -26,15 +26,19 @@ startQuizButton.addEventListener('click', () => {
 });
 
 function loadQuestions() {
-  return fetch('questions.json')
-    .then(response => {
+  const files = ['questions_science.json', 'questions_general.json', 'questions_rationality.json'];
+
+  const promises = files.map(file => fetch(file).then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response was not ok for file ${file}');
       }
       return response.json();
     })
-    .then(loadedQuestions => {
-      questions = loadedQuestions;
+  );
+  Promise.all(promises)
+    .then(loadedQuestionsArrays => {
+      // Flatten the array of arrays into a single array
+      questions = [].concat(...loadedQuestionsArrays);
       displayQuestion(currentQuestionIndex);
     })
     .catch((error) => {
@@ -44,7 +48,6 @@ function loadQuestions() {
 
 function displayQuestion(index) {
   const question = questions[index];
-  const { type } = question;  // same as const type = question.type;
 
   // Create a new div for the question
   const questionDiv = document.createElement('div');
@@ -52,10 +55,6 @@ function displayQuestion(index) {
   // Initialize the answer input HTML
   let answerInputHTML = '';
 
-  if (type === QUESTION_TYPE.TEXT) {
-    // If the question is of type 'text', create a text input field
-    answerInputHTML = '<input type="text" id="answer" class="input-large" placeholder="Your answer">';
-  } else if (type === QUESTION_TYPE.MULTIPLE_CHOICE) {
     // If the question is of type 'multiple-choice', create a list of options
     const options = ['A', 'B', 'C', 'D'];
     answerInputHTML = question.options.map((option, index) => `
@@ -64,11 +63,9 @@ function displayQuestion(index) {
         <label for="option-${options[index]}">${options[index]}: ${option}</label>
       </div>
     `).join('');
-  } else {
-    answerInputHTML = '<input type="text" id="answer" class="input-large" placeholder="I think there has been a problem">';
-  }
 
-  questionDiv.innerHTML = `
+    questionDiv.innerHTML = `
+    <h2>${question.question}</h2>
     ${answerInputHTML}
     <input type="number" id="confidence" class="input-small" min="0" max="100" step="1" value="50">%
   `;

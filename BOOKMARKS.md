@@ -1,5 +1,10 @@
 
 
+
+# Console
+https://console.firebase.google.com/project/calibration-trivia/overview
+
+
 # Dashboard
 https://console.cloud.google.com/apis/dashboard?project=calibration-trivia
 
@@ -28,8 +33,3 @@ Select your project.
 In the left-hand menu, go to "Build" -> "Firestore Database".
 Then click on the "Rules" tab.
 Here you can edit your rules directly and publish changes by clicking on the "Publish" button.
-
-
-
-# Console
-https://console.firebase.google.com/project/calibration-trivia/overview
