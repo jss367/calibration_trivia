@@ -70,8 +70,18 @@
         "options": ["1965", "1967", "1969", "1971"]
     },
     {
-        "question": "Which chemical element has the symbol 'Au'?",
-        "correctAnswer": "Gold",
-        "options": ["Silver", "Gold", "Aluminum", "Argon"]
+        "question": "What element is denoted by the chemical symbol Ag?",
+        "correctAnswer": "Silver",
+        "options": ["Gold", "Argon", "Silver", "Aluminium"]
+    },
+    {
+        "question": "What is the scientific term for the fear of heights?",
+        "correctAnswer": "Acrophobia",
+        "options": ["Claustrophobia", "Arachnophobia", "Agoraphobia", "Acrophobia"]
+    },
+    {
+        "question": "In computing, what does CPU stand for?",
+        "correctAnswer": "Central Processing Unit",
+        "options": ["Central Program Unit", "Central Processor Unit", "Central Processing Unit", "Computer Personal Unit"]
     }
 ]
