@@ -26,7 +26,8 @@ startQuizButton.addEventListener('click', () => {
 
 function loadQuestions() {
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
-  const files = ['questions_science.json', 'questions_general.json', 'questions_rationality.json', 'questions_economics.json'];
+  const files = ['questions_science.json', 'questions_general.json', 'questions_rationality.json', 'questions_economics.json',
+                'questions_music.json'];
 
   const promises = files.map(file => fetch(file).then(response => {
       if (!response.ok) {
