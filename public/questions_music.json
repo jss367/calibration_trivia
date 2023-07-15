@@ -1,0 +1,92 @@
+[
+{
+"question": "Who wrote the music for 'The Phantom of the Opera'?",
+"correctAnswer": "Andrew Lloyd Webber",
+"options": ["Stephen Sondheim", "Leonard Bernstein", "Andrew Lloyd Webber", "Richard Rodgers"]
+},
+{
+"question": "Which band is known as the Fab Four?",
+"correctAnswer": "The Beatles",
+"options": ["The Beatles", "The Rolling Stones", "The Who", "Queen"]
+},
+{
+"question": "What is the name of the famous opera by Giuseppe Verdi that tells the story of a courtesan named Violetta?",
+"correctAnswer": "La Traviata",
+"options": ["Rigoletto", "La Bohème", "Carmen", "La Traviata"]
+},
+{
+"question": "Which musical features the song 'Do-Re-Mi'?",
+"correctAnswer": "The Sound of Music",
+"options": ["Les Misérables", "West Side Story", "The Sound of Music", "My Fair Lady"]
+},
+{
+"question": "What instrument did jazz musician Miles Davis play?",
+"correctAnswer": "Trumpet",
+"options": ["Piano", "Saxophone", "Trumpet", "Drums"]
+},
+{
+"question": "Which composer is known for his '9th Symphony' and 'Fur Elise'?",
+"correctAnswer": "Ludwig van Beethoven",
+"options": ["Johann Sebastian Bach", "Wolfgang Amadeus Mozart", "Ludwig van Beethoven", "Franz Schubert"]
+},
+{
+"question": "What is the name of ABBA's winning song in the Eurovision Song Contest in 1974?",
+"correctAnswer": "Waterloo",
+"options": ["Dancing Queen", "Mamma Mia", "Waterloo", "Fernando"]
+},
+{
+"question": "Which musical is set in the French Revolution?",
+"correctAnswer": "Les Misérables",
+"options": ["Hamilton", "Les Misérables", "Evita", "Cats"]
+},
+{
+"question": "Who is known as the King of Pop?",
+"correctAnswer": "Michael Jackson",
+"options": ["Prince", "Michael Jackson", "Elvis Presley", "Frank Sinatra"]
+},
+{
+"question": "What musical features the characters Elphaba and Glinda?",
+"correctAnswer": "Wicked",
+"options": ["Chicago", "The Lion King", "Wicked", "Phantom of the Opera"]
+},
+{
+"question": "Which band was originally known as the Quarrymen?",
+"correctAnswer": "The Beatles",
+"options": ["The Rolling Stones", "Led Zeppelin", "The Beatles", "Pink Floyd"]
+},
+{
+"question": "What is the name of the opera by Puccini that tells the story of the bohemian artists in Paris?",
+"correctAnswer": "La Bohème",
+"options": ["La Traviata", "La Bohème", "The Barber of Seville", "Tosca"]
+},
+{
+"question": "What musical features the song 'I Dreamed a Dream'?",
+"correctAnswer": "Les Misérables",
+"options": ["Les Misérables", "The Phantom of the Opera", "Miss Saigon", "Chicago"]
+},
+{
+"question": "Who composed the 'Canon in D'?",
+"correctAnswer": "Johann Pachelbel",
+"options": ["Ludwig van Beethoven", "Wolfgang Amadeus Mozart", "Johann Pachelbel", "Johann Sebastian Bach"]
+},
+{
+"question": "Which band performed the original 'Bohemian Rhapsody'?",
+"correctAnswer": "Queen",
+"options": ["The Beatles", "Queen", "The Eagles", "Pink Floyd"]
+},
+{
+"question": "Which musical tells the story of a young woman who trains to be a nun to avoid marriage, then is sent to be governess to the seven children of a retired naval officer?",
+"correctAnswer": "The Sound of Music",
+"options": ["The King and I", "The Sound of Music", "Mary Poppins", "Oklahoma!"]
+},
+{
+"question": "Who composed 'Rhapsody in Blue'?",
+"correctAnswer": "George Gershwin",
+"options": ["Leonard Bernstein", "George Gershwin", "Aaron Copland", "Duke Ellington"]
+},
+{
+"question": "What is the name of the album by Pink Floyd that features a prism on its cover?",
+"correctAnswer": "The Dark Side of the Moon",
+"options": ["Wish You Were Here", "Animals", "The Wall", "The Dark Side of the Moon"]
+}
+]
