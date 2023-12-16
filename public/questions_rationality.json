@@ -10,11 +10,6 @@
         "options": ["Belief in belief", "Sunk cost fallacy", "Bayesian probability", "Roko's Basilisk"]
     },
     {
-        "question": "What is the term often used on LessWrong to refer to the idea of an AI that perfectly aligns with human values?",
-        "correctAnswer": "Friendly AI",
-        "options": ["Friendly AI", "Powerful AI", "Super AI", "Benevolent AI"]
-    },
-    {
         "question": "What principle, discussed on LessWrong, suggests that one should update their beliefs proportional to the evidence?",
         "correctAnswer": "Bayes' theorem",
         "options": ["Occam's razor", "Hume's fork", "Kant's categorical imperative", "Bayes' theorem"]
