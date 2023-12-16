@@ -79,19 +79,6 @@ document.getElementById('username').addEventListener('input', function () {
 // Initially disable the start button until a username is entered
 document.getElementById('start-quiz').disabled = true;
 
-document.getElementById('join-session').addEventListener('click', () => {
-  console.log("Inside join-session event listener");
-  const selectedSessionId = document.getElementById('session-id-select').value;
-
-  if (selectedSessionId) {
-    // Logic to join the session, e.g., store the session ID locally
-    localStorage.setItem('currentSessionId', selectedSessionId);
-    loadSessionQuestions(selectedSessionId);
-    // Additional logic to join the session goes here
-  } else {
-    console.log("Please select a session.");
-  }
-});
 
 function loadSessionQuestions(sessionId) {
   console.log("Inside loadSessionQuestions");
@@ -146,6 +133,18 @@ function loadAvailableSessions() {
 
 
 startQuizButton.addEventListener('click', () => {
+  // Check if Group Participant mode is selected
+  if (modeGroupParticipant.checked) {
+    const selectedSessionId = document.getElementById('session-id-select').value;
+    if (selectedSessionId) {
+      localStorage.setItem('currentSessionId', selectedSessionId);
+      loadSessionQuestions(selectedSessionId);
+    } else {
+      console.log("Please select a session.");
+      return; // Prevent starting the quiz without selecting a session
+    }
+  }
+
   usernameContainer.style.display = 'none';
   modeSelectionContainer.style.display = 'none';
   startQuizButton.style.display = 'none';
@@ -154,10 +153,35 @@ startQuizButton.addEventListener('click', () => {
   categorySelectionContainer.style.display = 'none';
   if (modeSinglePlayer.checked) {
     quizContainer.style.display = 'block';
-
   }
   loadQuestions();
 });
+
+startQuizButton.addEventListener('click', () => {
+  // Check if Group Participant mode is selected
+  if (modeGroupParticipant.checked) {
+    const selectedSessionId = document.getElementById('session-id-select').value;
+    if (selectedSessionId) {
+      localStorage.setItem('currentSessionId', selectedSessionId);
+      loadSessionQuestions(selectedSessionId);
+    } else {
+      console.log("Please select a session.");
+      return; // Prevent starting the quiz without selecting a session
+    }
+  }
+
+  usernameContainer.style.display = 'none';
+  modeSelectionContainer.style.display = 'none';
+  startQuizButton.style.display = 'none';
+  startButtonContainer.style.display = 'none';
+  questionCountContainer.style.display = 'none';
+  categorySelectionContainer.style.display = 'none';
+  if (modeSinglePlayer.checked) {
+    quizContainer.style.display = 'block';
+  }
+  loadQuestions();
+});
+
 
 
 function loadQuestions() {
@@ -406,34 +430,26 @@ function displayQuestionForGroupParticipant(index) {
 }
 
 
-
 function submitAnswer() {
   console.log("Inside submitAnswer");
 
+  // Get the selected answer and confidence level
   const selectedOption = document.querySelector('input[name="answer"]:checked');
   const userAnswer = selectedOption ? selectedOption.value : null;
   const confidenceElement = document.getElementById('confidence');
   const userConfidence = parseInt(confidenceElement.value, 10) / 100;
-  const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
 
-  if (!userAnswer) {
-    console.error('No answer selected');
-    return; // Exit the function if no answer is selected
-  }
-
+  // Check if the user has selected an answer and entered a confidence level
   if (!selectedOption || !confidenceElement) {
     console.error('No answer or confidence selected');
     return; // Exit the function if no answer or confidence is selected
   }
 
-  if (userAnswer === undefined || userConfidence === undefined) {
-    console.error('Answer or confidence is undefined');
-    return;
-  }
   // Log values before submitting
   console.log('Submitting answer:', userAnswer, 'Confidence:', userConfidence);
 
-
+  // Determine if the answer is correct and update the score
+  const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
   if (currentCorrectAnswer === userAnswer) {
     score++;
     brierScore += Math.pow(1 - userConfidence, 2);
@@ -441,13 +457,21 @@ function submitAnswer() {
     brierScore += Math.pow(0 - userConfidence, 2);
   }
 
+  // Save the user's answer, the correct answer, and confidence to arrays
+  userAnswers.push(userAnswer);
+  correctAnswers.push(currentCorrectAnswer);
+  userConfidences.push(userConfidence);
 
-  // Save user's answer to Firestore
+  // Save the user's answer to Firestore
   const sessionId = getCurrentSessionId(); // Retrieve the current session ID
   const userId = document.getElementById('username').value.trim();
-  submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
-
+  if (userId && sessionId) {
+    submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
+  } else {
+    console.error('Session ID or User ID is missing');
+  }
 }
+
 
 function getCurrentSessionId() {
   // Retrieve the session ID from local storage
