@@ -67,3 +67,10 @@ button {
 label {
   margin-bottom: 20px;
 }
+
+
+#start-quiz:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}

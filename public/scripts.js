@@ -5,8 +5,9 @@ const resultsContainer = document.getElementById('results-container');
 const usernameContainer = document.getElementById('username-container');
 const startQuizButton = document.getElementById('start-quiz');
 const leaderboardContainer = document.getElementById('leaderboard-container');
+const categorySelectionContainer = document.getElementById('category-selection-container')
 
-// Mode selection elements
+const sessionIDSelectionContainer = document.getElementById('session-id-selection-container');
 const modeSelectionContainer = document.getElementById('mode-selection-container');
 const modeSinglePlayer = document.getElementById('mode-single');
 const modeGroupParticipant = document.getElementById('mode-group-participant');
@@ -27,14 +28,121 @@ let userConfidences = [];
 
 // Event listener for mode selection
 modeSelectionContainer.addEventListener('change', (event) => {
-  startQuizButton.style.display = 'flex';
+  console.log("Inside modeSelectionContainer event listener");
+  // startQuizButton.style.display = 'flex';
   startButtonContainer.style.display = 'flex';
-  if (event.target.value === 'single') {
+
+  // Handle for Group Questioner mode
+  if (event.target.value === 'group-questioner') {
+    console.log("Inside group-questioner if statement");
+    document.getElementById('session-id-container').style.display = 'block';
+    categorySelectionContainer.style.display = 'block';
     questionCountContainer.style.display = 'block';
+    usernameContainer.style.display = 'none';
+  } else {
+    document.getElementById('session-id-container').style.display = 'none';
+  }
+
+  // Handle for Group Participant mode
+  if (event.target.value === 'group-participant') {
+    console.log("Inside group-participant if statement");
+    usernameContainer.style.display = 'block';
+    sessionIDSelectionContainer.style.display = 'block';
+    loadAvailableSessions();
+  } else {
+    sessionIDSelectionContainer.style.display = 'none';
+  }
+
+  // Handle for Single Player mode
+  if (event.target.value === 'single') {
+    console.log("Inside single if statement");
+    usernameContainer.style.display = 'block';
+    questionCountContainer.style.display = 'block';
+    categorySelectionContainer.style.display = 'block';
   } else {
     questionCountContainer.style.display = 'none';
   }
 });
+
+document.getElementById('username').addEventListener('input', function () {
+  const usernameInput = this.value.trim();
+  const startButton = document.getElementById('start-quiz');
+
+  // Enable the start button only if the username is not empty
+  if (usernameInput.length > 0) {
+    startButton.disabled = false;
+  } else {
+    startButton.disabled = true;
+  }
+});
+
+// Initially disable the start button until a username is entered
+document.getElementById('start-quiz').disabled = true;
+
+document.getElementById('join-session').addEventListener('click', () => {
+  console.log("Inside join-session event listener");
+  const selectedSessionId = document.getElementById('session-id-select').value;
+
+  if (selectedSessionId) {
+    // Logic to join the session, e.g., store the session ID locally
+    localStorage.setItem('currentSessionId', selectedSessionId);
+    loadSessionQuestions(selectedSessionId);
+    // Additional logic to join the session goes here
+  } else {
+    console.log("Please select a session.");
+  }
+});
+
+function loadSessionQuestions(sessionId) {
+  console.log("Inside loadSessionQuestions");
+  db.collection('sessions').doc(sessionId).get()
+    .then(doc => {
+      if (doc.exists) {
+        questions = doc.data().questions;
+        // Display the first question
+        displayQuestionForGroupParticipant(currentQuestionIndex);
+      } else {
+        console.log("No such session!");
+      }
+    })
+    .catch(error => console.error("Error loading session questions:", error));
+}
+
+
+document.getElementById('set-session-id').addEventListener('click', () => {
+  console.log("Inside set-session-id event listener");
+  const sessionId = document.getElementById('session-id').value.trim();
+  if (sessionId) {
+    // Save the session ID to Firestore
+    db.collection('sessions').doc(sessionId).set({ active: true })
+      .then(() => {
+        console.log("Session ID set successfully:", sessionId);
+        // Store the session ID locally if needed
+        localStorage.setItem('currentSessionId', sessionId);
+      })
+      .catch(error => console.error("Error setting session ID:", error));
+  } else {
+    console.log("Please enter a session ID.");
+  }
+});
+
+
+function loadAvailableSessions() {
+  console.log("Inside loadAvailableSessions");
+  db.collection('sessions').where('active', '==', true).get()
+    .then(snapshot => {
+      const sessionIdSelect = document.getElementById('session-id-select');
+      sessionIdSelect.innerHTML = ''; // Clear existing options
+      snapshot.forEach(doc => {
+        const option = document.createElement('option');
+        option.value = doc.id;
+        option.textContent = doc.id;
+        sessionIdSelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error("Error fetching sessions:", error));
+}
+
 
 
 startQuizButton.addEventListener('click', () => {
@@ -43,10 +151,11 @@ startQuizButton.addEventListener('click', () => {
   startQuizButton.style.display = 'none';
   startButtonContainer.style.display = 'none';
   questionCountContainer.style.display = 'none';
+  categorySelectionContainer.style.display = 'none';
   if (modeSinglePlayer.checked) {
     quizContainer.style.display = 'block';
-    
-  } 
+
+  }
   loadQuestions();
 });
 
@@ -54,15 +163,23 @@ startQuizButton.addEventListener('click', () => {
 function loadQuestions() {
   console.log("Inside loadQuestions");
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
-  const files = ['questions_science.json', 'questions_general.json', 'questions_rationality.json', 'questions_economics.json',
-                'questions_music.json'];
+  const checkboxes = document.querySelectorAll('.category-checkbox');
+  const selectedFiles = Array.from(checkboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
 
-  const promises = files.map(file => fetch(file).then(response => {
-      if (!response.ok) {
-        throw new Error(`Network response was not ok for file ${file}`);
-      }
-      return response.json();
-    })
+  // Continue only if at least one category is selected
+  if (selectedFiles.length === 0) {
+    console.log("Please select at least one category.");
+    return;
+  }
+
+  const promises = selectedFiles.map(file => fetch(file).then(response => {
+    if (!response.ok) {
+      throw new Error(`Network response was not ok for file ${file}`);
+    }
+    return response.json();
+  })
   );
 
   Promise.all(promises)
@@ -70,13 +187,13 @@ function loadQuestions() {
       console.log("Inside Promise.all");
       // Flatten the array of arrays into a single array
       questions = [].concat(...loadedQuestionsArrays);
-      
+
       // Shuffle questions array here
       shuffleArray(questions);
 
       // Only keep as many questions as the user requested
       questions = questions.slice(0, questionCount);
-      
+
       console.log("modeSinglePlayer.checked is ", modeSinglePlayer.checked);
       console.log("modeGroupParticipant.checked is ", modeGroupParticipant.checked);
       console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
@@ -98,8 +215,8 @@ function loadQuestions() {
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
@@ -123,21 +240,21 @@ function displayQuestionText(index) {
   // Initialize the answer input HTML
   let answerInputHTML = '';
 
-    const options = ['A', 'B', 'C', 'D'];
-    // answerInputHTML = question.options.map((option, index) => `
-    //   <div>
-    //     <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
-    //     <label for="option-${options[index]}">${options[index]}: ${option}</label>
-    //   </div>
-    // `).join('');
+  const options = ['A', 'B', 'C', 'D'];
+  // answerInputHTML = question.options.map((option, index) => `
+  //   <div>
+  //     <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
+  //     <label for="option-${options[index]}">${options[index]}: ${option}</label>
+  //   </div>
+  // `).join('');
 
-    answerInputHTML = question.options.map((option, index) => `
+  answerInputHTML = question.options.map((option, index) => `
   <div>
     <label>${String.fromCharCode(65 + index)}: ${option}</label>
   </div>
 `).join('');
 
-    questionDiv.innerHTML = `
+  questionDiv.innerHTML = `
     <h2>${question.question}</h2>
     ${answerInputHTML}
   `;
@@ -150,7 +267,7 @@ function displayQuestionText(index) {
 
 
 
-function displayQuestionSubmission(index){
+function displayQuestionSubmission(index) {
 
   console.log("Current Index: ", index);
   console.log("Current Question: ", questions[index]);
@@ -168,15 +285,15 @@ function displayQuestionSubmission(index){
   // Initialize the answer input HTML
   let answerInputHTML = '';
 
-    const options = ['A', 'B', 'C', 'D'];
-    answerInputHTML = question.options.map((option, index) => `
+  const options = ['A', 'B', 'C', 'D'];
+  answerInputHTML = question.options.map((option, index) => `
       <div>
         <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
         <label for="option-${options[index]}">${options[index]}: ${option}</label>
       </div>
     `).join('');
 
-    questionDiv.innerHTML = `
+  questionDiv.innerHTML = `
     <h2>${question.question}</h2>
     ${answerInputHTML}
     <input type="number" id="confidence" class="input-small" min="0" max="100" step="1" value="50">%
@@ -208,15 +325,15 @@ function displayQuestion(index) {
   // Initialize the answer input HTML
   let answerInputHTML = '';
 
-    const options = ['A', 'B', 'C', 'D'];
-    answerInputHTML = question.options.map((option, index) => `
+  const options = ['A', 'B', 'C', 'D'];
+  answerInputHTML = question.options.map((option, index) => `
       <div>
         <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
         <label for="option-${options[index]}">${options[index]}: ${option}</label>
       </div>
     `).join('');
 
-    questionDiv.innerHTML = `
+  questionDiv.innerHTML = `
     <h2>${question.question}</h2>
     ${answerInputHTML}
     <input type="number" id="confidence" class="input-small" min="0" max="100" step="1" value="50">%
@@ -231,26 +348,30 @@ function displayQuestion(index) {
 nextButton.classList.add('button-spacing');
 
 nextButton.addEventListener('click', () => {
-  // Check if it's not Group Questioner mode before submitting an answer
-  if (!modeGroupQuestioner.checked) {
-    submitAnswer(); // Same function for Single Player and Group Participant
-  }
-
-  // Increment the current question index
-  currentQuestionIndex++;
-
-  // Check if there are more questions
-  if (currentQuestionIndex < questions.length) {
-    if (modeSinglePlayer.checked || modeGroupParticipant.checked) {
-      displayQuestion(currentQuestionIndex); // Display next question for Single Player and Group Participant
-    } else if (modeGroupQuestioner.checked) {
-      displayQuestionText(currentQuestionIndex); // Display next question for Group Questioner
-    }
+  console.log("Inside nextButton event listener");
+  // Check if Group Questioner or Group Participant mode is selected
+  if (modeGroupQuestioner.checked || modeGroupParticipant.checked) {
+    console.log("Inside modeGroupQuestioner.checked || modeGroupParticipant.checked if statement");
+    const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
+    // Call nextQuestion to advance to the next question in the session for group modes
+    nextQuestion(sessionId);
   } else {
-    displayResults(); // Display results if it's the last question
+    console.log("Inside nextButton event listener else statement");
+    // For Single Player mode, no sessionId is required
+    // Check if it's not Group Questioner mode before submitting an answer
+    submitAnswer(); // Same function for Single Player and Group Participant
+
+    // Increment the current question index
+    currentQuestionIndex++;
+
+    // Check if there are more questions
+    if (currentQuestionIndex < questions.length) {
+      displayQuestion(currentQuestionIndex); // Display next question for Single Player
+    } else {
+      displayResults(); // Display results if it's the last question
+    }
   }
 });
-
 
 
 function displayQuestionForGroupParticipant(index) {
@@ -286,26 +407,32 @@ function displayQuestionForGroupParticipant(index) {
 
 
 
-
-
 function submitAnswer() {
-  let userAnswer;
-  const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
+  console.log("Inside submitAnswer");
+
+  const selectedOption = document.querySelector('input[name="answer"]:checked');
+  const userAnswer = selectedOption ? selectedOption.value : null;
   const confidenceElement = document.getElementById('confidence');
-
-  let correctAnswer;
-  if (questions[currentQuestionIndex].correctAnswer.length > 0) {
-    correctAnswer = questions[currentQuestionIndex].correctAnswer;
-  }
-    const options = ['A', 'B', 'C', 'D'];
-    options.forEach(option => {
-      const optionElement = document.getElementById(`option-${option}`);
-      if (optionElement.checked) {
-        userAnswer = optionElement.value;
-      }
-    });
-
   const userConfidence = parseInt(confidenceElement.value, 10) / 100;
+  const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
+
+  if (!userAnswer) {
+    console.error('No answer selected');
+    return; // Exit the function if no answer is selected
+  }
+
+  if (!selectedOption || !confidenceElement) {
+    console.error('No answer or confidence selected');
+    return; // Exit the function if no answer or confidence is selected
+  }
+
+  if (userAnswer === undefined || userConfidence === undefined) {
+    console.error('Answer or confidence is undefined');
+    return;
+  }
+  // Log values before submitting
+  console.log('Submitting answer:', userAnswer, 'Confidence:', userConfidence);
+
 
   if (currentCorrectAnswer === userAnswer) {
     score++;
@@ -313,21 +440,34 @@ function submitAnswer() {
   } else {
     brierScore += Math.pow(0 - userConfidence, 2);
   }
-  // Save user's answer
-  userAnswers.push(userAnswer);
-  correctAnswers.push(currentCorrectAnswer);
-  userConfidences.push(userConfidence);
-  const username = document.getElementById('username').value.trim();
-  db.collection('answers').add({
-    username,
-    questionIndex: currentQuestionIndex,
-    userAnswer,
-    correctAnswer,
-    userConfidence,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-  });
+
+
+  // Save user's answer to Firestore
+  const sessionId = getCurrentSessionId(); // Retrieve the current session ID
+  const userId = document.getElementById('username').value.trim();
+  submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
+
 }
 
+function getCurrentSessionId() {
+  // Retrieve the session ID from local storage
+  return localStorage.getItem('currentSessionId');
+}
+
+function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
+  console.log("Inside submitAnswerToFirestore");
+  console.log('Session ID:', sessionId, 'User ID:', userId);
+
+  if (!sessionId || !userId) {
+    console.error('Session ID or User ID is missing.');
+    return;
+  }
+
+  const answerData = { answer, confidence, timestamp: firebase.firestore.FieldValue.serverTimestamp() };
+  db.collection('sessions').doc(sessionId).collection('answers').doc(userId).set(answerData)
+    .then(() => console.log('Answer submitted successfully'))
+    .catch(error => console.error("Error submitting answer:", error));
+}
 
 function calculateConfidenceDecileScores(answers) {
   /**
@@ -355,15 +495,53 @@ function calculateConfidenceDecileScores(answers) {
 }
 
 
+// Function to create a new session
+function createSession() {
+  const sessionId = generateSessionId(); // Implement this function to generate a unique ID
+  db.collection('sessions').doc(sessionId).set({
+    currentQuestionIndex: 0,
+    participants: {}
+  });
+  // Store sessionId in a variable or local storage to use later
+}
+
+
+// Function to join a session
+function joinSession(sessionId) {
+  // Listen to changes in the session data
+  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
+    const sessionData = doc.data();
+    if (sessionData) {
+      displayQuestion(sessionData.currentQuestionIndex);
+      // Other updates like showing scores or leaderboard
+    }
+  });
+}
+
+function nextQuestion(sessionId) {
+  // Increment the current question index
+  currentQuestionIndex++;
+
+  // Check if there are more questions
+  if (currentQuestionIndex < questions.length) {
+    // Update the current question index in the Firebase session
+    db.collection('sessions').doc(sessionId).update({
+      currentQuestionIndex: currentQuestionIndex
+    });
+  } else {
+    // Handle the end of the quiz
+    displayResults();
+  }
+}
 
 function displayResults() {
+  console.log("Inside displayResults");
   /**
    * This should be the individual results, not the group ones
    */
   quizContainer.style.display = 'none';
 
   brierScore /= questions.length;
-
 
   // const answers = snapshot.docs.map(doc => doc.data());
   const answers = userAnswers.map((userAnswer, index) => ({
@@ -390,9 +568,13 @@ function displayResults() {
 
 }
 
+
 function displayIndividualResults() {
+  console.log("Inside displayIndividualResults");
   for (let i = 0; i < questions.length; i++) {
     const resultPara = document.createElement('p');
+    console.log("Your values for correctAnswers[i] is: ", correctAnswers[i]);
+    console.log("Your values for userAnswers[i] is: ", userAnswers[i]);
 
     if (typeof correctAnswers[i] === 'object') {
       console.log("It was an object: ", correctAnswers[i])
@@ -403,12 +585,11 @@ function displayIndividualResults() {
 
     } else {
       console.log("It was an string: ", correctAnswers[i])
+
       const isCorrect = correctAnswers[i] === userAnswers[i];
       resultPara.style.color = isCorrect ? 'green' : 'red';
       resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
-
     }
-
     resultsContainer.appendChild(resultPara);
   }
 }

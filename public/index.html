@@ -1,68 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Calibration Trivia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Calibration Trivia</title>
 
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script defer src="/__/firebase/9.23.0/firebase-app-compat.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script defer src="/__/firebase/9.23.0/firebase-app-compat.js"></script>
 
-  <!-- Add the Firebase services that you want to use -->
-  <script defer src="/__/firebase/9.23.0/firebase-auth-compat.js"></script>
-  <script defer src="/__/firebase/9.23.0/firebase-database-compat.js"></script>
-  <script defer src="/__/firebase/9.23.0/firebase-firestore-compat.js"></script>
-  <script defer src="/__/firebase/9.23.0/firebase-functions-compat.js"></script>
-  <script defer src="/__/firebase/9.23.0/firebase-messaging-compat.js"></script>
-  <script defer src="/__/firebase/9.23.0/firebase-storage-compat.js"></script>
-  <script defer src="/__/firebase/9.23.0/firebase-analytics-compat.js"></script>
-  <script defer src="/__/firebase/9.23.0/firebase-remote-config-compat.js"></script>
-  <script defer src="/__/firebase/9.23.0/firebase-performance-compat.js"></script>
-  <script defer src="/__/firebase/init.js"></script>
+    <!-- Add the Firebase services that you want to use -->
+    <script defer src="/__/firebase/9.23.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.23.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.23.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.23.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.23.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.23.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.23.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.23.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.23.0/firebase-performance-compat.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
 </head>
+
 <body>
     <h1>Calibration Trivia</h1>
-    <div id="username-container">
-        <input type="text" id="username" class="input-large" placeholder="Enter your name">
-    </div>
+
     <div id="mode-selection-container">
         <label>Select Mode:</label>
         <div>
-          <input type="radio" id="mode-single" name="mode" value="single">
-          <label for="mode-single">Single Player</label>
+            <input type="radio" id="mode-single" name="mode" value="single">
+            <label for="mode-single">Single Player</label>
         </div>
         <div>
-          <input type="radio" id="mode-group-participant" name="mode" value="group-participant">
-          <label for="mode-group-participant">Group (Participant)</label>
+            <input type="radio" id="mode-group-participant" name="mode" value="group-participant">
+            <label for="mode-group-participant">Group (Participant)</label>
         </div>
         <div>
-          <input type="radio" id="mode-group-questioner" name="mode" value="group-questioner">
-          <label for="mode-group-questioner">Group (Questioner)</label>
+            <input type="radio" id="mode-group-questioner" name="mode" value="group-questioner">
+            <label for="mode-group-questioner">Group (Questioner)</label>
         </div>
-      </div>
-      
+    </div>
+
+    <div id="username-container" style="display: none;">
+        <input type="text" id="username" class="input-large" placeholder="Enter your name">
+    </div>
+
+    <div id="session-id-container" style="display: none;">
+        <label for="session-id">Enter Session ID:</label>
+        <input type="text" id="session-id" class="input-large">
+        <button id="set-session-id">Set Session ID</button>
+    </div>
+
+
+    <div id="session-id-selection-container" style="display: none;">
+        <label for="session-id-select">Choose a Session:</label>
+        <select id="session-id-select" class="input-large">
+            <!-- Session IDs will be populated here -->
+        </select>
+        <button id="join-session">Join Session</button>
+    </div>
+
+    <div id="category-selection-container" style="display: none;">
+        <label><input type="checkbox" class="category-checkbox" value="questions_science.json"> Science</label>
+        <label><input type="checkbox" class="category-checkbox" value="questions_general.json"> General
+            Knowledge</label>
+        <label><input type="checkbox" class="category-checkbox" value="questions_rationality.json"> Rationality</label>
+        <label><input type="checkbox" class="category-checkbox" value="questions_economics.json"> Economics</label>
+        <label><input type="checkbox" class="category-checkbox" value="questions_music.json"> Music</label>
+    </div>
+
+
+
     <div id="question-count-container">
         <label for="question-count">How many questions?</label>
         <input type="number" id="question-count" class="input-small" min="1" value="20">
-      </div>
-      <div id="start-button-container">
+    </div>
+    <div id="start-button-container">
         <button id="start-quiz">Start</button>
-      </div>
+    </div>
 
 
     <div id="quiz-container" style="display: none;">
         <div id="question-container">
             <!-- The question answer space will be generated here by the JavaScript code -->
-          </div>
-      <button id="next-button">Next</button>
+        </div>
+        <button id="next-button">Next</button>
     </div>
 
     <div id="results-container" style="display: none;">
-      <!-- This is where your specific results will be displayed (correct answers, brier score) -->
-      <button id="show-leaderboard">Show Leaderboard</button>
+        <!-- This is where your specific results will be displayed (correct answers, brier score) -->
+        <button id="show-leaderboard">Show Leaderboard</button>
     </div>
 
     <script defer src="scripts.js"></script>
-  </body>
-  </html>
+</body>
+
+</html>
