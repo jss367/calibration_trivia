@@ -26,12 +26,30 @@
     <div id="username-container">
         <input type="text" id="username" class="input-large" placeholder="Enter your name">
     </div>
-    <div id="question-count-container">
-        <label for="question-count">How many questions do you want to do?</label>
-        <input type="number" id="question-count" class="input-small" min="1" value="20">
-        <button id="start-quiz">Start</button>
+    <div id="mode-selection-container">
+        <label>Select Mode:</label>
+        <div>
+          <input type="radio" id="mode-single" name="mode" value="single">
+          <label for="mode-single">Single Player</label>
+        </div>
+        <div>
+          <input type="radio" id="mode-group-participant" name="mode" value="group-participant">
+          <label for="mode-group-participant">Group (Participant)</label>
+        </div>
+        <div>
+          <input type="radio" id="mode-group-questioner" name="mode" value="group-questioner">
+          <label for="mode-group-questioner">Group (Questioner)</label>
+        </div>
       </div>
       
+    <div id="question-count-container">
+        <label for="question-count">How many questions?</label>
+        <input type="number" id="question-count" class="input-small" min="1" value="20">
+      </div>
+      <div id="start-button-container">
+        <button id="start-quiz">Start</button>
+      </div>
+
 
     <div id="quiz-container" style="display: none;">
         <div id="question-container">

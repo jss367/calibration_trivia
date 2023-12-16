@@ -6,6 +6,15 @@ const usernameContainer = document.getElementById('username-container');
 const startQuizButton = document.getElementById('start-quiz');
 const leaderboardContainer = document.getElementById('leaderboard-container');
 
+// Mode selection elements
+const modeSelectionContainer = document.getElementById('mode-selection-container');
+const modeSinglePlayer = document.getElementById('mode-single');
+const modeGroupParticipant = document.getElementById('mode-group-participant');
+const modeGroupQuestioner = document.getElementById('mode-group-questioner');
+const questionCountContainer = document.getElementById('question-count-container');
+const startButtonContainer = document.getElementById('start-button-container');
+
+
 // Firebase Firestore initialization
 const db = firebase.firestore();
 let currentQuestionIndex = 0;
@@ -16,15 +25,34 @@ let userAnswers = [];
 let correctAnswers = [];
 let userConfidences = [];
 
+// Event listener for mode selection
+modeSelectionContainer.addEventListener('change', (event) => {
+  startQuizButton.style.display = 'flex';
+  startButtonContainer.style.display = 'flex';
+  if (event.target.value === 'single') {
+    questionCountContainer.style.display = 'block';
+  } else {
+    questionCountContainer.style.display = 'none';
+  }
+});
+
+
 startQuizButton.addEventListener('click', () => {
   usernameContainer.style.display = 'none';
-  document.getElementById('question-count-container').style.display = 'none';
-  quizContainer.style.display = 'block';
+  modeSelectionContainer.style.display = 'none';
+  startQuizButton.style.display = 'none';
+  startButtonContainer.style.display = 'none';
+  questionCountContainer.style.display = 'none';
+  if (modeSinglePlayer.checked) {
+    quizContainer.style.display = 'block';
+    
+  } 
   loadQuestions();
 });
 
 
 function loadQuestions() {
+  console.log("Inside loadQuestions");
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const files = ['questions_science.json', 'questions_general.json', 'questions_rationality.json', 'questions_economics.json',
                 'questions_music.json'];
@@ -39,6 +67,7 @@ function loadQuestions() {
 
   Promise.all(promises)
     .then(loadedQuestionsArrays => {
+      console.log("Inside Promise.all");
       // Flatten the array of arrays into a single array
       questions = [].concat(...loadedQuestionsArrays);
       
@@ -48,7 +77,19 @@ function loadQuestions() {
       // Only keep as many questions as the user requested
       questions = questions.slice(0, questionCount);
       
-      displayQuestion(currentQuestionIndex);
+      console.log("modeSinglePlayer.checked is ", modeSinglePlayer.checked);
+      console.log("modeGroupParticipant.checked is ", modeGroupParticipant.checked);
+      console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
+
+
+      // displayQuestion(currentQuestionIndex);
+      if (modeSinglePlayer.checked) {
+        displayQuestion(currentQuestionIndex);
+      } else if (modeGroupParticipant.checked) {
+        displayQuestionSubmission(currentQuestionIndex)
+      } else if (modeGroupQuestioner.checked) {
+        displayQuestionText(currentQuestionIndex)
+      }
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -62,8 +103,103 @@ function shuffleArray(array) {
   }
 }
 
+function displayQuestionText(index) {
+  // This is for group questioner mode
+  console.log("Inside function displayQuestionText");
+
+  console.log("Current Index: ", index);
+  console.log("Current Question: ", questions[index]);
+
+  if (!questions[index]) {
+    console.error("Question not found for index: ", index);
+    return; // Exit the function if the question is not found
+  }
+
+  const question = questions[index];
+
+  // Create a new div for the question
+  const questionDiv = document.createElement('div');
+
+  // Initialize the answer input HTML
+  let answerInputHTML = '';
+
+    const options = ['A', 'B', 'C', 'D'];
+    // answerInputHTML = question.options.map((option, index) => `
+    //   <div>
+    //     <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
+    //     <label for="option-${options[index]}">${options[index]}: ${option}</label>
+    //   </div>
+    // `).join('');
+
+    answerInputHTML = question.options.map((option, index) => `
+  <div>
+    <label>${String.fromCharCode(65 + index)}: ${option}</label>
+  </div>
+`).join('');
+
+    questionDiv.innerHTML = `
+    <h2>${question.question}</h2>
+    ${answerInputHTML}
+  `;
+
+  questionContainer.innerHTML = ''; // Clear previous question
+  questionContainer.appendChild(questionDiv); // Append new question
+  quizContainer.style.display = 'block'; // Ensure the quiz container is visible
+  nextButton.style.display = 'block'; // Show the next button
+}
+
+
+
+function displayQuestionSubmission(index){
+
+  console.log("Current Index: ", index);
+  console.log("Current Question: ", questions[index]);
+
+  if (!questions[index]) {
+    console.error("Question not found for index: ", index);
+    return; // Exit the function if the question is not found
+  }
+
+  const question = questions[index];
+
+  // Create a new div for the question
+  const questionDiv = document.createElement('div');
+
+  // Initialize the answer input HTML
+  let answerInputHTML = '';
+
+    const options = ['A', 'B', 'C', 'D'];
+    answerInputHTML = question.options.map((option, index) => `
+      <div>
+        <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
+        <label for="option-${options[index]}">${options[index]}: ${option}</label>
+      </div>
+    `).join('');
+
+    questionDiv.innerHTML = `
+    <h2>${question.question}</h2>
+    ${answerInputHTML}
+    <input type="number" id="confidence" class="input-small" min="0" max="100" step="1" value="50">%
+  `;
+
+  questionContainer.innerHTML = ''; // Clear previous question
+  questionContainer.appendChild(questionDiv); // Append new question
+
+  nextButton.style.display = 'block';
+
+}
 
 function displayQuestion(index) {
+  // This is for single player mode
+
+  console.log("Current Index: ", index);
+  console.log("Current Question: ", questions[index]);
+
+  if (!questions[index]) {
+    console.error("Question not found for index: ", index);
+    return; // Exit the function if the question is not found
+  }
+
   const question = questions[index];
 
   // Create a new div for the question
@@ -95,18 +231,65 @@ function displayQuestion(index) {
 nextButton.classList.add('button-spacing');
 
 nextButton.addEventListener('click', () => {
-  submitAnswer();
+  // Check if it's not Group Questioner mode before submitting an answer
+  if (!modeGroupQuestioner.checked) {
+    submitAnswer(); // Same function for Single Player and Group Participant
+  }
+
+  // Increment the current question index
   currentQuestionIndex++;
+
+  // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
-    displayQuestion(currentQuestionIndex);
+    if (modeSinglePlayer.checked || modeGroupParticipant.checked) {
+      displayQuestion(currentQuestionIndex); // Display next question for Single Player and Group Participant
+    } else if (modeGroupQuestioner.checked) {
+      displayQuestionText(currentQuestionIndex); // Display next question for Group Questioner
+    }
   } else {
-    displayResults();
+    displayResults(); // Display results if it's the last question
   }
 });
 
+
+
+function displayQuestionForGroupParticipant(index) {
+  console.log("Current Index: ", index);
+  console.log("Current Question: ", questions[index]);
+
+  if (!questions[index]) {
+    console.error("Question not found for index: ", index);
+    return; // Exit the function if the question is not found
+  }
+
+  const question = questions[index];
+
+  // Create a new div for the question
+  const questionDiv = document.createElement('div');
+
+  // Generate the answer options HTML
+  let answerInputHTML = question.options.map((option, index) => `
+    <div>
+      <input type="radio" id="option-${index}" class="input-radio" name="answer" value="${option}">
+      <label for="option-${index}">${String.fromCharCode(65 + index)}: ${option}</label>
+    </div>
+  `).join('');
+
+  questionDiv.innerHTML = `
+    <h2>Question ${index + 1}: ${question.question}</h2>
+    ${answerInputHTML}
+  `;
+
+  questionContainer.innerHTML = ''; // Clear previous content
+  questionContainer.appendChild(questionDiv); // Append new content
+}
+
+
+
+
+
 function submitAnswer() {
   let userAnswer;
-  const questionType = questions[currentQuestionIndex].type;
   const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
   const confidenceElement = document.getElementById('confidence');
 
