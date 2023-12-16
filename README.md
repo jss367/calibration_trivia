@@ -14,6 +14,9 @@ Switch all questions to multiple choice.
 
 Log in to a particular session? That way everyone around you can do consensus scoring with only people from that session and not worry about mixing with other sessions.
 
+## Functionality
+
+In both single and group mode, the results are not shown until the end.
 
 ## Deployment
 
