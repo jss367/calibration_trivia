@@ -29,7 +29,6 @@ let userConfidences = [];
 // Event listener for mode selection
 modeSelectionContainer.addEventListener('change', (event) => {
   console.log("Inside modeSelectionContainer event listener");
-  // startQuizButton.style.display = 'flex';
   startButtonContainer.style.display = 'flex';
 
   // Handle for Group Questioner mode
@@ -39,8 +38,10 @@ modeSelectionContainer.addEventListener('change', (event) => {
     categorySelectionContainer.style.display = 'block';
     questionCountContainer.style.display = 'block';
     usernameContainer.style.display = 'none';
+    document.getElementById('start-quiz').disabled = false;
   } else {
     document.getElementById('session-id-container').style.display = 'none';
+    document.getElementById('start-quiz').disabled = true;
   }
 
   // Handle for Group Participant mode
@@ -68,16 +69,16 @@ document.getElementById('username').addEventListener('input', function () {
   const usernameInput = this.value.trim();
   const startButton = document.getElementById('start-quiz');
 
-  // Enable the start button only if the username is not empty
-  if (usernameInput.length > 0) {
+  // Enable the start button only if the username is not empty or if Group Questioner mode is selected
+  if (usernameInput.length > 0 || modeGroupQuestioner.checked) {
     startButton.disabled = false;
   } else {
     startButton.disabled = true;
   }
 });
 
-// Initially disable the start button until a username is entered
-document.getElementById('start-quiz').disabled = true;
+// Initially disable the start button (except for group questioner mode)
+document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
 
 
 function loadSessionQuestions(sessionId) {
@@ -157,30 +158,30 @@ startQuizButton.addEventListener('click', () => {
   loadQuestions();
 });
 
-startQuizButton.addEventListener('click', () => {
-  // Check if Group Participant mode is selected
-  if (modeGroupParticipant.checked) {
-    const selectedSessionId = document.getElementById('session-id-select').value;
-    if (selectedSessionId) {
-      localStorage.setItem('currentSessionId', selectedSessionId);
-      loadSessionQuestions(selectedSessionId);
-    } else {
-      console.log("Please select a session.");
-      return; // Prevent starting the quiz without selecting a session
-    }
-  }
+// startQuizButton.addEventListener('click', () => {
+//   // Check if Group Participant mode is selected
+//   if (modeGroupParticipant.checked) {
+//     const selectedSessionId = document.getElementById('session-id-select').value;
+//     if (selectedSessionId) {
+//       localStorage.setItem('currentSessionId', selectedSessionId);
+//       loadSessionQuestions(selectedSessionId);
+//     } else {
+//       console.log("Please select a session.");
+//       return; // Prevent starting the quiz without selecting a session
+//     }
+//   }
 
-  usernameContainer.style.display = 'none';
-  modeSelectionContainer.style.display = 'none';
-  startQuizButton.style.display = 'none';
-  startButtonContainer.style.display = 'none';
-  questionCountContainer.style.display = 'none';
-  categorySelectionContainer.style.display = 'none';
-  if (modeSinglePlayer.checked) {
-    quizContainer.style.display = 'block';
-  }
-  loadQuestions();
-});
+//   usernameContainer.style.display = 'none';
+//   modeSelectionContainer.style.display = 'none';
+//   startQuizButton.style.display = 'none';
+//   startButtonContainer.style.display = 'none';
+//   questionCountContainer.style.display = 'none';
+//   categorySelectionContainer.style.display = 'none';
+//   if (modeSinglePlayer.checked) {
+//     quizContainer.style.display = 'block';
+//   }
+//   loadQuestions();
+// });
 
 
 
