@@ -31,39 +31,43 @@ modeSelectionContainer.addEventListener('change', (event) => {
   console.log("Inside modeSelectionContainer event listener");
   startButtonContainer.style.display = 'flex';
 
-  // Handle for Group Questioner mode
   if (event.target.value === 'group-questioner') {
     console.log("Inside group-questioner if statement");
+    // Group Questioner specific elements
     document.getElementById('session-id-container').style.display = 'block';
     categorySelectionContainer.style.display = 'block';
     questionCountContainer.style.display = 'block';
+    sessionIDSelectionContainer.style.display = 'none';
     usernameContainer.style.display = 'none';
     document.getElementById('start-quiz').disabled = false;
-  } else {
-    document.getElementById('session-id-container').style.display = 'none';
-    document.getElementById('start-quiz').disabled = true;
-  }
-
-  // Handle for Group Participant mode
-  if (event.target.value === 'group-participant') {
+  } else if (event.target.value === 'group-participant') {
     console.log("Inside group-participant if statement");
+    // Group Participant specific elements
     usernameContainer.style.display = 'block';
     sessionIDSelectionContainer.style.display = 'block';
     loadAvailableSessions();
-  } else {
-    sessionIDSelectionContainer.style.display = 'none';
-  }
-
-  // Handle for Single Player mode
-  if (event.target.value === 'single') {
+    // Hide elements not used in Group Participant mode
+    questionCountContainer.style.display = 'none';
+    categorySelectionContainer.style.display = 'none';
+  } else if (event.target.value === 'single') {
     console.log("Inside single if statement");
+    // Single Player specific elements
     usernameContainer.style.display = 'block';
     questionCountContainer.style.display = 'block';
     categorySelectionContainer.style.display = 'block';
+    sessionIDSelectionContainer.style.display = 'none';
+    // Enable start button only if a username is entered
+    document.getElementById('start-quiz').disabled = !document.getElementById('username').value.trim();
   } else {
+    // Default case: Hide all specific elements
+    sessionIDSelectionContainer.style.display = 'none';
     questionCountContainer.style.display = 'none';
+    categorySelectionContainer.style.display = 'none';
+    sessionIDSelectionContainer.style.display = 'none';
+    document.getElementById('start-quiz').disabled = true;
   }
 });
+
 
 document.getElementById('username').addEventListener('input', function () {
   const usernameInput = this.value.trim();
@@ -86,15 +90,22 @@ function loadSessionQuestions(sessionId) {
   db.collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists) {
-        questions = doc.data().questions;
-        // Display the first question
-        displayQuestionForGroupParticipant(currentQuestionIndex);
+        console.log("Fetched document:", doc.data());
+        if (doc.data().questions && doc.data().questions.length > 0) {
+          questions = doc.data().questions;
+          // Display the first question
+          displayQuestionForGroupParticipant(currentQuestionIndex);
+        } else {
+          console.log("No questions available in this session!");
+        }
       } else {
         console.log("No such session!");
       }
     })
     .catch(error => console.error("Error loading session questions:", error));
 }
+
+
 
 
 document.getElementById('set-session-id').addEventListener('click', () => {
@@ -158,32 +169,6 @@ startQuizButton.addEventListener('click', () => {
   loadQuestions();
 });
 
-// startQuizButton.addEventListener('click', () => {
-//   // Check if Group Participant mode is selected
-//   if (modeGroupParticipant.checked) {
-//     const selectedSessionId = document.getElementById('session-id-select').value;
-//     if (selectedSessionId) {
-//       localStorage.setItem('currentSessionId', selectedSessionId);
-//       loadSessionQuestions(selectedSessionId);
-//     } else {
-//       console.log("Please select a session.");
-//       return; // Prevent starting the quiz without selecting a session
-//     }
-//   }
-
-//   usernameContainer.style.display = 'none';
-//   modeSelectionContainer.style.display = 'none';
-//   startQuizButton.style.display = 'none';
-//   startButtonContainer.style.display = 'none';
-//   questionCountContainer.style.display = 'none';
-//   categorySelectionContainer.style.display = 'none';
-//   if (modeSinglePlayer.checked) {
-//     quizContainer.style.display = 'block';
-//   }
-//   loadQuestions();
-// });
-
-
 
 function loadQuestions() {
   console.log("Inside loadQuestions");
@@ -211,6 +196,7 @@ function loadQuestions() {
     .then(loadedQuestionsArrays => {
       console.log("Inside Promise.all");
       // Flatten the array of arrays into a single array
+
       questions = [].concat(...loadedQuestionsArrays);
 
       // Shuffle questions array here
@@ -231,11 +217,21 @@ function loadQuestions() {
         displayQuestionSubmission(currentQuestionIndex)
       } else if (modeGroupQuestioner.checked) {
         displayQuestionText(currentQuestionIndex)
+        const sessionId = getCurrentSessionId();
+            if (sessionId) {
+                saveQuestionsToFirestore(sessionId, questions);
+            } else {
+                console.log('Session ID not set for Group Questioner mode');
+            }
       }
     })
     .catch((error) => {
       console.error('Error:', error);
     });
+
+
+
+
 }
 
 function shuffleArray(array) {
@@ -370,33 +366,57 @@ function displayQuestion(index) {
   nextButton.style.display = 'block';
 }
 
+function saveQuestionsToFirestore(sessionId, questionsArray) {
+  db.collection('sessions').doc(sessionId).set({
+      questions: questionsArray,
+      active: true // or any other relevant session data
+  })
+  .then(() => console.log('Questions saved successfully'))
+  .catch(error => console.error('Error saving questions:', error));
+}
+
+
 nextButton.classList.add('button-spacing');
 
 nextButton.addEventListener('click', () => {
   console.log("Inside nextButton event listener");
-  // Check if Group Questioner or Group Participant mode is selected
-  if (modeGroupQuestioner.checked || modeGroupParticipant.checked) {
-    console.log("Inside modeGroupQuestioner.checked || modeGroupParticipant.checked if statement");
-    const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
-    // Call nextQuestion to advance to the next question in the session for group modes
-    nextQuestion(sessionId);
-  } else {
-    console.log("Inside nextButton event listener else statement");
-    // For Single Player mode, no sessionId is required
-    // Check if it's not Group Questioner mode before submitting an answer
-    submitAnswer(); // Same function for Single Player and Group Participant
 
-    // Increment the current question index
-    currentQuestionIndex++;
-
-    // Check if there are more questions
-    if (currentQuestionIndex < questions.length) {
-      displayQuestion(currentQuestionIndex); // Display next question for Single Player
-    } else {
-      displayResults(); // Display results if it's the last question
+  // Handling for Group Questioner mode
+  if (modeGroupQuestioner.checked) {
+      console.log("Handling Group Questioner mode");
+  
+      // Increment the current question index
+      currentQuestionIndex++;
+  
+      // Check if there are more questions
+      if (currentQuestionIndex < questions.length) {
+        displayQuestionText(currentQuestionIndex); // Display next question for Group Questioner
+      } else {
+        displayResults(); // Display results if it's the last question
+      }
     }
-  }
+  else if (modeGroupParticipant.checked) {
+        const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
+        nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
+      }
+  else {
+        // For Single Player mode, handle answer submission and question navigation
+        if (!modeGroupQuestioner.checked) {
+          submitAnswer(); // Same function for Single Player and Group Participant
+        }
+  
+        // Increment the current question index
+        currentQuestionIndex++;
+  
+        // Check if there are more questions
+        if (currentQuestionIndex < questions.length) {
+          displayQuestion(currentQuestionIndex); // Display next question for Single Player
+        } else {
+          displayResults(); // Display results if it's the last question
+        }
+      }
 });
+
 
 
 function displayQuestionForGroupParticipant(index) {
