@@ -44,8 +44,6 @@ What concept refers to the hypothetical future event when AI surpasses human int
 
 What is the name of the book written by Eliezer Yudkowsky and published by the Machine Intelligence Research Institute (MIRI) that compiles his essays on rationality?
 
-What term from HPMOR refers to the ability to lose, to accept that you have lost, and to move on?
-
 What is the term for a mistaken belief that, upon being confronted with contradicting evidence, leads to adopting new beliefs that explain why the mistaken belief was held in the first place?
 
 What term, originating from LessWrong, refers to a hypothetical dangerous AI thought experiment that can't be discussed on the website?

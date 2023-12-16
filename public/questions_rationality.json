@@ -35,12 +35,7 @@
         "options": ["LessWrong: The Sequences", "Rationality: From AI to Zombies", "Overcoming Bias: A Guide", "How To Be Rational"]
     },
     {
-        "question": "What term from HPMOR refers to the ability to lose, to accept that you have lost, and to move on?",
-        "correctAnswer": "The Losing Side",
-        "options": ["The Losing Side", "Rational acceptance", "Rational loss", "Defeat acceptance"]
-    },
-    {
-        "question": "What term, originating from LessWrong, refers to a hypothetical dangerous AI thought experiment that can't be discussed on the website?",
+        "question": "What term, originating from LessWrong, refers to a hypothetical dangerous AI thought experiment that was at one point banned from being discussed on the website?",
         "correctAnswer": "Roko's Basilisk",
         "options": ["Roko's Basilisk", "Eliezer's Leviathan", "MIRI's Paradox", "LessWrong's Conundrum"]
     },
