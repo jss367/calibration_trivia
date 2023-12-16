@@ -418,7 +418,6 @@ nextButton.addEventListener('click', () => {
 });
 
 
-
 function displayQuestionForGroupParticipant(index) {
   console.log("Current Index: ", index);
   console.log("Current Question: ", questions[index]);
@@ -433,7 +432,7 @@ function displayQuestionForGroupParticipant(index) {
   // Create a new div for the question
   const questionDiv = document.createElement('div');
 
-  // Generate the answer options HTML
+  // Initialize the answer input HTML
   let answerInputHTML = question.options.map((option, index) => `
     <div>
       <input type="radio" id="option-${index}" class="input-radio" name="answer" value="${option}">
@@ -448,7 +447,11 @@ function displayQuestionForGroupParticipant(index) {
 
   questionContainer.innerHTML = ''; // Clear previous content
   questionContainer.appendChild(questionDiv); // Append new content
+  
+  // Make sure the quiz container is visible
+  quizContainer.style.display = 'block';
 }
+
 
 
 function submitAnswer() {
