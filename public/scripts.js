@@ -14,6 +14,8 @@ const modeGroupParticipant = document.getElementById('mode-group-participant');
 const modeGroupQuestioner = document.getElementById('mode-group-questioner');
 const questionCountContainer = document.getElementById('question-count-container');
 const startButtonContainer = document.getElementById('start-button-container');
+const questionerNextButton = document.getElementById('questioner-next-button');
+const sessionIdContainer = document.getElementById('session-id-container');
 
 
 // Firebase Firestore initialization
@@ -34,37 +36,45 @@ modeSelectionContainer.addEventListener('change', (event) => {
   if (event.target.value === 'group-questioner') {
     console.log("Inside group-questioner if statement");
     // Group Questioner specific elements
-    document.getElementById('session-id-container').style.display = 'block';
+    sessionIdContainer.style.display = 'block';
     categorySelectionContainer.style.display = 'block';
     questionCountContainer.style.display = 'block';
     sessionIDSelectionContainer.style.display = 'none';
     usernameContainer.style.display = 'none';
     document.getElementById('start-quiz').disabled = false;
-  } else if (event.target.value === 'group-participant') {
+    startQuizButton.removeEventListener('click', joinSelectedSession);
+  } 
+  else if (event.target.value === 'group-participant') {
     console.log("Inside group-participant if statement");
     // Group Participant specific elements
+    sessionIdContainer.style.display = 'none';
     usernameContainer.style.display = 'block';
     sessionIDSelectionContainer.style.display = 'block';
     loadAvailableSessions();
     // Hide elements not used in Group Participant mode
     questionCountContainer.style.display = 'none';
     categorySelectionContainer.style.display = 'none';
-  } else if (event.target.value === 'single') {
+    startQuizButton.removeEventListener('click', joinSelectedSession); // Remove existing listener if any
+    startQuizButton.addEventListener('click', joinSelectedSession);
+  }
+  else if (event.target.value === 'single') {
     console.log("Inside single if statement");
     // Single Player specific elements
+    sessionIdContainer.style.display = 'none';
     usernameContainer.style.display = 'block';
     questionCountContainer.style.display = 'block';
     categorySelectionContainer.style.display = 'block';
     sessionIDSelectionContainer.style.display = 'none';
     // Enable start button only if a username is entered
     document.getElementById('start-quiz').disabled = !document.getElementById('username').value.trim();
+    startQuizButton.removeEventListener('click', joinSelectedSession);
   } else {
     // Default case: Hide all specific elements
-    sessionIDSelectionContainer.style.display = 'none';
     questionCountContainer.style.display = 'none';
     categorySelectionContainer.style.display = 'none';
     sessionIDSelectionContainer.style.display = 'none';
     document.getElementById('start-quiz').disabled = true;
+    startQuizButton.removeEventListener('click', joinSelectedSession);
   }
 });
 
@@ -144,30 +154,39 @@ function loadAvailableSessions() {
 
 
 
+// Click event listener for startQuizButton
 startQuizButton.addEventListener('click', () => {
-  // Check if Group Participant mode is selected
-  if (modeGroupParticipant.checked) {
-    const selectedSessionId = document.getElementById('session-id-select').value;
-    if (selectedSessionId) {
-      localStorage.setItem('currentSessionId', selectedSessionId);
-      loadSessionQuestions(selectedSessionId);
-    } else {
-      console.log("Please select a session.");
-      return; // Prevent starting the quiz without selecting a session
-    }
-  }
+  console.log("Inside startQuizButton event listener");
 
+  const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+  console.log("Selected Mode: ", selectedMode);
+
+  // Hide UI elements not needed once the quiz starts
   usernameContainer.style.display = 'none';
   modeSelectionContainer.style.display = 'none';
   startQuizButton.style.display = 'none';
   startButtonContainer.style.display = 'none';
   questionCountContainer.style.display = 'none';
   categorySelectionContainer.style.display = 'none';
-  if (modeSinglePlayer.checked) {
+
+  if (selectedMode === 'single') {
+    console.log("Starting Single Player Mode");
     quizContainer.style.display = 'block';
+    loadQuestions();
+  } else if (selectedMode === 'group-participant') {
+    console.log("Starting Group Participant Mode");
+    const selectedSessionId = document.getElementById('session-id-select').value;
+    if (selectedSessionId) {
+      localStorage.setItem('currentSessionId', selectedSessionId);
+      joinSessionListener(selectedSessionId);
+      loadSessionQuestions(selectedSessionId);
+    } else {
+      console.log("Please select a session.");
+    }
   }
-  loadQuestions();
 });
+
+
 
 
 function loadQuestions() {
@@ -287,6 +306,84 @@ function displayQuestionText(index) {
 }
 
 
+// Function for the Questioner to call when ready to move to the next question
+function questionerNextQuestion(sessionId) {
+  console.log("Inside questionerNextQuestion");
+  // Increment the current question index
+  currentQuestionIndex++;
+
+  // Check if there are more questions
+  if (currentQuestionIndex < questions.length) {
+    // Update the current question index in the Firebase session
+    db.collection('sessions').doc(sessionId).update({
+      currentQuestionIndex: currentQuestionIndex
+    }).then(() => {
+      console.log('Question index updated successfully.');
+      // You may want to notify participants to wait for the next question
+    }).catch(error => {
+      console.error('Error updating question index:', error);
+    });
+  } else {
+    // Handle the end of the quiz
+    displayResults();
+  }
+}
+
+
+// This function will be triggered for participants when the session's currentQuestionIndex changes
+function onQuestionIndexUpdated(sessionData) {
+  if (sessionData.currentQuestionIndex !== undefined) {
+    currentQuestionIndex = sessionData.currentQuestionIndex;
+    displayQuestionForGroupParticipant(currentQuestionIndex);
+    // Any additional logic for updating the UI, such as clearing previous answers, can go here
+  }
+}
+
+// Listener for session changes (to be called when the participant first joins the session)
+function joinSessionListener(sessionId) {
+  console.log("Inside joinSessionListener");
+  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
+    const sessionData = doc.data();
+    if (sessionData) {
+      onQuestionIndexUpdated(sessionData);
+      nextButton.style.display = 'none'; // Hide the next button for participants
+    }
+  });
+}
+
+// This function would be called when the participant selects a session and clicks a "Join Session" button
+function joinSelectedSession() {
+  console.log("Inside joinSelectedSession");
+  const selectedSessionId = document.getElementById('session-id-select').value;
+  if (selectedSessionId) {
+    localStorage.setItem('currentSessionId', selectedSessionId); // Save to local storage or a variable
+    joinSessionListener(selectedSessionId); // Start listening for updates on the selected session
+  } else {
+    console.error('No session selected.');
+  }
+}
+
+
+
+// Later on, you can retrieve the session ID like this:
+function getCurrentSessionId() {
+  console.log("Inside getCurrentSessionId");
+  // Replace this with however you're storing the session ID, e.g., local storage or a global variable
+  return localStorage.getItem('currentSessionId');
+}
+
+
+// The Questioner's "Next" button event listener
+document.getElementById('questioner-next-button').addEventListener('click', () => {
+  console.log("Inside questioner-next-button event listener");
+  const sessionId = getCurrentSessionId(); // Make sure this retrieves the correct session ID
+  if (sessionId) {
+    questionerNextQuestion(sessionId);
+  } else {
+    console.error('No session ID found for Questioner.');
+  }
+});
+
 
 function displayQuestionSubmission(index) {
 
@@ -367,6 +464,7 @@ function displayQuestion(index) {
 }
 
 function saveQuestionsToFirestore(sessionId, questionsArray) {
+  console.log("Inside saveQuestionsToFirestore");
   db.collection('sessions').doc(sessionId).set({
       questions: questionsArray,
       active: true // or any other relevant session data
@@ -416,6 +514,16 @@ nextButton.addEventListener('click', () => {
         }
       }
 });
+ 
+questionerNextButton.addEventListener('click', () => {
+  const sessionId = getCurrentSessionId(); // Retrieves the current session ID
+  if (sessionId) {
+    questionerNextQuestion(sessionId);
+  } else {
+    console.error('No session ID found for Questioner.');
+  }
+});
+
 
 
 function displayQuestionForGroupParticipant(index) {

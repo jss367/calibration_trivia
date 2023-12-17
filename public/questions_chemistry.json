@@ -1,0 +1,77 @@
+[
+    {
+        "question": "What is the chemical symbol for Gold?",
+        "correctAnswer": "Au",
+        "options": ["Ag", "Au", "Al", "Ga"]
+    },
+    {
+        "question": "Who is known as the 'Father of Modern Chemistry'?",
+        "correctAnswer": "Antoine Lavoisier",
+        "options": ["Dmitri Mendeleev", "Antoine Lavoisier", "Marie Curie", "John Dalton"]
+    },
+    {
+        "question": "What is the process called in which a solid changes directly into a gas?",
+        "correctAnswer": "Sublimation",
+        "options": ["Evaporation", "Sublimation", "Condensation", "Deposition"]
+    },
+    {
+        "question": "What term describes a liquid's resistance to flow?",
+        "correctAnswer": "Viscosity",
+        "options": ["Density", "Volatility", "Viscosity", "Fluidity"]
+    },
+    {
+        "question": "Which element has the highest electronegativity?",
+        "correctAnswer": "Fluorine",
+        "options": ["Oxygen", "Chlorine", "Fluorine", "Nitrogen"]
+    },
+    {
+        "question": "Who discovered the periodic law and created the periodic table of elements?",
+        "correctAnswer": "Dmitri Mendeleev",
+        "options": ["Dmitri Mendeleev", "Marie Curie", "Albert Einstein", "Antoine Lavoisier"]
+    },
+    {
+        "question": "What is the most abundant gas in the Earth's atmosphere?",
+        "correctAnswer": "Nitrogen",
+        "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Argon"]
+    },
+    {
+        "question": "Which type of chemical bond involves the sharing of electron pairs between atoms?",
+        "correctAnswer": "Covalent bond",
+        "options": ["Ionic bond", "Covalent bond", "Hydrogen bond", "Metallic bond"]
+    },
+    {
+        "question": "What is the pH of a neutral solution at 25°C?",
+        "correctAnswer": "7",
+        "options": ["5", "7", "9", "11"]
+    },
+    {
+        "question": "What law states that the total pressure of a mixture of gases is equal to the sum of the pressures of all the gases in the mixture?",
+        "correctAnswer": "Dalton's Law of Partial Pressures",
+        "options": ["Boyle's Law", "Charles's Law", "Avogadro's Law", "Dalton's Law of Partial Pressures"]
+    },
+    {
+        "question": "Who is credited with the discovery of the electron?",
+        "correctAnswer": "J.J. Thomson",
+        "options": ["Niels Bohr", "Ernest Rutherford", "Marie Curie", "J.J. Thomson"]
+    },
+    {
+        "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
+        "correctAnswer": "Catalyst",
+        "options": ["Enzyme", "Reactant", "Catalyst", "Solvent"]
+    },
+    {
+        "question": "What is the process by which green plants and some other organisms use sunlight to synthesize foods from carbon dioxide and water?",
+        "correctAnswer": "Photosynthesis",
+        "options": ["Fermentation", "Metabolism", "Respiration", "Photosynthesis"]
+    },
+    {
+        "question": "In chemistry, what term describes the smallest particle of a chemical element that retains its chemical properties?",
+        "correctAnswer": "Atom",
+        "options": ["Molecule", "Compound", "Atom", "Ion"]
+    },
+    {
+        "question": "What type of chemical reaction involves the exchange of ions between two compounds and results in the formation of a precipitate or gas?",
+        "correctAnswer": "Double displacement reaction",
+        "options": ["Synthesis reaction", "Decomposition reaction", "Single displacement reaction", "Double displacement reaction"]
+    }
+]
