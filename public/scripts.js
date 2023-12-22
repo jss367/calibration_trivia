@@ -335,9 +335,11 @@ function onQuestionIndexUpdated(sessionData) {
 
 // Listener for session changes (to be called when the participant first joins the session)
 function joinSessionListener(sessionId) {
-  console.log("Inside joinSessionListener");
+  console.log("Inside joinSessionListener with sessionId: ", sessionId);
   db.collection('sessions').doc(sessionId).onSnapshot(doc => {
     const sessionData = doc.data();
+    // Log the session data
+    console.log('Session data:', sessionData);
     if (sessionData) {
       if (sessionData.currentQuestionIndex !== undefined) {
         currentQuestionIndex = sessionData.currentQuestionIndex;
