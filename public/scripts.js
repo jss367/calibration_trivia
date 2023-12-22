@@ -302,9 +302,10 @@ function displayQuestionText(index) {
 
 // Function for the Questioner to call when ready to move to the next question
 function questionerNextQuestion(sessionId) {
-  console.log("Inside questionerNextQuestion");
+  console.log("Inside questionerNextQuestion with sessionId: ", sessionId);
   // Increment the current question index
   currentQuestionIndex++;
+  console.log("Current Question Index: ", currentQuestionIndex);
 
   // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
@@ -326,12 +327,18 @@ function questionerNextQuestion(sessionId) {
 
 // This function will be triggered for participants when the session's currentQuestionIndex changes
 function onQuestionIndexUpdated(sessionData) {
-  if (sessionData.currentQuestionIndex !== undefined) {
+  console.log("Inside onQuestionIndexUpdated with sessionData: ", sessionData);
+  if (sessionData.currentQuestionIndex !== undefined && sessionData.currentQuestionIndex !== currentQuestionIndex) {
+    // Submit the current answer before moving to the next question
+    if (modeGroupParticipant.checked) {
+      submitAnswer();
+    }
+    // Update the current question index
     currentQuestionIndex = sessionData.currentQuestionIndex;
     displayQuestionForGroupParticipant(currentQuestionIndex);
-    // Any additional logic for updating the UI, such as clearing previous answers, can go here
   }
 }
+
 
 // Listener for session changes (to be called when the participant first joins the session)
 function joinSessionListener(sessionId) {
@@ -612,6 +619,12 @@ function submitAnswer() {
   } else {
     console.error('Session ID or User ID is missing');
   }
+
+  // Reset the answer selection for the next question
+  if (selectedOption) {
+    selectedOption.checked = false;
+  }
+  document.getElementById('confidence').value = 50; // Reset confidence to default
 }
 
 
@@ -666,10 +679,17 @@ function createSession() {
   const sessionId = generateSessionId(); // Implement this function to generate a unique ID
   db.collection('sessions').doc(sessionId).set({
     currentQuestionIndex: 0,
-    participants: {}
-  });
-  // Store sessionId in a variable or local storage to use later
+    questions: [],
+    active: true
+  })
+  .then(() => {
+    console.log('Session created successfully with ID:', sessionId);
+    // Store sessionId in a variable or local storage to use later
+    localStorage.setItem('currentSessionId', sessionId);
+  })
+  .catch(error => console.error('Error creating session:', error));
 }
+
 
 
 // Function to join a session
