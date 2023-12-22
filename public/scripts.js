@@ -723,9 +723,13 @@ function displayResults() {
         <h2>Results</h2>
         <p>Correct answers: ${score} / ${questions.length}</p>
         <p>Brier score: ${brierScore.toFixed(2)}</p>
-        ${confidenceDecileScores.map(({ decileRange, score }) => `
-          <p>When you were ${decileRange}% confident, you were ${score !== null ? `correct ${Math.round(score * 100)}% of the time` : 'did not answer any questions'}.</p>
-        `).join('')}
+        ${confidenceDecileScores.map(({ decileRange, score }) => {
+            if (score === null) {
+              return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
+            } else {
+              return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time.</p>`;
+            }
+          }).join('')}
       `;
 
   resultsContainer.style.display = 'block';
