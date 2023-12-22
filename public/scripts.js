@@ -18,6 +18,8 @@ const questionerNextButton = document.getElementById('questioner-next-button');
 const sessionIdContainer = document.getElementById('session-id-container');
 const questionerButtonContainer = document.getElementById('questioner-button-container');
 
+const submitButton = document.getElementById('submit-button');
+
 
 // Firebase Firestore initialization
 const db = firebase.firestore();
@@ -229,7 +231,7 @@ function loadQuestionsQuestioner() {
       if (modeSinglePlayer.checked) {
         displayQuestion(currentQuestionIndex);
       } else if (modeGroupParticipant.checked) {
-        displayQuestionSubmission(currentQuestionIndex)
+        displayQuestionParticipant(currentQuestionIndex)
       } else if (modeGroupQuestioner.checked) {
         displayQuestionQuestioner(currentQuestionIndex)
         const sessionId = getCurrentSessionId();
@@ -291,7 +293,7 @@ function loadQuestionsSingle() {
       if (modeSinglePlayer.checked) {
         displayQuestion(currentQuestionIndex);
       } else if (modeGroupParticipant.checked) {
-        displayQuestionSubmission(currentQuestionIndex)
+        displayQuestionParticipant(currentQuestionIndex)
       } else if (modeGroupQuestioner.checked) {
         displayQuestionQuestioner(currentQuestionIndex)
         const sessionId = getCurrentSessionId();
@@ -407,6 +409,7 @@ function joinSessionListener(sessionId) {
         displayQuestionForGroupParticipant(currentQuestionIndex);
       }
       nextButton.style.display = 'none'; // Hide the next button for participants
+      submitButton.style.display = 'block'; // Show the submit button for participants
     }
   });
 }
@@ -437,7 +440,7 @@ function getCurrentSessionId() {
 
 
 
-function displayQuestionSubmission(index) {
+function displayQuestionParticipant(index) {
 
   console.log("Current Index: ", index);
   console.log("Current Question: ", questions[index]);
@@ -587,6 +590,10 @@ questionerNextButton.addEventListener('click', () => {
 });
 
 
+submitButton.addEventListener('click', () => {
+  submitAnswer();
+});
+
 
 function displayQuestionForGroupParticipant(index) {
   console.log("Current Index: ", index);
@@ -658,6 +665,7 @@ function submitAnswer() {
   const userId = document.getElementById('username').value.trim();
   if (userId && sessionId) {
     submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
+    submitButton.style.display = 'none';
   } else {
     console.error('Session ID or User ID is missing');
   }
