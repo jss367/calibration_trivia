@@ -116,26 +116,6 @@ function loadSessionQuestions(sessionId) {
 }
 
 
-
-
-// document.getElementById('set-session-id').addEventListener('click', () => {
-//   console.log("Inside set-session-id event listener");
-//   const sessionId = document.getElementById('session-id').value.trim();
-//   if (sessionId) {
-//     // Save the session ID to Firestore
-//     db.collection('sessions').doc(sessionId).set({ active: true })
-//       .then(() => {
-//         console.log("Session ID set successfully:", sessionId);
-//         // Store the session ID locally if needed
-//         localStorage.setItem('currentSessionId', sessionId);
-//       })
-//       .catch(error => console.error("Error setting session ID:", error));
-//   } else {
-//     console.log("Please enter a session ID.");
-//   }
-// });
-
-
 function loadAvailableSessions() {
   console.log("Inside loadAvailableSessions");
   db.collection('sessions').where('active', '==', true).get()
@@ -151,7 +131,6 @@ function loadAvailableSessions() {
     })
     .catch(error => console.error("Error fetching sessions:", error));
 }
-
 // Inside the startQuizButton event listener
 startQuizButton.addEventListener('click', () => {
   console.log("Inside startQuizButton event listener");
@@ -177,25 +156,31 @@ startQuizButton.addEventListener('click', () => {
       localStorage.setItem('currentSessionId', selectedSessionId);
       joinSessionListener(selectedSessionId);
       loadSessionQuestions(selectedSessionId);
-    } else if (selectedMode === 'group-questioner') {
-      console.log("Starting Group Questioner Mode");
-      const sessionId = document.getElementById('session-id').value.trim();
-      if (sessionId) {
-        // Save the session ID to Firestore and start the quiz
-        db.collection('sessions').doc(sessionId).set({ active: true })
-          .then(() => {
-            console.log("Session ID set successfully:", sessionId);
-            localStorage.setItem('currentSessionId', sessionId);
-            quizContainer.style.display = 'block';
-            loadQuestions(); // Load and display questions
-          })
-          .catch(error => console.error("Error setting session ID:", error));
-      } else {
-        console.log("Please enter a session ID.");
-      }
+    } else {
+      console.log("Please select a session.");
+    }
+  } else if (selectedMode === 'group-questioner') {
+    console.log("Starting Group Questioner Mode");
+    const sessionId = document.getElementById('session-id').value.trim();
+    if (sessionId) {
+      // Save the session ID to Firestore and start the quiz
+      db.collection('sessions').doc(sessionId).set({ active: true })
+        .then(() => {
+          console.log("Session ID set successfully:", sessionId);
+          localStorage.setItem('currentSessionId', sessionId);
+
+          // Update UI to display session ID and hide input field
+          sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
+          quizContainer.style.display = 'block';
+          loadQuestions(); // Load and display questions
+        })
+        .catch(error => console.error("Error setting session ID:", error));
+    } else {
+      console.log("Please enter a session ID.");
     }
   }
 });
+
 
 
 function loadQuestions() {
@@ -423,7 +408,7 @@ function displayQuestionSubmission(index) {
   questionDiv.innerHTML = `
     <h2>${question.question}</h2>
     ${answerInputHTML}
-    <input type="number" id="confidence" class="input-small" min="0" max="100" step="1" value="50">%
+    ${getConfidenceInputHTML()}
   `;
 
   questionContainer.innerHTML = ''; // Clear previous question
@@ -431,6 +416,16 @@ function displayQuestionSubmission(index) {
 
   nextButton.style.display = 'block';
 
+}
+
+
+function getConfidenceInputHTML() {
+  return `
+    <div>
+      <label for="confidence">Confidence:</label>
+      <input type="number" id="confidence" class="input-small" min="0" max="100" step="1" value="50">%
+    </div>
+  `;
 }
 
 function displayQuestion(index) {
@@ -545,11 +540,8 @@ function displayQuestionForGroupParticipant(index) {
   }
 
   const question = questions[index];
-
-  // Create a new div for the question
   const questionDiv = document.createElement('div');
 
-  // Initialize the answer input HTML
   let answerInputHTML = question.options.map((option, index) => `
     <div>
       <input type="radio" id="option-${index}" class="input-radio" name="answer" value="${option}">
@@ -557,9 +549,11 @@ function displayQuestionForGroupParticipant(index) {
     </div>
   `).join('');
 
+  // Add confidence input
   questionDiv.innerHTML = `
     <h2>Question ${index + 1}: ${question.question}</h2>
     ${answerInputHTML}
+    ${getConfidenceInputHTML()}
   `;
 
   questionContainer.innerHTML = ''; // Clear previous content
@@ -568,6 +562,7 @@ function displayQuestionForGroupParticipant(index) {
   // Make sure the quiz container is visible
   quizContainer.style.display = 'block';
 }
+
 
 
 
@@ -724,12 +719,12 @@ function displayResults() {
         <p>Correct answers: ${score} / ${questions.length}</p>
         <p>Brier score: ${brierScore.toFixed(2)}</p>
         ${confidenceDecileScores.map(({ decileRange, score }) => {
-            if (score === null) {
-              return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
-            } else {
-              return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time.</p>`;
-            }
-          }).join('')}
+    if (score === null) {
+      return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
+    } else {
+      return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time.</p>`;
+    }
+  }).join('')}
       `;
 
   resultsContainer.style.display = 'block';
