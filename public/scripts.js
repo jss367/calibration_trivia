@@ -16,6 +16,7 @@ const questionCountContainer = document.getElementById('question-count-container
 const startButtonContainer = document.getElementById('start-button-container');
 const questionerNextButton = document.getElementById('questioner-next-button');
 const sessionIdContainer = document.getElementById('session-id-container');
+const questionerButtonContainer = document.getElementById('questioner-button-container');
 
 
 // Firebase Firestore initialization
@@ -148,7 +149,7 @@ startQuizButton.addEventListener('click', () => {
   if (selectedMode === 'single') {
     console.log("Starting Single Player Mode");
     quizContainer.style.display = 'block';
-    loadQuestions();
+    loadQuestionsSingle();
   } else if (selectedMode === 'group-participant') {
     console.log("Starting Group Participant Mode");
     const selectedSessionId = document.getElementById('session-id-select').value;
@@ -171,8 +172,10 @@ startQuizButton.addEventListener('click', () => {
 
           // Update UI to display session ID and hide input field
           sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
+
           quizContainer.style.display = 'block';
-          loadQuestions(); // Load and display questions
+
+          loadQuestionsQuestioner(); // Load and display questions
         })
         .catch(error => console.error("Error setting session ID:", error));
     } else {
@@ -183,8 +186,8 @@ startQuizButton.addEventListener('click', () => {
 
 
 
-function loadQuestions() {
-  console.log("Inside loadQuestions");
+function loadQuestionsQuestioner() {
+  console.log("Inside loadQuestionsSingle");
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
   const selectedFiles = Array.from(checkboxes)
@@ -193,7 +196,7 @@ function loadQuestions() {
 
   // Continue only if at least one category is selected
   if (selectedFiles.length === 0) {
-    console.log("Please select at least one category.");
+    console.log("Please select at least one category."); // Should this be an error?
     return;
   }
 
@@ -222,14 +225,13 @@ function loadQuestions() {
       console.log("modeGroupParticipant.checked is ", modeGroupParticipant.checked);
       console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
 
-
-      // displayQuestion(currentQuestionIndex);
+      // Switch this to just one of the modes
       if (modeSinglePlayer.checked) {
         displayQuestion(currentQuestionIndex);
       } else if (modeGroupParticipant.checked) {
         displayQuestionSubmission(currentQuestionIndex)
       } else if (modeGroupQuestioner.checked) {
-        displayQuestionText(currentQuestionIndex)
+        displayQuestionQuestioner(currentQuestionIndex)
         const sessionId = getCurrentSessionId();
         if (sessionId) {
           saveQuestionsToFirestore(sessionId, questions);
@@ -241,10 +243,68 @@ function loadQuestions() {
     .catch((error) => {
       console.error('Error:', error);
     });
+}
 
 
 
 
+function loadQuestionsSingle() {
+  console.log("Inside loadQuestionsSingle");
+  const questionCount = parseInt(document.getElementById('question-count').value, 10);
+  const checkboxes = document.querySelectorAll('.category-checkbox');
+  const selectedFiles = Array.from(checkboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
+
+  // Continue only if at least one category is selected
+  if (selectedFiles.length === 0) {
+    console.log("Please select at least one category."); // Should this be an error?
+    return;
+  }
+
+  const promises = selectedFiles.map(file => fetch(file).then(response => {
+    if (!response.ok) {
+      throw new Error(`Network response was not ok for file ${file}`);
+    }
+    return response.json();
+  })
+  );
+
+  Promise.all(promises)
+    .then(loadedQuestionsArrays => {
+      console.log("Inside Promise.all");
+      // Flatten the array of arrays into a single array
+
+      questions = [].concat(...loadedQuestionsArrays);
+
+      // Shuffle questions array here
+      shuffleArray(questions);
+
+      // Only keep as many questions as the user requested
+      questions = questions.slice(0, questionCount);
+
+      console.log("modeSinglePlayer.checked is ", modeSinglePlayer.checked);
+      console.log("modeGroupParticipant.checked is ", modeGroupParticipant.checked);
+      console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
+
+      // Switch this to just one of the modes
+      if (modeSinglePlayer.checked) {
+        displayQuestion(currentQuestionIndex);
+      } else if (modeGroupParticipant.checked) {
+        displayQuestionSubmission(currentQuestionIndex)
+      } else if (modeGroupQuestioner.checked) {
+        displayQuestionQuestioner(currentQuestionIndex)
+        const sessionId = getCurrentSessionId();
+        if (sessionId) {
+          saveQuestionsToFirestore(sessionId, questions);
+        } else {
+          console.log('Session ID not set for Group Questioner mode');
+        }
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
 
 function shuffleArray(array) {
@@ -254,9 +314,9 @@ function shuffleArray(array) {
   }
 }
 
-function displayQuestionText(index) {
+function displayQuestionQuestioner(index) {
   // This is for group questioner mode
-  console.log("Inside function displayQuestionText");
+  console.log("Inside function displayQuestionQuestioner");
 
   console.log("Current Index: ", index);
   console.log("Current Question: ", questions[index]);
@@ -274,14 +334,6 @@ function displayQuestionText(index) {
   // Initialize the answer input HTML
   let answerInputHTML = '';
 
-  const options = ['A', 'B', 'C', 'D'];
-  // answerInputHTML = question.options.map((option, index) => `
-  //   <div>
-  //     <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
-  //     <label for="option-${options[index]}">${options[index]}: ${option}</label>
-  //   </div>
-  // `).join('');
-
   answerInputHTML = question.options.map((option, index) => `
   <div>
     <label>${String.fromCharCode(65 + index)}: ${option}</label>
@@ -296,7 +348,9 @@ function displayQuestionText(index) {
   questionContainer.innerHTML = ''; // Clear previous question
   questionContainer.appendChild(questionDiv); // Append new question
   quizContainer.style.display = 'block'; // Ensure the quiz container is visible
-  nextButton.style.display = 'block'; // Show the next button
+  // nextButton.style.display = 'block'; // Show the next button  // This should be the other next button
+  questionerButtonContainer.style.display = 'block';
+  questionerNextButton.style.display = 'block';
 }
 
 
@@ -380,16 +434,7 @@ function getCurrentSessionId() {
 }
 
 
-// The Questioner's "Next" button event listener
-document.getElementById('questioner-next-button').addEventListener('click', () => {
-  console.log("Inside questioner-next-button event listener");
-  const sessionId = getCurrentSessionId(); // Make sure this retrieves the correct session ID
-  if (sessionId) {
-    questionerNextQuestion(sessionId);
-  } else {
-    console.error('No session ID found for Questioner.');
-  }
-});
+
 
 
 function displayQuestionSubmission(index) {
@@ -499,13 +544,14 @@ nextButton.addEventListener('click', () => {
   // Handling for Group Questioner mode
   if (modeGroupQuestioner.checked) {
     console.log("Handling Group Questioner mode");
+    console.log("THIS SHOULD NOT HAPPEN");
 
     // Increment the current question index
     currentQuestionIndex++;
 
     // Check if there are more questions
     if (currentQuestionIndex < questions.length) {
-      displayQuestionText(currentQuestionIndex); // Display next question for Group Questioner
+      displayQuestionQuestioner(currentQuestionIndex); // Display next question for Group Questioner
     } else {
       displayResults(); // Display results if it's the last question
     }
@@ -516,9 +562,7 @@ nextButton.addEventListener('click', () => {
   }
   else {
     // For Single Player mode, handle answer submission and question navigation
-    if (!modeGroupQuestioner.checked) {
-      submitAnswer(); // Same function for Single Player and Group Participant
-    }
+    submitAnswer();
 
     // Increment the current question index
     currentQuestionIndex++;
@@ -533,6 +577,7 @@ nextButton.addEventListener('click', () => {
 });
 
 questionerNextButton.addEventListener('click', () => {
+  console.log("Inside questionerNextButton event listener");
   const sessionId = getCurrentSessionId(); // Retrieves the current session ID
   if (sessionId) {
     questionerNextQuestion(sessionId);
@@ -577,8 +622,6 @@ function displayQuestionForGroupParticipant(index) {
 }
 
 
-
-
 function submitAnswer() {
   console.log("Inside submitAnswer");
 
@@ -588,14 +631,13 @@ function submitAnswer() {
   const confidenceElement = document.getElementById('confidence');
   const userConfidence = parseInt(confidenceElement.value, 10) / 100;
 
-  // Check if the user has selected an answer and entered a confidence level
+  // Log the scenario where no answer or confidence is selected
   if (!selectedOption || !confidenceElement) {
-    console.error('No answer or confidence selected');
-    return; // Exit the function if no answer or confidence is selected
+    console.warn('No answer or confidence selected for current question');
+  } else {
+    // Log values before submitting
+    console.log('Submitting answer:', userAnswer, 'Confidence:', userConfidence);
   }
-
-  // Log values before submitting
-  console.log('Submitting answer:', userAnswer, 'Confidence:', userConfidence);
 
   // Determine if the answer is correct and update the score
   const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
@@ -676,18 +718,19 @@ function calculateConfidenceDecileScores(answers) {
 
 // Function to create a new session
 function createSession() {
-  const sessionId = generateSessionId(); // Implement this function to generate a unique ID
+  console.log("Inside createSession");
+  const sessionId = document.getElementById('session-id').value.trim();
   db.collection('sessions').doc(sessionId).set({
     currentQuestionIndex: 0,
     questions: [],
     active: true
   })
-  .then(() => {
-    console.log('Session created successfully with ID:', sessionId);
-    // Store sessionId in a variable or local storage to use later
-    localStorage.setItem('currentSessionId', sessionId);
-  })
-  .catch(error => console.error('Error creating session:', error));
+    .then(() => {
+      console.log('Session created successfully with ID:', sessionId);
+      // Store sessionId in a variable or local storage to use later
+      localStorage.setItem('currentSessionId', sessionId);
+    })
+    .catch(error => console.error('Error creating session:', error));
 }
 
 
