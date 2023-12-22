@@ -339,11 +339,15 @@ function joinSessionListener(sessionId) {
   db.collection('sessions').doc(sessionId).onSnapshot(doc => {
     const sessionData = doc.data();
     if (sessionData) {
-      onQuestionIndexUpdated(sessionData);
+      if (sessionData.currentQuestionIndex !== undefined) {
+        currentQuestionIndex = sessionData.currentQuestionIndex;
+        displayQuestionForGroupParticipant(currentQuestionIndex);
+      }
       nextButton.style.display = 'none'; // Hide the next button for participants
     }
   });
 }
+
 
 // This function would be called when the participant selects a session and clicks a "Join Session" button
 function joinSelectedSession() {
