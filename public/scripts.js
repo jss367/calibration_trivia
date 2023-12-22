@@ -43,7 +43,7 @@ modeSelectionContainer.addEventListener('change', (event) => {
     usernameContainer.style.display = 'none';
     document.getElementById('start-quiz').disabled = false;
     startQuizButton.removeEventListener('click', joinSelectedSession);
-  } 
+  }
   else if (event.target.value === 'group-participant') {
     console.log("Inside group-participant if statement");
     // Group Participant specific elements
@@ -118,22 +118,22 @@ function loadSessionQuestions(sessionId) {
 
 
 
-document.getElementById('set-session-id').addEventListener('click', () => {
-  console.log("Inside set-session-id event listener");
-  const sessionId = document.getElementById('session-id').value.trim();
-  if (sessionId) {
-    // Save the session ID to Firestore
-    db.collection('sessions').doc(sessionId).set({ active: true })
-      .then(() => {
-        console.log("Session ID set successfully:", sessionId);
-        // Store the session ID locally if needed
-        localStorage.setItem('currentSessionId', sessionId);
-      })
-      .catch(error => console.error("Error setting session ID:", error));
-  } else {
-    console.log("Please enter a session ID.");
-  }
-});
+// document.getElementById('set-session-id').addEventListener('click', () => {
+//   console.log("Inside set-session-id event listener");
+//   const sessionId = document.getElementById('session-id').value.trim();
+//   if (sessionId) {
+//     // Save the session ID to Firestore
+//     db.collection('sessions').doc(sessionId).set({ active: true })
+//       .then(() => {
+//         console.log("Session ID set successfully:", sessionId);
+//         // Store the session ID locally if needed
+//         localStorage.setItem('currentSessionId', sessionId);
+//       })
+//       .catch(error => console.error("Error setting session ID:", error));
+//   } else {
+//     console.log("Please enter a session ID.");
+//   }
+// });
 
 
 function loadAvailableSessions() {
@@ -152,9 +152,7 @@ function loadAvailableSessions() {
     .catch(error => console.error("Error fetching sessions:", error));
 }
 
-
-
-// Click event listener for startQuizButton
+// Inside the startQuizButton event listener
 startQuizButton.addEventListener('click', () => {
   console.log("Inside startQuizButton event listener");
 
@@ -164,7 +162,6 @@ startQuizButton.addEventListener('click', () => {
   // Hide UI elements not needed once the quiz starts
   usernameContainer.style.display = 'none';
   modeSelectionContainer.style.display = 'none';
-  startQuizButton.style.display = 'none';
   startButtonContainer.style.display = 'none';
   questionCountContainer.style.display = 'none';
   categorySelectionContainer.style.display = 'none';
@@ -180,13 +177,25 @@ startQuizButton.addEventListener('click', () => {
       localStorage.setItem('currentSessionId', selectedSessionId);
       joinSessionListener(selectedSessionId);
       loadSessionQuestions(selectedSessionId);
-    } else {
-      console.log("Please select a session.");
+    } else if (selectedMode === 'group-questioner') {
+      console.log("Starting Group Questioner Mode");
+      const sessionId = document.getElementById('session-id').value.trim();
+      if (sessionId) {
+        // Save the session ID to Firestore and start the quiz
+        db.collection('sessions').doc(sessionId).set({ active: true })
+          .then(() => {
+            console.log("Session ID set successfully:", sessionId);
+            localStorage.setItem('currentSessionId', sessionId);
+            quizContainer.style.display = 'block';
+            loadQuestions(); // Load and display questions
+          })
+          .catch(error => console.error("Error setting session ID:", error));
+      } else {
+        console.log("Please enter a session ID.");
+      }
     }
   }
 });
-
-
 
 
 function loadQuestions() {
@@ -237,11 +246,11 @@ function loadQuestions() {
       } else if (modeGroupQuestioner.checked) {
         displayQuestionText(currentQuestionIndex)
         const sessionId = getCurrentSessionId();
-            if (sessionId) {
-                saveQuestionsToFirestore(sessionId, questions);
-            } else {
-                console.log('Session ID not set for Group Questioner mode');
-            }
+        if (sessionId) {
+          saveQuestionsToFirestore(sessionId, questions);
+        } else {
+          console.log('Session ID not set for Group Questioner mode');
+        }
       }
     })
     .catch((error) => {
@@ -466,11 +475,11 @@ function displayQuestion(index) {
 function saveQuestionsToFirestore(sessionId, questionsArray) {
   console.log("Inside saveQuestionsToFirestore");
   db.collection('sessions').doc(sessionId).set({
-      questions: questionsArray,
-      active: true // or any other relevant session data
+    questions: questionsArray,
+    active: true // or any other relevant session data
   })
-  .then(() => console.log('Questions saved successfully'))
-  .catch(error => console.error('Error saving questions:', error));
+    .then(() => console.log('Questions saved successfully'))
+    .catch(error => console.error('Error saving questions:', error));
 }
 
 
@@ -481,40 +490,40 @@ nextButton.addEventListener('click', () => {
 
   // Handling for Group Questioner mode
   if (modeGroupQuestioner.checked) {
-      console.log("Handling Group Questioner mode");
-  
-      // Increment the current question index
-      currentQuestionIndex++;
-  
-      // Check if there are more questions
-      if (currentQuestionIndex < questions.length) {
-        displayQuestionText(currentQuestionIndex); // Display next question for Group Questioner
-      } else {
-        displayResults(); // Display results if it's the last question
-      }
+    console.log("Handling Group Questioner mode");
+
+    // Increment the current question index
+    currentQuestionIndex++;
+
+    // Check if there are more questions
+    if (currentQuestionIndex < questions.length) {
+      displayQuestionText(currentQuestionIndex); // Display next question for Group Questioner
+    } else {
+      displayResults(); // Display results if it's the last question
     }
+  }
   else if (modeGroupParticipant.checked) {
-        const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
-        nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
-      }
+    const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
+    nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
+  }
   else {
-        // For Single Player mode, handle answer submission and question navigation
-        if (!modeGroupQuestioner.checked) {
-          submitAnswer(); // Same function for Single Player and Group Participant
-        }
-  
-        // Increment the current question index
-        currentQuestionIndex++;
-  
-        // Check if there are more questions
-        if (currentQuestionIndex < questions.length) {
-          displayQuestion(currentQuestionIndex); // Display next question for Single Player
-        } else {
-          displayResults(); // Display results if it's the last question
-        }
-      }
+    // For Single Player mode, handle answer submission and question navigation
+    if (!modeGroupQuestioner.checked) {
+      submitAnswer(); // Same function for Single Player and Group Participant
+    }
+
+    // Increment the current question index
+    currentQuestionIndex++;
+
+    // Check if there are more questions
+    if (currentQuestionIndex < questions.length) {
+      displayQuestion(currentQuestionIndex); // Display next question for Single Player
+    } else {
+      displayResults(); // Display results if it's the last question
+    }
+  }
 });
- 
+
 questionerNextButton.addEventListener('click', () => {
   const sessionId = getCurrentSessionId(); // Retrieves the current session ID
   if (sessionId) {
@@ -555,7 +564,7 @@ function displayQuestionForGroupParticipant(index) {
 
   questionContainer.innerHTML = ''; // Clear previous content
   questionContainer.appendChild(questionDiv); // Append new content
-  
+
   // Make sure the quiz container is visible
   quizContainer.style.display = 'block';
 }
