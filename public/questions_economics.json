@@ -148,5 +148,205 @@
             "Dominant strategy equilibrium",
             "Nash equilibrium"
         ]
+    },
+    {
+        "question": "What is the economic model that describes a hypothetical market where no buyer or seller has the market power to influence prices?",
+        "correctAnswer": "Perfect competition",
+        "options": [
+            "Monopoly",
+            "Oligopoly",
+            "Perfect competition",
+            "Monopolistic competition"
+        ]
+    },
+    {
+        "question": "Who developed the concept of 'invisible hand' to describe the self-regulating behavior of the marketplace?",
+        "correctAnswer": "Adam Smith",
+        "options": [
+            "David Ricardo",
+            "Adam Smith",
+            "John Maynard Keynes",
+            "Milton Friedman"
+        ]
+    },
+    {
+        "question": "What term is used to describe a market situation where a single company or group owns all or nearly all of the market for a given type of product or service?",
+        "correctAnswer": "Monopoly",
+        "options": [
+            "Oligopoly",
+            "Perfect competition",
+            "Monopoly",
+            "Duopoly"
+        ]
+    },
+    {
+        "question": "What concept in economics is defined as the additional satisfaction or utility that a person receives from consuming an additional unit of a good or service?",
+        "correctAnswer": "Marginal utility",
+        "options": [
+            "Marginal cost",
+            "Total utility",
+            "Average utility",
+            "Marginal utility"
+        ]
+    },
+    {
+        "question": "Which economist is best known for his book 'The Wealth of Nations'?",
+        "correctAnswer": "Adam Smith",
+        "options": [
+            "John Maynard Keynes",
+            "Milton Friedman",
+            "Adam Smith",
+            "David Ricardo"
+        ]
+    },
+    {
+        "question": "What term describes the economic policy of restraining trade between states through methods such as tariffs on imported goods, restrictive quotas, and a variety of other government regulations?",
+        "correctAnswer": "Protectionism",
+        "options": [
+            "Liberalism",
+            "Protectionism",
+            "Free trade",
+            "Globalization"
+        ]
+    },
+    {
+        "question": "Who is known for his work on the theory of 'liquidity preference' as part of his theory on interest rates in 'The General Theory of Employment, Interest, and Money'?",
+        "correctAnswer": "John Maynard Keynes",
+        "options": [
+            "Milton Friedman",
+            "Adam Smith",
+            "David Ricardo",
+            "John Maynard Keynes"
+        ]
+    },
+    {
+        "question": "What is the term for the cost incurred by an entity for its own production, as opposed to buying products from the external market?",
+        "correctAnswer": "Opportunity cost",
+        "options": [
+            "Marginal cost",
+            "Total cost",
+            "Opportunity cost",
+            "Production cost"
+        ]
+    },
+    {
+        "question": "Which term refers to the total market value of all final goods and services produced within a country in a given period?",
+        "correctAnswer": "Gross Domestic Product (GDP)",
+        "options": [
+            "Net National Product (NNP)",
+            "Gross Domestic Product (GDP)",
+            "Gross National Product (GNP)",
+            "National Income"
+        ]
+    },
+    {
+        "question": "What is the term for a tax on imports or exports between sovereign states?",
+        "correctAnswer": "Tariff",
+        "options": [
+            "Tariff",
+            "Subsidy",
+            "VAT",
+            "Excise tax"
+        ]
+    },
+    {
+        "question": "Which economic concept describes the decrease in the marginal (incremental) output of a production process as the amount of a single factor of production is incrementally increased, while holding all other factors of production constant?",
+        "correctAnswer": "Diminishing returns",
+        "options": [
+            "Economies of scale",
+            "Diminishing returns",
+            "Marginal utility",
+            "Capital accumulation"
+        ]
+    },
+    {
+        "question": "What term refers to the total value of goods produced and services provided in a country during one year, including income earned by citizens abroad but excluding income earned by foreigners in the country?",
+        "correctAnswer": "Gross National Product (GNP)",
+        "options": [
+            "Gross National Product (GNP)",
+            "Gross Domestic Product (GDP)",
+            "Net National Product (NNP)",
+            "National Income"
+        ]
+    },
+    {
+        "question": "Which economic indicator measures the average prices of goods and services in an economy and is often used as a measure of inflation?",
+        "correctAnswer": "Consumer Price Index (CPI)",
+        "options": [
+            "Gross Domestic Product (GDP)",
+            "Consumer Price Index (CPI)",
+            "Unemployment rate",
+            "Producer Price Index (PPI)"
+        ]
+    },
+    {
+        "question": "What is the term for an economic system where the means of production are privately owned and operated for profit, usually in competitive markets?",
+        "correctAnswer": "Capitalism",
+        "options": [
+            "Socialism",
+            "Communism",
+            "Capitalism",
+            "Feudalism"
+        ]
+    },
+    {
+        "question": "Who is the economist known for his work on the theory of 'human capital' in his book 'Human Capital: A Theoretical and Empirical Analysis, with Special Reference to Education'?",
+        "correctAnswer": "Gary Becker",
+        "options": [
+            "Milton Friedman",
+            "Gary Becker",
+            "Adam Smith",
+            "John Maynard Keynes"
+        ]
+    },
+    {
+        "question": "What term is used to describe a market structure characterized by a small number of large firms that dominate the market, leading to limited competition?",
+        "correctAnswer": "Oligopoly",
+        "options": [
+            "Monopoly",
+            "Duopoly",
+            "Oligopoly",
+            "Perfect competition"
+        ]
+    },
+    {
+        "question": "Which concept in economics refers to the amount of goods and services that consumers are willing and able to purchase at a given price level?",
+        "correctAnswer": "Aggregate demand",
+        "options": [
+            "Aggregate supply",
+            "Aggregate demand",
+            "Market equilibrium",
+            "Consumer surplus"
+        ]
+    },
+    {
+        "question": "In microeconomics, what term refers to the situation where the additional satisfaction gained from consuming additional units of a good or service eventually starts to decrease?",
+        "correctAnswer": "Diminishing marginal utility",
+        "options": [
+            "Increasing returns to scale",
+            "Diminishing marginal utility",
+            "Marginal cost pricing",
+            "Consumer equilibrium"
+        ]
+    },
+    {
+        "question": "What is the name of the index that measures the degree of concentration in a market and is used to determine the potential for market power to be exercised?",
+        "correctAnswer": "Herfindahl-Hirschman Index",
+        "options": [
+            "Lorenz Curve",
+            "Gini Coefficient",
+            "Herfindahl-Hirschman Index",
+            "Consumer Confidence Index"
+        ]
+    },
+    {
+        "question": "Who is the economist credited with the development of the concept of 'creative destruction' as a theory of economic innovation and progress?",
+        "correctAnswer": "Joseph Schumpeter",
+        "options": [
+            "Adam Smith",
+            "John Maynard Keynes",
+            "Milton Friedman",
+            "Joseph Schumpeter"
+        ]
     }
 ]
