@@ -20,6 +20,8 @@ finish leaderboard
 
 Show the question count
 
+You shouldn't need to enter your name on single player
+
 ## Functionality
 
 In both single and group mode, the results are not shown until the end.
