@@ -16,6 +16,8 @@ Log in to a particular session? That way everyone around you can do consensus sc
 
 Fix behavior when people don't select an answer.
 
+Explain brier score, what scores are good.
+
 ## Functionality
 
 In both single and group mode, the results are not shown until the end.
