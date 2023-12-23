@@ -24,6 +24,8 @@ Some way to avoid repeaated questions between sessions?
 
 Don't display "Choose a Session" after you've already selected one.
 
+add a back button for the group questioner mode?
+
 ## Functionality
 
 In both single and group mode, the results are not shown until the end.
