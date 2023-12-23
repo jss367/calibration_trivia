@@ -18,6 +18,8 @@ add a back button for the group questioner mode?
 
 finish leaderboard
 
+Show the question count
+
 ## Functionality
 
 In both single and group mode, the results are not shown until the end.
