@@ -1,0 +1,202 @@
+[
+    {
+        "question": "Which marsupial is known for its powerful hind legs and long tail, native to Australia?",
+        "correctAnswer": "Kangaroo",
+        "options": [
+            "Kangaroo",
+            "Koala",
+            "Wallaby",
+            "Wombat"
+        ]
+    },
+    {
+        "question": "What is the name of the marsupial famous for carrying its young in a pouch on its belly, primarily found in Australia and New Guinea?",
+        "correctAnswer": "Koala",
+        "options": [
+            "Koala",
+            "Opossum",
+            "Bandicoot",
+            "Tasmanian Devil"
+        ]
+    },
+    {
+        "question": "Which small, nocturnal marsupial is known for its distinctive scream and is found in Tasmania?",
+        "correctAnswer": "Tasmanian Devil",
+        "options": [
+            "Quokka",
+            "Tasmanian Devil",
+            "Sugar Glider",
+            "Numbat"
+        ]
+    },
+    {
+        "question": "What is the name of the world's largest marsupial, now extinct, that was native to Australia?",
+        "correctAnswer": "Diprotodon",
+        "options": [
+            "Diprotodon",
+            "Thylacine",
+            "Giant Wombat",
+            "Marsupial Lion"
+        ]
+    },
+    {
+        "question": "Which marsupial is known for its unique ability to glide, using a membrane between its front and hind legs?",
+        "correctAnswer": "Sugar Glider",
+        "options": [
+            "Flying Squirrel",
+            "Sugar Glider",
+            "Tree Kangaroo",
+            "Squirrel Glider"
+        ]
+    },
+    {
+        "question": "What small marsupial is famous for its perpetual smile and friendly nature, found on Rottnest Island near Western Australia?",
+        "correctAnswer": "Quokka",
+        "options": [
+            "Quokka",
+            "Koala",
+            "Bandicoot",
+            "Wallaby"
+        ]
+    },
+    {
+        "question": "Which marsupial, known for its rat-like appearance, is a small insectivore found in Australia?",
+        "correctAnswer": "Bandicoot",
+        "options": [
+            "Bandicoot",
+            "Wombat",
+            "Bilby",
+            "Opossum"
+        ]
+    },
+    {
+        "question": "What is the name of the only marsupial found in North America, often seen in urban areas?",
+        "correctAnswer": "Opossum",
+        "options": [
+            "Opossum",
+            "Raccoon",
+            "Skunk",
+            "Beaver"
+        ]
+    },
+    {
+        "question": "Which marsupial, native to Australia, is known for its burrowing habits and cube-shaped feces?",
+        "correctAnswer": "Wombat",
+        "options": [
+            "Wombat",
+            "Kangaroo",
+            "Tasmanian Devil",
+            "Wallaby"
+        ]
+    },
+    {
+        "question": "What extinct marsupial, often referred to as the 'Tasmanian Tiger', was native to Australia, Tasmania, and New Guinea?",
+        "correctAnswer": "Thylacine",
+        "options": [
+            "Thylacine",
+            "Diprotodon",
+            "Marsupial Lion",
+            "Giant Wombat"
+        ]
+    },
+    {
+        "question": "What is the largest mammal in the world?",
+        "correctAnswer": "Blue Whale",
+        "options": [
+            "Elephant",
+            "Giraffe",
+            "Blue Whale",
+            "Hippopotamus"
+        ]
+    },
+    {
+        "question": "Which bird is known for its colorful plumage and ability to mimic human speech?",
+        "correctAnswer": "Parrot",
+        "options": [
+            "Parrot",
+            "Peacock",
+            "Canary",
+            "Raven"
+        ]
+    },
+    {
+        "question": "What is the only mammal capable of true sustained flight?",
+        "correctAnswer": "Bat",
+        "options": [
+            "Bat",
+            "Flying Squirrel",
+            "Sugar Glider",
+            "Colugo"
+        ]
+    },
+    {
+        "question": "Which animal is known as the 'ship of the desert'?",
+        "correctAnswer": "Camel",
+        "options": [
+            "Camel",
+            "Horse",
+            "Llama",
+            "Elephant"
+        ]
+    },
+    {
+        "question": "What is the largest land animal?",
+        "correctAnswer": "African Elephant",
+        "options": [
+            "African Elephant",
+            "Giraffe",
+            "Hippopotamus",
+            "Rhinoceros"
+        ]
+    },
+    {
+        "question": "Which marine creature is known for its eight arms and high intelligence?",
+        "correctAnswer": "Octopus",
+        "options": [
+            "Octopus",
+            "Squid",
+            "Starfish",
+            "Jellyfish"
+        ]
+    },
+    {
+        "question": "What species of fish is known for its ability to change colors and blend with its environment?",
+        "correctAnswer": "Chameleon",
+        "options": [
+            "Chameleon",
+            "Goldfish",
+            "Clownfish",
+            "Pufferfish"
+        ]
+    },
+    {
+        "question": "Which animal is the fastest land animal, capable of reaching speeds up to 70 mph?",
+        "correctAnswer": "Cheetah",
+        "options": [
+            "Cheetah",
+            "Lion",
+            "Horse",
+            "Greyhound"
+        ]
+    },
+    {
+        "question": "Which bird is known for its elaborate courtship dance and long plumage?",
+        "correctAnswer": "Peacock",
+        "options": [
+            "Flamingo",
+            "Peacock",
+            "Swan",
+            "Eagle"
+        ]
+    },
+    {
+        "question": "What is the largest species of bear?",
+        "correctAnswer": "Polar Bear",
+        "options": [
+            "Polar Bear",
+            "Grizzly Bear",
+            "Brown Bear",
+            "Black Bear"
+        ]
+    }
+]

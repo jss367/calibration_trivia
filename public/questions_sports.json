@@ -1,0 +1,102 @@
+[
+    {
+        "question": "Which country won the first ever soccer World Cup in 1930?",
+        "correctAnswer": "Uruguay",
+        "options": [
+            "Brazil",
+            "Italy",
+            "Uruguay",
+            "Germany"
+        ]
+    },
+    {
+        "question": "Who is known as 'The Great One' in ice hockey?",
+        "correctAnswer": "Wayne Gretzky",
+        "options": [
+            "Mario Lemieux",
+            "Bobby Orr",
+            "Wayne Gretzky",
+            "Gordie Howe"
+        ]
+    },
+    {
+        "question": "In which year were women first allowed to compete in the modern Olympic Games?",
+        "correctAnswer": "1900",
+        "options": [
+            "1900",
+            "1920",
+            "1896",
+            "1912"
+        ]
+    },
+    {
+        "question": "Which athlete has won the most Olympic medals?",
+        "correctAnswer": "Michael Phelps",
+        "options": [
+            "Larisa Latynina",
+            "Michael Phelps",
+            "Usain Bolt",
+            "Mark Spitz"
+        ]
+    },
+    {
+        "question": "What is the highest score possible in a single frame of ten-pin bowling?",
+        "correctAnswer": "30",
+        "options": [
+            "10",
+            "30",
+            "20",
+            "15"
+        ]
+    },
+    {
+        "question": "Which sport is known as the 'king of sports'?",
+        "correctAnswer": "Soccer",
+        "options": [
+            "Basketball",
+            "Soccer",
+            "Tennis",
+            "Golf"
+        ]
+    },
+    {
+        "question": "Who holds the record for the most Grand Slam tennis titles won in the Men's Singles category?",
+        "correctAnswer": "Roger Federer",
+        "options": [
+            "Roger Federer",
+            "Rafael Nadal",
+            "Novak Djokovic",
+            "Pete Sampras"
+        ]
+    },
+    {
+        "question": "In what year did the Boston Red Sox break their 'Curse of the Bambino' by winning the World Series?",
+        "correctAnswer": "2004",
+        "options": [
+            "2004",
+            "2003",
+            "2005",
+            "2000"
+        ]
+    },
+    {
+        "question": "Which country is known for originating the martial art of taekwondo?",
+        "correctAnswer": "South Korea",
+        "options": [
+            "Japan",
+            "China",
+            "South Korea",
+            "Thailand"
+        ]
+    },
+    {
+        "question": "In golf, what name is given to a score of three under par on a single hole?",
+        "correctAnswer": "Albatross",
+        "options": [
+            "Eagle",
+            "Birdie",
+            "Bogey",
+            "Albatross"
+        ]
+    }
+]

@@ -2,46 +2,91 @@
     {
         "question": "What does 'HPMOR' stand for?",
         "correctAnswer": "Harry Potter and the Methods of Rationality",
-        "options": ["Harry Potter and the Magic of Reason", "Harry Potter and the Methods of Rationality", "Harry Potter and the Rational Minds", "Harry's Power: Mastery of Rationality"]
+        "options": [
+            "Harry Potter and the Magic of Reason",
+            "Harry Potter and the Methods of Rationality",
+            "Harry Potter and the Rational Minds",
+            "Harry's Power: Mastery of Rationality"
+        ]
     },
     {
         "question": "What concept from LessWrong discusses the idea that one can't purposefully make oneself believe something one knows isn't true?",
         "correctAnswer": "Belief in belief",
-        "options": ["Belief in belief", "Sunk cost fallacy", "Bayesian probability", "Roko's Basilisk"]
+        "options": [
+            "Belief in belief",
+            "Sunk cost fallacy",
+            "Bayesian probability",
+            "Roko's Basilisk"
+        ]
     },
     {
         "question": "What principle, discussed on LessWrong, suggests that one should update their beliefs proportional to the evidence?",
         "correctAnswer": "Bayes' theorem",
-        "options": ["Occam's razor", "Hume's fork", "Kant's categorical imperative", "Bayes' theorem"]
+        "options": [
+            "Occam's razor",
+            "Hume's fork",
+            "Kant's categorical imperative",
+            "Bayes' theorem"
+        ]
     },
     {
         "question": "Which blog on rationality is known for hosting 'open threads' where readers can discuss anything they want?",
         "correctAnswer": "SlateStarCodex",
-        "options": ["LessWrong", "Overcoming Bias", "SlateStarCodex", "RationalWiki"]
+        "options": [
+            "LessWrong",
+            "Overcoming Bias",
+            "SlateStarCodex",
+            "RationalWiki"
+        ]
     },
     {
         "question": "In HPMOR, who teaches Harry Potter about rationality?",
         "correctAnswer": "Petunia and Michael Evans-Verres",
-        "options": ["Albus Dumbledore", "Severus Snape", "Petunia and Michael Evans-Verres", "Hermione Granger"]
+        "options": [
+            "Albus Dumbledore",
+            "Severus Snape",
+            "Petunia and Michael Evans-Verres",
+            "Hermione Granger"
+        ]
     },
     {
         "question": "What concept refers to the hypothetical future event when AI surpasses human intelligence, creating drastic changes to civilization?",
         "correctAnswer": "Technological singularity",
-        "options": ["Roko's Basilisk", "Technological singularity", "The Bostrom paradox", "The Yudkowsky paradox"]
+        "options": [
+            "Roko's Basilisk",
+            "Technological singularity",
+            "The Bostrom paradox",
+            "The Yudkowsky paradox"
+        ]
     },
     {
         "question": "What is the name of the book written by Eliezer Yudkowsky and published by the Machine Intelligence Research Institute (MIRI) that compiles his essays on rationality?",
         "correctAnswer": "Rationality: From AI to Zombies",
-        "options": ["LessWrong: The Sequences", "Rationality: From AI to Zombies", "Overcoming Bias: A Guide", "How To Be Rational"]
+        "options": [
+            "LessWrong: The Sequences",
+            "Rationality: From AI to Zombies",
+            "Overcoming Bias: A Guide",
+            "How To Be Rational"
+        ]
     },
     {
         "question": "What term, originating from LessWrong, refers to a hypothetical dangerous AI thought experiment that was at one point banned from being discussed on the website?",
         "correctAnswer": "Roko's Basilisk",
-        "options": ["Roko's Basilisk", "Eliezer's Leviathan", "MIRI's Paradox", "LessWrong's Conundrum"]
+        "options": [
+            "Roko's Basilisk",
+            "Eliezer's Leviathan",
+            "MIRI's Paradox",
+            "LessWrong's Conundrum"
+        ]
     },
     {
         "question": "What term, popularized by Eliezer Yudkowsky, refers to the idea that everything in the universe operates according to the laws of physics, including the mind?",
         "correctAnswer": "Materialism",
-        "options": ["Materialism", "Determinism", "Naturalism", "Realism"]
+        "options": [
+            "Materialism",
+            "Determinism",
+            "Naturalism",
+            "Realism"
+        ]
     }
 ]

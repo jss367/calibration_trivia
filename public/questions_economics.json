@@ -2,76 +2,151 @@
     {
         "question": "What does GDP stand for in economics?",
         "correctAnswer": "Gross Domestic Product",
-        "options": ["General Demand Price", "Gross Domestic Product", "Global Development Plan", "Governance Dividend Payout"]
+        "options": [
+            "General Demand Price",
+            "Gross Domestic Product",
+            "Global Development Plan",
+            "Governance Dividend Payout"
+        ]
     },
     {
         "question": "Who is known as the 'Father of Modern Economics'?",
         "correctAnswer": "Adam Smith",
-        "options": ["John Maynard Keynes", "Milton Friedman", "Karl Marx", "Adam Smith"]
+        "options": [
+            "John Maynard Keynes",
+            "Milton Friedman",
+            "Karl Marx",
+            "Adam Smith"
+        ]
     },
     {
         "question": "What is the law that states that demand decreases as the price increases, and vice versa?",
         "correctAnswer": "Law of Demand",
-        "options": ["Law of Demand", "Law of Supply", "Law of Market Equilibrium", "Law of Price Elasticity"]
+        "options": [
+            "Law of Demand",
+            "Law of Supply",
+            "Law of Market Equilibrium",
+            "Law of Price Elasticity"
+        ]
     },
     {
         "question": "What is the economic theory that suggests that increasing the supply of money usually reduces the cost of borrowing, which encourages spending and investment?",
         "correctAnswer": "Monetary policy",
-        "options": ["Fiscal policy", "Structural policy", "Monetary policy", "Inflation policy"]
+        "options": [
+            "Fiscal policy",
+            "Structural policy",
+            "Monetary policy",
+            "Inflation policy"
+        ]
     },
     {
         "question": "What economic concept refers to a situation in which every individual or economy is satisfied with the current distribution of resources, and there is no way to redistribute resources to make someone better off without making someone else worse off?",
         "correctAnswer": "Pareto efficiency",
-        "options": ["Nash equilibrium", "Pareto efficiency", "General equilibrium", "Marginal efficiency"]
+        "options": [
+            "Nash equilibrium",
+            "Pareto efficiency",
+            "General equilibrium",
+            "Marginal efficiency"
+        ]
     },
     {
         "question": "Who won the Nobel Prize in Economics in 2001 for his analysis of markets with asymmetric information?",
         "correctAnswer": "Joseph E. Stiglitz",
-        "options": ["Joseph E. Stiglitz", "Milton Friedman", "Paul Krugman", "Richard Thaler"]
+        "options": [
+            "Joseph E. Stiglitz",
+            "Milton Friedman",
+            "Paul Krugman",
+            "Richard Thaler"
+        ]
     },
     {
         "question": "What is the term for a situation in economics where the allocation of goods and services is not efficient, often leading to a net loss of economic value?",
         "correctAnswer": "Market failure",
-        "options": ["Market failure", "Supply shock", "Demand crisis", "Fiscal drag"]
+        "options": [
+            "Market failure",
+            "Supply shock",
+            "Demand crisis",
+            "Fiscal drag"
+        ]
     },
     {
         "question": "What theory suggests that people make decisions based on the potential value of losses and gains rather than the final outcome?",
         "correctAnswer": "Prospect Theory",
-        "options": ["Utility Theory", "Prospect Theory", "Game Theory", "Rational Choice Theory"]
+        "options": [
+            "Utility Theory",
+            "Prospect Theory",
+            "Game Theory",
+            "Rational Choice Theory"
+        ]
     },
     {
         "question": "What term refers to the value of the next best alternative that must be given up when a choice is made?",
         "correctAnswer": "Opportunity Cost",
-        "options": ["Sunk Cost", "Transaction Cost", "Opportunity Cost", "Marginal Cost"]
+        "options": [
+            "Sunk Cost",
+            "Transaction Cost",
+            "Opportunity Cost",
+            "Marginal Cost"
+        ]
     },
     {
         "question": "Who proposed the theory of comparative advantage, a fundamental concept in international trade theory?",
         "correctAnswer": "David Ricardo",
-        "options": ["Adam Smith", "Karl Marx", "David Ricardo", "John Maynard Keynes"]
+        "options": [
+            "Adam Smith",
+            "Karl Marx",
+            "David Ricardo",
+            "John Maynard Keynes"
+        ]
     },
     {
         "question": "Who introduced the concept of 'Creative Destruction' in economics?",
         "correctAnswer": "Joseph Schumpeter",
-        "options": ["John Maynard Keynes", "Adam Smith", "Milton Friedman", "Joseph Schumpeter"]
+        "options": [
+            "John Maynard Keynes",
+            "Adam Smith",
+            "Milton Friedman",
+            "Joseph Schumpeter"
+        ]
     },
     {
         "question": "What term, coined by economist Raghuram Rajan, refers to a situation where governments induce socially unwelcome behaviour by individuals or businesses by subsidizing the costs associated with the behaviour?",
         "correctAnswer": "Government induced distortions",
-        "options": ["Moral hazard", "Principal-agent problem", "Information asymmetry", "Government induced distortions"]
+        "options": [
+            "Moral hazard",
+            "Principal-agent problem",
+            "Information asymmetry",
+            "Government induced distortions"
+        ]
     },
     {
         "question": "In econometrics, what is the term for a variable that correlates with both the independent variable and the dependent variable, leading to biased and inconsistent estimate of the parameter of interest?",
         "correctAnswer": "Endogenous variable",
-        "options": ["Latent variable", "Endogenous variable", "Exogenous variable", "Dummy variable"]
+        "options": [
+            "Latent variable",
+            "Endogenous variable",
+            "Exogenous variable",
+            "Dummy variable"
+        ]
     },
     {
         "question": "Which school of economic thought focuses on the role of institutions in shaping economic behaviour and maintains that modern economies should develop effective institutions to support the workings of markets?",
         "correctAnswer": "Institutional economics",
-        "options": ["Neoclassical economics", "Keynesian economics", "Behavioral economics", "Institutional economics"]
+        "options": [
+            "Neoclassical economics",
+            "Keynesian economics",
+            "Behavioral economics",
+            "Institutional economics"
+        ]
     },
     {
         "question": "In game theory, what concept refers to a game where one player's gain does not necessarily result in another player's loss, and in which cooperation and negotiation can lead to all players benefiting?",
         "correctAnswer": "Non-zero-sum game",
-        "options": ["Zero-sum game", "Non-zero-sum game", "Dominant strategy equilibrium", "Nash equilibrium"]
+        "options": [
+            "Zero-sum game",
+            "Non-zero-sum game",
+            "Dominant strategy equilibrium",
+            "Nash equilibrium"
+        ]
     }
 ]

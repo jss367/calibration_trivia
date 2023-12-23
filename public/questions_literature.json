@@ -1,0 +1,202 @@
+[
+    {
+        "question": "Who wrote the epic poem 'The Odyssey'?",
+        "correctAnswer": "Homer",
+        "options": [
+            "Homer",
+            "Virgil",
+            "Shakespeare",
+            "Dante"
+        ]
+    },
+    {
+        "question": "What is the title of the famous play by Shakespeare that features the characters Rosencrantz and Guildenstern?",
+        "correctAnswer": "Hamlet",
+        "options": [
+            "Macbeth",
+            "Othello",
+            "Hamlet",
+            "King Lear"
+        ]
+    },
+    {
+        "question": "In which novel would you find the character Elizabeth Bennet?",
+        "correctAnswer": "Pride and Prejudice",
+        "options": [
+            "Wuthering Heights",
+            "Jane Eyre",
+            "Pride and Prejudice",
+            "Emma"
+        ]
+    },
+    {
+        "question": "Who wrote 'One Hundred Years of Solitude'?",
+        "correctAnswer": "Gabriel Garcia Marquez",
+        "options": [
+            "Gabriel Garcia Marquez",
+            "Jorge Luis Borges",
+            "Mario Vargas Llosa",
+            "Carlos Fuentes"
+        ]
+    },
+    {
+        "question": "What dystopian novel features the characters Winston Smith and Big Brother?",
+        "correctAnswer": "1984",
+        "options": [
+            "Fahrenheit 451",
+            "Brave New World",
+            "1984",
+            "The Handmaid's Tale"
+        ]
+    },
+    {
+        "question": "Who is the author of 'To Kill a Mockingbird'?",
+        "correctAnswer": "Harper Lee",
+        "options": [
+            "Harper Lee",
+            "Mark Twain",
+            "Ernest Hemingway",
+            "John Steinbeck"
+        ]
+    },
+    {
+        "question": "Which poet wrote 'The Raven'?",
+        "correctAnswer": "Edgar Allan Poe",
+        "options": [
+            "Edgar Allan Poe",
+            "Walt Whitman",
+            "Robert Frost",
+            "Emily Dickinson"
+        ]
+    },
+    {
+        "question": "In which novel do you find the character Jay Gatsby?",
+        "correctAnswer": "The Great Gatsby",
+        "options": [
+            "The Great Gatsby",
+            "The Catcher in the Rye",
+            "Moby-Dick",
+            "The Grapes of Wrath"
+        ]
+    },
+    {
+        "question": "What is the name of the fantasy land in 'The Lion, the Witch and the Wardrobe' by C.S. Lewis?",
+        "correctAnswer": "Narnia",
+        "options": [
+            "Middle-Earth",
+            "Narnia",
+            "Hogwarts",
+            "Neverland"
+        ]
+    },
+    {
+        "question": "Who wrote the existentialist novel 'The Stranger'?",
+        "correctAnswer": "Albert Camus",
+        "options": [
+            "Jean-Paul Sartre",
+            "Franz Kafka",
+            "Fyodor Dostoevsky",
+            "Albert Camus"
+        ]
+    },
+    {
+        "question": "Which novel by James Joyce is set on a single day, June 16, and is celebrated annually by fans as 'Bloomsday'?",
+        "correctAnswer": "Ulysses",
+        "options": [
+            "Finnegans Wake",
+            "Dubliners",
+            "Ulysses",
+            "A Portrait of the Artist as a Young Man"
+        ]
+    },
+    {
+        "question": "Who is the author of the play 'Waiting for Godot', a key work in the Theatre of the Absurd?",
+        "correctAnswer": "Samuel Beckett",
+        "options": [
+            "Samuel Beckett",
+            "Eugene Ionesco",
+            "Harold Pinter",
+            "Tom Stoppard"
+        ]
+    },
+    {
+        "question": "Which 14th-century English poet wrote 'The Canterbury Tales'?",
+        "correctAnswer": "Geoffrey Chaucer",
+        "options": [
+            "William Langland",
+            "Geoffrey Chaucer",
+            "John Gower",
+            "Thomas Malory"
+        ]
+    },
+    {
+        "question": "What is the epic poem written by Dante Alighieri that describes the journey through Hell, Purgatory, and Paradise?",
+        "correctAnswer": "The Divine Comedy",
+        "options": [
+            "The Aeneid",
+            "The Divine Comedy",
+            "Paradise Lost",
+            "Inferno"
+        ]
+    },
+    {
+        "question": "Which Russian novelist wrote 'War and Peace' and 'Anna Karenina'?",
+        "correctAnswer": "Leo Tolstoy",
+        "options": [
+            "Fyodor Dostoevsky",
+            "Leo Tolstoy",
+            "Anton Chekhov",
+            "Ivan Turgenev"
+        ]
+    },
+    {
+        "question": "What is the name of the fictional detective created by Sir Arthur Conan Doyle?",
+        "correctAnswer": "Sherlock Holmes",
+        "options": [
+            "Hercule Poirot",
+            "Sherlock Holmes",
+            "Miss Marple",
+            "Philip Marlowe"
+        ]
+    },
+    {
+        "question": "Which French novelist and critic, famous for his series 'In Search of Lost Time', is known for his detailed and lengthy descriptions?",
+        "correctAnswer": "Marcel Proust",
+        "options": [
+            "Victor Hugo",
+            "Albert Camus",
+            "Gustave Flaubert",
+            "Marcel Proust"
+        ]
+    },
+    {
+        "question": "What is the title of the dystopian novel by Aldous Huxley, depicting a future society based on genetic engineering, brainwashing, and recreational drug use?",
+        "correctAnswer": "Brave New World",
+        "options": [
+            "1984",
+            "Brave New World",
+            "Fahrenheit 451",
+            "Atlas Shrugged"
+        ]
+    },
+    {
+        "question": "Who wrote 'The Master and Margarita', a novel featuring the Devil visiting the atheistic Soviet Union?",
+        "correctAnswer": "Mikhail Bulgakov",
+        "options": [
+            "Alexander Solzhenitsyn",
+            "Mikhail Bulgakov",
+            "Boris Pasternak",
+            "Ivan Turgenev"
+        ]
+    },
+    {
+        "question": "Which American poet, known for her enigmatic and concise poetry, often explored themes of death and immortality?",
+        "correctAnswer": "Emily Dickinson",
+        "options": [
+            "Sylvia Plath",
+            "Emily Dickinson",
+            "Walt Whitman",
+            "Robert Frost"
+        ]
+    }
+]
