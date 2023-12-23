@@ -1,0 +1,92 @@
+[
+    {
+        "question": "What fruit, native to Southeast Asia, is known for its large size, spiky exterior, and strong odor?",
+        "correctAnswer": "Durian",
+        "options": [
+            "Jackfruit",
+            "Durian",
+            "Rambutan",
+            "Dragon Fruit"
+        ]
+    },
+    {
+        "question": "What is the name of the traditional Scottish dish made from sheep's heart, liver, and lungs, mixed with oatmeal and spices?",
+        "correctAnswer": "Haggis",
+        "options": [
+            "Haggis",
+            "Black Pudding",
+            "Scotch Egg",
+            "Bangers and Mash"
+        ]
+    },
+    {
+        "question": "Which cheese, known for being full of holes, is originally from Switzerland?",
+        "correctAnswer": "Swiss Cheese",
+        "options": [
+            "Gouda",
+            "Swiss Cheese",
+            "Cheddar",
+            "Brie"
+        ]
+    },
+    {
+        "question": "What is the term for the Japanese cooking technique where food, typically seafood, is grilled over a charcoal fire?",
+        "correctAnswer": "Yakitori",
+        "options": [
+            "Sushi",
+            "Tempura",
+            "Yakitori",
+            "Sashimi"
+        ]
+    },
+    {
+        "question": "What is the national dish of Spain, known for its rice, saffron, chicken, and seafood?",
+        "correctAnswer": "Paella",
+        "options": [
+            "Tapas",
+            "Gazpacho",
+            "Paella",
+            "Churros"
+        ]
+    },
+    {
+        "question": "What is the name of the Italian dessert consisting of coffee-dipped ladyfingers, layered with a whipped mixture of eggs, sugar, and mascarpone cheese, flavored with cocoa?",
+        "correctAnswer": "Tiramisu",
+        "options": [
+            "Gelato",
+            "Panna Cotta",
+            "Cannoli",
+            "Tiramisu"
+        ]
+    },
+    {
+        "question": "What type of bread is a staple in Indian cuisine and is typically cooked in a tandoor?",
+        "correctAnswer": "Naan",
+        "options": [
+            "Pita",
+            "Focaccia",
+            "Baguette",
+            "Naan"
+        ]
+    },
+    {
+        "question": "Sushi is a traditional food from which country?",
+        "correctAnswer": "Japan",
+        "options": [
+            "China",
+            "Korea",
+            "Japan",
+            "Thailand"
+        ]
+    },
+    {
+        "question": "Which American snack food is famous for its orange, cheese-flavored powder and tube-shaped packaging?",
+        "correctAnswer": "Cheetos",
+        "options": [
+            "Doritos",
+            "Lays",
+            "Pringles",
+            "Cheetos"
+        ]
+    }
+]
