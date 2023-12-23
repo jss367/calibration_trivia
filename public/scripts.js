@@ -560,7 +560,6 @@ function displayQuestionForGroupParticipant(index) {
 
   // Add confidence input
   questionDiv.innerHTML = `
-    <h2>Question ${index + 1}: ${question.question}</h2>
     ${answerInputHTML}
     ${getConfidenceInputHTML()}
   `;
