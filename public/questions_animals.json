@@ -1,22 +1,12 @@
 [
     {
-        "question": "Which marsupial is known for its powerful hind legs and long tail, native to Australia?",
+        "question": "Which marsupial is known for its powerful hind legs, long tail, and is native to Australia?",
         "correctAnswer": "Kangaroo",
         "options": [
             "Kangaroo",
             "Koala",
             "Wallaby",
             "Wombat"
-        ]
-    },
-    {
-        "question": "What is the name of the marsupial famous for carrying its young in a pouch on its belly, primarily found in Australia and New Guinea?",
-        "correctAnswer": "Koala",
-        "options": [
-            "Koala",
-            "Opossum",
-            "Bandicoot",
-            "Tasmanian Devil"
         ]
     },
     {
@@ -157,16 +147,6 @@
             "Squid",
             "Starfish",
             "Jellyfish"
-        ]
-    },
-    {
-        "question": "What species of fish is known for its ability to change colors and blend with its environment?",
-        "correctAnswer": "Chameleon",
-        "options": [
-            "Chameleon",
-            "Goldfish",
-            "Clownfish",
-            "Pufferfish"
         ]
     },
     {
