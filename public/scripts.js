@@ -752,7 +752,6 @@ function displayResults() {
 }
 
 
-
 function displayIndividualResults() {
   console.log("Inside displayIndividualResults");
   for (let i = 0; i < questions.length; i++) {
