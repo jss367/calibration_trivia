@@ -648,6 +648,7 @@ function calculateConfidenceDecileScores(answers) {
     console.log("Your values for answers is: ", answers);
     const decileScores = Array(10).fill(0);
     const decileCounts = Array(10).fill(0);
+    const decileCorrectCounts = Array(10).fill(0);
 
     answers.forEach(answer => {
         // Find the decile for the confidence level (0-10)
@@ -659,9 +660,11 @@ function calculateConfidenceDecileScores(answers) {
         }
     });
 
-    return decileScores.map((score, index) => ({
+    return decileScores.map((_, index) => ({
         decileRange: `${index * 10}-${(index + 1) * 10}`,
-        score: decileCounts[index] ? score / decileCounts[index] : null
+        score: decileCounts[index] ? decileCorrectCounts[index] / decileCounts[index] : null,
+        correct: decileCorrectCounts[index],
+        total: decileCounts[index]
     }));
 }
 
@@ -706,14 +709,11 @@ function nextQuestion(sessionId) {
 function displayResults() {
     console.log("Inside displayResults");
 
-    // Hide quiz container
     quizContainer.style.display = 'none';
 
     if (modeGroupQuestioner.checked) {
-        // For Group Questioner, only display the leaderboard
         displayLeaderboard(getCurrentSessionId());
     } else {
-        // Calculate and display individual results for participants
         brierScore /= questions.length;
 
         const answers = userAnswers.map((userAnswer, index) => ({
@@ -727,22 +727,23 @@ function displayResults() {
         console.log("Your values for confidenceDecileScores is: ", confidenceDecileScores);
 
         resultsContainer.innerHTML = `
-      <h2>Results</h2>
-      <p>Correct answers: ${score} / ${questions.length}</p>
-      <p>Brier score: ${brierScore.toFixed(2)}</p>
-      ${confidenceDecileScores.map(({ decileRange, score }) => {
-            if (score === null) {
+        <h2>Results</h2>
+        <p>Correct answers: ${score} / ${questions.length}</p>
+        <p>Brier score: ${brierScore.toFixed(2)}</p>
+        ${confidenceDecileScores.map(({ decileRange, score, correct, total }) => {
+            if (total === 0) {
                 return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
             } else {
-                return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time.</p>`;
+                return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time (${correct}/${total}).</p>`;
             }
         }).join('')}
-    `;
+      `;
 
         resultsContainer.style.display = 'block';
         displayIndividualResults();
     }
 }
+
 
 
 function displayIndividualResults() {
