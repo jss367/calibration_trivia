@@ -13,3 +13,5 @@ Show the question count
 Add the word confidence so people know what to put in the box
 
 Update to remove error message "Session ID or User ID is missing" in single player mode
+
+refresh leaderboard in group questioner mode?

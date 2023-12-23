@@ -16,9 +16,6 @@ const questionCountContainer = document.getElementById('question-count-container
 const startButtonContainer = document.getElementById('start-button-container');
 const sessionIdContainer = document.getElementById('session-id-container');
 
-// const submitButton = document.getElementById('submit-button');
-
-
 // Firebase Firestore initialization
 const db = firebase.firestore();
 let currentQuestionIndex = 0;
@@ -593,8 +590,6 @@ function submitAnswer() {
 
   if (!selectedOption || isNaN(userConfidence)) {
     console.warn('No answer or invalid confidence selected for current question');
-  } else {
-    console.log('Submitting answer:', userAnswer, 'Confidence:', userConfidence);
   }
 
   // Determine if the answer is correct and update the score
@@ -653,7 +648,6 @@ function calculateConfidenceDecileScores(answers) {
    * The answers that comes in is pulled from the entire database, so it contains answers from all users.
    */
   // Create an array to store scores for each decile
-  console.log("Your values for answers is: ", answers);
   const decileScores = Array(10).fill(0);
   const decileCounts = Array(10).fill(0);
   const decileCorrectCounts = Array(10).fill(0);
@@ -753,22 +747,16 @@ function displayResults() {
 
 
 function displayIndividualResults() {
-  console.log("Inside displayIndividualResults");
   for (let i = 0; i < questions.length; i++) {
     const resultPara = document.createElement('p');
-    console.log("Your values for correctAnswers[i] is: ", correctAnswers[i]);
-    console.log("Your values for userAnswers[i] is: ", userAnswers[i]);
 
     if (typeof correctAnswers[i] === 'object') {
-      console.log("It was an object: ", correctAnswers[i])
       const userAnswerString = userAnswers[i].toString(); // Convert user's answer to string
       const isCorrect = correctAnswers[i].includes(userAnswerString);
       resultPara.style.color = isCorrect ? 'green' : 'red';
       resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
 
     } else {
-      console.log("It was an string: ", correctAnswers[i])
-
       const isCorrect = correctAnswers[i] === userAnswers[i];
       resultPara.style.color = isCorrect ? 'green' : 'red';
       resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
@@ -779,8 +767,6 @@ function displayIndividualResults() {
 
 
 function displayLeaderboard(sessionId) {
-  console.log("Displaying leaderboard for session:", sessionId);
-
   db.collection('sessions').doc(sessionId).collection('answers')
     .get()
     .then(querySnapshot => {

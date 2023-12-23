@@ -108,5 +108,335 @@
             "Fall of the Berlin Wall",
             "American Revolution"
         ]
+    },
+    {
+        "question": "Who was known as the 'Maid of Orleans'?",
+        "correctAnswer": "Joan of Arc",
+        "options": [
+            "Cleopatra",
+            "Joan of Arc",
+            "Queen Elizabeth I",
+            "Marie Antoinette"
+        ]
+    },
+    {
+        "question": "What was the name of the ship that brought the Pilgrims to America in 1620?",
+        "correctAnswer": "Mayflower",
+        "options": [
+            "Santa Maria",
+            "Mayflower",
+            "HMS Beagle",
+            "Titanic"
+        ]
+    },
+    {
+        "question": "Which empire was known as the 'Land of the Rising Sun'?",
+        "correctAnswer": "Japanese Empire",
+        "options": [
+            "Ottoman Empire",
+            "Mongol Empire",
+            "British Empire",
+            "Japanese Empire"
+        ]
+    },
+    {
+        "question": "Who was the first female Prime Minister of the United Kingdom?",
+        "correctAnswer": "Margaret Thatcher",
+        "options": [
+            "Margaret Thatcher",
+            "Indira Gandhi",
+            "Angela Merkel",
+            "Golda Meir"
+        ]
+    },
+    {
+        "question": "In which year did India gain independence from British rule?",
+        "correctAnswer": "1947",
+        "options": [
+            "1945",
+            "1947",
+            "1950",
+            "1960"
+        ]
+    },
+    {
+        "question": "What was the ancient Egyptian writing system called?",
+        "correctAnswer": "Hieroglyphics",
+        "options": [
+            "Cuneiform",
+            "Hieroglyphics",
+            "Sanskrit",
+            "Pictographs"
+        ]
+    },
+    {
+        "question": "Which Chinese dynasty is known for its remarkable construction, the Great Wall of China?",
+        "correctAnswer": "Ming Dynasty",
+        "options": [
+            "Qing Dynasty",
+            "Han Dynasty",
+            "Tang Dynasty",
+            "Ming Dynasty"
+        ]
+    },
+    {
+        "question": "Who was the leader of the Soviet Union during World War II?",
+        "correctAnswer": "Joseph Stalin",
+        "options": [
+            "Vladimir Lenin",
+            "Joseph Stalin",
+            "Nikita Khrushchev",
+            "Leon Trotsky"
+        ]
+    },
+    {
+        "question": "In what year did the French Revolution begin?",
+        "correctAnswer": "1789",
+        "options": [
+            "1776",
+            "1789",
+            "1804",
+            "1815"
+        ]
+    },
+    {
+        "question": "Which ancient civilization is known for inventing the wheel?",
+        "correctAnswer": "Sumerians",
+        "options": [
+            "Egyptians",
+            "Greeks",
+            "Romans",
+            "Sumerians"
+        ]
+    },
+    {
+        "question": "What was the name of the last Queen of France before the French Revolution?",
+        "correctAnswer": "Marie Antoinette",
+        "options": [
+            "Catherine de' Medici",
+            "Anne of Austria",
+            "Marie Antoinette",
+            "Eleanor of Aquitaine"
+        ]
+    },
+    {
+        "question": "Who was the first emperor of the Roman Empire?",
+        "correctAnswer": "Augustus",
+        "options": [
+            "Julius Caesar",
+            "Nero",
+            "Augustus",
+            "Constantine"
+        ]
+    },
+    {
+        "question": "Which civilization is known for creating the concept of democracy?",
+        "correctAnswer": "Ancient Greece",
+        "options": [
+            "Ancient Rome",
+            "Ancient Greece",
+            "Ancient Egypt",
+            "Mesopotamia"
+        ]
+    },
+    {
+        "question": "Who wrote the influential book 'The Prince' in the 16th century?",
+        "correctAnswer": "Niccolò Machiavelli",
+        "options": [
+            "William Shakespeare",
+            "Niccolò Machiavelli",
+            "Thomas More",
+            "Leonardo da Vinci"
+        ]
+    },
+    {
+        "question": "What was the primary cause of the Black Death that swept through Europe in the 14th century?",
+        "correctAnswer": "Bubonic Plague",
+        "options": [
+            "Smallpox",
+            "Influenza",
+            "Bubonic Plague",
+            "Cholera"
+        ]
+    },
+    {
+        "question": "In which century did the Renaissance begin?",
+        "correctAnswer": "14th Century",
+        "options": [
+            "12th Century",
+            "13th Century",
+            "14th Century",
+            "15th Century"
+        ]
+    },
+    {
+        "question": "Who was the first human to orbit the Earth?",
+        "correctAnswer": "Yuri Gagarin",
+        "options": [
+            "Neil Armstrong",
+            "John Glenn",
+            "Yuri Gagarin",
+            "Buzz Aldrin"
+        ]
+    },
+    {
+        "question": "What was the main language of the Byzantine Empire?",
+        "correctAnswer": "Greek",
+        "options": [
+            "Latin",
+            "Greek",
+            "Aramaic",
+            "Coptic"
+        ]
+    },
+    {
+        "question": "Which Mughal Emperor built the Taj Mahal?",
+        "correctAnswer": "Shah Jahan",
+        "options": [
+            "Akbar",
+            "Babur",
+            "Shah Jahan",
+            "Aurangzeb"
+        ]
+    },
+    {
+        "question": "In which city was the Declaration of Independence signed?",
+        "correctAnswer": "Philadelphia",
+        "options": [
+            "New York",
+            "Boston",
+            "Philadelphia",
+            "Washington D.C."
+        ]
+    },
+    {
+        "question": "Who was the first female ruler of Ancient Egypt?",
+        "correctAnswer": "Hatshepsut",
+        "options": [
+            "Nefertiti",
+            "Cleopatra",
+            "Hatshepsut",
+            "Sobekneferu"
+        ]
+    },
+    {
+        "question": "During which war was the Battle of Gettysburg fought?",
+        "correctAnswer": "American Civil War",
+        "options": [
+            "Revolutionary War",
+            "War of 1812",
+            "American Civil War",
+            "World War I"
+        ]
+    },
+    {
+        "question": "What famous wall was built in England during the reign of Emperor Hadrian?",
+        "correctAnswer": "Hadrian's Wall",
+        "options": [
+            "The Great Wall",
+            "Berlin Wall",
+            "Hadrian's Wall",
+            "Wall of Constantinople"
+        ]
+    },
+    {
+        "question": "Who was the first female Pharaoh of ancient Egypt?",
+        "correctAnswer": "Sobekneferu",
+        "options": [
+            "Cleopatra",
+            "Nefertiti",
+            "Hatshepsut",
+            "Sobekneferu"
+        ]
+    },
+    {
+        "question": "Which empire is known as the 'Empire of the Sun'?",
+        "correctAnswer": "Inca Empire",
+        "options": [
+            "Aztec Empire",
+            "Roman Empire",
+            "Ottoman Empire",
+            "Inca Empire"
+        ]
+    },
+    {
+        "question": "In which century did the Industrial Revolution begin?",
+        "correctAnswer": "18th Century",
+        "options": [
+            "16th Century",
+            "17th Century",
+            "18th Century",
+            "19th Century"
+        ]
+    },
+    {
+        "question": "Who was the Russian leader at the time of the 1917 Bolshevik Revolution?",
+        "correctAnswer": "Vladimir Lenin",
+        "options": [
+            "Joseph Stalin",
+            "Vladimir Lenin",
+            "Nicholas II",
+            "Leon Trotsky"
+        ]
+    },
+    {
+        "question": "Which ancient civilization is known for its pyramids and hieroglyphs?",
+        "correctAnswer": "Ancient Egypt",
+        "options": [
+            "Ancient Greece",
+            "Ancient Rome",
+            "Ancient Egypt",
+            "Mesopotamia"
+        ]
+    },
+    {
+        "question": "What was the name of the first successful English colony in America?",
+        "correctAnswer": "Jamestown",
+        "options": [
+            "Plymouth",
+            "Roanoke",
+            "Jamestown",
+            "New Amsterdam"
+        ]
+    },
+    {
+        "question": "Who was the primary author of the Declaration of Independence?",
+        "correctAnswer": "Thomas Jefferson",
+        "options": [
+            "George Washington",
+            "John Adams",
+            "Benjamin Franklin",
+            "Thomas Jefferson"
+        ]
+    },
+    {
+        "question": "Which war was ended by the Treaty of Versailles?",
+        "correctAnswer": "World War I",
+        "options": [
+            "World War I",
+            "World War II",
+            "The Franco-Prussian War",
+            "The Napoleonic Wars"
+        ]
+    },
+    {
+        "question": "What ancient civilization built the Machu Picchu complex?",
+        "correctAnswer": "Inca",
+        "options": [
+            "Maya",
+            "Aztec",
+            "Inca",
+            "Olmec"
+        ]
+    },
+    {
+        "question": "Who was the famous British prime minister during most of World War II?",
+        "correctAnswer": "Winston Churchill",
+        "options": [
+            "Neville Chamberlain",
+            "Winston Churchill",
+            "Clement Attlee",
+            "Margaret Thatcher"
+        ]
     }
 ]
