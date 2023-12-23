@@ -162,7 +162,7 @@ startQuizButton.addEventListener('click', () => {
     } else {
       console.log("Please select a session.");
     }
-    loadQuestionsParticipant(); // WRITE THIS FUNCTION
+    loadQuestionsParticipant();
   } else if (selectedMode === 'group-questioner') {
     console.log("Starting Group Questioner Mode");
     const sessionId = document.getElementById('session-id').value.trim();
@@ -243,8 +243,6 @@ function loadQuestionsQuestioner() {
       console.error('Error:', error);
     });
 }
-
-
 
 
 function loadQuestionsSingle() {
@@ -696,14 +694,16 @@ function createSession() {
 function nextQuestion(sessionId) {
   console.log("Inside nextQuestion with sessionId: ", sessionId);
   // Increment the current question index
+  console.log("Current Question Index before updating: ", currentQuestionIndex);
   currentQuestionIndex++;
-
+  console.log("Current Question Index after updating: ", currentQuestionIndex);
   // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
     // Update the current question index in the Firebase session
-    db.collection('sessions').doc(sessionId).update({
-      currentQuestionIndex: currentQuestionIndex
-    });
+    // db.collection('sessions').doc(sessionId).update({
+      // currentQuestionIndex: currentQuestionIndex
+    // });
+    displayQuestionForGroupParticipant(currentQuestionIndex);
   } else {
     // Handle the end of the quiz
     displayResults();
