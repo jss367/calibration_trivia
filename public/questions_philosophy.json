@@ -1,0 +1,302 @@
+[
+    {
+        "question": "Who is the Greek philosopher known for his method of questioning and dialogue, as well as for being the teacher of Plato?",
+        "correctAnswer": "Socrates",
+        "options": [
+            "Aristotle",
+            "Plato",
+            "Socrates",
+            "Epicurus"
+        ]
+    },
+    {
+        "question": "Which work by Sun Tzu focuses on military strategy and tactics?",
+        "correctAnswer": "The Art of War",
+        "options": [
+            "The Republic",
+            "The Prince",
+            "The Art of War",
+            "Tao Te Ching"
+        ]
+    },
+    {
+        "question": "What is the philosophical theory that reality is fundamentally mental or spiritual in nature?",
+        "correctAnswer": "Idealism",
+        "options": [
+            "Materialism",
+            "Empiricism",
+            "Idealism",
+            "Existentialism"
+        ]
+    },
+    {
+        "question": "Who wrote 'Critique of Pure Reason', a foundational text in modern Western philosophy?",
+        "correctAnswer": "Immanuel Kant",
+        "options": [
+            "David Hume",
+            "Immanuel Kant",
+            "Friedrich Nietzsche",
+            "Georg Wilhelm Friedrich Hegel"
+        ]
+    },
+    {
+        "question": "Which philosopher is famous for his allegory of the cave in 'The Republic'?",
+        "correctAnswer": "Plato",
+        "options": [
+            "Socrates",
+            "Aristotle",
+            "Plato",
+            "Pythagoras"
+        ]
+    },
+    {
+        "question": "What is the name of the philosophical doctrine that suggests the best action is the one that maximizes utility, often associated with Jeremy Bentham and John Stuart Mill?",
+        "correctAnswer": "Utilitarianism",
+        "options": [
+            "Deontology",
+            "Nihilism",
+            "Utilitarianism",
+            "Stoicism"
+        ]
+    },
+    {
+        "question": "Who is the French existentialist philosopher who wrote 'Being and Nothingness'?",
+        "correctAnswer": "Jean-Paul Sartre",
+        "options": [
+            "Albert Camus",
+            "Jean-Paul Sartre",
+            "Michel Foucault",
+            "René Descartes"
+        ]
+    },
+    {
+        "question": "What is the philosophical study of beauty and taste, concerning the nature and appreciation of art, beauty, and taste?",
+        "correctAnswer": "Aesthetics",
+        "options": [
+            "Epistemology",
+            "Ethics",
+            "Aesthetics",
+            "Metaphysics"
+        ]
+    },
+    {
+        "question": "Which philosopher is known for his assertion 'I think, therefore I am'?",
+        "correctAnswer": "René Descartes",
+        "options": [
+            "Baruch Spinoza",
+            "René Descartes",
+            "Søren Kierkegaard",
+            "David Hume"
+        ]
+    },
+    {
+        "question": "What is the philosophical concept that the only thing a person can be sure of is their own existence?",
+        "correctAnswer": "Solipsism",
+        "options": [
+            "Nihilism",
+            "Solipsism",
+            "Existentialism",
+            "Rationalism"
+        ]
+    },
+    {
+        "question": "Which ancient Chinese philosopher is known for his teachings compiled in the 'Analects'?",
+        "correctAnswer": "Confucius",
+        "options": [
+            "Laozi",
+            "Sun Tzu",
+            "Confucius",
+            "Zhuangzi"
+        ]
+    },
+    {
+        "question": "What philosophical movement emphasizes individual existence, freedom, and choice, often associated with 20th-century philosophers like Jean-Paul Sartre and Albert Camus?",
+        "correctAnswer": "Existentialism",
+        "options": [
+            "Absurdism",
+            "Existentialism",
+            "Nihilism",
+            "Rationalism"
+        ]
+    },
+    {
+        "question": "Who is the philosopher known for the quote 'God is dead', and his work on nihilism?",
+        "correctAnswer": "Friedrich Nietzsche",
+        "options": [
+            "Friedrich Nietzsche",
+            "Søren Kierkegaard",
+            "Martin Heidegger",
+            "Immanuel Kant"
+        ]
+    },
+    {
+        "question": "Which philosopher developed the concept of the 'categorical imperative'?",
+        "correctAnswer": "Immanuel Kant",
+        "options": [
+            "David Hume",
+            "Immanuel Kant",
+            "John Stuart Mill",
+            "Arthur Schopenhauer"
+        ]
+    },
+    {
+        "question": "What is the name of the philosophical principle that suggests the simplest explanation is usually the correct one?",
+        "correctAnswer": "Occam's Razor",
+        "options": [
+            "Pascal's Wager",
+            "Occam's Razor",
+            "Hume's Fork",
+            "Aristotle's Golden Mean"
+        ]
+    },
+    {
+        "question": "Which philosopher wrote 'Meditations', a series of personal writings on Stoic philosophy?",
+        "correctAnswer": "Marcus Aurelius",
+        "options": [
+            "Seneca",
+            "Epictetus",
+            "Marcus Aurelius",
+            "Cicero"
+        ]
+    },
+    {
+        "question": "Who is the philosopher known for the formulation of the 'problem of evil'?",
+        "correctAnswer": "Epicurus",
+        "options": [
+            "Socrates",
+            "Plato",
+            "Epicurus",
+            "Thomas Aquinas"
+        ]
+    },
+    {
+        "question": "What philosophical term refers to the study of the nature, causes, or principles of reality, knowledge, or values, based on logical reasoning?",
+        "correctAnswer": "Metaphysics",
+        "options": [
+            "Epistemology",
+            "Ethics",
+            "Metaphysics",
+            "Aesthetics"
+        ]
+    },
+    {
+        "question": "Which philosopher is known for his work on the theory of forms and the allegory of the cave?",
+        "correctAnswer": "Plato",
+        "options": [
+            "Aristotle",
+            "Plato",
+            "Socrates",
+            "Pythagoras"
+        ]
+    },
+    {
+        "question": "What is the philosophical study that deals with the nature and scope of knowledge?",
+        "correctAnswer": "Epistemology",
+        "options": [
+            "Metaphysics",
+            "Epistemology",
+            "Ethics",
+            "Logic"
+        ]
+    },
+    {
+        "question": "Which Scottish philosopher and economist wrote 'The Wealth of Nations'?",
+        "correctAnswer": "Adam Smith",
+        "options": [
+            "Adam Smith",
+            "John Stuart Mill",
+            "David Ricardo",
+            "Karl Marx"
+        ]
+    },
+    {
+        "question": "In philosophy, what term describes the belief in the existence of realities beyond perceptual or intellectual apprehension that are central to being and directly accessible by subjective experience?",
+        "correctAnswer": "Mysticism",
+        "options": [
+            "Empiricism",
+            "Rationalism",
+            "Existentialism",
+            "Mysticism"
+        ]
+    },
+    {
+        "question": "Who is the French philosopher famous for the statement 'Hell is other people' in his play 'No Exit'?",
+        "correctAnswer": "Jean-Paul Sartre",
+        "options": [
+            "Albert Camus",
+            "Jean-Paul Sartre",
+            "Michel Foucault",
+            "Simone de Beauvoir"
+        ]
+    },
+    {
+        "question": "Which philosopher is known for the concept of 'the absurd', a key theme in his novel 'The Stranger'?",
+        "correctAnswer": "Albert Camus",
+        "options": [
+            "Jean-Paul Sartre",
+            "Friedrich Nietzsche",
+            "Albert Camus",
+            "Martin Heidegger"
+        ]
+    },
+    {
+        "question": "What is the philosophical idea that social, economic, and political structures are oppressive and are to be overcome through direct action?",
+        "correctAnswer": "Anarchism",
+        "options": [
+            "Communism",
+            "Anarchism",
+            "Socialism",
+            "Liberalism"
+        ]
+    },
+    {
+        "question": "Who is the ancient Greek philosopher known for his paradoxes, particularly the one involving motion and an arrow?",
+        "correctAnswer": "Zeno of Elea",
+        "options": [
+            "Heraclitus",
+            "Parmenides",
+            "Zeno of Elea",
+            "Empedocles"
+        ]
+    },
+    {
+        "question": "What is the study and interpretation of texts in philosophy and theology, focusing on the meaning of a text?",
+        "correctAnswer": "Hermeneutics",
+        "options": [
+            "Exegesis",
+            "Hermeneutics",
+            "Phenomenology",
+            "Deconstruction"
+        ]
+    },
+    {
+        "question": "Which ancient Chinese philosopher is known for his doctrine of the 'Golden Mean'?",
+        "correctAnswer": "Confucius",
+        "options": [
+            "Laozi",
+            "Confucius",
+            "Sun Tzu",
+            "Zhuangzi"
+        ]
+    },
+    {
+        "question": "What philosophical school of thought emphasizes living in agreement with nature and accepting events as they occur?",
+        "correctAnswer": "Stoicism",
+        "options": [
+            "Epicureanism",
+            "Stoicism",
+            "Cynicism",
+            "Skepticism"
+        ]
+    },
+    {
+        "question": "Who is the philosopher known for the development of 'deconstruction', a form of semiotic analysis?",
+        "correctAnswer": "Jacques Derrida",
+        "options": [
+            "Jean Baudrillard",
+            "Michel Foucault",
+            "Jacques Derrida",
+            "Gilles Deleuze"
+        ]
+    }
+]
