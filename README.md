@@ -18,6 +18,8 @@ Fix behavior when people don't select an answer.
 
 Explain brier score, what scores are good.
 
+Don't say "you were wrong" every time.
+
 ## Functionality
 
 In both single and group mode, the results are not shown until the end.
