@@ -155,12 +155,13 @@ startQuizButton.addEventListener('click', () => {
         const selectedSessionId = document.getElementById('session-id-select').value;
         if (selectedSessionId) {
             localStorage.setItem('currentSessionId', selectedSessionId);
-            // joinSessionListener(selectedSessionId);
-            // loadSessionQuestions(selectedSessionId);
+            sessionIdContainer.innerHTML = `<p>Session ID: ${selectedSessionId}</p>`;
+            sessionIdContainer.style.display = 'block'; // Show the session ID at the top
+            sessionIDSelectionContainer.style.display = 'none'; // Hide the session selection box
+            loadQuestionsParticipant();
         } else {
             console.log("Please select a session.");
         }
-        loadQuestionsParticipant();
     } else if (selectedMode === 'group-questioner') {
         console.log("Starting Group Questioner Mode");
         const sessionId = document.getElementById('session-id').value.trim();
@@ -170,13 +171,10 @@ startQuizButton.addEventListener('click', () => {
                 .then(() => {
                     console.log("Session ID set successfully:", sessionId);
                     localStorage.setItem('currentSessionId', sessionId);
-
-                    // Update UI to display session ID and hide input field
                     sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
-
-                    quizContainer.style.display = 'none'; // This has the button in it too
-
-                    loadQuestionsQuestioner(); // Load and display questions
+                    sessionIdContainer.style.display = 'block';
+                    quizContainer.style.display = 'none';
+                    loadQuestionsQuestioner();
                 })
                 .catch(error => console.error("Error setting session ID:", error));
         } else {
@@ -184,6 +182,7 @@ startQuizButton.addEventListener('click', () => {
         }
     }
 });
+
 
 
 
