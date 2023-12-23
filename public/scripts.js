@@ -62,13 +62,13 @@ modeSelectionContainer.addEventListener('change', (event) => {
     console.log("Inside single if statement");
     // Single Player specific elements
     sessionIdContainer.style.display = 'none';
-    usernameContainer.style.display = 'block';
+    usernameContainer.style.display = 'none'; // Hide the username input field
     questionCountContainer.style.display = 'block';
     categorySelectionContainer.style.display = 'block';
     sessionIDSelectionContainer.style.display = 'none';
-    // Enable start button only if a username is entered
-    document.getElementById('start-quiz').disabled = !document.getElementById('username').value.trim();
+    document.getElementById('start-quiz').disabled = false; // Enable start button directly for single player
     startQuizButton.removeEventListener('click', joinSelectedSession);
+
   } else {
     // Default case: Hide all specific elements
     questionCountContainer.style.display = 'none';
@@ -116,6 +116,12 @@ function loadSessionQuestions(sessionId) {
     .catch(error => console.error("Error loading session questions:", error));
 }
 
+function generateRandomUsername() {
+  const prefix = "Player_";
+  const randomNum = Math.floor(Math.random() * 10000); // Random number between 0 and 9999
+  return prefix + randomNum.toString().padStart(4, '0'); // Pad with zeros to ensure a uniform length
+}
+
 
 function loadAvailableSessions() {
   console.log("Inside loadAvailableSessions");
@@ -148,6 +154,8 @@ startQuizButton.addEventListener('click', () => {
 
   if (selectedMode === 'single') {
     console.log("Starting Single Player Mode");
+    const randomUsername = generateRandomUsername();
+    localStorage.setItem('username', randomUsername);
     quizContainer.style.display = 'block';
     loadQuestionsSingle();
   } else if (selectedMode === 'group-participant') {
@@ -756,14 +764,14 @@ function displayIndividualResults() {
       const userAnswerString = userAnswers[i].toString(); // Convert user's answer to string
       const isCorrect = correctAnswers[i].includes(userAnswerString);
       resultPara.style.color = isCorrect ? 'green' : 'red';
-      resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+      resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
 
     } else {
       console.log("It was an string: ", correctAnswers[i])
 
       const isCorrect = correctAnswers[i] === userAnswers[i];
       resultPara.style.color = isCorrect ? 'green' : 'red';
-      resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}. You ${isCorrect ? 'were correct' : 'were wrong'}.`;
+      resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
     }
     resultsContainer.appendChild(resultPara);
   }

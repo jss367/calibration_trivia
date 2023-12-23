@@ -6,8 +6,6 @@ add a consensus score or something - take the most common vote.
 
 Explain brier score, what scores are good.
 
-Don't say "you were wrong" every time.
-
 Some way to avoid repeaated questions between sessions?
 
 Don't display "Choose a Session" after you've already selected one.
