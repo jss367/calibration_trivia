@@ -20,13 +20,23 @@
         ]
     },
     {
-        "question": "Who is the author of the 'A Song of Ice and Fire' series, which 'Game of Thrones' is based on?",
-        "correctAnswer": "George R. R. Martin",
+        "question": "What is the largest desert in the world?",
+        "correctAnswer": "Antarctic Desert",
         "options": [
-            "J.K. Rowling",
-            "Stephen King",
-            "George R. R. Martin",
-            "J.R.R. Tolkien"
+            "Sahara Desert",
+            "Gobi Desert",
+            "Arabian Desert",
+            "Antarctic Desert"
+        ]
+    },
+    {
+        "question": "What is the largest ocean on Earth?",
+        "correctAnswer": "Pacific Ocean",
+        "options": [
+            "Atlantic Ocean",
+            "Indian Ocean",
+            "Pacific Ocean",
+            "Arctic Ocean"
         ]
     },
     {
@@ -40,33 +50,33 @@
         ]
     },
     {
-        "question": "Who painted 'The Scream'?",
-        "correctAnswer": "Edvard Munch",
+        "question": "What is the capital city of New Zealand?",
+        "correctAnswer": "Wellington",
         "options": [
-            "Vincent van Gogh",
-            "Pablo Picasso",
-            "Edvard Munch",
-            "Salvador Dalí"
+            "Wellington",
+            "Auckland",
+            "Christchurch",
+            "Hamilton"
         ]
     },
     {
-        "question": "Who is the author of 'Pride and Prejudice'?",
-        "correctAnswer": "Jane Austen",
+        "question": "What is the capital city of Australia?",
+        "correctAnswer": "Canberra",
         "options": [
-            "Emily Bronte",
-            "Charlotte Bronte",
-            "Jane Austen",
-            "Louisa May Alcott"
+            "Sydney",
+            "Melbourne",
+            "Brisbane",
+            "Canberra"
         ]
     },
     {
-        "question": "Who is the director of the 'Pulp Fiction' movie?",
-        "correctAnswer": "Quentin Tarantino",
+        "question": "Which country is known as the 'Pearl of Africa'?",
+        "correctAnswer": "Uganda",
         "options": [
-            "Quentin Tarantino",
-            "Steven Spielberg",
-            "Martin Scorsese",
-            "Christopher Nolan"
+            "Uganda",
+            "Kenya",
+            "Rwanda",
+            "Tanzania"
         ]
     },
     {
@@ -87,16 +97,6 @@
             "Vilnius",
             "Kiev",
             "Minsk"
-        ]
-    },
-    {
-        "question": "Who composed the four seasons?",
-        "correctAnswer": "Antonio Vivaldi",
-        "options": [
-            "Wolfgang Amadeus Mozart",
-            "Johann Sebastian Bach",
-            "Ludwig van Beethoven",
-            "Antonio Vivaldi"
         ]
     },
     {
