@@ -1,7 +1,5 @@
 add a consensus score or something - take the most common vote.
 
-Explain brier score, what scores are good.
-
 add a back button for the group questioner mode?
 
 finish leaderboard

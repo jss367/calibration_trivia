@@ -330,9 +330,10 @@ function displayQuestionQuestioner(index) {
 `).join('');
 
   questionDiv.innerHTML = `
-    <h2>${question.question}</h2>
-    ${answerInputHTML}
-  `;
+<h3>Question ${index + 1} of ${questions.length}</h3>
+<h2>${question.question}</h2>
+${answerInputHTML}
+`;
 
   questionContainer.innerHTML = ''; // Clear previous question
   questionContainer.appendChild(questionDiv); // Append new question
@@ -432,13 +433,14 @@ function displayQuestion(index) {
       </div>
     `).join('');
 
-    const confidenceInputHTML = getConfidenceInputHTML();
+  const confidenceInputHTML = getConfidenceInputHTML();
 
-    questionDiv.innerHTML = `
-      <h2>${question.question}</h2>
-      ${answerInputHTML}
-      ${confidenceInputHTML}
-    `;
+  questionDiv.innerHTML = `
+    <h3>Question ${index + 1} of ${questions.length}</h3>
+    <h2>${question.question}</h2>
+    ${answerInputHTML}
+    ${confidenceInputHTML}
+  `;
 
   questionContainer.innerHTML = ''; // Clear previous question
   questionContainer.appendChild(questionDiv); // Append new question
@@ -548,8 +550,8 @@ function displayQuestionForGroupParticipant(index) {
     </div>
   `).join('');
 
-  // Add confidence input
   questionDiv.innerHTML = `
+    <h3>Question ${index + 1} of ${questions.length}</h3>
     ${answerInputHTML}
     ${getConfidenceInputHTML()}
   `;
@@ -600,11 +602,11 @@ function submitAnswer() {
 
   const sessionId = getCurrentSessionId();
   const userId = document.getElementById('username').value.trim();
+
+  // In group mode, store the result in Firestore
   if (userId && sessionId) {
     submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
     // submitButton.style.display = 'none';
-  } else {
-    console.error('Session ID or User ID is missing');
   }
 
   if (selectedOption) {
@@ -700,7 +702,6 @@ function nextQuestion(sessionId) {
 }
 
 function displayResults() {
-  console.log("Inside displayResults");
 
   quizContainer.style.display = 'none';
 
@@ -709,20 +710,34 @@ function displayResults() {
   } else {
     brierScore /= questions.length;
 
+    // Determine the label and color based on Brier score
+    let scoreLabel, scoreColor;
+    if (brierScore <= 0.10) {
+      scoreLabel = 'Excellent';
+      scoreColor = 'green'; // or any color representing excellent
+    } else if (brierScore <= 0.20) {
+      scoreLabel = 'Good';
+      scoreColor = 'blue'; // or any color representing good
+    } else if (brierScore <= 0.30) {
+      scoreLabel = 'Fair';
+      scoreColor = 'orange'; // or any color representing fair
+    } else {
+      scoreLabel = 'Poor';
+      scoreColor = 'red'; // or any color representing poor
+    }
+
     const answers = userAnswers.map((userAnswer, index) => ({
       userAnswer,
       correctAnswer: correctAnswers[index],
       userConfidence: userConfidences[index],
     }));
-    console.log("Your values for answers in displayResults is: ", answers);
 
     const confidenceDecileScores = calculateConfidenceDecileScores(answers);
-    console.log("Your values for confidenceDecileScores is: ", confidenceDecileScores);
 
     resultsContainer.innerHTML = `
         <h2>Results</h2>
         <p>Correct answers: ${score} / ${questions.length}</p>
-        <p>Brier score: ${brierScore.toFixed(2)}</p>
+        <p style="color:${scoreColor};">Brier score: ${brierScore.toFixed(2)} (${scoreLabel})</p>
         ${confidenceDecileScores.map(({ decileRange, score, correct, total }) => {
       if (total === 0) {
         return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
