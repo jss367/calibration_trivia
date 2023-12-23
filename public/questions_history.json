@@ -1,52 +1,112 @@
 [
-  {
-    "question": "Who was the first President of the United States?",
-    "correctAnswer": "George Washington",
-    "options": ["Thomas Jefferson", "Abraham Lincoln", "George Washington", "John Adams"]
-  },
-  {
-    "question": "In which year did the Titanic sink?",
-    "correctAnswer": "1912",
-    "options": ["1912", "1910", "1915", "1905"]
-  },
-  {
-    "question": "What ancient city was destroyed by a volcanic eruption in 79 AD?",
-    "correctAnswer": "Pompeii",
-    "options": ["Athens", "Pompeii", "Rome", "Carthage"]
-  },
-  {
-    "question": "Which country gifted the Statue of Liberty to the United States?",
-    "correctAnswer": "France",
-    "options": ["France", "United Kingdom", "Spain", "Germany"]
-  },
-  {
-    "question": "Who was the first woman to fly solo across the Atlantic Ocean?",
-    "correctAnswer": "Amelia Earhart",
-    "options": ["Valentina Tereshkova", "Amelia Earhart", "Harriet Quimby", "Bessie Coleman"]
-  },
-  {
-    "question": "Which war was fought between the North and South regions in the United States from 1861 to 1865?",
-    "correctAnswer": "American Civil War",
-    "options": ["American Civil War", "World War I", "Revolutionary War", "War of 1812"]
-  },
-  {
-    "question": "In which year did the Berlin Wall fall?",
-    "correctAnswer": "1989",
-    "options": ["1989", "1979", "1991", "1985"]
-  },
-  {
-    "question": "Who discovered the laws of motion and gravity?",
-    "correctAnswer": "Isaac Newton",
-    "options": ["Albert Einstein", "Galileo Galilei", "Isaac Newton", "Nikola Tesla"]
-  },
-  {
-    "question": "Which empire was ruled by Julius Caesar?",
-    "correctAnswer": "Roman Empire",
-    "options": ["British Empire", "Roman Empire", "Ottoman Empire", "Mongol Empire"]
-  },
-  {
-    "question": "What was the main trigger of World War I?",
-    "correctAnswer": "Assassination of Archduke Franz Ferdinand",
-    "options": ["Assassination of Archduke Franz Ferdinand", "Invasion of Poland", "Fall of the Berlin Wall", "American Revolution"]
-  }
+    {
+        "question": "Who was the first President of the United States?",
+        "correctAnswer": "George Washington",
+        "options": [
+            "Thomas Jefferson",
+            "Abraham Lincoln",
+            "George Washington",
+            "John Adams"
+        ]
+    },
+    {
+        "question": "In which year did the Titanic sink?",
+        "correctAnswer": "1912",
+        "options": [
+            "1912",
+            "1910",
+            "1915",
+            "1905"
+        ]
+    },
+    {
+        "question": "What ancient city was destroyed by a volcanic eruption in 79 AD?",
+        "correctAnswer": "Pompeii",
+        "options": [
+            "Athens",
+            "Pompeii",
+            "Rome",
+            "Carthage"
+        ]
+    },
+    {
+        "question": "Which country gifted the Statue of Liberty to the United States?",
+        "correctAnswer": "France",
+        "options": [
+            "France",
+            "United Kingdom",
+            "Spain",
+            "Germany"
+        ]
+    },
+    {
+        "question": "Who was the first woman to fly solo across the Atlantic Ocean?",
+        "correctAnswer": "Amelia Earhart",
+        "options": [
+            "Valentina Tereshkova",
+            "Amelia Earhart",
+            "Harriet Quimby",
+            "Bessie Coleman"
+        ]
+    },
+    {
+        "question": "Which war was fought between the North and South regions in the United States from 1861 to 1865?",
+        "correctAnswer": "American Civil War",
+        "options": [
+            "American Civil War",
+            "World War I",
+            "Revolutionary War",
+            "War of 1812"
+        ]
+    },
+    {
+        "question": "In which year did the Berlin Wall fall?",
+        "correctAnswer": "1989",
+        "options": [
+            "1989",
+            "1979",
+            "1991",
+            "1985"
+        ]
+    },
+    {
+        "question": "Who discovered the laws of motion and gravity?",
+        "correctAnswer": "Isaac Newton",
+        "options": [
+            "Albert Einstein",
+            "Galileo Galilei",
+            "Isaac Newton",
+            "Nikola Tesla"
+        ]
+    },
+    {
+        "question": "Which empire was ruled by Julius Caesar?",
+        "correctAnswer": "Roman Empire",
+        "options": [
+            "British Empire",
+            "Roman Empire",
+            "Ottoman Empire",
+            "Mongol Empire"
+        ]
+    },
+    {
+        "question": "In what year did World War I start?",
+        "correctAnswer": "1914",
+        "options": [
+            "1912",
+            "1913",
+            "1914",
+            "1915"
+        ]
+    },
+    {
+        "question": "What was the main trigger of World War I?",
+        "correctAnswer": "Assassination of Archduke Franz Ferdinand",
+        "options": [
+            "Assassination of Archduke Franz Ferdinand",
+            "Invasion of Poland",
+            "Fall of the Berlin Wall",
+            "American Revolution"
+        ]
+    }
 ]

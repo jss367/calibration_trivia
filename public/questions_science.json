@@ -30,6 +30,16 @@
         ]
     },
     {
+        "question": "What is the hardest known natural material?",
+        "correctAnswer": "Diamond",
+        "options": [
+            "Quartz",
+            "Corundum",
+            "Diamond",
+            "Lonsdaleite"
+        ]
+    },
+    {
         "question": "What is the speed of light in vacuum, approximately?",
         "correctAnswer": "299,792 km/s",
         "options": [
@@ -137,6 +147,16 @@
             "1967",
             "1969",
             "1971"
+        ]
+    },
+    {
+        "question": "Which physicist is known for the 'Theory of Relativity'?",
+        "correctAnswer": "Albert Einstein",
+        "options": [
+            "Isaac Newton",
+            "Niels Bohr",
+            "Albert Einstein",
+            "Max Planck"
         ]
     },
     {

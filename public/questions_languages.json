@@ -1,0 +1,102 @@
+[
+    {
+        "question": "Which language is considered the most widely spoken native language in the world?",
+        "correctAnswer": "Mandarin Chinese",
+        "options": [
+            "English",
+            "Spanish",
+            "Mandarin Chinese",
+            "Hindi"
+        ]
+    },
+    {
+        "question": "What is the only country in the world where Portuguese is the official language?",
+        "correctAnswer": "Brazil",
+        "options": [
+            "Portugal",
+            "Angola",
+            "Mozambique",
+            "Brazil"
+        ]
+    },
+    {
+        "question": "Which language uses the Cyrillic script?",
+        "correctAnswer": "Russian",
+        "options": [
+            "Greek",
+            "Russian",
+            "Arabic",
+            "Hebrew"
+        ]
+    },
+    {
+        "question": "What language is considered the 'lingua franca' of East Africa?",
+        "correctAnswer": "Swahili",
+        "options": [
+            "Amharic",
+            "Swahili",
+            "Arabic",
+            "Zulu"
+        ]
+    },
+    {
+        "question": "Which language family does English belong to?",
+        "correctAnswer": "Germanic",
+        "options": [
+            "Romance",
+            "Germanic",
+            "Slavic",
+            "Celtic"
+        ]
+    },
+    {
+        "question": "What is the primary language spoken in the Canadian province of Quebec?",
+        "correctAnswer": "French",
+        "options": [
+            "English",
+            "French",
+            "Inuktitut",
+            "Spanish"
+        ]
+    },
+    {
+        "question": "Which ancient language is considered the sacred language of Hinduism?",
+        "correctAnswer": "Sanskrit",
+        "options": [
+            "Pali",
+            "Sanskrit",
+            "Tamil",
+            "Prakrit"
+        ]
+    },
+    {
+        "question": "Which writing system is used by the Korean language?",
+        "correctAnswer": "Hangul",
+        "options": [
+            "Kanji",
+            "Hangul",
+            "Hanzi",
+            "Katakana"
+        ]
+    },
+    {
+        "question": "What language, spoken in the Middle East, is known for its rich poetic tradition?",
+        "correctAnswer": "Arabic",
+        "options": [
+            "Hebrew",
+            "Turkish",
+            "Farsi",
+            "Arabic"
+        ]
+    },
+    {
+        "question": "Which language is official in Israel and also spoken by many Jewish communities around the world?",
+        "correctAnswer": "Hebrew",
+        "options": [
+            "Yiddish",
+            "Aramaic",
+            "Hebrew",
+            "Ladino"
+        ]
+    }
+]

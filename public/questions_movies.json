@@ -1,0 +1,213 @@
+[
+    {
+        "question": "Which movie, released in 1993, was directed by Steven Spielberg and is known for its groundbreaking use of computer-generated imagery?",
+        "correctAnswer": "Jurassic Park",
+        "options": [
+            "Jurassic Park",
+            "Terminator 2: Judgment Day",
+            "The Matrix",
+            "Avatar"
+        ]
+    },
+    {
+        "question": "Who won the Academy Award for Best Actor in 2020 for his role in 'Joker'?",
+        "correctAnswer": "Joaquin Phoenix",
+        "options": [
+            "Leonardo DiCaprio",
+            "Brad Pitt",
+            "Joaquin Phoenix",
+            "Adam Driver"
+        ]
+    },
+    {
+        "question": "What is the highest-grossing film of all time, as of 2023?",
+        "correctAnswer": "Avatar",
+        "options": [
+            "Titanic",
+            "Avengers: Endgame",
+            "Star Wars: The Force Awakens",
+            "Avatar"
+        ]
+    },
+    {
+        "question": "Which 2001 film, directed by Peter Jackson, is the first in a series based on the novels by J.R.R. Tolkien?",
+        "correctAnswer": "The Lord of the Rings: The Fellowship of the Ring",
+        "options": [
+            "The Lord of the Rings: The Two Towers",
+            "Harry Potter and the Sorcerer's Stone",
+            "The Lord of the Rings: The Fellowship of the Ring",
+            "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe"
+        ]
+    },
+    {
+        "question": "Which film, released in 1994, stars Tom Hanks and is known for the famous line, 'Life is like a box of chocolates'?",
+        "correctAnswer": "Forrest Gump",
+        "options": [
+            "The Shawshank Redemption",
+            "Forrest Gump",
+            "Pulp Fiction",
+            "The Lion King"
+        ]
+    },
+    {
+        "question": "Who directed the epic space opera film 'Star Wars' released in 1977?",
+        "correctAnswer": "George Lucas",
+        "options": [
+            "Steven Spielberg",
+            "James Cameron",
+            "George Lucas",
+            "Stanley Kubrick"
+        ]
+    },
+    {
+        "question": "What 2019 South Korean film, directed by Bong Joon-ho, won the Academy Award for Best Picture?",
+        "correctAnswer": "Parasite",
+        "options": [
+            "1917",
+            "Joker",
+            "Once Upon a Time in Hollywood",
+            "Parasite"
+        ]
+    },
+    {
+        "question": "Which actress starred as the lead character in the 2001 movie 'Lara Croft: Tomb Raider'?",
+        "correctAnswer": "Angelina Jolie",
+        "options": [
+            "Jennifer Lawrence",
+            "Scarlett Johansson",
+            "Angelina Jolie",
+            "Milla Jovovich"
+        ]
+    },
+    {
+        "question": "In which 1985 film does a high school student travel back in time to 1955 in a DeLorean car?",
+        "correctAnswer": "Back to the Future",
+        "options": [
+            "The Terminator",
+            "Back to the Future",
+            "Blade Runner",
+            "E.T. the Extra-Terrestrial"
+        ]
+    },
+    {
+        "question": "Who composed the iconic soundtrack for the 'Star Wars' movies?",
+        "correctAnswer": "John Williams",
+        "options": [
+            "Hans Zimmer",
+            "Ennio Morricone",
+            "Danny Elfman",
+            "John Williams"
+        ]
+    },
+    [
+        {
+            "question": "Which 1994 film directed by Quentin Tarantino tells the story of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits?",
+            "correctAnswer": "Pulp Fiction",
+            "options": [
+                "Reservoir Dogs",
+                "Pulp Fiction",
+                "The Godfather",
+                "Goodfellas"
+            ]
+        },
+        {
+            "question": "What 2000 historical drama film, directed by Ridley Scott, features Russell Crowe as a Roman General?",
+            "correctAnswer": "Gladiator",
+            "options": [
+                "Troy",
+                "300",
+                "Gladiator",
+                "Braveheart"
+            ]
+        },
+        {
+            "question": "Which movie, released in 1980 and directed by Stanley Kubrick, is based on Stephen King's 1977 novel and stars Jack Nicholson?",
+            "correctAnswer": "The Shining",
+            "options": [
+                "The Exorcist",
+                "Psycho",
+                "The Shining",
+                "A Nightmare on Elm Street"
+            ]
+        },
+        {
+            "question": "What 2013 science fiction film, directed by Alfonso Cuarón, stars Sandra Bullock and George Clooney as astronauts stranded in space?",
+            "correctAnswer": "Gravity",
+            "options": [
+                "Interstellar",
+                "Gravity",
+                "The Martian",
+                "Passengers"
+            ]
+        },
+        {
+            "question": "Which 2012 film, directed by Christopher Nolan, is the final installment in his Batman trilogy?",
+            "correctAnswer": "The Dark Knight Rises",
+            "options": [
+                "Batman Begins",
+                "The Dark Knight",
+                "The Dark Knight Rises",
+                "Batman v Superman: Dawn of Justice"
+            ]
+        },
+        {
+            "question": "Who starred as the title character in the 2008 film 'Iron Man', which launched the Marvel Cinematic Universe?",
+            "correctAnswer": "Robert Downey Jr.",
+            "options": [
+                "Chris Evans",
+                "Robert Downey Jr.",
+                "Chris Hemsworth",
+                "Mark Ruffalo"
+            ]
+        },
+        {
+            "question": "What 1997 epic romance and disaster film, directed by James Cameron, set aboard the ill-fated RMS Titanic, stars Leonardo DiCaprio and Kate Winslet?",
+            "correctAnswer": "Titanic",
+            "options": [
+                "The Notebook",
+                "Titanic",
+                "Romeo + Juliet",
+                "Pearl Harbor"
+            ]
+        },
+        {
+            "question": "Which film, released in 2009 and directed by James Cameron, is known for its pioneering use of motion capture and 3D technology?",
+            "correctAnswer": "Avatar",
+            "options": [
+                "Avatar",
+                "Tron: Legacy",
+                "The Avengers",
+                "Inception"
+            ]
+        },
+        {
+            "question": "What is the name of the fictional character played by Johnny Depp in the 'Pirates of the Caribbean' film series?",
+            "correctAnswer": "Captain Jack Sparrow",
+            "options": [
+                "Captain Jack Sparrow",
+                "Will Turner",
+                "Captain Hector Barbossa",
+                "Davy Jones"
+            ]
+        },
+        {
+            "question": "Who is the director of the 'Pulp Fiction' movie?",
+            "correctAnswer": "Quentin Tarantino",
+            "options": [
+                "Quentin Tarantino",
+                "Steven Spielberg",
+                "Martin Scorsese",
+                "Christopher Nolan"
+            ]
+        },
+        {
+            "question": "Which 1999 film directed by Lana and Lilly Wachowski is known for its innovative visual effects and explores the concept of a dystopian virtual reality?",
+            "correctAnswer": "The Matrix",
+            "options": [
+                "Blade Runner",
+                "The Matrix",
+                "Inception",
+                "Total Recall"
+            ]
+        }
+    ]

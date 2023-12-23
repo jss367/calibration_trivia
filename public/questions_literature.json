@@ -10,6 +10,16 @@
         ]
     },
     {
+        "question": "Who is the author of the 'A Song of Ice and Fire' series, which 'Game of Thrones' is based on?",
+        "correctAnswer": "George R. R. Martin",
+        "options": [
+            "J.K. Rowling",
+            "Stephen King",
+            "George R. R. Martin",
+            "J.R.R. Tolkien"
+        ]
+    },
+    {
         "question": "What is the title of the famous play by Shakespeare that features the characters Rosencrantz and Guildenstern?",
         "correctAnswer": "Hamlet",
         "options": [
@@ -27,6 +37,16 @@
             "Jane Eyre",
             "Pride and Prejudice",
             "Emma"
+        ]
+    },
+    {
+        "question": "Who is the author of 'Pride and Prejudice'?",
+        "correctAnswer": "Jane Austen",
+        "options": [
+            "Emily Bronte",
+            "Charlotte Bronte",
+            "Jane Austen",
+            "Louisa May Alcott"
         ]
     },
     {

@@ -30,6 +30,16 @@
         ]
     },
     {
+        "question": "Who painted 'The Scream'?",
+        "correctAnswer": "Edvard Munch",
+        "options": [
+            "Vincent van Gogh",
+            "Pablo Picasso",
+            "Edvard Munch",
+            "Salvador Dalí"
+        ]
+    },
+    {
         "question": "Who created the sculpture 'David' in the early 1500s?",
         "correctAnswer": "Michelangelo",
         "options": [
