@@ -650,22 +650,21 @@ function calculateConfidenceDecileScores(answers) {
     const decileCorrectCounts = Array(10).fill(0);
 
     answers.forEach(answer => {
-        // Find the decile for the confidence level (0-10)
         const decile = Math.min(Math.floor(answer.userConfidence * 10), 9);
-
         decileCounts[decile]++;
-        if (answer.correctAnswer.includes(answer.userAnswer)) {
-            decileScores[decile]++;
+        if (answer.correctAnswer === answer.userAnswer) {
+            decileCorrectCounts[decile]++;
         }
     });
 
     return decileScores.map((_, index) => ({
-        decileRange: `${index * 10}-${(index + 1) * 10}`,
+        decileRange: `${index * 10}-${(index + 1) * 10}%`,
         score: decileCounts[index] ? decileCorrectCounts[index] / decileCounts[index] : null,
         correct: decileCorrectCounts[index],
         total: decileCounts[index]
     }));
 }
+
 
 
 // Function to create a new session
