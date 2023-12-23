@@ -1,0 +1,182 @@
+[
+    {
+        "question": "Who painted the Mona Lisa?",
+        "correctAnswer": "Leonardo da Vinci",
+        "options": [
+            "Leonardo da Vinci",
+            "Michelangelo",
+            "Raphael",
+            "Vincent van Gogh"
+        ]
+    },
+    {
+        "question": "Which artist is known for the 'Sunflowers' series of paintings?",
+        "correctAnswer": "Vincent van Gogh",
+        "options": [
+            "Claude Monet",
+            "Vincent van Gogh",
+            "Pablo Picasso",
+            "Salvador Dalí"
+        ]
+    },
+    {
+        "question": "What art movement is Claude Monet associated with?",
+        "correctAnswer": "Impressionism",
+        "options": [
+            "Cubism",
+            "Realism",
+            "Impressionism",
+            "Surrealism"
+        ]
+    },
+    {
+        "question": "Who created the sculpture 'David' in the early 1500s?",
+        "correctAnswer": "Michelangelo",
+        "options": [
+            "Donatello",
+            "Leonardo da Vinci",
+            "Michelangelo",
+            "Rodin"
+        ]
+    },
+    {
+        "question": "Which artist is known for the iconic work 'The Persistence of Memory'?",
+        "correctAnswer": "Salvador Dalí",
+        "options": [
+            "Salvador Dalí",
+            "Pablo Picasso",
+            "René Magritte",
+            "Frida Kahlo"
+        ]
+    },
+    {
+        "question": "Which artist is famous for cutting off part of his ear?",
+        "correctAnswer": "Vincent van Gogh",
+        "options": [
+            "Pablo Picasso",
+            "Vincent van Gogh",
+            "Paul Gauguin",
+            "Edvard Munch"
+        ]
+    },
+    {
+        "question": "What is the art technique that creates three-dimensional works using materials like clay, stone, or wood?",
+        "correctAnswer": "Sculpture",
+        "options": [
+            "Painting",
+            "Drawing",
+            "Sculpture",
+            "Printmaking"
+        ]
+    },
+    {
+        "question": "Which artist is known for the 'Campbell’s Soup Cans' artwork?",
+        "correctAnswer": "Andy Warhol",
+        "options": [
+            "Andy Warhol",
+            "Roy Lichtenstein",
+            "Jean-Michel Basquiat",
+            "Jackson Pollock"
+        ]
+    },
+    {
+        "question": "What is the term for the art style that emerged in the 1960s, characterized by a focus on consumer culture and everyday objects?",
+        "correctAnswer": "Pop Art",
+        "options": [
+            "Cubism",
+            "Abstract Expressionism",
+            "Pop Art",
+            "Futurism"
+        ]
+    },
+    {
+        "question": "Which artist is famous for the large-scale balloon animal sculptures?",
+        "correctAnswer": "Jeff Koons",
+        "options": [
+            "Jeff Koons",
+            "Damien Hirst",
+            "Anish Kapoor",
+            "Yayoi Kusama"
+        ]
+    },
+    {
+        "question": "Which art movement is characterized by an emphasis on emotion and individualism, often depicted in dramatic landscapes?",
+        "correctAnswer": "Romanticism",
+        "options": [
+            "Neoclassicism",
+            "Romanticism",
+            "Baroque",
+            "Renaissance"
+        ]
+    },
+    {
+        "question": "Who is the artist behind the 'Guernica' painting, a powerful anti-war statement?",
+        "correctAnswer": "Pablo Picasso",
+        "options": [
+            "Pablo Picasso",
+            "Francisco Goya",
+            "Salvador Dalí",
+            "Joan Miró"
+        ]
+    },
+    {
+        "question": "What art style is characterized by vivid colors, exaggerated motion, and clear, easily understood composition, often used in comic books?",
+        "correctAnswer": "Pop Art",
+        "options": [
+            "Art Nouveau",
+            "Pop Art",
+            "Art Deco",
+            "Cubism"
+        ]
+    },
+    {
+        "question": "Who painted 'The Starry Night'?",
+        "correctAnswer": "Vincent van Gogh",
+        "options": [
+            "Vincent van Gogh",
+            "Claude Monet",
+            "Edvard Munch",
+            "Pablo Picasso"
+        ]
+    },
+    {
+        "question": "Which artist is known for their 'Mobiles', kinetic sculptures that move with air currents?",
+        "correctAnswer": "Alexander Calder",
+        "options": [
+            "Alexander Calder",
+            "Henry Moore",
+            "Joan Miró",
+            "Marcel Duchamp"
+        ]
+    },
+    {
+        "question": "Who is the artist known for his unique drip painting technique?",
+        "correctAnswer": "Jackson Pollock",
+        "options": [
+            "Mark Rothko",
+            "Jackson Pollock",
+            "Willem de Kooning",
+            "Franz Kline"
+        ]
+    },
+    {
+        "question": "Which artist created 'The Thinker', a famous bronze sculpture?",
+        "correctAnswer": "Auguste Rodin",
+        "options": [
+            "Michelangelo",
+            "Auguste Rodin",
+            "Gian Lorenzo Bernini",
+            "Donatello"
+        ]
+    },
+    {
+        "question": "What is the name of the technique where small dots of color are applied in patterns to form an image?",
+        "correctAnswer": "Pointillism",
+        "options": [
+            "Fauvism",
+            "Impressionism",
+            "Pointillism",
+            "Cubism"
+        ]
+    }
+]
