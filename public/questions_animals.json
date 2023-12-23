@@ -10,16 +10,6 @@
         ]
     },
     {
-        "question": "What is the name of the marsupial famous for carrying its young in a pouch on its belly, primarily found in Australia and New Guinea?",
-        "correctAnswer": "Koala",
-        "options": [
-            "Koala",
-            "Opossum",
-            "Bandicoot",
-            "Tasmanian Devil"
-        ]
-    },
-    {
         "question": "Which small, nocturnal marsupial is known for its distinctive scream and is found in Tasmania?",
         "correctAnswer": "Tasmanian Devil",
         "options": [
@@ -157,16 +147,6 @@
             "Squid",
             "Starfish",
             "Jellyfish"
-        ]
-    },
-    {
-        "question": "What species of fish is known for its ability to change colors and blend with its environment?",
-        "correctAnswer": "Chameleon",
-        "options": [
-            "Chameleon",
-            "Goldfish",
-            "Clownfish",
-            "Pufferfish"
         ]
     },
     {
