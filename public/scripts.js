@@ -342,10 +342,8 @@ function displayQuestionQuestioner(index) {
 
 // Function for the Questioner to call when ready to move to the next question
 function questionerNextQuestion(sessionId) {
-  console.log("Inside questionerNextQuestion with sessionId: ", sessionId);
   // Increment the current question index
   currentQuestionIndex++;
-  console.log("Current Question Index: ", currentQuestionIndex);
 
   // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
@@ -367,7 +365,6 @@ function questionerNextQuestion(sessionId) {
 
 // This function will be triggered for participants when the session's currentQuestionIndex changes
 function onQuestionIndexUpdated(sessionData) {
-  console.log("Inside onQuestionIndexUpdated with sessionData: ", sessionData);
   if (sessionData.currentQuestionIndex !== undefined && sessionData.currentQuestionIndex !== currentQuestionIndex) {
     // Submit the current answer before moving to the next question
     if (modeGroupParticipant.checked) {
@@ -383,7 +380,6 @@ function onQuestionIndexUpdated(sessionData) {
 
 // This function would be called when the participant selects a session and clicks a "Join Session" button
 function joinSelectedSession() {
-  console.log("Inside joinSelectedSession");
   const selectedSessionId = document.getElementById('session-id-select').value;
   if (selectedSessionId) {
     localStorage.setItem('currentSessionId', selectedSessionId); // Save to local storage or a variable
@@ -397,7 +393,6 @@ function joinSelectedSession() {
 
 // Later on, you can retrieve the session ID like this:
 function getCurrentSessionId() {
-  console.log("Inside getCurrentSessionId");
   // Replace this with however you're storing the session ID, e.g., local storage or a global variable
   return localStorage.getItem('currentSessionId');
 }
@@ -415,9 +410,6 @@ function getConfidenceInputHTML() {
 
 function displayQuestion(index) {
   // This is for single player mode
-
-  console.log("Current Index: ", index);
-  console.log("Current Question: ", questions[index]);
 
   if (!questions[index]) {
     console.error("Question not found for index: ", index);
@@ -440,11 +432,13 @@ function displayQuestion(index) {
       </div>
     `).join('');
 
-  questionDiv.innerHTML = `
-    <h2>${question.question}</h2>
-    ${answerInputHTML}
-    <input type="number" id="confidence" class="input-small" min="0" max="100" step="1">%
-  `;
+    const confidenceInputHTML = getConfidenceInputHTML();
+
+    questionDiv.innerHTML = `
+      <h2>${question.question}</h2>
+      ${answerInputHTML}
+      ${confidenceInputHTML}
+    `;
 
   questionContainer.innerHTML = ''; // Clear previous question
   questionContainer.appendChild(questionDiv); // Append new question
@@ -510,7 +504,6 @@ nextButton.addEventListener('click', () => {
 // });
 
 function loadQuestionsParticipant() {
-  console.log("Inside loadQuestionsParticipant");
 
   const sessionId = getCurrentSessionId();
   if (!sessionId) {
@@ -521,7 +514,6 @@ function loadQuestionsParticipant() {
   db.collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists && doc.data().questions) {
-        console.log("Fetched session questions:", doc.data().questions);
         questions = doc.data().questions;
         currentQuestionIndex = 0;
         displayQuestionForGroupParticipant(currentQuestionIndex);

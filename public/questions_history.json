@@ -170,16 +170,6 @@
         ]
     },
     {
-        "question": "Which Chinese dynasty is known for its remarkable construction, the Great Wall of China?",
-        "correctAnswer": "Ming Dynasty",
-        "options": [
-            "Qing Dynasty",
-            "Han Dynasty",
-            "Tang Dynasty",
-            "Ming Dynasty"
-        ]
-    },
-    {
         "question": "Who was the leader of the Soviet Union during World War II?",
         "correctAnswer": "Joseph Stalin",
         "options": [
@@ -310,16 +300,6 @@
         ]
     },
     {
-        "question": "Who was the first female ruler of Ancient Egypt?",
-        "correctAnswer": "Hatshepsut",
-        "options": [
-            "Nefertiti",
-            "Cleopatra",
-            "Hatshepsut",
-            "Sobekneferu"
-        ]
-    },
-    {
         "question": "During which war was the Battle of Gettysburg fought?",
         "correctAnswer": "American Civil War",
         "options": [
@@ -340,16 +320,6 @@
         ]
     },
     {
-        "question": "Who was the first female Pharaoh of ancient Egypt?",
-        "correctAnswer": "Sobekneferu",
-        "options": [
-            "Cleopatra",
-            "Nefertiti",
-            "Hatshepsut",
-            "Sobekneferu"
-        ]
-    },
-    {
         "question": "Which empire is known as the 'Empire of the Sun'?",
         "correctAnswer": "Inca Empire",
         "options": [
@@ -360,7 +330,7 @@
         ]
     },
     {
-        "question": "In which century did the Industrial Revolution begin?",
+        "question": "In which century is the Industrial Revolution generally recognized to have begun?",
         "correctAnswer": "18th Century",
         "options": [
             "16th Century",
