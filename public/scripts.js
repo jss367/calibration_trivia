@@ -182,8 +182,6 @@ startQuizButton.addEventListener('click', () => {
 });
 
 
-
-
 function loadQuestionsQuestioner() {
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
