@@ -438,7 +438,7 @@ function displayQuestion(index) {
     questionDiv.innerHTML = `
     <h2>${question.question}</h2>
     ${answerInputHTML}
-    <input type="number" id="confidence" class="input-small" min="0" max="100" step="1" value="50">%
+    <input type="number" id="confidence" class="input-small" min="0" max="100" step="1">%
   `;
 
     questionContainer.innerHTML = ''; // Clear previous question
