@@ -576,8 +576,6 @@ function displayQuestionForGroupParticipant(index) {
 
 
 
-
-
 function submitAnswer() {
   console.log("Inside submitAnswer");
 
@@ -585,13 +583,17 @@ function submitAnswer() {
   const selectedOption = document.querySelector('input[name="answer"]:checked');
   const userAnswer = selectedOption ? selectedOption.value : null;
   const confidenceElement = document.getElementById('confidence');
-  const userConfidence = parseInt(confidenceElement.value, 10) / 100;
 
-  // Log the scenario where no answer or confidence is selected
-  if (!selectedOption || !confidenceElement) {
-    console.warn('No answer or confidence selected for current question');
+  // Ensure confidence is within the 0-100 range
+  let userConfidence = parseInt(confidenceElement.value, 10);
+  userConfidence = Math.max(0, Math.min(userConfidence, 100)); // Clamp between 0 and 100
+
+  // Convert confidence to a percentage and round it
+  userConfidence = Math.round(userConfidence) / 100;
+
+  if (!selectedOption || isNaN(userConfidence)) {
+    console.warn('No answer or invalid confidence selected for current question');
   } else {
-    // Log values before submitting
     console.log('Submitting answer:', userAnswer, 'Confidence:', userConfidence);
   }
 
@@ -607,10 +609,9 @@ function submitAnswer() {
   // Save the user's answer, the correct answer, and confidence to arrays
   userAnswers.push(userAnswer);
   correctAnswers.push(currentCorrectAnswer);
-  userConfidences.push(userConfidence);
+  userConfidences.push(userConfidence); // Save the rounded confidence score
 
-  // Save the user's answer to Firestore
-  const sessionId = getCurrentSessionId(); // Retrieve the current session ID
+  const sessionId = getCurrentSessionId();
   const userId = document.getElementById('username').value.trim();
   if (userId && sessionId) {
     submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
@@ -619,12 +620,12 @@ function submitAnswer() {
     console.error('Session ID or User ID is missing');
   }
 
-  // Reset the answer selection for the next question
   if (selectedOption) {
     selectedOption.checked = false;
   }
-  document.getElementById('confidence').value = 50; // Reset confidence to default
+  confidenceElement.value = ''; // Clear the confidence input
 }
+
 
 
 function getCurrentSessionId() {

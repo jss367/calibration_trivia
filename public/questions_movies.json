@@ -99,115 +99,114 @@
             "John Williams"
         ]
     },
-    [
-        {
-            "question": "Which 1994 film directed by Quentin Tarantino tells the story of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits?",
-            "correctAnswer": "Pulp Fiction",
-            "options": [
-                "Reservoir Dogs",
-                "Pulp Fiction",
-                "The Godfather",
-                "Goodfellas"
-            ]
-        },
-        {
-            "question": "What 2000 historical drama film, directed by Ridley Scott, features Russell Crowe as a Roman General?",
-            "correctAnswer": "Gladiator",
-            "options": [
-                "Troy",
-                "300",
-                "Gladiator",
-                "Braveheart"
-            ]
-        },
-        {
-            "question": "Which movie, released in 1980 and directed by Stanley Kubrick, is based on Stephen King's 1977 novel and stars Jack Nicholson?",
-            "correctAnswer": "The Shining",
-            "options": [
-                "The Exorcist",
-                "Psycho",
-                "The Shining",
-                "A Nightmare on Elm Street"
-            ]
-        },
-        {
-            "question": "What 2013 science fiction film, directed by Alfonso Cuarón, stars Sandra Bullock and George Clooney as astronauts stranded in space?",
-            "correctAnswer": "Gravity",
-            "options": [
-                "Interstellar",
-                "Gravity",
-                "The Martian",
-                "Passengers"
-            ]
-        },
-        {
-            "question": "Which 2012 film, directed by Christopher Nolan, is the final installment in his Batman trilogy?",
-            "correctAnswer": "The Dark Knight Rises",
-            "options": [
-                "Batman Begins",
-                "The Dark Knight",
-                "The Dark Knight Rises",
-                "Batman v Superman: Dawn of Justice"
-            ]
-        },
-        {
-            "question": "Who starred as the title character in the 2008 film 'Iron Man', which launched the Marvel Cinematic Universe?",
-            "correctAnswer": "Robert Downey Jr.",
-            "options": [
-                "Chris Evans",
-                "Robert Downey Jr.",
-                "Chris Hemsworth",
-                "Mark Ruffalo"
-            ]
-        },
-        {
-            "question": "What 1997 epic romance and disaster film, directed by James Cameron, set aboard the ill-fated RMS Titanic, stars Leonardo DiCaprio and Kate Winslet?",
-            "correctAnswer": "Titanic",
-            "options": [
-                "The Notebook",
-                "Titanic",
-                "Romeo + Juliet",
-                "Pearl Harbor"
-            ]
-        },
-        {
-            "question": "Which film, released in 2009 and directed by James Cameron, is known for its pioneering use of motion capture and 3D technology?",
-            "correctAnswer": "Avatar",
-            "options": [
-                "Avatar",
-                "Tron: Legacy",
-                "The Avengers",
-                "Inception"
-            ]
-        },
-        {
-            "question": "What is the name of the fictional character played by Johnny Depp in the 'Pirates of the Caribbean' film series?",
-            "correctAnswer": "Captain Jack Sparrow",
-            "options": [
-                "Captain Jack Sparrow",
-                "Will Turner",
-                "Captain Hector Barbossa",
-                "Davy Jones"
-            ]
-        },
-        {
-            "question": "Who is the director of the 'Pulp Fiction' movie?",
-            "correctAnswer": "Quentin Tarantino",
-            "options": [
-                "Quentin Tarantino",
-                "Steven Spielberg",
-                "Martin Scorsese",
-                "Christopher Nolan"
-            ]
-        },
-        {
-            "question": "Which 1999 film directed by Lana and Lilly Wachowski is known for its innovative visual effects and explores the concept of a dystopian virtual reality?",
-            "correctAnswer": "The Matrix",
-            "options": [
-                "Blade Runner",
-                "The Matrix",
-                "Inception",
-                "Total Recall"
-            ]
-        }
-    ]
+    {
+        "question": "Which 1994 film directed by Quentin Tarantino tells the story of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits?",
+        "correctAnswer": "Pulp Fiction",
+        "options": [
+            "Reservoir Dogs",
+            "Pulp Fiction",
+            "The Godfather",
+            "Goodfellas"
+        ]
+    },
+    {
+        "question": "What 2000 historical drama film, directed by Ridley Scott, features Russell Crowe as a Roman General?",
+        "correctAnswer": "Gladiator",
+        "options": [
+            "Troy",
+            "300",
+            "Gladiator",
+            "Braveheart"
+        ]
+    },
+    {
+        "question": "Which movie, released in 1980 and directed by Stanley Kubrick, is based on Stephen King's 1977 novel and stars Jack Nicholson?",
+        "correctAnswer": "The Shining",
+        "options": [
+            "The Exorcist",
+            "Psycho",
+            "The Shining",
+            "A Nightmare on Elm Street"
+        ]
+    },
+    {
+        "question": "What 2013 science fiction film, directed by Alfonso Cuarón, stars Sandra Bullock and George Clooney as astronauts stranded in space?",
+        "correctAnswer": "Gravity",
+        "options": [
+            "Interstellar",
+            "Gravity",
+            "The Martian",
+            "Passengers"
+        ]
+    },
+    {
+        "question": "Which 2012 film, directed by Christopher Nolan, is the final installment in his Batman trilogy?",
+        "correctAnswer": "The Dark Knight Rises",
+        "options": [
+            "Batman Begins",
+            "The Dark Knight",
+            "The Dark Knight Rises",
+            "Batman v Superman: Dawn of Justice"
+        ]
+    },
+    {
+        "question": "Who starred as the title character in the 2008 film 'Iron Man', which launched the Marvel Cinematic Universe?",
+        "correctAnswer": "Robert Downey Jr.",
+        "options": [
+            "Chris Evans",
+            "Robert Downey Jr.",
+            "Chris Hemsworth",
+            "Mark Ruffalo"
+        ]
+    },
+    {
+        "question": "What 1997 epic romance and disaster film, directed by James Cameron, set aboard the ill-fated RMS Titanic, stars Leonardo DiCaprio and Kate Winslet?",
+        "correctAnswer": "Titanic",
+        "options": [
+            "The Notebook",
+            "Titanic",
+            "Romeo + Juliet",
+            "Pearl Harbor"
+        ]
+    },
+    {
+        "question": "Which film, released in 2009 and directed by James Cameron, is known for its pioneering use of motion capture and 3D technology?",
+        "correctAnswer": "Avatar",
+        "options": [
+            "Avatar",
+            "Tron: Legacy",
+            "The Avengers",
+            "Inception"
+        ]
+    },
+    {
+        "question": "What is the name of the fictional character played by Johnny Depp in the 'Pirates of the Caribbean' film series?",
+        "correctAnswer": "Captain Jack Sparrow",
+        "options": [
+            "Captain Jack Sparrow",
+            "Will Turner",
+            "Captain Hector Barbossa",
+            "Davy Jones"
+        ]
+    },
+    {
+        "question": "Who is the director of the 'Pulp Fiction' movie?",
+        "correctAnswer": "Quentin Tarantino",
+        "options": [
+            "Quentin Tarantino",
+            "Steven Spielberg",
+            "Martin Scorsese",
+            "Christopher Nolan"
+        ]
+    },
+    {
+        "question": "Which 1999 film directed by Lana and Lilly Wachowski is known for its innovative visual effects and explores the concept of a dystopian virtual reality?",
+        "correctAnswer": "The Matrix",
+        "options": [
+            "Blade Runner",
+            "The Matrix",
+            "Inception",
+            "Total Recall"
+        ]
+    }
+]
