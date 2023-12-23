@@ -14,9 +14,9 @@ const modeGroupParticipant = document.getElementById('mode-group-participant');
 const modeGroupQuestioner = document.getElementById('mode-group-questioner');
 const questionCountContainer = document.getElementById('question-count-container');
 const startButtonContainer = document.getElementById('start-button-container');
-const questionerNextButton = document.getElementById('questioner-next-button');
+// const questionerNextButton = document.getElementById('questioner-next-button');
 const sessionIdContainer = document.getElementById('session-id-container');
-const questionerButtonContainer = document.getElementById('questioner-button-container');
+// const questionerButtonContainer = document.getElementById('questioner-button-container');
 
 const submitButton = document.getElementById('submit-button');
 
@@ -157,11 +157,12 @@ startQuizButton.addEventListener('click', () => {
     const selectedSessionId = document.getElementById('session-id-select').value;
     if (selectedSessionId) {
       localStorage.setItem('currentSessionId', selectedSessionId);
-      joinSessionListener(selectedSessionId);
-      loadSessionQuestions(selectedSessionId);
+      // joinSessionListener(selectedSessionId);
+      // loadSessionQuestions(selectedSessionId);
     } else {
       console.log("Please select a session.");
     }
+    loadQuestionsParticipant(); // WRITE THIS FUNCTION
   } else if (selectedMode === 'group-questioner') {
     console.log("Starting Group Questioner Mode");
     const sessionId = document.getElementById('session-id').value.trim();
@@ -175,7 +176,7 @@ startQuizButton.addEventListener('click', () => {
           // Update UI to display session ID and hide input field
           sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
 
-          quizContainer.style.display = 'block';
+          quizContainer.style.display = 'none'; // This has the button in it too
 
           loadQuestionsQuestioner(); // Load and display questions
         })
@@ -189,7 +190,7 @@ startQuizButton.addEventListener('click', () => {
 
 
 function loadQuestionsQuestioner() {
-  console.log("Inside loadQuestionsSingle");
+  console.log("Inside loadQuestionsQuestioner");
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
   const selectedFiles = Array.from(checkboxes)
@@ -228,11 +229,7 @@ function loadQuestionsQuestioner() {
       console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
 
       // Switch this to just one of the modes
-      if (modeSinglePlayer.checked) {
-        displayQuestion(currentQuestionIndex);
-      } else if (modeGroupParticipant.checked) {
-        displayQuestionParticipant(currentQuestionIndex)
-      } else if (modeGroupQuestioner.checked) {
+      if (modeGroupQuestioner.checked) {
         displayQuestionQuestioner(currentQuestionIndex)
         const sessionId = getCurrentSessionId();
         if (sessionId) {
@@ -292,16 +289,6 @@ function loadQuestionsSingle() {
       // Switch this to just one of the modes
       if (modeSinglePlayer.checked) {
         displayQuestion(currentQuestionIndex);
-      } else if (modeGroupParticipant.checked) {
-        displayQuestionParticipant(currentQuestionIndex)
-      } else if (modeGroupQuestioner.checked) {
-        displayQuestionQuestioner(currentQuestionIndex)
-        const sessionId = getCurrentSessionId();
-        if (sessionId) {
-          saveQuestionsToFirestore(sessionId, questions);
-        } else {
-          console.log('Session ID not set for Group Questioner mode');
-        }
       }
     })
     .catch((error) => {
@@ -351,8 +338,8 @@ function displayQuestionQuestioner(index) {
   questionContainer.appendChild(questionDiv); // Append new question
   quizContainer.style.display = 'block'; // Ensure the quiz container is visible
   // nextButton.style.display = 'block'; // Show the next button  // This should be the other next button
-  questionerButtonContainer.style.display = 'block';
-  questionerNextButton.style.display = 'block';
+  // questionerButtonContainer.style.display = 'block';
+  // questionerNextButton.style.display = 'block';
 }
 
 
@@ -396,24 +383,6 @@ function onQuestionIndexUpdated(sessionData) {
 }
 
 
-// Listener for session changes (to be called when the participant first joins the session)
-function joinSessionListener(sessionId) {
-  console.log("Inside joinSessionListener with sessionId: ", sessionId);
-  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
-    const sessionData = doc.data();
-    // Log the session data
-    console.log('Session data:', sessionData);
-    if (sessionData) {
-      if (sessionData.currentQuestionIndex !== undefined) {
-        currentQuestionIndex = sessionData.currentQuestionIndex;
-        displayQuestionForGroupParticipant(currentQuestionIndex);
-      }
-      nextButton.style.display = 'none'; // Hide the next button for participants
-      submitButton.style.display = 'block'; // Show the submit button for participants
-    }
-  });
-}
-
 
 // This function would be called when the participant selects a session and clicks a "Join Session" button
 function joinSelectedSession() {
@@ -421,7 +390,7 @@ function joinSelectedSession() {
   const selectedSessionId = document.getElementById('session-id-select').value;
   if (selectedSessionId) {
     localStorage.setItem('currentSessionId', selectedSessionId); // Save to local storage or a variable
-    joinSessionListener(selectedSessionId); // Start listening for updates on the selected session
+    // joinSessionListener(selectedSessionId); // Start listening for updates on the selected session
   } else {
     console.error('No session selected.');
   }
@@ -437,47 +406,6 @@ function getCurrentSessionId() {
 }
 
 
-
-
-
-function displayQuestionParticipant(index) {
-
-  console.log("Current Index: ", index);
-  console.log("Current Question: ", questions[index]);
-
-  if (!questions[index]) {
-    console.error("Question not found for index: ", index);
-    return; // Exit the function if the question is not found
-  }
-
-  const question = questions[index];
-
-  // Create a new div for the question
-  const questionDiv = document.createElement('div');
-
-  // Initialize the answer input HTML
-  let answerInputHTML = '';
-
-  const options = ['A', 'B', 'C', 'D'];
-  answerInputHTML = question.options.map((option, index) => `
-      <div>
-        <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
-        <label for="option-${options[index]}">${options[index]}: ${option}</label>
-      </div>
-    `).join('');
-
-  questionDiv.innerHTML = `
-    <h2>${question.question}</h2>
-    ${answerInputHTML}
-    ${getConfidenceInputHTML()}
-  `;
-
-  questionContainer.innerHTML = ''; // Clear previous question
-  questionContainer.appendChild(questionDiv); // Append new question
-
-  nextButton.style.display = 'block';
-
-}
 
 
 function getConfidenceInputHTML() {
@@ -560,6 +488,7 @@ nextButton.addEventListener('click', () => {
     }
   }
   else if (modeGroupParticipant.checked) {
+    submitAnswer();
     const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
     nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
   }
@@ -579,23 +508,40 @@ nextButton.addEventListener('click', () => {
   }
 });
 
-questionerNextButton.addEventListener('click', () => {
-  console.log("Inside questionerNextButton event listener");
-  const sessionId = getCurrentSessionId(); // Retrieves the current session ID
-  if (sessionId) {
-    questionerNextQuestion(sessionId);
-  } else {
-    console.error('No session ID found for Questioner.');
-  }
-});
-
 
 submitButton.addEventListener('click', () => {
   submitAnswer();
 });
 
+function loadQuestionsParticipant() {
+  console.log("Inside loadQuestionsParticipant");
+
+  const sessionId = getCurrentSessionId();
+  if (!sessionId) {
+    console.error("No session ID found.");
+    return;
+  }
+
+  db.collection('sessions').doc(sessionId).get()
+    .then(doc => {
+      if (doc.exists && doc.data().questions) {
+        console.log("Fetched session questions:", doc.data().questions);
+        questions = doc.data().questions;
+        currentQuestionIndex = 0;
+        displayQuestionForGroupParticipant(currentQuestionIndex);
+      } else {
+        console.error("No questions available in this session or session does not exist.");
+      }
+    })
+    .catch(error => console.error("Error loading session questions:", error));
+}
+
+
+
 
 function displayQuestionForGroupParticipant(index) {
+  console.log("Inside displayQuestionForGroupParticipant");
+
   console.log("Current Index: ", index);
   console.log("Current Question: ", questions[index]);
 
@@ -626,7 +572,12 @@ function displayQuestionForGroupParticipant(index) {
 
   // Make sure the quiz container is visible
   quizContainer.style.display = 'block';
+  nextButton.style.display = 'block';
 }
+
+
+
+
 
 
 function submitAnswer() {
@@ -742,20 +693,8 @@ function createSession() {
 }
 
 
-
-// Function to join a session
-function joinSession(sessionId) {
-  // Listen to changes in the session data
-  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
-    const sessionData = doc.data();
-    if (sessionData) {
-      displayQuestion(sessionData.currentQuestionIndex);
-      // Other updates like showing scores or leaderboard
-    }
-  });
-}
-
 function nextQuestion(sessionId) {
+  console.log("Inside nextQuestion with sessionId: ", sessionId);
   // Increment the current question index
   currentQuestionIndex++;
 
@@ -777,6 +716,7 @@ function displayResults() {
    * This should be the individual results, not the group ones
    */
   quizContainer.style.display = 'none';
+  // questionerButtonContainer.style.display = 'none';  // maybe group results here too?
 
   brierScore /= questions.length;
 
@@ -806,7 +746,6 @@ function displayResults() {
 
   resultsContainer.style.display = 'block';
   displayIndividualResults();
-
 }
 
 
