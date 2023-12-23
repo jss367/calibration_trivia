@@ -14,9 +14,7 @@ const modeGroupParticipant = document.getElementById('mode-group-participant');
 const modeGroupQuestioner = document.getElementById('mode-group-questioner');
 const questionCountContainer = document.getElementById('question-count-container');
 const startButtonContainer = document.getElementById('start-button-container');
-// const questionerNextButton = document.getElementById('questioner-next-button');
 const sessionIdContainer = document.getElementById('session-id-container');
-// const questionerButtonContainer = document.getElementById('questioner-button-container');
 
 const submitButton = document.getElementById('submit-button');
 
@@ -335,9 +333,6 @@ function displayQuestionQuestioner(index) {
   questionContainer.innerHTML = ''; // Clear previous question
   questionContainer.appendChild(questionDiv); // Append new question
   quizContainer.style.display = 'block'; // Ensure the quiz container is visible
-  // nextButton.style.display = 'block'; // Show the next button  // This should be the other next button
-  // questionerButtonContainer.style.display = 'block';
-  // questionerNextButton.style.display = 'block';
 }
 
 
@@ -700,7 +695,7 @@ function nextQuestion(sessionId) {
   if (currentQuestionIndex < questions.length) {
     // Update the current question index in the Firebase session
     // db.collection('sessions').doc(sessionId).update({
-      // currentQuestionIndex: currentQuestionIndex
+    // currentQuestionIndex: currentQuestionIndex
     // });
     displayQuestionForGroupParticipant(currentQuestionIndex);
   } else {
@@ -711,40 +706,43 @@ function nextQuestion(sessionId) {
 
 function displayResults() {
   console.log("Inside displayResults");
-  /**
-   * This should be the individual results, not the group ones
-   */
+
+  // Hide quiz container
   quizContainer.style.display = 'none';
-  // questionerButtonContainer.style.display = 'none';  // maybe group results here too?
 
-  brierScore /= questions.length;
+  if (modeGroupQuestioner.checked) {
+    // For Group Questioner, only display the leaderboard
+    displayLeaderboard(getCurrentSessionId());
+  } else {
+    // Calculate and display individual results for participants
+    brierScore /= questions.length;
 
-  // const answers = snapshot.docs.map(doc => doc.data());
-  const answers = userAnswers.map((userAnswer, index) => ({
-    userAnswer,
-    correctAnswer: correctAnswers[index],
-    userConfidence: userConfidences[index],
-  }));
-  console.log("Your values for answers in displayResults is: ", answers);
+    const answers = userAnswers.map((userAnswer, index) => ({
+      userAnswer,
+      correctAnswer: correctAnswers[index],
+      userConfidence: userConfidences[index],
+    }));
+    console.log("Your values for answers in displayResults is: ", answers);
 
-  const confidenceDecileScores = calculateConfidenceDecileScores(answers);
-  console.log("Your values for confidenceDecileScores is: ", confidenceDecileScores);
+    const confidenceDecileScores = calculateConfidenceDecileScores(answers);
+    console.log("Your values for confidenceDecileScores is: ", confidenceDecileScores);
 
-  resultsContainer.innerHTML = `
-        <h2>Results</h2>
-        <p>Correct answers: ${score} / ${questions.length}</p>
-        <p>Brier score: ${brierScore.toFixed(2)}</p>
-        ${confidenceDecileScores.map(({ decileRange, score }) => {
-    if (score === null) {
-      return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
-    } else {
-      return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time.</p>`;
-    }
-  }).join('')}
-      `;
+    resultsContainer.innerHTML = `
+      <h2>Results</h2>
+      <p>Correct answers: ${score} / ${questions.length}</p>
+      <p>Brier score: ${brierScore.toFixed(2)}</p>
+      ${confidenceDecileScores.map(({ decileRange, score }) => {
+      if (score === null) {
+        return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
+      } else {
+        return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time.</p>`;
+      }
+    }).join('')}
+    `;
 
-  resultsContainer.style.display = 'block';
-  displayIndividualResults();
+    resultsContainer.style.display = 'block';
+    displayIndividualResults();
+  }
 }
 
 
@@ -771,4 +769,42 @@ function displayIndividualResults() {
     }
     resultsContainer.appendChild(resultPara);
   }
+}
+
+
+function displayLeaderboard(sessionId) {
+  console.log("Displaying leaderboard for session:", sessionId);
+
+  db.collection('sessions').doc(sessionId).collection('answers')
+    .get()
+    .then(querySnapshot => {
+      const scores = {};
+      querySnapshot.forEach(doc => {
+        const data = doc.data();
+        const userId = doc.id;
+        // Assuming 'answer' and 'confidence' are stored in each doc
+        if (!scores[userId]) {
+          scores[userId] = { correct: 0, total: 0 };
+        }
+        const isCorrect = questions[scores[userId].total].correctAnswer === data.answer;
+        if (isCorrect) {
+          scores[userId].correct++;
+        }
+        scores[userId].total++;
+      });
+
+      // Display the leaderboard
+      const leaderboardDiv = document.getElementById('leaderboard-container');
+      leaderboardDiv.innerHTML = '<h2>Leaderboard</h2>';
+      Object.keys(scores).forEach(userId => {
+        const score = scores[userId];
+        const scoreElement = document.createElement('p');
+        scoreElement.innerText = `${userId}: ${score.correct} / ${score.total}`;
+        leaderboardDiv.appendChild(scoreElement);
+      });
+      leaderboardDiv.style.display = 'block';
+    })
+    .catch(error => {
+      console.error("Error getting documents: ", error);
+    });
 }
