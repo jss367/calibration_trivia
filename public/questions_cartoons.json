@@ -1,0 +1,182 @@
+[
+    {
+        "question": "Which cartoon character is known for his catchphrase, 'What's up, Doc?'",
+        "correctAnswer": "Bugs Bunny",
+        "options": [
+            "Mickey Mouse",
+            "Bugs Bunny",
+            "Donald Duck",
+            "SpongeBob SquarePants"
+        ]
+    },
+    {
+        "question": "What is the name of the city where the cartoon 'The Simpsons' is set?",
+        "correctAnswer": "Springfield",
+        "options": [
+            "Springfield",
+            "Quahog",
+            "South Park",
+            "Bedrock"
+        ]
+    },
+    {
+        "question": "Who is the sailor man who gains strength from eating spinach?",
+        "correctAnswer": "Popeye",
+        "options": [
+            "Popeye",
+            "Bluto",
+            "Scooby-Doo",
+            "Fred Flintstone"
+        ]
+    },
+    {
+        "question": "What is the name of the prehistoric town in 'The Flintstones'?",
+        "correctAnswer": "Bedrock",
+        "options": [
+            "Springfield",
+            "Bedrock",
+            "Bikini Bottom",
+            "Coolsville"
+        ]
+    },
+    {
+        "question": "Who is the main character in the cartoon 'SpongeBob SquarePants'?",
+        "correctAnswer": "SpongeBob SquarePants",
+        "options": [
+            "Patrick Star",
+            "SpongeBob SquarePants",
+            "Squidward Tentacles",
+            "Mr. Krabs"
+        ]
+    },
+    {
+        "question": "In 'Tom and Jerry', which character is the cat?",
+        "correctAnswer": "Tom",
+        "options": [
+            "Jerry",
+            "Tom",
+            "Spike",
+            "Tyke"
+        ]
+    },
+    {
+        "question": "Which cartoon features a group of mystery solvers traveling in the 'Mystery Machine'?",
+        "correctAnswer": "Scooby-Doo, Where Are You!",
+        "options": [
+            "The Flintstones",
+            "The Jetsons",
+            "Scooby-Doo, Where Are You!",
+            "The Simpsons"
+        ]
+    },
+    {
+        "question": "Which character leads the underwater city of Bikini Bottom in 'SpongeBob SquarePants'?",
+        "correctAnswer": "Mr. Krabs",
+        "options": [
+            "Sandy Cheeks",
+            "Mr. Krabs",
+            "SpongeBob SquarePants",
+            "Plankton"
+        ]
+    },
+    {
+        "question": "Who is the friendly ghost featured in a series of cartoons and comic books?",
+        "correctAnswer": "Casper",
+        "options": [
+            "Casper",
+            "Ghostbusters",
+            "Danny Phantom",
+            "Boo"
+        ]
+    },
+    {
+        "question": "Which character is a genius baby in the cartoon 'Family Guy'?",
+        "correctAnswer": "Stewie Griffin",
+        "options": [
+            "Chris Griffin",
+            "Brian Griffin",
+            "Meg Griffin",
+            "Stewie Griffin"
+        ]
+    },
+    {
+        "question": "What is the name of the cartoon featuring a cowardly dog living in a haunted farmhouse?",
+        "correctAnswer": "Courage the Cowardly Dog",
+        "options": [
+            "Scooby-Doo",
+            "Courage the Cowardly Dog",
+            "Pluto",
+            "Goofy"
+        ]
+    },
+    {
+        "question": "Which cartoon series features four boys named Stan, Kyle, Eric, and Kenny?",
+        "correctAnswer": "South Park",
+        "options": [
+            "The Simpsons",
+            "South Park",
+            "Family Guy",
+            "Futurama"
+        ]
+    },
+    {
+        "question": "Who is the main antagonist in 'The Smurfs' cartoon series?",
+        "correctAnswer": "Gargamel",
+        "options": [
+            "Gargamel",
+            "Azrael",
+            "Papa Smurf",
+            "Brainy Smurf"
+        ]
+    },
+    {
+        "question": "What is the name of the city where 'Batman: The Animated Series' is set?",
+        "correctAnswer": "Gotham City",
+        "options": [
+            "Metropolis",
+            "Gotham City",
+            "Central City",
+            "Star City"
+        ]
+    },
+    {
+        "question": "Which cartoon character is known for his love of lasagna and hatred of Mondays?",
+        "correctAnswer": "Garfield",
+        "options": [
+            "Garfield",
+            "Heathcliff",
+            "Tom",
+            "Sylvester"
+        ]
+    },
+    {
+        "question": "What is the name of the dog in 'The Jetsons'?",
+        "correctAnswer": "Astro",
+        "options": [
+            "Astro",
+            "Scooby-Doo",
+            "Brian Griffin",
+            "Santa's Little Helper"
+        ]
+    },
+    {
+        "question": "Which cartoon features a team of superheroes living in a T-shaped tower?",
+        "correctAnswer": "Teen Titans",
+        "options": [
+            "Justice League",
+            "X-Men",
+            "Avengers",
+            "Teen Titans"
+        ]
+    },
+    {
+        "question": "Who is the pink starfish best friend of SpongeBob SquarePants?",
+        "correctAnswer": "Patrick Star",
+        "options": [
+            "Squidward Tentacles",
+            "Mr. Krabs",
+            "Sandy Cheeks",
+            "Patrick Star"
+        ]
+    }
+]
