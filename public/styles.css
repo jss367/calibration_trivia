@@ -15,19 +15,6 @@ button {
 }
 
 
-#questioner-next-button {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px; /* Adds space inside the button */
-  background-color: red; /* Sets the background color to red */
-  color: white; /* Sets the text color to white for better contrast */
-  font-size: 1.5em; /* Makes the text larger */
-  border: none; /* Removes the border */
-  border-radius: 5px; /* Optional: Rounds the corners of the button */
-  cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
-}
-
-
 .input-large {
   width: 200px;
   height: 40px;
