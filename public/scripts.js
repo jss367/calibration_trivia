@@ -28,11 +28,9 @@ let userConfidences = [];
 
 // Event listener for mode selection
 modeSelectionContainer.addEventListener('change', (event) => {
-  console.log("Inside modeSelectionContainer event listener");
   startButtonContainer.style.display = 'flex';
 
   if (event.target.value === 'group-questioner') {
-    console.log("Inside group-questioner if statement");
     // Group Questioner specific elements
     sessionIdContainer.style.display = 'block';
     categorySelectionContainer.style.display = 'block';
@@ -43,7 +41,6 @@ modeSelectionContainer.addEventListener('change', (event) => {
     startQuizButton.removeEventListener('click', joinSelectedSession);
   }
   else if (event.target.value === 'group-participant') {
-    console.log("Inside group-participant if statement");
     // Group Participant specific elements
     sessionIdContainer.style.display = 'none';
     usernameContainer.style.display = 'block';
@@ -56,7 +53,6 @@ modeSelectionContainer.addEventListener('change', (event) => {
     startQuizButton.addEventListener('click', joinSelectedSession);
   }
   else if (event.target.value === 'single') {
-    console.log("Inside single if statement");
     // Single Player specific elements
     sessionIdContainer.style.display = 'none';
     usernameContainer.style.display = 'none'; // Hide the username input field
@@ -94,7 +90,6 @@ document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
 
 
 function loadSessionQuestions(sessionId) {
-  console.log("Inside loadSessionQuestions");
   db.collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists) {
@@ -121,7 +116,6 @@ function generateRandomUsername() {
 
 
 function loadAvailableSessions() {
-  console.log("Inside loadAvailableSessions");
   db.collection('sessions').where('active', '==', true).get()
     .then(snapshot => {
       const sessionIdSelect = document.getElementById('session-id-select');
@@ -137,7 +131,6 @@ function loadAvailableSessions() {
 }
 // Inside the startQuizButton event listener
 startQuizButton.addEventListener('click', () => {
-  console.log("Inside startQuizButton event listener");
 
   const selectedMode = document.querySelector('input[name="mode"]:checked').value;
   console.log("Selected Mode: ", selectedMode);
@@ -192,7 +185,6 @@ startQuizButton.addEventListener('click', () => {
 
 
 function loadQuestionsQuestioner() {
-  console.log("Inside loadQuestionsQuestioner");
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
   const selectedFiles = Array.from(checkboxes)
@@ -215,7 +207,6 @@ function loadQuestionsQuestioner() {
 
   Promise.all(promises)
     .then(loadedQuestionsArrays => {
-      console.log("Inside Promise.all");
       // Flatten the array of arrays into a single array
 
       questions = [].concat(...loadedQuestionsArrays);
@@ -248,7 +239,6 @@ function loadQuestionsQuestioner() {
 
 
 function loadQuestionsSingle() {
-  console.log("Inside loadQuestionsSingle");
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
   const selectedFiles = Array.from(checkboxes)
@@ -271,7 +261,6 @@ function loadQuestionsSingle() {
 
   Promise.all(promises)
     .then(loadedQuestionsArrays => {
-      console.log("Inside Promise.all");
       // Flatten the array of arrays into a single array
 
       questions = [].concat(...loadedQuestionsArrays);
@@ -305,10 +294,6 @@ function shuffleArray(array) {
 
 function displayQuestionQuestioner(index) {
   // This is for group questioner mode
-  console.log("Inside function displayQuestionQuestioner");
-
-  console.log("Current Index: ", index);
-  console.log("Current Question: ", questions[index]);
 
   if (!questions[index]) {
     console.error("Question not found for index: ", index);
@@ -449,7 +434,6 @@ function displayQuestion(index) {
 }
 
 function saveQuestionsToFirestore(sessionId, questionsArray) {
-  console.log("Inside saveQuestionsToFirestore");
   db.collection('sessions').doc(sessionId).set({
     questions: questionsArray,
     active: true // or any other relevant session data
@@ -462,7 +446,6 @@ function saveQuestionsToFirestore(sessionId, questionsArray) {
 nextButton.classList.add('button-spacing');
 
 nextButton.addEventListener('click', () => {
-  console.log("Inside nextButton event listener");
 
   // Handling for Group Questioner mode
   if (modeGroupQuestioner.checked) {
@@ -530,10 +513,6 @@ function loadQuestionsParticipant() {
 
 
 function displayQuestionForGroupParticipant(index) {
-  console.log("Inside displayQuestionForGroupParticipant");
-
-  console.log("Current Index: ", index);
-  console.log("Current Question: ", questions[index]);
 
   if (!questions[index]) {
     console.error("Question not found for index: ", index);
@@ -568,7 +547,6 @@ function displayQuestionForGroupParticipant(index) {
 
 
 function submitAnswer() {
-  console.log("Inside submitAnswer");
 
   // Get the selected answer and confidence level
   const selectedOption = document.querySelector('input[name="answer"]:checked');
@@ -623,8 +601,6 @@ function getCurrentSessionId() {
 }
 
 function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
-  console.log("Inside submitAnswerToFirestore");
-  console.log('Session ID:', sessionId, 'User ID:', userId);
 
   if (!sessionId || !userId) {
     console.error('Session ID or User ID is missing.');
@@ -666,7 +642,6 @@ function calculateConfidenceDecileScores(answers) {
 
 // Function to create a new session
 function createSession() {
-  console.log("Inside createSession");
   const sessionId = document.getElementById('session-id').value.trim();
   db.collection('sessions').doc(sessionId).set({
     currentQuestionIndex: 0,
@@ -683,11 +658,9 @@ function createSession() {
 
 
 function nextQuestion(sessionId) {
-  console.log("Inside nextQuestion with sessionId: ", sessionId);
+
   // Increment the current question index
-  console.log("Current Question Index before updating: ", currentQuestionIndex);
   currentQuestionIndex++;
-  console.log("Current Question Index after updating: ", currentQuestionIndex);
   // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
     // Update the current question index in the Firebase session
