@@ -2,17 +2,7 @@
 
 ## TODO
 
-Separate the questioner view from the answerer view
-
-add a consensus score or something.
-
-allow teams?
-
-single player vs group version?
-
-Log in to a particular session? That way everyone around you can do consensus scoring with only people from that session and not worry about mixing with other sessions.
-
-Fix behavior when people don't select an answer.
+add a consensus score or something - take the most common vote.
 
 Explain brier score, what scores are good.
 
@@ -25,6 +15,8 @@ Some way to avoid repeaated questions between sessions?
 Don't display "Choose a Session" after you've already selected one.
 
 add a back button for the group questioner mode?
+
+finish leaderboard
 
 ## Functionality
 
