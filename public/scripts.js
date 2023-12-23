@@ -16,7 +16,7 @@ const questionCountContainer = document.getElementById('question-count-container
 const startButtonContainer = document.getElementById('start-button-container');
 const sessionIdContainer = document.getElementById('session-id-container');
 
-const submitButton = document.getElementById('submit-button');
+// const submitButton = document.getElementById('submit-button');
 
 
 // Firebase Firestore initialization
@@ -508,9 +508,9 @@ nextButton.addEventListener('click', () => {
 });
 
 
-submitButton.addEventListener('click', () => {
-  submitAnswer();
-});
+// submitButton.addEventListener('click', () => {
+//   submitAnswer();
+// });
 
 function loadQuestionsParticipant() {
   console.log("Inside loadQuestionsParticipant");
@@ -615,7 +615,7 @@ function submitAnswer() {
   const userId = document.getElementById('username').value.trim();
   if (userId && sessionId) {
     submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
-    submitButton.style.display = 'none';
+    // submitButton.style.display = 'none';
   } else {
     console.error('Session ID or User ID is missing');
   }
