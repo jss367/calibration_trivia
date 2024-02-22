@@ -9,3 +9,5 @@ refresh leaderboard in group questioner mode?
 Layout on mobile - sometimes the boxes aren't next to the corresponding text when you're selecting categories.
 
 Mode where you can give a response right away. People can admit that they were wrong to the group if they like.
+
+There's a floating point thing going on in the reported confidence scores at the end.
