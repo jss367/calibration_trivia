@@ -80,15 +80,55 @@
         ]
     },
     {
-        "question": "Which empire was ruled by Julius Caesar?",
-        "correctAnswer": "Roman Empire",
+        "question": "Which was Julius Caesar a leader of?",
+        "correctAnswer": "Roman Republic",
         "options": [
             "British Empire",
             "Roman Empire",
-            "Ottoman Empire",
+            "Roman Republic",
             "Mongol Empire"
         ]
     },
+    {
+        "question": "What river did Julius Caesar cross that led to the Roman Civil War?",
+        "correctAnswer": "Rubicon",
+        "options": [
+            "Tiber",
+            "Danube",
+            "Rubicon",
+            "Nile"
+        ]
+    },
+    {
+        "question": "Which ancient festival was Julius Caesar assassinated during?",
+        "correctAnswer": "Ides of March",
+        "options": [
+            "Saturnalia",
+            "Lupercalia",
+            "Ides of March",
+            "Feast of Vestalia"
+        ]
+    },
+    {
+        "question": "What political alliance did Julius Caesar form with Crassus and Pompey?",
+        "correctAnswer": "First Triumvirate",
+        "options": [
+            "Second Triumvirate",
+            "First Triumvirate",
+            "Roman Senate",
+            "Council of Plebs"
+        ]
+    },
+    {
+        "question": "Which territory did Julius Caesar expand into during his Gallic Wars?",
+        "correctAnswer": "Gaul",
+        "options": [
+            "Egypt",
+            "Greece",
+            "Gaul",
+            "Britain"
+        ]
+    },    
     {
         "question": "In what year did World War I start?",
         "correctAnswer": "1914",
@@ -317,16 +357,6 @@
             "Berlin Wall",
             "Hadrian's Wall",
             "Wall of Constantinople"
-        ]
-    },
-    {
-        "question": "Which empire is known as the 'Empire of the Sun'?",
-        "correctAnswer": "Inca Empire",
-        "options": [
-            "Aztec Empire",
-            "Roman Empire",
-            "Ottoman Empire",
-            "Inca Empire"
         ]
     },
     {
