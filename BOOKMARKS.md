@@ -16,6 +16,12 @@ https://console.cloud.google.com/apis/dashboard?project=calibration-trivia
 
 https://console.cloud.google.com/apis/api/firestore.googleapis.com/metrics?project=calibration-trivia
 
+# Domain
+
+Use this for things like DNS management.
+
+https://domains.google.com/registrar/calibrationtrivia.com
+
 
 # Database
 
