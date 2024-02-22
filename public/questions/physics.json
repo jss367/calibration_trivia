@@ -1,0 +1,102 @@
+[
+    {
+        "question": "What principle states that the total energy in a closed system remains constant over time?",
+        "correctAnswer": "Conservation of energy",
+        "options": [
+            "Conservation of momentum",
+            "Conservation of energy",
+            "Second law of thermodynamics",
+            "Hooke's law"
+        ]
+    },
+    {
+        "question": "Which phenomenon is described by Maxwell's equations?",
+        "correctAnswer": "Electromagnetism",
+        "options": [
+            "Gravity",
+            "Electromagnetism",
+            "Quantum mechanics",
+            "Thermodynamics"
+        ]
+    },
+    {
+        "question": "What is the name of the theoretical boundary around a black hole beyond which no light or other radiation can escape?",
+        "correctAnswer": "Event horizon",
+        "options": [
+            "Singularity",
+            "Event horizon",
+            "Photon sphere",
+            "Accretion disk"
+        ]
+    },
+    {
+        "question": "In the context of wave-particle duality, light can be described as consisting of what?",
+        "correctAnswer": "Photons",
+        "options": [
+            "Atoms",
+            "Electrons",
+            "Photons",
+            "Protons"
+        ]
+    },
+    {
+        "question": "What term is used to describe the effect of a force applied at a distance from an axis of rotation, resulting in rotational motion?",
+        "correctAnswer": "Torque",
+        "options": [
+            "Momentum",
+            "Torque",
+            "Impulse",
+            "Tension"
+        ]
+    },
+    {
+        "question": "Which of these is not a fundamental force of nature?",
+        "correctAnswer": "Elastic force",
+        "options": [
+            "Gravitational force",
+            "Electromagnetic force",
+            "Strong nuclear force",
+            "Elastic force"
+        ]
+    },
+    {
+        "question": "What is the hypothetical form of energy that permeates all of space and tends to accelerate the expansion of the universe?",
+        "correctAnswer": "Dark energy",
+        "options": [
+            "Dark matter",
+            "Antimatter",
+            "Dark energy",
+            "Vacuum energy"
+        ]
+    },
+    {
+        "question": "Which principle explains the behavior of a particle in a quantum system remaining in its superposition state until it is measured?",
+        "correctAnswer": "Quantum superposition",
+        "options": [
+            "Heisenberg's uncertainty principle",
+            "Quantum entanglement",
+            "Quantum superposition",
+            "Schrödinger's cat theory"
+        ]
+    },
+    {
+        "question": "What term describes the resistance of any physical object to any change in its velocity, including changes to the object's speed or direction of motion?",
+        "correctAnswer": "Inertia",
+        "options": [
+            "Friction",
+            "Momentum",
+            "Inertia",
+            "Gravity"
+        ]
+    },
+    {
+        "question": "What is the phenomenon in which the frequency of wave energy, such as sound or light, is shifted due to the motion of the source or observer?",
+        "correctAnswer": "Doppler effect",
+        "options": [
+            "Doppler effect",
+            "Wave-particle duality",
+            "Resonance",
+            "Reflection"
+        ]
+    }
+]
