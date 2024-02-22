@@ -6,10 +6,6 @@ Hosted at https://calibration-trivia.web.app/
 
 In both single and group mode, the results are not shown until the end.
 
-## Deployment
-
-firebase deploy
-
 ## Ways to Play
 
 Single player or in a group.
