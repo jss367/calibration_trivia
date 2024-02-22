@@ -1,0 +1,203 @@
+[
+    {
+        "question": "In computer science, what term describes a data structure that organizes data similar to a line waiting for services?",
+        "correctAnswer": "Queue",
+        "options": [
+            "Stack",
+            "Queue",
+            "Array",
+            "Linked list"
+        ]
+    },
+    {
+        "question": "Which of these sorting algorithms is considered the most efficient in terms of average-case scenario for large datasets?",
+        "correctAnswer": "Quick sort",
+        "options": [
+            "Bubble sort",
+            "Insertion sort",
+            "Quick sort",
+            "Selection sort"
+        ]
+    },
+    {
+        "question": "What is the term for a function in programming that calls itself?",
+        "correctAnswer": "Recursive function",
+        "options": [
+            "Iterative function",
+            "Recursive function",
+            "Inline function",
+            "Anonymous function"
+        ]
+    },
+    {
+        "question": "In object-oriented programming, what term is used to describe the concept of basing a new class on an existing class?",
+        "correctAnswer": "Inheritance",
+        "options": [
+            "Encapsulation",
+            "Polymorphism",
+            "Inheritance",
+            "Abstraction"
+        ]
+    },
+    {
+        "question": "What is the name of the search algorithm that is particularly effective for searching through a sparse graph?",
+        "correctAnswer": "A* search algorithm",
+        "options": [
+            "Binary search",
+            "Depth-first search",
+            "Breadth-first search",
+            "A* search algorithm"
+        ]
+    },
+    {
+        "question": "Which data encryption standard is considered the successor to DES and uses a 128-bit block size?",
+        "correctAnswer": "AES",
+        "options": [
+            "RSA",
+            "AES",
+            "Blowfish",
+            "Twofish"
+        ]
+    },
+    {
+        "question": "In the context of computer networks, what does the acronym TCP/IP stand for?",
+        "correctAnswer": "Transmission Control Protocol/Internet Protocol",
+        "options": [
+            "Transmission Control Protocol/Internet Protocol",
+            "Transfer Command Protocol/Interface Program",
+            "Transmission Command Procedure/Internet Protocol",
+            "Transfer Control Protocol/Interface Protocol"
+        ]
+    },
+    {
+        "question": "What term is used to describe an algorithm's efficiency or speed in terms of the amount of resources it uses as the size of the input data increases?",
+        "correctAnswer": "Time complexity",
+        "options": [
+            "Execution time",
+            "Time complexity",
+            "Space complexity",
+            "Computational complexity"
+        ]
+    },
+    {
+        "question": "In the context of software development, what does the acronym API stand for?",
+        "correctAnswer": "Application Programming Interface",
+        "options": [
+            "Application Programming Interface",
+            "Advanced Programming Interface",
+            "Application Protocol Interface",
+            "Automated Programming Interface"
+        ]
+    },
+    {
+        "question": "What is the term for the error in a program that causes it to function incorrectly but does not necessarily crash the application?",
+        "correctAnswer": "Logical error",
+        "options": [
+            "Syntax error",
+            "Runtime error",
+            "Compilation error",
+            "Logical error"
+        ]
+    },
+    {
+        "question": "Which algorithm is best known for its application in cryptography for public key exchange?",
+        "correctAnswer": "Diffie-Hellman",
+        "options": [
+            "Dijkstra's algorithm",
+            "Diffie-Hellman",
+            "RSA algorithm",
+            "Floyd-Warshall algorithm"
+        ]
+    },
+    {
+        "question": "In database management, what does ACID stand for in the context of transaction properties?",
+        "correctAnswer": "Atomicity, Consistency, Isolation, Durability",
+        "options": [
+            "Atomicity, Consistency, Integrity, Durability",
+            "Atomicity, Consistency, Isolation, Durability",
+            "Authentication, Confidentiality, Integrity, Durability",
+            "Authentication, Consistency, Isolation, Durability"
+        ]
+    },
+    {
+        "question": "What is the term for a piece of code that is executed in response to certain events in a database system?",
+        "correctAnswer": "Trigger",
+        "options": [
+            "Hook",
+            "Callback",
+            "Trigger",
+            "Event Listener"
+        ]
+    },
+    {
+        "question": "Which of the following is a key characteristic of NoSQL databases?",
+        "correctAnswer": "Schema-less",
+        "options": [
+            "Fixed schema",
+            "Schema-less",
+            "Single-user",
+            "Table-based"
+        ]
+    },
+    {
+        "question": "What is the concept in programming languages that allows the same function or method to process different types of arguments?",
+        "correctAnswer": "Polymorphism",
+        "options": [
+            "Inheritance",
+            "Encapsulation",
+            "Abstraction",
+            "Polymorphism"
+        ]
+    },
+    {
+        "question": "Which of these is not a principle of Agile software development?",
+        "correctAnswer": "Comprehensive documentation over working software",
+        "options": [
+            "Individuals and interactions over processes and tools",
+            "Working software over comprehensive documentation",
+            "Customer collaboration over contract negotiation",
+            "Comprehensive documentation over working software"
+        ]
+    },
+    {
+        "question": "In the context of computer security, what does the principle of 'least privilege' entail?",
+        "correctAnswer": "Users are given the minimum levels of access – or permissions – needed to perform their tasks",
+        "options": [
+            "Users must have permissions to access all resources to ensure operational efficiency",
+            "Users are given the minimum levels of access – or permissions – needed to perform their tasks",
+            "All users within an organization have the same level of access to resources",
+            "Users are granted access based on seniority within the organization"
+        ]
+    },
+    {
+        "question": "What is the main difference between symmetric and asymmetric encryption?",
+        "correctAnswer": "Symmetric encryption uses the same key for encryption and decryption, while asymmetric encryption uses a pair of public and private keys.",
+        "options": [
+            "Symmetric encryption is faster but less secure than asymmetric encryption.",
+            "Asymmetric encryption uses the same key for encryption and decryption, while symmetric encryption uses a pair of public and private keys.",
+            "Symmetric encryption uses the same key for encryption and decryption, while asymmetric encryption uses a pair of public and private keys.",
+            "Asymmetric encryption cannot be used for digital signatures, whereas symmetric encryption can."
+        ]
+    },
+    {
+        "question": "Which data structure is most efficient for implementing a recursive algorithm that navigates the choices in a decision tree?",
+        "correctAnswer": "Stack",
+        "options": [
+            "Queue",
+            "Array",
+            "Linked list",
+            "Stack"
+        ]
+    },
+    {
+        "question": "What term describes the practice of hiding the internal implementation details of a program?",
+        "correctAnswer": "Encapsulation",
+        "options": [
+            "Abstraction",
+            "Encapsulation",
+            "Inheritance",
+            "Polymorphism"
+        ]
+    }
+]
+
