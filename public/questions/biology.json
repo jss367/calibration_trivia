@@ -1,0 +1,243 @@
+[
+    {
+        "question": "Which of these is not a part of the human cell?",
+        "correctAnswer": "Cortex",
+        "options": [
+            "Mitochondria",
+            "Ribosome",
+            "Nucleus",
+            "Cortex"
+        ]
+    },
+    {
+        "question": "What is the process by which plants make their food using sunlight?",
+        "correctAnswer": "Photosynthesis",
+        "options": [
+            "Respiration",
+            "Fermentation",
+            "Photosynthesis",
+            "Digestion"
+        ]
+    },
+    {
+        "question": "Which of these blood types is known as the universal donor?",
+        "correctAnswer": "O-",
+        "options": [
+            "A+",
+            "B+",
+            "AB+",
+            "O-"
+        ]
+    },
+    {
+        "question": "What type of cells are found in the human brain?",
+        "correctAnswer": "Neurons",
+        "options": [
+            "Erythrocytes",
+            "Leukocytes",
+            "Neurons",
+            "Hepatocytes"
+        ]
+    },
+    {
+        "question": "What is the main organ responsible for detoxification in the human body?",
+        "correctAnswer": "Liver",
+        "options": [
+            "Heart",
+            "Kidney",
+            "Liver",
+            "Lungs"
+        ]
+    },
+    {
+        "question": "Which hormone is most responsible for the regulation of blood sugar levels?",
+        "correctAnswer": "Insulin",
+        "options": [
+            "Adrenaline",
+            "Insulin",
+            "Cortisol",
+            "Thyroxine"
+        ]
+    },
+    {
+        "question": "What is the term for the study of fungi?",
+        "correctAnswer": "Mycology",
+        "options": [
+            "Entomology",
+            "Herpetology",
+            "Mycology",
+            "Ichthyology"
+        ]
+    },
+    {
+        "question": "Which vitamin is produced in the skin upon exposure to sunlight?",
+        "correctAnswer": "Vitamin D",
+        "options": [
+            "Vitamin A",
+            "Vitamin B",
+            "Vitamin C",
+            "Vitamin D"
+        ]
+    },
+    {
+        "question": "In humans, what kind of cells are produced by meiosis?",
+        "correctAnswer": "Gametes",
+        "options": [
+            "Somatic cells",
+            "Gametes",
+            "Stem cells",
+            "Neural cells"
+        ]
+    },
+    {
+        "question": "Which of these is not a layer of the skin?",
+        "correctAnswer": "Pericardium",
+        "options": [
+            "Epidermis",
+            "Dermis",
+            "Hypodermis",
+            "Pericardium"
+        ]
+    },
+    {
+        "question": "What is the primary molecule that carries genetic information in all living organisms?",
+        "correctAnswer": "DNA",
+        "options": [
+            "RNA",
+            "Protein",
+            "DNA",
+            "ATP"
+        ]
+    },
+    {
+        "question": "What term describes an organism that can live in extremely salty conditions?",
+        "correctAnswer": "Halophile",
+        "options": [
+            "Acidophile",
+            "Thermophile",
+            "Halophile",
+            "Psychrophile"
+        ]
+    },
+    {
+        "question": "Which of these molecules is used by muscles for quick energy during exercise?",
+        "correctAnswer": "ATP",
+        "options": [
+            "Glucose",
+            "ATP",
+            "Fatty acids",
+            "Glycogen"
+        ]
+    },
+    {
+        "question": "What is the study of the relationship between organisms and their environment called?",
+        "correctAnswer": "Ecology",
+        "options": [
+            "Genetics",
+            "Ecology",
+            "Physiology",
+            "Biochemistry"
+        ]
+    },
+    {
+        "question": "Which of these organisms is a decomposer?",
+        "correctAnswer": "Mushroom",
+        "options": [
+            "Lion",
+            "Shark",
+            "Grass",
+            "Mushroom"
+        ]
+    },
+    {
+        "question": "Which process describes the movement of water across a semipermeable membrane from an area of low solute concentration to an area of high solute concentration?",
+        "correctAnswer": "Osmosis",
+        "options": [
+            "Diffusion",
+            "Osmosis",
+            "Active transport",
+            "Facilitated diffusion"
+        ]
+    },
+    {
+        "question": "In which phase of the cell cycle does DNA replication occur?",
+        "correctAnswer": "S phase",
+        "options": [
+            "G1 phase",
+            "S phase",
+            "G2 phase",
+            "M phase"
+        ]
+    },
+    {
+        "question": "Which enzyme is responsible for unwinding the DNA double helix during DNA replication?",
+        "correctAnswer": "Helicase",
+        "options": [
+            "DNA polymerase",
+            "Ligase",
+            "Helicase",
+            "Primase"
+        ]
+    },
+    {
+        "question": "What term is used to describe the evolutionary process by which an organism becomes better suited to its habitat?",
+        "correctAnswer": "Adaptation",
+        "options": [
+            "Speciation",
+            "Adaptation",
+            "Mutation",
+            "Natural selection"
+        ]
+    },
+    {
+        "question": "Which of the following is a type of symbiotic relationship where one organism benefits and the other is harmed?",
+        "correctAnswer": "Parasitism",
+        "options": [
+            "Mutualism",
+            "Commensalism",
+            "Parasitism",
+            "Amensalism"
+        ]
+    },
+    {
+        "question": "In genetics, what term describes the situation where the presence of one gene can affect the expression of another gene?",
+        "correctAnswer": "Epistasis",
+        "options": [
+            "Pleiotropy",
+            "Epistasis",
+            "Codominance",
+            "Incomplete dominance"
+        ]
+    },
+    {
+        "question": "What is the name of the process by which prokaryotes divide?",
+        "correctAnswer": "Binary fission",
+        "options": [
+            "Mitosis",
+            "Meiosis",
+            "Binary fission",
+            "Cytokinesis"
+        ]
+    },
+    {
+        "question": "Which biomolecule is primarily involved in the catalysis of biochemical reactions?",
+        "correctAnswer": "Enzymes",
+        "options": [
+            "Nucleic acids",
+            "Carbohydrates",
+            "Lipids",
+            "Enzymes"
+        ]
+    },
+    {
+        "question": "What is the name of the hypothesis that proposes that mitochondria and chloroplasts were once free-living bacteria?",
+        "correctAnswer": "Endosymbiotic theory",
+        "options": [
+            "Germ theory",
+            "Cell theory",
+            "Endosymbiotic theory",
+            "Evolutionary theory"
+        ]
+    },
+]
+
