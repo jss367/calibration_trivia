@@ -1,6 +1,10 @@
 # Calibration Trivia
 
-Hosted at https://calibration-trivia.web.app/
+Hosted at:
+
+https://calibrationtrivia.com
+
+https://calibration-trivia.web.app/
 
 ## Functionality
 
