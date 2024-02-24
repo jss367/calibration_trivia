@@ -1,8 +1,8 @@
 # Website
-https://calibration-trivia.web.app/
 
 https://calibrationtrivia.com
 
+https://calibration-trivia.web.app/
 
 # Console
 https://console.firebase.google.com/project/calibration-trivia/overview
