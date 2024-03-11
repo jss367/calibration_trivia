@@ -10,8 +10,8 @@ button {
 }
 
 #next-button {
-    display: block;
-    margin: 20px auto;
+  display: block;
+  margin: 20px auto;
 }
 
 
@@ -29,7 +29,8 @@ button {
   height: 40px;
 }
 
-#username-container, #question-count-container {
+#username-container,
+#question-count-container {
   margin-bottom: 20px;
 }
 
@@ -39,7 +40,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; 
+  width: 100%;
 }
 
 #start-button-container {
@@ -47,7 +48,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; 
+  width: 100%;
 }
 
 #start-quiz {
