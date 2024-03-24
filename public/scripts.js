@@ -31,7 +31,7 @@ let userConfidences = [];
 
 // Initialization
 function initialize() {
-  modeSelectionContainer.addEventListener('change', handleModeChange);
+  modeSelectionContainer.addEventListener('change', handleModeSelection);
   document.getElementById('username').addEventListener('input', updateStartButtonState);
   document.getElementById('session-id').addEventListener('input', updateStartButtonState);
   document.querySelectorAll('.category-checkbox').forEach(checkbox => {
@@ -55,9 +55,9 @@ modeSelectionContainer.addEventListener('change', (event) => {
     startQuizButton.removeEventListener('click', joinSelectedSession);
     nextButton.disabled = true; // Initially disable the Next button
 
-    document.getElementById('session-id').addEventListener('input', updateNextButtonState);
+    document.getElementById('session-id').addEventListener('input', updateNextButton);
     document.querySelectorAll('.category-checkbox').forEach(checkbox => {
-      checkbox.addEventListener('change', updateNextButtonState);
+      checkbox.addEventListener('change', updateNextButton);
     });
     
 
@@ -97,7 +97,7 @@ modeSelectionContainer.addEventListener('change', (event) => {
 
 
 // Handle mode change
-function handleModeChange() {
+function handleModeSelection() {
   const mode = document.querySelector('input[name="mode"]:checked').value;
   usernameContainer.style.display = mode === 'group-participant' ? 'block' : 'none';
   sessionIDSelectionContainer.style.display = mode === 'group-participant' ? 'block' : 'none';
@@ -136,7 +136,7 @@ function updateStartButtonState() {
 
 
 
-function updateNextButtonState() {
+function updateNextButton() {
   const sessionIdInput = document.getElementById('session-id').value.trim();
   const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
   const isAnyCategorySelected = Array.from(categoryCheckboxes).some(checkbox => checkbox.checked);
