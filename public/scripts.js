@@ -1,3 +1,6 @@
+const appVersion = '1.0.3'; // Define your application version here
+console.log('App Version:', appVersion);
+
 const quizContainer = document.getElementById('quiz-container');
 const questionContainer = document.getElementById('question-container');
 const nextButton = document.getElementById('next-button');
@@ -16,8 +19,8 @@ const questionCountContainer = document.getElementById('question-count-container
 const startButtonContainer = document.getElementById('start-button-container');
 const sessionIdContainer = document.getElementById('session-id-container');
 
-// Firebase Firestore initialization
-const db = firebase.firestore();
+const db = firebase.firestore(); // Firebase Firestore initialization
+
 let currentQuestionIndex = 0;
 let questions = [];
 let score = 0;
@@ -25,6 +28,17 @@ let brierScore = 0;
 let userAnswers = [];
 let correctAnswers = [];
 let userConfidences = [];
+
+// Initialization
+function initialize() {
+  modeSelectionContainer.addEventListener('change', handleModeChange);
+  document.getElementById('username').addEventListener('input', updateStartButtonState);
+  document.getElementById('session-id').addEventListener('input', updateStartButtonState);
+  document.querySelectorAll('.category-checkbox').forEach(checkbox => {
+      checkbox.addEventListener('change', updateStartButtonState);
+  });
+  updateStartButtonState(); // Initial call to set the correct state of the start button
+}
 
 // Event listener for mode selection
 modeSelectionContainer.addEventListener('change', (event) => {
@@ -39,6 +53,14 @@ modeSelectionContainer.addEventListener('change', (event) => {
     usernameContainer.style.display = 'none';
     document.getElementById('start-quiz').disabled = false;
     startQuizButton.removeEventListener('click', joinSelectedSession);
+    nextButton.disabled = true; // Initially disable the Next button
+
+    document.getElementById('session-id').addEventListener('input', updateNextButtonState);
+    document.querySelectorAll('.category-checkbox').forEach(checkbox => {
+      checkbox.addEventListener('change', updateNextButtonState);
+    });
+    
+
   }
   else if (event.target.value === 'group-participant') {
     // Group Participant specific elements
@@ -71,6 +93,57 @@ modeSelectionContainer.addEventListener('change', (event) => {
     startQuizButton.removeEventListener('click', joinSelectedSession);
   }
 });
+
+
+
+// Handle mode change
+function handleModeChange() {
+  const mode = document.querySelector('input[name="mode"]:checked').value;
+  usernameContainer.style.display = mode === 'group-participant' ? 'block' : 'none';
+  sessionIDSelectionContainer.style.display = mode === 'group-participant' ? 'block' : 'none';
+  sessionIdContainer.style.display = mode === 'group-questioner' ? 'block' : 'none';
+  categorySelectionContainer.style.display = ['single', 'group-questioner'].includes(mode) ? 'block' : 'none';
+  questionCountContainer.style.display = ['single', 'group-questioner'].includes(mode) ? 'block' : 'none';
+
+  updateStartButtonState(); // Update start button state based on the new mode
+}
+
+
+function updateStartButtonState() {
+  // Attempt to find a checked radio button
+  const checkedModeRadioButton = document.querySelector('input[name="mode"]:checked');
+  
+  // Use the value if a radio button is checked, otherwise default to an empty string or a default value
+  const mode = checkedModeRadioButton ? checkedModeRadioButton.value : '';
+  
+  const usernameInput = document.getElementById('username').value.trim();
+  const sessionIdInput = document.getElementById('session-id').value.trim();
+  const isCategorySelected = Array.from(document.querySelectorAll('.category-checkbox')).some(checkbox => checkbox.checked);
+
+  let enableButton = false;
+
+  // Based on mode, decide if the start button should be enabled
+  if (mode === 'single') {
+    enableButton = isCategorySelected;
+  } else if (mode === 'group-questioner') {
+    enableButton = sessionIdInput && isCategorySelected;
+  } else if (mode === 'group-participant') {
+    enableButton = usernameInput.length > 0;
+  }
+
+  document.getElementById('start-quiz').disabled = !enableButton;
+}
+
+
+
+function updateNextButtonState() {
+  const sessionIdInput = document.getElementById('session-id').value.trim();
+  const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+  const isAnyCategorySelected = Array.from(categoryCheckboxes).some(checkbox => checkbox.checked);
+
+  nextButton.disabled = !(sessionIdInput.length > 0 && isAnyCategorySelected);
+}
+
 
 
 document.getElementById('username').addEventListener('input', function () {
@@ -482,9 +555,6 @@ nextButton.addEventListener('click', () => {
 });
 
 
-// submitButton.addEventListener('click', () => {
-//   submitAnswer();
-// });
 
 function loadQuestionsParticipant() {
 
@@ -778,3 +848,6 @@ function displayLeaderboard(sessionId) {
       console.error("Error getting documents: ", error);
     });
 }
+
+// Call initialize after the DOM is loaded
+document.addEventListener('DOMContentLoaded', initialize);
