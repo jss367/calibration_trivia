@@ -57,11 +57,29 @@ function initialize() {
 
 // Function to display the questioner's screen
 function displayQuestionerScreen(sessionId) {
-  // Load and display questions, setup questioner-specific UI
-  loadSessionQuestions(sessionId);
-  quizContainer.style.display = 'block';
-  modeSelectionContainer.style.display = 'none';
-  // Additional setup for questioner...
+  // Load questions from the session and set up the questioner UI
+  loadSessionQuestions(sessionId)
+    .then(() => {
+      // Display the first question
+      currentQuestionIndex = 0;
+      displayQuestionQuestioner(currentQuestionIndex);
+
+      // Set up questioner-specific UI elements
+      quizContainer.style.display = 'block';
+      modeSelectionContainer.style.display = 'none';
+      startButtonContainer.style.display = 'none';
+      questionCountContainer.style.display = 'none';
+      categorySelectionContainer.style.display = 'none';
+      sessionIdContainer.style.display = 'block'; // Show the session ID
+      sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
+
+      // Show the next button for the questioner to proceed to the next question
+      nextButton.style.display = 'block';
+      nextButton.disabled = false; // Enable the next button for the questioner
+    })
+    .catch(error => {
+      console.error("Error displaying questioner screen:", error);
+    });
 }
 
 // Function to display the responder's screen
@@ -185,23 +203,25 @@ document.getElementById('username').addEventListener('input', function () {
 document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
 
 function loadSessionQuestions(sessionId) {
-  db.collection('sessions').doc(sessionId).get()
+  return db.collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists) {
         console.log("Fetched document:", doc.data());
         if (doc.data().questions && doc.data().questions.length > 0) {
           questions = doc.data().questions;
-          // Display the first question
-          currentQuestionIndex = 0;
-          displayQuestionForGroupParticipant(currentQuestionIndex);
         } else {
           console.log("No questions available in this session!");
+          throw new Error("No questions available");
         }
       } else {
         console.log("No such session!");
+        throw new Error("No such session");
       }
     })
-    .catch(error => console.error("Error loading session questions:", error));
+    .catch(error => {
+      console.error("Error loading session questions:", error);
+      throw error;
+    });
 }
 
 function generateRandomUsername() {
@@ -248,7 +268,7 @@ startQuizButton.addEventListener('click', () => {
     const selectedSessionId = document.getElementById('session-id-select').value;
     if (selectedSessionId) {
       localStorage.setItem('currentSessionId', selectedSessionId);
-      window.location.href = `/${selectedSessionId}`; // Redirect to the session URL
+      window.location.href = `/${selectedSessionId}?role=responder`; // Redirect to the session URL with role
     } else {
       console.log("Please select a session.");
     }
@@ -261,7 +281,7 @@ startQuizButton.addEventListener('click', () => {
         .then(() => {
           console.log("Session ID set successfully:", sessionId);
           localStorage.setItem('currentSessionId', sessionId);
-          window.location.href = `/${sessionId}`; // Redirect to the session URL
+          window.location.href = `/${sessionId}?role=questioner`; // Redirect to the session URL with role
         })
         .catch(error => console.error("Error setting session ID:", error));
     } else {
@@ -269,6 +289,7 @@ startQuizButton.addEventListener('click', () => {
     }
   }
 });
+
 
 
 function loadQuestionsQuestioner() {
@@ -425,7 +446,7 @@ function questionerNextQuestion(sessionId) {
       currentQuestionIndex: currentQuestionIndex
     }).then(() => {
       console.log('Question index updated successfully.');
-      // You may want to notify participants to wait for the next question
+      displayQuestionQuestioner(currentQuestionIndex);
     }).catch(error => {
       console.error('Error updating question index:', error);
     });
