@@ -1,6 +1,7 @@
 const appVersion = '1.0.3'; // Define your application version here
 console.log('App Version:', appVersion);
 
+
 const quizContainer = document.getElementById('quiz-container');
 const questionContainer = document.getElementById('question-container');
 const nextButton = document.getElementById('next-button');
@@ -35,7 +36,7 @@ function initialize() {
   document.getElementById('username').addEventListener('input', updateStartButtonState);
   document.getElementById('session-id').addEventListener('input', updateStartButtonState);
   document.querySelectorAll('.category-checkbox').forEach(checkbox => {
-      checkbox.addEventListener('change', updateStartButtonState);
+    checkbox.addEventListener('change', updateStartButtonState);
   });
   updateStartButtonState(); // Initial call to set the correct state of the start button
 }
@@ -59,7 +60,7 @@ modeSelectionContainer.addEventListener('change', (event) => {
     document.querySelectorAll('.category-checkbox').forEach(checkbox => {
       checkbox.addEventListener('change', updateNextButton);
     });
-    
+
 
   }
   else if (event.target.value === 'group-participant') {
@@ -112,10 +113,10 @@ function handleModeSelection() {
 function updateStartButtonState() {
   // Attempt to find a checked radio button
   const checkedModeRadioButton = document.querySelector('input[name="mode"]:checked');
-  
+
   // Use the value if a radio button is checked, otherwise default to an empty string or a default value
   const mode = checkedModeRadioButton ? checkedModeRadioButton.value : '';
-  
+
   const usernameInput = document.getElementById('username').value.trim();
   const sessionIdInput = document.getElementById('session-id').value.trim();
   const isCategorySelected = Array.from(document.querySelectorAll('.category-checkbox')).some(checkbox => checkbox.checked);
@@ -743,7 +744,6 @@ function nextQuestion(sessionId) {
 }
 
 function displayResults() {
-
   quizContainer.style.display = 'none';
 
   if (modeGroupQuestioner.checked) {
@@ -755,16 +755,16 @@ function displayResults() {
     let scoreLabel, scoreColor;
     if (brierScore <= 0.10) {
       scoreLabel = 'Excellent';
-      scoreColor = 'green'; // or any color representing excellent
+      scoreColor = 'green';
     } else if (brierScore <= 0.20) {
       scoreLabel = 'Good';
-      scoreColor = 'blue'; // or any color representing good
+      scoreColor = 'blue';
     } else if (brierScore <= 0.30) {
       scoreLabel = 'Fair';
-      scoreColor = 'orange'; // or any color representing fair
+      scoreColor = 'orange';
     } else {
       scoreLabel = 'Poor';
-      scoreColor = 'red'; // or any color representing poor
+      scoreColor = 'red';
     }
 
     const answers = userAnswers.map((userAnswer, index) => ({
