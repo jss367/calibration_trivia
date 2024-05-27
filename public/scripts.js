@@ -1,4 +1,4 @@
-const appVersion = '1.1.1';
+const appVersion = '1.1.2';
 console.log('App Version:', appVersion);
 
 const quizContainer = document.getElementById('quiz-container');
@@ -90,8 +90,18 @@ function displayResponderScreen(sessionId) {
       quizContainer.style.display = 'block';
       modeSelectionContainer.style.display = 'none';
       startButtonContainer.style.display = 'none';
+      usernameContainer.style.display = 'none'; // Hide username container if it's still visible
+      sessionIdContainer.style.display = 'none'; // Hide session ID container if it's still visible
+
       // Additional setup for responder...
+      // Initialize current question index
+      currentQuestionIndex = 0;
+
+      // Display the first question
       displayQuestionForGroupParticipant(currentQuestionIndex);
+
+      // Start listening for updates on the current question index from Firestore
+      startListeningForQuestionUpdates(sessionId);
     })
     .catch(error => {
       console.error("Error displaying responder screen:", error);
