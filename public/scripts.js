@@ -559,11 +559,13 @@ nextButton.addEventListener('click', () => {
     } else {
       displayResults(); // Display results if it's the last question
     }
-  } else if (modeGroupParticipant.checked) {
+  }
+  else if (modeGroupParticipant.checked) {
     submitAnswer();
     const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
     nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
-  } else {
+  }
+  else {
     // For Single Player mode, handle answer submission and question navigation
     submitAnswer();
 
@@ -578,6 +580,7 @@ nextButton.addEventListener('click', () => {
     }
   }
 });
+
 
 function loadQuestionsParticipant() {
   const sessionId = getCurrentSessionId();
@@ -682,6 +685,11 @@ function submitAnswer() {
       confidenceElement.value = ''; // Clear the confidence input
     }
   }
+}
+
+function getCurrentSessionId() {
+  // Retrieve the session ID from local storage
+  return localStorage.getItem('currentSessionId');
 }
 
 function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
