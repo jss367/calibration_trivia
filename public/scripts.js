@@ -559,13 +559,11 @@ nextButton.addEventListener('click', () => {
     } else {
       displayResults(); // Display results if it's the last question
     }
-  }
-  else if (modeGroupParticipant.checked) {
+  } else if (modeGroupParticipant.checked) {
     submitAnswer();
     const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
     nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
-  }
-  else {
+  } else {
     // For Single Player mode, handle answer submission and question navigation
     submitAnswer();
 
@@ -634,54 +632,57 @@ function displayQuestionForGroupParticipant(index) {
 function submitAnswer() {
   // Get the selected answer and confidence level
   const selectedOption = document.querySelector('input[name="answer"]:checked');
-  const userAnswer = selectedOption ? selectedOption.value : null;
   const confidenceElement = document.getElementById('confidence');
 
-  // Ensure confidence is within the 0-100 range
-  let userConfidence = parseInt(confidenceElement.value, 10);
-  userConfidence = Math.max(0, Math.min(userConfidence, 100)); // Clamp between 0 and 100
+  let userAnswer = null;
+  let userConfidence = null;
 
-  // Convert confidence to a percentage and round it
-  userConfidence = Math.round(userConfidence) / 100;
+  if (selectedOption) {
+    userAnswer = selectedOption.value;
+  }
+
+  if (confidenceElement) {
+    // Ensure confidence is within the 0-100 range
+    userConfidence = parseInt(confidenceElement.value, 10);
+    userConfidence = Math.max(0, Math.min(userConfidence, 100)); // Clamp between 0 and 100
+
+    // Convert confidence to a percentage and round it
+    userConfidence = Math.round(userConfidence) / 100;
+  }
 
   if (!selectedOption || isNaN(userConfidence)) {
     console.warn('No answer or invalid confidence selected for current question');
-  }
-
-  // Determine if the answer is correct and update the score
-  const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
-  if (currentCorrectAnswer === userAnswer) {
-    score++;
-    brierScore += Math.pow(1 - userConfidence, 2);
   } else {
-    brierScore += Math.pow(0 - userConfidence, 2);
+    // Determine if the answer is correct and update the score
+    const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
+    if (currentCorrectAnswer === userAnswer) {
+      score++;
+      brierScore += Math.pow(1 - userConfidence, 2);
+    } else {
+      brierScore += Math.pow(0 - userConfidence, 2);
+    }
+
+    // Save the user's answer, the correct answer, and confidence to arrays
+    userAnswers.push(userAnswer);
+    correctAnswers.push(currentCorrectAnswer);
+    userConfidences.push(userConfidence); // Save the rounded confidence score
+
+    const sessionId = getCurrentSessionId();
+    const userId = document.getElementById('username').value.trim();
+
+    // In group mode, store the result in Firestore
+    if (userId && sessionId) {
+      submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
+    }
+
+    if (selectedOption) {
+      selectedOption.checked = false;
+    }
+    if (confidenceElement) {
+      confidenceElement.value = ''; // Clear the confidence input
+    }
   }
-
-  // Save the user's answer, the correct answer, and confidence to arrays
-  userAnswers.push(userAnswer);
-  correctAnswers.push(currentCorrectAnswer);
-  userConfidences.push(userConfidence); // Save the rounded confidence score
-
-  const sessionId = getCurrentSessionId();
-  const userId = document.getElementById('username').value.trim();
-
-  // In group mode, store the result in Firestore
-  if (userId && sessionId) {
-    submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
-    // submitButton.style.display = 'none';
-  }
-
-  if (selectedOption) {
-    selectedOption.checked = false;
-  }
-  confidenceElement.value = ''; // Clear the confidence input
 }
-
-function getCurrentSessionId() {
-  // Retrieve the session ID from local storage
-  return localStorage.getItem('currentSessionId');
-}
-
 
 function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
   if (!sessionId || !userId) {
@@ -694,8 +695,6 @@ function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
     .then(() => console.log('Answer submitted successfully'))
     .catch(error => console.error("Error submitting answer:", error));
 }
-
-
 
 function calculateConfidenceDecileScores(answers) {
   /**
@@ -722,8 +721,6 @@ function calculateConfidenceDecileScores(answers) {
   }));
 }
 
-
-
 // Function to create a new session
 function createSession() {
   const sessionId = document.getElementById('session-id').value.trim();
@@ -739,7 +736,6 @@ function createSession() {
     })
     .catch(error => console.error('Error creating session:', error));
 }
-
 
 function nextQuestion(sessionId) {
   // Increment the current question index
