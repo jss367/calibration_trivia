@@ -1,4 +1,4 @@
-const appVersion = '1.0.3'; // Define your application version here
+const appVersion = '1.1.0'; // Define your application version here
 console.log('App Version:', appVersion);
 
 
@@ -39,6 +39,18 @@ function initialize() {
     checkbox.addEventListener('change', updateStartButtonState);
   });
   updateStartButtonState(); // Initial call to set the correct state of the start button
+
+  // Check URL for session ID
+  const pathSegments = window.location.pathname.split('/').filter(segment => segment); // Get non-empty segments
+  const sessionIdFromURL = pathSegments[0]; // Assuming the session ID is the first segment
+  if (sessionIdFromURL) {
+    console.log("Session ID from URL:", sessionIdFromURL);
+    localStorage.setItem('currentSessionId', sessionIdFromURL);
+    loadSessionQuestions(sessionIdFromURL);
+    if (modeGroupParticipant.checked) {
+      startQuizButton.disabled = false; // Enable the start button for participants
+    }
+  }
 }
 
 // Event listener for mode selection
@@ -205,7 +217,6 @@ function loadAvailableSessions() {
 }
 // Inside the startQuizButton event listener
 startQuizButton.addEventListener('click', () => {
-
   const selectedMode = document.querySelector('input[name="mode"]:checked').value;
   console.log("Selected Mode: ", selectedMode);
 
@@ -227,10 +238,7 @@ startQuizButton.addEventListener('click', () => {
     const selectedSessionId = document.getElementById('session-id-select').value;
     if (selectedSessionId) {
       localStorage.setItem('currentSessionId', selectedSessionId);
-      sessionIdContainer.innerHTML = `<p>Session ID: ${selectedSessionId}</p>`;
-      sessionIdContainer.style.display = 'block'; // Show the session ID at the top
-      sessionIDSelectionContainer.style.display = 'none'; // Hide the session selection box
-      loadQuestionsParticipant();
+      window.location.href = `/${selectedSessionId}`; // Redirect to the session URL
     } else {
       console.log("Please select a session.");
     }
@@ -243,10 +251,7 @@ startQuizButton.addEventListener('click', () => {
         .then(() => {
           console.log("Session ID set successfully:", sessionId);
           localStorage.setItem('currentSessionId', sessionId);
-          sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
-          sessionIdContainer.style.display = 'block';
-          quizContainer.style.display = 'none';
-          loadQuestionsQuestioner();
+          window.location.href = `/${sessionId}`; // Redirect to the session URL
         })
         .catch(error => console.error("Error setting session ID:", error));
     } else {
