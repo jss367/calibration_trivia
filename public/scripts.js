@@ -38,16 +38,39 @@ function initialize() {
   });
   updateStartButtonState(); // Initial call to set the correct state of the start button
 
-  // Check URL for session ID
+  // Check URL for session ID and user role
   const pathSegments = window.location.pathname.split('/').filter(segment => segment); // Get non-empty segments
   const sessionIdFromURL = pathSegments[0]; // Assuming the session ID is the first segment
+  const urlParams = new URLSearchParams(window.location.search);
+  const userRole = urlParams.get('role'); // Role can be 'questioner' or 'responder'
+
   if (sessionIdFromURL) {
     console.log("Session ID from URL:", sessionIdFromURL);
     localStorage.setItem('currentSessionId', sessionIdFromURL);
-    loadSessionQuestions(sessionIdFromURL);
-    quizContainer.style.display = 'block'; // Ensure the quiz container is visible
-    modeSelectionContainer.style.display = 'none'; // Hide the mode selection container
+    if (userRole === 'questioner') {
+      displayQuestionerScreen(sessionIdFromURL);
+    } else if (userRole === 'responder') {
+      displayResponderScreen(sessionIdFromURL);
+    }
   }
+}
+
+// Function to display the questioner's screen
+function displayQuestionerScreen(sessionId) {
+  // Load and display questions, setup questioner-specific UI
+  loadSessionQuestions(sessionId);
+  quizContainer.style.display = 'block';
+  modeSelectionContainer.style.display = 'none';
+  // Additional setup for questioner...
+}
+
+// Function to display the responder's screen
+function displayResponderScreen(sessionId) {
+  // Load and display questions, setup responder-specific UI
+  loadSessionQuestions(sessionId);
+  quizContainer.style.display = 'block';
+  modeSelectionContainer.style.display = 'none';
+  // Additional setup for responder...
 }
 
 // Event listener for mode selection
