@@ -1,6 +1,5 @@
-const appVersion = '1.1.0'; // Define your application version here
+const appVersion = '1.1.1';
 console.log('App Version:', appVersion);
-
 
 const quizContainer = document.getElementById('quiz-container');
 const questionContainer = document.getElementById('question-container');
@@ -9,8 +8,7 @@ const resultsContainer = document.getElementById('results-container');
 const usernameContainer = document.getElementById('username-container');
 const startQuizButton = document.getElementById('start-quiz');
 const leaderboardContainer = document.getElementById('leaderboard-container');
-const categorySelectionContainer = document.getElementById('category-selection-container')
-
+const categorySelectionContainer = document.getElementById('category-selection-container');
 const sessionIDSelectionContainer = document.getElementById('session-id-selection-container');
 const modeSelectionContainer = document.getElementById('mode-selection-container');
 const modeSinglePlayer = document.getElementById('mode-single');
@@ -72,8 +70,6 @@ modeSelectionContainer.addEventListener('change', (event) => {
     document.querySelectorAll('.category-checkbox').forEach(checkbox => {
       checkbox.addEventListener('change', updateNextButton);
     });
-
-
   }
   else if (event.target.value === 'group-participant') {
     // Group Participant specific elements
@@ -96,7 +92,6 @@ modeSelectionContainer.addEventListener('change', (event) => {
     sessionIDSelectionContainer.style.display = 'none';
     document.getElementById('start-quiz').disabled = false; // Enable start button directly for single player
     startQuizButton.removeEventListener('click', joinSelectedSession);
-
   } else {
     // Default case: Hide all specific elements
     questionCountContainer.style.display = 'none';
@@ -106,8 +101,6 @@ modeSelectionContainer.addEventListener('change', (event) => {
     startQuizButton.removeEventListener('click', joinSelectedSession);
   }
 });
-
-
 
 // Handle mode change
 function handleModeSelection() {
@@ -120,7 +113,6 @@ function handleModeSelection() {
 
   updateStartButtonState(); // Update start button state based on the new mode
 }
-
 
 function updateStartButtonState() {
   // Attempt to find a checked radio button
@@ -147,8 +139,6 @@ function updateStartButtonState() {
   document.getElementById('start-quiz').disabled = !enableButton;
 }
 
-
-
 function updateNextButton() {
   const sessionIdInput = document.getElementById('session-id').value.trim();
   const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
@@ -156,8 +146,6 @@ function updateNextButton() {
 
   nextButton.disabled = !(sessionIdInput.length > 0 && isAnyCategorySelected);
 }
-
-
 
 document.getElementById('username').addEventListener('input', function () {
   const usernameInput = this.value.trim();
@@ -173,7 +161,6 @@ document.getElementById('username').addEventListener('input', function () {
 
 // Initially disable the start button (except for group questioner mode)
 document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
-
 
 function loadSessionQuestions(sessionId) {
   db.collection('sessions').doc(sessionId).get()
@@ -200,7 +187,6 @@ function generateRandomUsername() {
   return prefix + randomNum.toString().padStart(4, '0'); // Pad with zeros to ensure a uniform length
 }
 
-
 function loadAvailableSessions() {
   db.collection('sessions').where('active', '==', true).get()
     .then(snapshot => {
@@ -215,6 +201,7 @@ function loadAvailableSessions() {
     })
     .catch(error => console.error("Error fetching sessions:", error));
 }
+
 // Inside the startQuizButton event listener
 startQuizButton.addEventListener('click', () => {
   const selectedMode = document.querySelector('input[name="mode"]:checked').value;
@@ -260,7 +247,6 @@ startQuizButton.addEventListener('click', () => {
   }
 });
 
-
 function loadQuestionsQuestioner() {
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
@@ -278,14 +264,14 @@ function loadQuestionsQuestioner() {
     if (!response.ok) {
       throw new Error(`Network response was not ok for file ${file}`);
     }
-    return response.json();
-  })
-  );
+    return response.json().catch(err => {
+      throw new Error(`Invalid JSON in file ${file}: ${err.message}`);
+    });
+  }));
 
   Promise.all(promises)
     .then(loadedQuestionsArrays => {
       // Flatten the array of arrays into a single array
-
       questions = [].concat(...loadedQuestionsArrays);
 
       // Shuffle questions array here
@@ -300,7 +286,7 @@ function loadQuestionsQuestioner() {
 
       // Switch this to just one of the modes
       if (modeGroupQuestioner.checked) {
-        displayQuestionQuestioner(currentQuestionIndex)
+        displayQuestionQuestioner(currentQuestionIndex);
         const sessionId = getCurrentSessionId();
         if (sessionId) {
           saveQuestionsToFirestore(sessionId, questions);
@@ -310,7 +296,7 @@ function loadQuestionsQuestioner() {
       }
     })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error('Error loading questions:', error.message);
     });
 }
 
@@ -332,14 +318,14 @@ function loadQuestionsSingle() {
     if (!response.ok) {
       throw new Error(`Network response was not ok for file ${file}`);
     }
-    return response.json();
-  })
-  );
+    return response.json().catch(err => {
+      throw new Error(`Invalid JSON in file ${file}: ${err.message}`);
+    });
+  }));
 
   Promise.all(promises)
     .then(loadedQuestionsArrays => {
       // Flatten the array of arrays into a single array
-
       questions = [].concat(...loadedQuestionsArrays);
 
       // Shuffle questions array here
@@ -358,9 +344,10 @@ function loadQuestionsSingle() {
       }
     })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error('Error loading questions:', error.message);
     });
 }
+
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -386,22 +373,21 @@ function displayQuestionQuestioner(index) {
   let answerInputHTML = '';
 
   answerInputHTML = question.options.map((option, index) => `
-  <div>
-    <label>${String.fromCharCode(65 + index)}: ${option}</label>
-  </div>
-`).join('');
+    <div>
+      <label>${String.fromCharCode(65 + index)}: ${option}</label>
+    </div>
+  `).join('');
 
   questionDiv.innerHTML = `
-<h3>Question ${index + 1} of ${questions.length}</h3>
-<h2>${question.question}</h2>
-${answerInputHTML}
-`;
+    <h3>Question ${index + 1} of ${questions.length}</h3>
+    <h2>${question.question}</h2>
+    ${answerInputHTML}
+  `;
 
   questionContainer.innerHTML = ''; // Clear previous question
   questionContainer.appendChild(questionDiv); // Append new question
   quizContainer.style.display = 'block'; // Ensure the quiz container is visible
 }
-
 
 // Function for the Questioner to call when ready to move to the next question
 function questionerNextQuestion(sessionId) {
@@ -425,7 +411,6 @@ function questionerNextQuestion(sessionId) {
   }
 }
 
-
 // This function will be triggered for participants when the session's currentQuestionIndex changes
 function onQuestionIndexUpdated(sessionData) {
   if (sessionData.currentQuestionIndex !== undefined && sessionData.currentQuestionIndex !== currentQuestionIndex) {
@@ -439,8 +424,6 @@ function onQuestionIndexUpdated(sessionData) {
   }
 }
 
-
-
 // This function would be called when the participant selects a session and clicks a "Join Session" button
 function joinSelectedSession() {
   const selectedSessionId = document.getElementById('session-id-select').value;
@@ -452,24 +435,14 @@ function joinSelectedSession() {
   }
 }
 
-
-
-// Later on, you can retrieve the session ID like this:
-function getCurrentSessionId() {
-  // Replace this with however you're storing the session ID, e.g., local storage or a global variable
-  return localStorage.getItem('currentSessionId');
-}
-
-
 function getConfidenceInputHTML() {
   return `
-      <div>
-        <label for="confidence">Confidence:</label>
-        <input type="number" id="confidence" class="input-small" min="0" max="100" step="1">%
-      </div>
-    `;
+    <div>
+      <label for="confidence">Confidence:</label>
+      <input type="number" id="confidence" class="input-small" min="0" max="100" step="1">%
+    </div>
+  `;
 }
-
 
 function displayQuestion(index) {
   // This is for single player mode
@@ -489,11 +462,11 @@ function displayQuestion(index) {
 
   const options = ['A', 'B', 'C', 'D'];
   answerInputHTML = question.options.map((option, index) => `
-      <div>
-        <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
-        <label for="option-${options[index]}">${options[index]}: ${option}</label>
-      </div>
-    `).join('');
+    <div>
+      <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
+      <label for="option-${options[index]}">${options[index]}: ${option}</label>
+    </div>
+  `).join('');
 
   const confidenceInputHTML = getConfidenceInputHTML();
 
@@ -519,11 +492,9 @@ function saveQuestionsToFirestore(sessionId, questionsArray) {
     .catch(error => console.error('Error saving questions:', error));
 }
 
-
 nextButton.classList.add('button-spacing');
 
 nextButton.addEventListener('click', () => {
-
   // Handling for Group Questioner mode
   if (modeGroupQuestioner.checked) {
     console.log("Handling Group Questioner mode");
@@ -560,10 +531,7 @@ nextButton.addEventListener('click', () => {
   }
 });
 
-
-
 function loadQuestionsParticipant() {
-
   const sessionId = getCurrentSessionId();
   if (!sessionId) {
     console.error("No session ID found.");
@@ -583,11 +551,7 @@ function loadQuestionsParticipant() {
     .catch(error => console.error("Error loading session questions:", error));
 }
 
-
-
-
 function displayQuestionForGroupParticipant(index) {
-
   if (!questions[index]) {
     console.error("Question not found for index: ", index);
     return; // Exit the function if the question is not found
@@ -617,11 +581,7 @@ function displayQuestionForGroupParticipant(index) {
   nextButton.style.display = 'block';
 }
 
-
-
-
 function submitAnswer() {
-
   // Get the selected answer and confidence level
   const selectedOption = document.querySelector('input[name="answer"]:checked');
   const userAnswer = selectedOption ? selectedOption.value : null;
@@ -667,15 +627,13 @@ function submitAnswer() {
   confidenceElement.value = ''; // Clear the confidence input
 }
 
-
-
 function getCurrentSessionId() {
   // Retrieve the session ID from local storage
   return localStorage.getItem('currentSessionId');
 }
 
-function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
 
+function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
   if (!sessionId || !userId) {
     console.error('Session ID or User ID is missing.');
     return;
@@ -686,6 +644,8 @@ function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
     .then(() => console.log('Answer submitted successfully'))
     .catch(error => console.error("Error submitting answer:", error));
 }
+
+
 
 function calculateConfidenceDecileScores(answers) {
   /**
@@ -732,7 +692,6 @@ function createSession() {
 
 
 function nextQuestion(sessionId) {
-
   // Increment the current question index
   currentQuestionIndex++;
   // Check if there are more questions
@@ -781,23 +740,22 @@ function displayResults() {
     const confidenceDecileScores = calculateConfidenceDecileScores(answers);
 
     resultsContainer.innerHTML = `
-        <h2>Results</h2>
-        <p>Correct answers: ${score} / ${questions.length}</p>
-        <p style="color:${scoreColor};">Brier score: ${brierScore.toFixed(2)} (${scoreLabel})</p>
-        ${confidenceDecileScores.map(({ decileRange, score, correct, total }) => {
+      <h2>Results</h2>
+      <p>Correct answers: ${score} / ${questions.length}</p>
+      <p style="color:${scoreColor};">Brier score: ${brierScore.toFixed(2)} (${scoreLabel})</p>
+      ${confidenceDecileScores.map(({ decileRange, score, correct, total }) => {
       if (total === 0) {
         return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
       } else {
         return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time (${correct}/${total}).</p>`;
       }
     }).join('')}
-      `;
+    `;
 
     resultsContainer.style.display = 'block';
     displayIndividualResults();
   }
 }
-
 
 function displayIndividualResults() {
   for (let i = 0; i < questions.length; i++) {
@@ -817,7 +775,6 @@ function displayIndividualResults() {
     resultsContainer.appendChild(resultPara);
   }
 }
-
 
 function displayLeaderboard(sessionId) {
   db.collection('sessions').doc(sessionId).collection('answers')
