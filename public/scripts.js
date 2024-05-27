@@ -45,9 +45,8 @@ function initialize() {
     console.log("Session ID from URL:", sessionIdFromURL);
     localStorage.setItem('currentSessionId', sessionIdFromURL);
     loadSessionQuestions(sessionIdFromURL);
-    if (modeGroupParticipant.checked) {
-      startQuizButton.disabled = false; // Enable the start button for participants
-    }
+    quizContainer.style.display = 'block'; // Ensure the quiz container is visible
+    modeSelectionContainer.style.display = 'none'; // Hide the mode selection container
   }
 }
 
@@ -170,6 +169,7 @@ function loadSessionQuestions(sessionId) {
         if (doc.data().questions && doc.data().questions.length > 0) {
           questions = doc.data().questions;
           // Display the first question
+          currentQuestionIndex = 0;
           displayQuestionForGroupParticipant(currentQuestionIndex);
         } else {
           console.log("No questions available in this session!");
@@ -246,6 +246,7 @@ startQuizButton.addEventListener('click', () => {
     }
   }
 });
+
 
 function loadQuestionsQuestioner() {
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
