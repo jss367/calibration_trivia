@@ -1,4 +1,4 @@
-const appVersion = '1.1.2';
+const appVersion = '1.1.3';
 console.log('App Version:', appVersion);
 
 const quizContainer = document.getElementById('quiz-container');
@@ -106,6 +106,20 @@ function displayResponderScreen(sessionId) {
     .catch(error => {
       console.error("Error displaying responder screen:", error);
     });
+}
+
+// Function to start listening for updates on the current question index from Firestore
+function startListeningForQuestionUpdates(sessionId) {
+  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
+    if (doc.exists) {
+      const data = doc.data();
+      if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
+        onQuestionIndexUpdated(data);
+      }
+    } else {
+      console.error("No such session!");
+    }
+  });
 }
 
 // Event listener for mode selection
@@ -294,71 +308,50 @@ startQuizButton.addEventListener('click', () => {
     const sessionId = document.getElementById('session-id').value.trim();
     if (sessionId) {
       // Save the session ID to Firestore and start the quiz
-      db.collection('sessions').doc(sessionId).set({ active: true })
+      const questionCount = parseInt(document.getElementById('question-count').value, 10);
+      const checkboxes = document.querySelectorAll('.category-checkbox');
+      const selectedFiles = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+      if (selectedFiles.length === 0) {
+        console.log("Please select at least one category.");
+        return;
+      }
+
+      const promises = selectedFiles.map(file => fetch(file).then(response => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok for file ${file}`);
+        }
+        return response.json().catch(err => {
+          throw new Error(`Invalid JSON in file ${file}: ${err.message}`);
+        });
+      }));
+
+      Promise.all(promises)
+        .then(loadedQuestionsArrays => {
+          // Flatten the array of arrays into a single array
+          questions = [].concat(...loadedQuestionsArrays);
+          shuffleArray(questions);
+          questions = questions.slice(0, questionCount);
+
+          return db.collection('sessions').doc(sessionId).set({
+            questions: questions,
+            active: true,
+            currentQuestionIndex: 0
+          });
+        })
         .then(() => {
           console.log("Session ID set successfully:", sessionId);
           localStorage.setItem('currentSessionId', sessionId);
           window.location.href = `/${sessionId}?role=questioner`; // Redirect to the session URL with role
         })
-        .catch(error => console.error("Error setting session ID:", error));
+        .catch(error => console.error("Error setting session ID or loading questions:", error));
     } else {
       console.log("Please enter a session ID.");
     }
   }
 });
-
-function loadQuestionsQuestioner() {
-  const questionCount = parseInt(document.getElementById('question-count').value, 10);
-  const checkboxes = document.querySelectorAll('.category-checkbox');
-  const selectedFiles = Array.from(checkboxes)
-    .filter(checkbox => checkbox.checked)
-    .map(checkbox => checkbox.value);
-
-  // Continue only if at least one category is selected
-  if (selectedFiles.length === 0) {
-    console.log("Please select at least one category."); // Should this be an error?
-    return;
-  }
-
-  const promises = selectedFiles.map(file => fetch(file).then(response => {
-    if (!response.ok) {
-      throw new Error(`Network response was not ok for file ${file}`);
-    }
-    return response.json().catch(err => {
-      throw new Error(`Invalid JSON in file ${file}: ${err.message}`);
-    });
-  }));
-
-  Promise.all(promises)
-    .then(loadedQuestionsArrays => {
-      // Flatten the array of arrays into a single array
-      questions = [].concat(...loadedQuestionsArrays);
-
-      // Shuffle questions array here
-      shuffleArray(questions);
-
-      // Only keep as many questions as the user requested
-      questions = questions.slice(0, questionCount);
-
-      console.log("modeSinglePlayer.checked is ", modeSinglePlayer.checked);
-      console.log("modeGroupParticipant.checked is ", modeGroupParticipant.checked);
-      console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
-
-      // Switch this to just one of the modes
-      if (modeGroupQuestioner.checked) {
-        displayQuestionQuestioner(currentQuestionIndex);
-        const sessionId = getCurrentSessionId();
-        if (sessionId) {
-          saveQuestionsToFirestore(sessionId, questions);
-        } else {
-          console.log('Session ID not set for Group Questioner mode');
-        }
-      }
-    })
-    .catch((error) => {
-      console.error('Error loading questions:', error.message);
-    });
-}
 
 function loadQuestionsSingle() {
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
@@ -556,7 +549,6 @@ nextButton.addEventListener('click', () => {
   // Handling for Group Questioner mode
   if (modeGroupQuestioner.checked) {
     console.log("Handling Group Questioner mode");
-    console.log("THIS SHOULD NOT HAPPEN");
 
     // Increment the current question index
     currentQuestionIndex++;
@@ -690,6 +682,7 @@ function getCurrentSessionId() {
   return localStorage.getItem('currentSessionId');
 }
 
+
 function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
   if (!sessionId || !userId) {
     console.error('Session ID or User ID is missing.');
@@ -701,6 +694,8 @@ function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
     .then(() => console.log('Answer submitted successfully'))
     .catch(error => console.error("Error submitting answer:", error));
 }
+
+
 
 function calculateConfidenceDecileScores(answers) {
   /**
@@ -727,6 +722,8 @@ function calculateConfidenceDecileScores(answers) {
   }));
 }
 
+
+
 // Function to create a new session
 function createSession() {
   const sessionId = document.getElementById('session-id').value.trim();
@@ -743,15 +740,16 @@ function createSession() {
     .catch(error => console.error('Error creating session:', error));
 }
 
+
 function nextQuestion(sessionId) {
   // Increment the current question index
   currentQuestionIndex++;
   // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
     // Update the current question index in the Firebase session
-    db.collection('sessions').doc(sessionId).update({
-      currentQuestionIndex: currentQuestionIndex
-    });
+    // db.collection('sessions').doc(sessionId).update({
+    // currentQuestionIndex: currentQuestionIndex
+    // });
     displayQuestionForGroupParticipant(currentQuestionIndex);
   } else {
     // Handle the end of the quiz
