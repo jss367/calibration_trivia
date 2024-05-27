@@ -85,10 +85,17 @@ function displayQuestionerScreen(sessionId) {
 // Function to display the responder's screen
 function displayResponderScreen(sessionId) {
   // Load and display questions, setup responder-specific UI
-  loadSessionQuestions(sessionId);
-  quizContainer.style.display = 'block';
-  modeSelectionContainer.style.display = 'none';
-  // Additional setup for responder...
+  loadSessionQuestions(sessionId)
+    .then(() => {
+      quizContainer.style.display = 'block';
+      modeSelectionContainer.style.display = 'none';
+      startButtonContainer.style.display = 'none';
+      // Additional setup for responder...
+      displayQuestionForGroupParticipant(currentQuestionIndex);
+    })
+    .catch(error => {
+      console.error("Error displaying responder screen:", error);
+    });
 }
 
 // Event listener for mode selection
@@ -290,8 +297,6 @@ startQuizButton.addEventListener('click', () => {
   }
 });
 
-
-
 function loadQuestionsQuestioner() {
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
@@ -345,7 +350,6 @@ function loadQuestionsQuestioner() {
     });
 }
 
-
 function loadQuestionsSingle() {
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
@@ -392,7 +396,6 @@ function loadQuestionsSingle() {
       console.error('Error loading questions:', error.message);
     });
 }
-
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -677,7 +680,6 @@ function getCurrentSessionId() {
   return localStorage.getItem('currentSessionId');
 }
 
-
 function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
   if (!sessionId || !userId) {
     console.error('Session ID or User ID is missing.');
@@ -689,8 +691,6 @@ function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
     .then(() => console.log('Answer submitted successfully'))
     .catch(error => console.error("Error submitting answer:", error));
 }
-
-
 
 function calculateConfidenceDecileScores(answers) {
   /**
@@ -717,8 +717,6 @@ function calculateConfidenceDecileScores(answers) {
   }));
 }
 
-
-
 // Function to create a new session
 function createSession() {
   const sessionId = document.getElementById('session-id').value.trim();
@@ -735,16 +733,15 @@ function createSession() {
     .catch(error => console.error('Error creating session:', error));
 }
 
-
 function nextQuestion(sessionId) {
   // Increment the current question index
   currentQuestionIndex++;
   // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
     // Update the current question index in the Firebase session
-    // db.collection('sessions').doc(sessionId).update({
-    // currentQuestionIndex: currentQuestionIndex
-    // });
+    db.collection('sessions').doc(sessionId).update({
+      currentQuestionIndex: currentQuestionIndex
+    });
     displayQuestionForGroupParticipant(currentQuestionIndex);
   } else {
     // Handle the end of the quiz
