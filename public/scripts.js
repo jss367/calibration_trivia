@@ -1,4 +1,4 @@
-const appVersion = '1.1.7';
+const appVersion = '1.2.1';
 console.log('App Version:', appVersion);
 
 const quizContainer = document.getElementById('quiz-container');
