@@ -1,4 +1,4 @@
-const appVersion = '1.1.4';
+const appVersion = '1.1.6';
 console.log('App Version:', appVersion);
 
 const quizContainer = document.getElementById('quiz-container');
@@ -211,6 +211,7 @@ function updateStartButtonState() {
 }
 
 function updateNextButton() {
+  console.log("inside updateNextButton");
   const sessionIdInput = document.getElementById('session-id').value.trim();
   const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
   const isAnyCategorySelected = Array.from(categoryCheckboxes).some(checkbox => checkbox.checked);
@@ -354,6 +355,7 @@ startQuizButton.addEventListener('click', () => {
 });
 
 function loadQuestionsSingle() {
+  console.log("inside loadQuestionsSingle");
   const questionCount = parseInt(document.getElementById('question-count').value, 10);
   const checkboxes = document.querySelectorAll('.category-checkbox');
   const selectedFiles = Array.from(checkboxes)
@@ -464,6 +466,7 @@ function questionerNextQuestion(sessionId) {
 
 // This function will be triggered for participants when the session's currentQuestionIndex changes
 function onQuestionIndexUpdated(sessionData) {
+  console.log('Inside onQuestionIndexUpdated');
   if (sessionData.currentQuestionIndex !== undefined && sessionData.currentQuestionIndex !== currentQuestionIndex) {
     // Submit the current answer before moving to the next question
     if (modeGroupParticipant.checked) {
@@ -546,6 +549,7 @@ function saveQuestionsToFirestore(sessionId, questionsArray) {
 nextButton.classList.add('button-spacing');
 
 nextButton.addEventListener('click', () => {
+  console.log("Next button has been clicked");
   // Handling for Group Questioner mode
   if (modeGroupQuestioner.checked) {
     console.log("Handling Group Questioner mode");
@@ -633,6 +637,7 @@ function displayQuestionForGroupParticipant(index) {
 }
 
 function submitAnswer() {
+  console.log("Inside submitAnswer");
   // Get the selected answer and confidence level
   const selectedOption = document.querySelector('input[name="answer"]:checked');
   const confidenceElement = document.getElementById('confidence');
