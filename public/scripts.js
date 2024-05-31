@@ -1,4 +1,4 @@
-const appVersion = '1.1.6';
+const appVersion = '1.1.7';
 console.log('App Version:', appVersion);
 
 const quizContainer = document.getElementById('quiz-container');
@@ -38,6 +38,13 @@ function initialize() {
   });
   updateStartButtonState(); // Initial call to set the correct state of the start button
 
+  // Retrieve the mode from local storage and set it
+  const savedMode = localStorage.getItem('selectedMode');
+  if (savedMode) {
+    document.getElementById(`mode-${savedMode}`).checked = true;
+    handleModeSelection();
+  }
+
   // Check URL for session ID and user role
   const pathSegments = window.location.pathname.split('/').filter(segment => segment); // Get non-empty segments
   const sessionIdFromURL = pathSegments[0]; // Assuming the session ID is the first segment
@@ -54,6 +61,7 @@ function initialize() {
     }
   }
 }
+
 
 // Function to display the questioner's screen
 function displayQuestionerScreen(sessionId) {
@@ -176,6 +184,8 @@ modeSelectionContainer.addEventListener('change', (event) => {
 // Handle mode change
 function handleModeSelection() {
   const mode = document.querySelector('input[name="mode"]:checked').value;
+  localStorage.setItem('selectedMode', mode); // Save the selected mode to local storage
+
   usernameContainer.style.display = mode === 'group-participant' ? 'block' : 'none';
   sessionIDSelectionContainer.style.display = mode === 'group-participant' ? 'block' : 'none';
   sessionIdContainer.style.display = mode === 'group-questioner' ? 'block' : 'none';
@@ -184,6 +194,7 @@ function handleModeSelection() {
 
   updateStartButtonState(); // Update start button state based on the new mode
 }
+
 
 function updateStartButtonState() {
   // Attempt to find a checked radio button
@@ -547,15 +558,27 @@ function saveQuestionsToFirestore(sessionId, questionsArray) {
 }
 
 nextButton.classList.add('button-spacing');
-
 nextButton.addEventListener('click', () => {
   console.log("Next button has been clicked");
+  console.log("Current Mode:");
+  console.log("  Single Player:", modeSinglePlayer.checked);
+  console.log("  Group Participant:", modeGroupParticipant.checked);
+  console.log("  Group Questioner:", modeGroupQuestioner.checked);
+  console.log("Current Question Index:", currentQuestionIndex);
+  console.log("Total Questions:", questions.length);
+  console.log("User Answers:", userAnswers);
+  console.log("Correct Answers:", correctAnswers);
+  console.log("User Confidences:", userConfidences);
+  console.log("Score:", score);
+  console.log("Brier Score:", brierScore);
+
   // Handling for Group Questioner mode
   if (modeGroupQuestioner.checked) {
     console.log("Handling Group Questioner mode");
 
     // Increment the current question index
     currentQuestionIndex++;
+    console.log("Updated Question Index (Questioner):", currentQuestionIndex);
 
     // Check if there are more questions
     if (currentQuestionIndex < questions.length) {
@@ -565,16 +588,20 @@ nextButton.addEventListener('click', () => {
     }
   }
   else if (modeGroupParticipant.checked) {
+    console.log("Handling Group Participant mode");
     submitAnswer();
     const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
+    console.log("Session ID:", sessionId);
     nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
   }
   else {
+    console.log("Handling Single Player mode");
     // For Single Player mode, handle answer submission and question navigation
     submitAnswer();
 
     // Increment the current question index
     currentQuestionIndex++;
+    console.log("Updated Question Index (Single Player):", currentQuestionIndex);
 
     // Check if there are more questions
     if (currentQuestionIndex < questions.length) {
@@ -584,6 +611,7 @@ nextButton.addEventListener('click', () => {
     }
   }
 });
+
 
 
 function loadQuestionsParticipant() {
