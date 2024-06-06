@@ -1,4 +1,3 @@
-import { modeGroupQuestioner, startQuizButton } from './initialization.js';
 import { handleModeSelection } from './modeHandlers.js';
 
 // DOM Elements

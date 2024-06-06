@@ -1,9 +1,12 @@
+import { db } from './firebaseConfig.js';
 import {
   categorySelectionContainer,
   modeGroupQuestioner,
   modeSelectionContainer,
   nextButton,
   questionCountContainer,
+  questions,
+  quizContainer,
   sessionIDSelectionContainer,
   sessionIdContainer,
   startButtonContainer,
@@ -11,7 +14,8 @@ import {
   usernameContainer
 } from './initialization.js';
 import { handleModeSelection } from './modeHandlers.js';
-import { joinSelectedSession, loadAvailableSessions } from './sessionHandlers.js';
+import { loadQuestionsSingle, shuffleArray } from './questionHandlers.js';
+import { generateRandomUsername, joinSelectedSession, loadAvailableSessions } from './sessionHandlers.js';
 import { updateNextButton, updateStartButtonState } from './util.js';
 
 export function setupEventListeners() {
@@ -20,11 +24,6 @@ export function setupEventListeners() {
   document.getElementById('session-id').addEventListener('input', updateStartButtonState);
   document.querySelectorAll('.category-checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', updateStartButtonState);
-  });
-
-  startQuizButton.addEventListener('click', () => {
-    const selectedMode = document.querySelector('input[name="mode"]:checked').value;
-    // Handle quiz start logic based on the selected mode...
   });
 
   nextButton.addEventListener('click', () => {
@@ -92,6 +91,83 @@ export function setupEventListeners() {
       startButton.disabled = false;
     } else {
       startButton.disabled = true;
+    }
+  });
+
+  // Inside the startQuizButton event listener
+  startQuizButton.addEventListener('click', () => {
+    const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+    console.log("Selected Mode: ", selectedMode);
+
+    // Hide UI elements not needed once the quiz starts
+    usernameContainer.style.display = 'none';
+    modeSelectionContainer.style.display = 'none';
+    startButtonContainer.style.display = 'none';
+    questionCountContainer.style.display = 'none';
+    categorySelectionContainer.style.display = 'none';
+
+    if (selectedMode === 'single') {
+      console.log("Starting Single Player Mode");
+      const randomUsername = generateRandomUsername();
+      localStorage.setItem('username', randomUsername);
+      quizContainer.style.display = 'block';
+      loadQuestionsSingle();
+    } else if (selectedMode === 'group-participant') {
+      console.log("Starting Group Participant Mode");
+      const selectedSessionId = document.getElementById('session-id-select').value;
+      if (selectedSessionId) {
+        localStorage.setItem('currentSessionId', selectedSessionId);
+        window.location.href = `/${selectedSessionId}?role=responder`; // Redirect to the session URL with role
+      } else {
+        console.log("Please select a session.");
+      }
+    } else if (selectedMode === 'group-questioner') {
+      console.log("Starting Group Questioner Mode");
+      const sessionId = document.getElementById('session-id').value.trim();
+      if (sessionId) {
+        // Save the session ID to Firestore and start the quiz
+        const questionCount = parseInt(document.getElementById('question-count').value, 10);
+        const checkboxes = document.querySelectorAll('.category-checkbox');
+        const selectedFiles = Array.from(checkboxes)
+          .filter(checkbox => checkbox.checked)
+          .map(checkbox => checkbox.value);
+
+        if (selectedFiles.length === 0) {
+          console.log("Please select at least one category.");
+          return;
+        }
+
+        const promises = selectedFiles.map(file => fetch(file).then(response => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok for file ${file}`);
+          }
+          return response.json().catch(err => {
+            throw new Error(`Invalid JSON in file ${file}: ${err.message}`);
+          });
+        }));
+
+        Promise.all(promises)
+          .then(loadedQuestionsArrays => {
+            // Flatten the array of arrays into a single array
+            questions = [].concat(...loadedQuestionsArrays);
+            shuffleArray(questions);
+            questions = questions.slice(0, questionCount);
+
+            return db.collection('sessions').doc(sessionId).set({
+              questions: questions,
+              active: true,
+              currentQuestionIndex: 0
+            });
+          })
+          .then(() => {
+            console.log("Session ID set successfully:", sessionId);
+            localStorage.setItem('currentSessionId', sessionId);
+            window.location.href = `/${sessionId}?role=questioner`; // Redirect to the session URL with role
+          })
+          .catch(error => console.error("Error setting session ID or loading questions:", error));
+      } else {
+        console.log("Please enter a session ID.");
+      }
     }
   });
 }
