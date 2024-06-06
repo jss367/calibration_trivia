@@ -1,4 +1,3 @@
-import { setupEventListeners } from './eventListeners.js';
 import { handleModeSelection } from './modeHandlers.js';
 
 // DOM Elements
@@ -19,17 +18,53 @@ const questionCountContainer = document.getElementById('question-count-container
 const startButtonContainer = document.getElementById('start-button-container');
 const sessionIdContainer = document.getElementById('session-id-container');
 
-export function initialize() {
-  setupEventListeners();
+// Quiz state variables
+let currentQuestionIndex = 0;
+let questions = [];
+let score = 0;
+let brierScore = 0;
+let userAnswers = [];
+let correctAnswers = [];
+let userConfidences = [];
+
+
+// Initialization
+function initialize() {
+  modeSelectionContainer.addEventListener('change', handleModeSelection);
+  document.getElementById('username').addEventListener('input', updateStartButtonState);
+  document.getElementById('session-id').addEventListener('input', updateStartButtonState);
+  document.querySelectorAll('.category-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', updateStartButtonState);
+  });
+  updateStartButtonState(); // Initial call to set the correct state of the start button
+
+  // Retrieve the mode from local storage and set it
   const savedMode = localStorage.getItem('selectedMode');
   if (savedMode) {
     document.getElementById(`mode-${savedMode}`).checked = true;
     handleModeSelection();
   }
+
+  // Check URL for session ID and user role
+  const pathSegments = window.location.pathname.split('/').filter(segment => segment); // Get non-empty segments
+  const sessionIdFromURL = pathSegments[0]; // Assuming the session ID is the first segment
+  const urlParams = new URLSearchParams(window.location.search);
+  const userRole = urlParams.get('role'); // Role can be 'questioner' or 'responder'
+
+  if (sessionIdFromURL) {
+    console.log("Session ID from URL:", sessionIdFromURL);
+    localStorage.setItem('currentSessionId', sessionIdFromURL);
+    if (userRole === 'questioner') {
+      displayQuestionerScreen(sessionIdFromURL);
+    } else if (userRole === 'responder') {
+      displayResponderScreen(sessionIdFromURL);
+    }
+  }
 }
 
+
 export {
-  categorySelectionContainer, leaderboardContainer, modeGroupParticipant,
+  brierScore, categorySelectionContainer, correctAnswers, currentQuestionIndex, leaderboardContainer, modeGroupParticipant,
   modeGroupQuestioner, modeSelectionContainer,
-  modeSinglePlayer, nextButton, questionContainer, questionCountContainer, quizContainer, resultsContainer, sessionIDSelectionContainer, sessionIdContainer, startButtonContainer, startQuizButton, usernameContainer
+  modeSinglePlayer, nextButton, questionContainer, questionCountContainer, questions, quizContainer, resultsContainer, score, sessionIDSelectionContainer, sessionIdContainer, startButtonContainer, startQuizButton, userAnswers, userConfidences, usernameContainer
 };
