@@ -2,19 +2,6 @@
 
 
 
-// Function to start listening for updates on the current question index from Firestore
-function startListeningForQuestionUpdates(sessionId) {
-  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
-    if (doc.exists) {
-      const data = doc.data();
-      if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
-        onQuestionIndexUpdated(data);
-      }
-    } else {
-      console.error("No such session!");
-    }
-  });
-}
 
 // Event listener for mode selection
 modeSelectionContainer.addEventListener('change', (event) => {

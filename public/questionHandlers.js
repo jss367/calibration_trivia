@@ -8,7 +8,8 @@ import {
   questions,
   quizContainer,
   sessionIdContainer,
-  startButtonContainer
+  startButtonContainer,
+  usernameContainer
 } from './initialization.js';
 
 export function loadSessionQuestions(sessionId) {
@@ -62,5 +63,45 @@ export function displayQuestionerScreen(sessionId) {
 }
 
 export function displayResponderScreen(sessionId) {
-  // Implementation for displaying the responder's screen...
+  loadSessionQuestions(sessionId)
+    .then(() => {
+      quizContainer.style.display = 'block';
+      modeSelectionContainer.style.display = 'none';
+      startButtonContainer.style.display = 'none';
+      usernameContainer.style.display = 'none'; // Hide username container if it's still visible
+      sessionIdContainer.style.display = 'none'; // Hide session ID container if it's still visible
+
+      // Additional setup for responder...
+      // Initialize current question index
+      currentQuestionIndex = 0;
+
+      // Display the first question
+      displayQuestionForGroupParticipant(currentQuestionIndex);
+
+      // Start listening for updates on the current question index from Firestore
+      startListeningForQuestionUpdates(sessionId);
+    })
+    .catch(error => {
+      console.error("Error displaying responder screen:", error);
+    });
+}
+
+function startListeningForQuestionUpdates(sessionId) {
+  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
+    if (doc.exists) {
+      const data = doc.data();
+      if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
+        onQuestionIndexUpdated(data);
+      }
+    } else {
+      console.error("No such session!");
+    }
+  });
+}
+
+function onQuestionIndexUpdated(data) {
+  if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
+    currentQuestionIndex = data.currentQuestionIndex;
+    displayQuestionForGroupParticipant(currentQuestionIndex);
+  }
 }
