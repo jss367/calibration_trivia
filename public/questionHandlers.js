@@ -86,6 +86,7 @@ export function displayResponderScreen(sessionId) {
     });
 }
 
+// Function to start listening for updates on the current question index from Firestore
 function startListeningForQuestionUpdates(sessionId) {
   db.collection('sessions').doc(sessionId).onSnapshot(doc => {
     if (doc.exists) {

@@ -9,7 +9,7 @@ import { updateStartButtonState } from './util.js';
 
 export function handleModeSelection() {
   const mode = document.querySelector('input[name="mode"]:checked').value;
-  localStorage.setItem('selectedMode', mode);
+  localStorage.setItem('selectedMode', mode); // Save the selected mode to local storage
 
   usernameContainer.style.display = mode === 'group-participant' ? 'block' : 'none';
   sessionIDSelectionContainer.style.display = mode === 'group-participant' ? 'block' : 'none';
