@@ -1,0 +1,3 @@
+export function updateStartButtonState() {
+  // Implementation for updating start button state...
+}
