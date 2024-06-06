@@ -16,16 +16,22 @@ export function loadSessionQuestions(sessionId) {
   return db.collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists) {
-        questions.length = 0;
-        questions.push(...doc.data().questions);
-        if (questions.length > 0) {
-          return questions;
+        console.log("Fetched document:", doc.data());
+        if (doc.data().questions && doc.data().questions.length > 0) {
+          questions.length = 0;
+          questions.push(...doc.data().questions);
         } else {
+          console.log("No questions available in this session!");
           throw new Error("No questions available");
         }
       } else {
+        console.log("No such session!");
         throw new Error("No such session");
       }
+    })
+    .catch(error => {
+      console.error("Error loading session questions:", error);
+      throw error;
     });
 }
 

@@ -1,6 +1,5 @@
+import { modeGroupQuestioner, startQuizButton } from './initialization.js';
 import { handleModeSelection } from './modeHandlers.js';
-import { displayQuestionerScreen, displayResponderScreen } from './questionHandlers.js';
-import { updateStartButtonState } from './util.js';
 
 // DOM Elements
 const quizContainer = document.getElementById('quiz-container');
@@ -38,6 +37,9 @@ function initialize() {
     checkbox.addEventListener('change', updateStartButtonState);
   });
   updateStartButtonState(); // Initial call to set the correct state of the start button
+
+  // Initially disable the start button (except for group questioner mode)
+  startQuizButton.disabled = !modeGroupQuestioner.checked;
 
   // Retrieve the mode from local storage and set it
   const savedMode = localStorage.getItem('selectedMode');

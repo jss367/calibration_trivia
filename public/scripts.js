@@ -1,44 +1,4 @@
 
-
-
-
-document.getElementById('username').addEventListener('input', function () {
-  const usernameInput = this.value.trim();
-  const startButton = document.getElementById('start-quiz');
-
-  // Enable the start button only if the username is not empty or if Group Questioner mode is selected
-  if (usernameInput.length > 0 || modeGroupQuestioner.checked) {
-    startButton.disabled = false;
-  } else {
-    startButton.disabled = true;
-  }
-});
-
-// Initially disable the start button (except for group questioner mode)
-document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
-
-function loadSessionQuestions(sessionId) {
-  return db.collection('sessions').doc(sessionId).get()
-    .then(doc => {
-      if (doc.exists) {
-        console.log("Fetched document:", doc.data());
-        if (doc.data().questions && doc.data().questions.length > 0) {
-          questions = doc.data().questions;
-        } else {
-          console.log("No questions available in this session!");
-          throw new Error("No questions available");
-        }
-      } else {
-        console.log("No such session!");
-        throw new Error("No such session");
-      }
-    })
-    .catch(error => {
-      console.error("Error loading session questions:", error);
-      throw error;
-    });
-}
-
 function generateRandomUsername() {
   const prefix = "Player_";
   const randomNum = Math.floor(Math.random() * 10000); // Random number between 0 and 9999

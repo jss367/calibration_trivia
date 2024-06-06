@@ -1,5 +1,6 @@
 import {
   categorySelectionContainer,
+  modeGroupQuestioner,
   modeSelectionContainer,
   nextButton,
   questionCountContainer,
@@ -78,6 +79,19 @@ export function setupEventListeners() {
       sessionIDSelectionContainer.style.display = 'none';
       document.getElementById('start-quiz').disabled = true;
       startQuizButton.removeEventListener('click', joinSelectedSession);
+    }
+  });
+
+  // Additional event listener for username input
+  document.getElementById('username').addEventListener('input', function () {
+    const usernameInput = this.value.trim();
+    const startButton = document.getElementById('start-quiz');
+
+    // Enable the start button only if the username is not empty or if Group Questioner mode is selected
+    if (usernameInput.length > 0 || modeGroupQuestioner.checked) {
+      startButton.disabled = false;
+    } else {
+      startButton.disabled = true;
     }
   });
 }
