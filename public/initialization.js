@@ -1,4 +1,6 @@
 import { handleModeSelection } from './modeHandlers.js';
+import { displayQuestionerScreen, displayResponderScreen } from './questionHandlers.js';
+import { updateStartButtonState } from './util.js';
 
 // DOM Elements
 const quizContainer = document.getElementById('quiz-container');
@@ -27,8 +29,7 @@ let userAnswers = [];
 let correctAnswers = [];
 let userConfidences = [];
 
-
-// Initialization
+// Initialization function
 function initialize() {
   modeSelectionContainer.addEventListener('change', handleModeSelection);
   document.getElementById('username').addEventListener('input', updateStartButtonState);
@@ -62,9 +63,27 @@ function initialize() {
   }
 }
 
-
 export {
-  brierScore, categorySelectionContainer, correctAnswers, currentQuestionIndex, leaderboardContainer, modeGroupParticipant,
-  modeGroupQuestioner, modeSelectionContainer,
-  modeSinglePlayer, nextButton, questionContainer, questionCountContainer, questions, quizContainer, resultsContainer, score, sessionIDSelectionContainer, sessionIdContainer, startButtonContainer, startQuizButton, userAnswers, userConfidences, usernameContainer
+  brierScore,
+  categorySelectionContainer,
+  correctAnswers,
+  currentQuestionIndex, initialize, leaderboardContainer,
+  modeGroupParticipant,
+  modeGroupQuestioner,
+  modeSelectionContainer,
+  modeSinglePlayer,
+  nextButton,
+  questionContainer,
+  questionCountContainer,
+  questions,
+  quizContainer,
+  resultsContainer,
+  score,
+  sessionIDSelectionContainer,
+  sessionIdContainer,
+  startButtonContainer,
+  startQuizButton,
+  userAnswers,
+  userConfidences,
+  usernameContainer
 };

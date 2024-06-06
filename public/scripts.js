@@ -1,57 +1,6 @@
 
 
-// Function to display the questioner's screen
-function displayQuestionerScreen(sessionId) {
-  // Load questions from the session and set up the questioner UI
-  loadSessionQuestions(sessionId)
-    .then(() => {
-      // Display the first question
-      currentQuestionIndex = 0;
-      displayQuestionQuestioner(currentQuestionIndex);
 
-      // Set up questioner-specific UI elements
-      quizContainer.style.display = 'block';
-      modeSelectionContainer.style.display = 'none';
-      startButtonContainer.style.display = 'none';
-      questionCountContainer.style.display = 'none';
-      categorySelectionContainer.style.display = 'none';
-      sessionIdContainer.style.display = 'block'; // Show the session ID
-      sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
-
-      // Show the next button for the questioner to proceed to the next question
-      nextButton.style.display = 'block';
-      nextButton.disabled = false; // Enable the next button for the questioner
-    })
-    .catch(error => {
-      console.error("Error displaying questioner screen:", error);
-    });
-}
-
-// Function to display the responder's screen
-function displayResponderScreen(sessionId) {
-  // Load and display questions, setup responder-specific UI
-  loadSessionQuestions(sessionId)
-    .then(() => {
-      quizContainer.style.display = 'block';
-      modeSelectionContainer.style.display = 'none';
-      startButtonContainer.style.display = 'none';
-      usernameContainer.style.display = 'none'; // Hide username container if it's still visible
-      sessionIdContainer.style.display = 'none'; // Hide session ID container if it's still visible
-
-      // Additional setup for responder...
-      // Initialize current question index
-      currentQuestionIndex = 0;
-
-      // Display the first question
-      displayQuestionForGroupParticipant(currentQuestionIndex);
-
-      // Start listening for updates on the current question index from Firestore
-      startListeningForQuestionUpdates(sessionId);
-    })
-    .catch(error => {
-      console.error("Error displaying responder screen:", error);
-    });
-}
 
 // Function to start listening for updates on the current question index from Firestore
 function startListeningForQuestionUpdates(sessionId) {
