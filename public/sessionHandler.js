@@ -20,3 +20,13 @@ export function loadAvailableSessions() {
     })
     .catch(error => console.error("Error fetching sessions:", error));
 }
+
+export function joinSelectedSession() {
+  const selectedSessionId = document.getElementById('session-id-select').value;
+  if (selectedSessionId) {
+    localStorage.setItem('currentSessionId', selectedSessionId); // Save to local storage or a variable
+    // joinSessionListener(selectedSessionId); // Start listening for updates on the selected session
+  } else {
+    console.error('No session selected.');
+  }
+}

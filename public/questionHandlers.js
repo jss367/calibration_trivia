@@ -2,8 +2,12 @@ import { db } from './firebaseConfig.js';
 import {
   categorySelectionContainer,
   currentQuestionIndex,
+  modeGroupParticipant,
+  modeGroupQuestioner,
   modeSelectionContainer,
+  modeSinglePlayer,
   nextButton,
+  questionContainer,
   questionCountContainer,
   questions,
   quizContainer,
@@ -11,6 +15,7 @@ import {
   startButtonContainer,
   usernameContainer
 } from './initialization.js';
+import { getConfidenceInputHTML } from './util.js';
 
 export function loadSessionQuestions(sessionId) {
   return db.collection('sessions').doc(sessionId).get()
@@ -32,6 +37,55 @@ export function loadSessionQuestions(sessionId) {
     .catch(error => {
       console.error("Error loading session questions:", error);
       throw error;
+    });
+}
+
+export function loadQuestionsSingle() {
+  console.log("inside loadQuestionsSingle");
+  const questionCount = parseInt(document.getElementById('question-count').value, 10);
+  const checkboxes = document.querySelectorAll('.category-checkbox');
+  const selectedFiles = Array.from(checkboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
+
+  // Continue only if at least one category is selected
+  if (selectedFiles.length === 0) {
+    console.log("Please select at least one category."); // Should this be an error?
+    return;
+  }
+
+  const promises = selectedFiles.map(file => fetch(file).then(response => {
+    if (!response.ok) {
+      throw new Error(`Network response was not ok for file ${file}`);
+    }
+    return response.json().catch(err => {
+      throw new Error(`Invalid JSON in file ${file}: ${err.message}`);
+    });
+  }));
+
+  Promise.all(promises)
+    .then(loadedQuestionsArrays => {
+      // Flatten the array of arrays into a single array
+      questions.length = 0;
+      questions.push(...[].concat(...loadedQuestionsArrays));
+
+      // Shuffle questions array here
+      shuffleArray(questions);
+
+      // Only keep as many questions as the user requested
+      questions.length = Math.min(questions.length, questionCount);
+
+      console.log("modeSinglePlayer.checked is ", modeSinglePlayer.checked);
+      console.log("modeGroupParticipant.checked is ", modeGroupParticipant.checked);
+      console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
+
+      // Switch this to just one of the modes
+      if (modeSinglePlayer.checked) {
+        displayQuestion(currentQuestionIndex);
+      }
+    })
+    .catch((error) => {
+      console.error('Error loading questions:', error.message);
     });
 }
 
@@ -106,9 +160,61 @@ function startListeningForQuestionUpdates(sessionId) {
   });
 }
 
-function onQuestionIndexUpdated(data) {
-  if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
-    currentQuestionIndex = data.currentQuestionIndex;
+export function onQuestionIndexUpdated(sessionData) {
+  console.log('Inside onQuestionIndexUpdated');
+  if (sessionData.currentQuestionIndex !== undefined && sessionData.currentQuestionIndex !== currentQuestionIndex) {
+    // Submit the current answer before moving to the next question
+    if (modeGroupParticipant.checked) {
+      submitAnswer();
+    }
+    // Update the current question index
+    currentQuestionIndex = sessionData.currentQuestionIndex;
     displayQuestionForGroupParticipant(currentQuestionIndex);
   }
+}
+
+function submitAnswer() {
+  // Implementation for submitting an answer...
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function displayQuestion(index) {
+  const question = questions[index];
+
+  if (!question) {
+    console.error("Question not found for index: ", index);
+    return;
+  }
+
+  // Create a new div for the question
+  const questionDiv = document.createElement('div');
+
+  // Initialize the answer input HTML
+  let answerInputHTML = question.options.map((option, index) => `
+    <div>
+      <input type="radio" id="option-${index}" class="input-radio" name="answer" value="${option}">
+      <label for="option-${index}">${String.fromCharCode(65 + index)}: ${option}</label>
+    </div>
+  `).join('');
+
+  // Include the confidence input HTML
+  const confidenceInputHTML = getConfidenceInputHTML();
+
+  questionDiv.innerHTML = `
+    <h3>Question ${index + 1} of ${questions.length}</h3>
+    <h2>${question.question}</h2>
+    ${answerInputHTML}
+    ${confidenceInputHTML}
+  `;
+
+  questionContainer.innerHTML = ''; // Clear previous question
+  questionContainer.appendChild(questionDiv); // Append new question
+
+  nextButton.style.display = 'block';
 }

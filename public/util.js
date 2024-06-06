@@ -31,3 +31,12 @@ export function updateNextButton() {
 
   nextButton.disabled = !(sessionIdInput.length > 0 && isAnyCategorySelected);
 }
+
+export function getConfidenceInputHTML() {
+  return `
+    <div>
+      <label for="confidence">Confidence:</label>
+      <input type="number" id="confidence" class="input-small" min="0" max="100" step="1">%
+    </div>
+  `;
+}
