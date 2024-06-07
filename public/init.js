@@ -1,14 +1,14 @@
-// Import the functions from the SDKs you need
-import { getAnalytics } from "firebase/analytics";
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getDatabase } from "firebase/database";
-import { getFirestore } from "firebase/firestore";
-import { getFunctions } from "firebase/functions";
-import { getMessaging } from "firebase/messaging";
-import { getPerformance } from "firebase/performance";
-import { getRemoteConfig } from "firebase/remote-config";
-import { getStorage } from "firebase/storage";
+// Import the functions from the SDKs
+import { getAnalytics } from 'firebase/analytics';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getDatabase } from 'firebase/database';
+import { getFirestore } from 'firebase/firestore';
+import { getFunctions } from 'firebase/functions';
+import { getMessaging } from 'firebase/messaging';
+import { getPerformance } from 'firebase/performance';
+import { getRemoteConfig } from 'firebase/remote-config';
+import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

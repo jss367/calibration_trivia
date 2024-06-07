@@ -1,12 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: './public/scripts.js',  // Ensure your main entry includes init.js if necessary
+  entry: './public/scripts.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public')
   },
-  mode: 'production',
   module: {
     rules: [
       {
@@ -20,5 +19,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  mode: 'production'
 };
