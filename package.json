@@ -8,7 +8,7 @@
     },
     "scripts": {
         "test": "jest",
-        "build": "babel src --out-dir public/dist"
+        "build": "babel src --out-dir public/dist && browserify public/dist/app.js -o public/dist/bundle.js"
     },
     "repository": {
         "type": "git",
@@ -23,10 +23,8 @@
     "homepage": "https://github.com/jss367/calibration_trivia#readme",
     "devDependencies": {
         "jest": "^29.6.1",
-        "babel-cli": "^6.26.0",
-        "babel-preset-env": "^1.7.0"
-    },
-    "dependencies": {
-        "firebase": "^9.23.0"
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
+        "browserify": "^17.0.0"
     }
 }
