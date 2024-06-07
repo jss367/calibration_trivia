@@ -1,32 +1,25 @@
-import { db } from './firebaseConfig.js';
-import {
-  brierScore,
-  correctAnswers,
-  questions,
-  quizContainer,
-  resultsContainer,
-  score,
-  userAnswers,
-  userConfidences
-} from './initialization.js';
+import { correctAnswers, questions, state, userAnswers, userConfidences } from './initialization.js';
 import { calculateConfidenceDecileScores, getCurrentSessionId } from './util.js';
 
 export function displayResults() {
+  const quizContainer = document.getElementById('quiz-container');
+  const resultsContainer = document.getElementById('results-container');
   quizContainer.style.display = 'none';
 
-  if (modeGroupQuestioner.checked) {
+  if (state.modeGroupQuestioner.checked) {
     displayLeaderboard(getCurrentSessionId());
   } else {
-    brierScore /= questions.length;
+    state.brierScore /= questions.length;
 
+    // Determine the label and color based on Brier score
     let scoreLabel, scoreColor;
-    if (brierScore <= 0.10) {
+    if (state.brierScore <= 0.10) {
       scoreLabel = 'Excellent';
       scoreColor = 'green';
-    } else if (brierScore <= 0.20) {
+    } else if (state.brierScore <= 0.20) {
       scoreLabel = 'Good';
       scoreColor = 'blue';
-    } else if (brierScore <= 0.30) {
+    } else if (state.brierScore <= 0.30) {
       scoreLabel = 'Fair';
       scoreColor = 'orange';
     } else {
@@ -44,8 +37,8 @@ export function displayResults() {
 
     resultsContainer.innerHTML = `
       <h2>Results</h2>
-      <p>Correct answers: ${score} / ${questions.length}</p>
-      <p style="color:${scoreColor};">Brier score: ${brierScore.toFixed(2)} (${scoreLabel})</p>
+      <p>Correct answers: ${state.score} / ${questions.length}</p>
+      <p style="color:${scoreColor};">Brier score: ${state.brierScore.toFixed(2)} (${scoreLabel})</p>
       ${confidenceDecileScores.map(({ decileRange, score, correct, total }) => {
       if (total === 0) {
         return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
@@ -60,12 +53,13 @@ export function displayResults() {
   }
 }
 
-export function displayIndividualResults() {
+function displayIndividualResults() {
+  const resultsContainer = document.getElementById('results-container');
   for (let i = 0; i < questions.length; i++) {
     const resultPara = document.createElement('p');
 
     if (typeof correctAnswers[i] === 'object') {
-      const userAnswerString = userAnswers[i].toString();
+      const userAnswerString = userAnswers[i].toString(); // Convert user's answer to string
       const isCorrect = correctAnswers[i].includes(userAnswerString);
       resultPara.style.color = isCorrect ? 'green' : 'red';
       resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
@@ -79,7 +73,8 @@ export function displayIndividualResults() {
   }
 }
 
-export function displayLeaderboard(sessionId) {
+function displayLeaderboard(sessionId) {
+  const db = firebase.firestore();
   db.collection('sessions').doc(sessionId).collection('answers')
     .get()
     .then(querySnapshot => {
@@ -87,6 +82,7 @@ export function displayLeaderboard(sessionId) {
       querySnapshot.forEach(doc => {
         const data = doc.data();
         const userId = doc.id;
+        // Assuming 'answer' and 'confidence' are stored in each doc
         if (!scores[userId]) {
           scores[userId] = { correct: 0, total: 0 };
         }
@@ -97,6 +93,7 @@ export function displayLeaderboard(sessionId) {
         scores[userId].total++;
       });
 
+      // Display the leaderboard
       const leaderboardDiv = document.getElementById('leaderboard-container');
       leaderboardDiv.innerHTML = '<h2>Leaderboard</h2>';
       Object.keys(scores).forEach(userId => {

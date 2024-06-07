@@ -1,26 +1,6 @@
-import { db } from './firebaseConfig.js';
-import {
-  brierScore,
-  categorySelectionContainer,
-  correctAnswers,
-  currentQuestionIndex,
-  modeGroupParticipant,
-  modeGroupQuestioner,
-  modeSelectionContainer,
-  modeSinglePlayer,
-  nextButton,
-  questionContainer,
-  questionCountContainer,
-  questions,
-  quizContainer,
-  score,
-  sessionIdContainer,
-  startButtonContainer,
-  userAnswers,
-  userConfidences,
-  usernameContainer
-} from './initialization.js';
-import { getConfidenceInputHTML, getCurrentSessionId, submitAnswerToFirestore } from './util.js';
+import { modeSinglePlayer, nextButton, questionContainer, quizContainer, state } from './initialization.js';
+import { displayQuestionForGroupParticipant, displayQuestionQuestioner, startListeningForQuestionUpdates } from './resultsHandler.js';
+import { getConfidenceInputHTML, getCurrentSessionId } from './util.js';
 
 export function loadSessionQuestions(sessionId) {
   return db.collection('sessions').doc(sessionId).get()
@@ -28,8 +8,7 @@ export function loadSessionQuestions(sessionId) {
       if (doc.exists) {
         console.log("Fetched document:", doc.data());
         if (doc.data().questions && doc.data().questions.length > 0) {
-          questions.length = 0;
-          questions.push(...doc.data().questions);
+          state.questions = doc.data().questions;
         } else {
           console.log("No questions available in this session!");
           throw new Error("No questions available");
@@ -53,8 +32,9 @@ export function loadQuestionsSingle() {
     .filter(checkbox => checkbox.checked)
     .map(checkbox => checkbox.value);
 
+  // Continue only if at least one category is selected
   if (selectedFiles.length === 0) {
-    console.log("Please select at least one category.");
+    console.log("Please select at least one category."); // Should this be an error?
     return;
   }
 
@@ -69,13 +49,22 @@ export function loadQuestionsSingle() {
 
   Promise.all(promises)
     .then(loadedQuestionsArrays => {
-      questions.length = 0;
-      questions.push(...[].concat(...loadedQuestionsArrays));
-      shuffleArray(questions);
-      questions.length = Math.min(questions.length, questionCount);
+      // Flatten the array of arrays into a single array
+      state.questions = [].concat(...loadedQuestionsArrays);
 
+      // Shuffle questions array here
+      shuffleArray(state.questions);
+
+      // Only keep as many questions as the user requested
+      state.questions = state.questions.slice(0, questionCount);
+
+      console.log("modeSinglePlayer.checked is ", modeSinglePlayer.checked);
+      console.log("modeGroupParticipant.checked is ", modeGroupParticipant.checked);
+      console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
+
+      // Switch this to just one of the modes
       if (modeSinglePlayer.checked) {
-        displayQuestion(currentQuestionIndex);
+        displayQuestion(state.currentQuestionIndex);
       }
     })
     .catch((error) => {
@@ -84,14 +73,19 @@ export function loadQuestionsSingle() {
 }
 
 export function displayQuestion(index) {
-  if (!questions[index]) {
+  // This is for single player mode
+
+  if (!state.questions[index]) {
     console.error("Question not found for index: ", index);
-    return;
+    return; // Exit the function if the question is not found
   }
 
-  const question = questions[index];
+  const question = state.questions[index];
+
+  // Create a new div for the question
   const questionDiv = document.createElement('div');
 
+  // Initialize the answer input HTML
   let answerInputHTML = '';
 
   const options = ['A', 'B', 'C', 'D'];
@@ -105,67 +99,38 @@ export function displayQuestion(index) {
   const confidenceInputHTML = getConfidenceInputHTML();
 
   questionDiv.innerHTML = `
-    <h3>Question ${index + 1} of ${questions.length}</h3>
+    <h3>Question ${index + 1} of ${state.questions.length}</h3>
     <h2>${question.question}</h2>
     ${answerInputHTML}
     ${confidenceInputHTML}
   `;
 
-  questionContainer.innerHTML = '';
-  questionContainer.appendChild(questionDiv);
+  questionContainer.innerHTML = ''; // Clear previous question
+  questionContainer.appendChild(questionDiv); // Append new question
 
   nextButton.style.display = 'block';
 }
 
-export function displayQuestionQuestioner(index) {
-  // Implementation for displaying a question for the questioner...
-}
-
-export function displayQuestionForGroupParticipant(index) {
-  if (!questions[index]) {
-    console.error("Question not found for index: ", index);
-    return;
-  }
-
-  const question = questions[index];
-  const questionDiv = document.createElement('div');
-
-  let answerInputHTML = question.options.map((option, index) => `
-    <div>
-      <input type="radio" id="option-${index}" class="input-radio" name="answer" value="${option}">
-      <label for="option-${index}">${String.fromCharCode(65 + index)}: ${option}</label>
-    </div>
-  `).join('');
-
-  questionDiv.innerHTML = `
-    <h3>Question ${index + 1} of ${questions.length}</h3>
-    ${answerInputHTML}
-    ${getConfidenceInputHTML()}
-  `;
-
-  questionContainer.innerHTML = '';
-  questionContainer.appendChild(questionDiv);
-
-  quizContainer.style.display = 'block';
-  nextButton.style.display = 'block';
-}
 
 export function displayQuestionerScreen(sessionId) {
   loadSessionQuestions(sessionId)
     .then(() => {
-      currentQuestionIndex = 0;
-      displayQuestionQuestioner(currentQuestionIndex);
+      // Display the first question
+      state.currentQuestionIndex = 0;
+      displayQuestionQuestioner(state.currentQuestionIndex);
 
+      // Set up questioner-specific UI elements
       quizContainer.style.display = 'block';
       modeSelectionContainer.style.display = 'none';
       startButtonContainer.style.display = 'none';
       questionCountContainer.style.display = 'none';
       categorySelectionContainer.style.display = 'none';
-      sessionIdContainer.style.display = 'block';
+      sessionIdContainer.style.display = 'block'; // Show the session ID
       sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
 
+      // Show the next button for the questioner to proceed to the next question
       nextButton.style.display = 'block';
-      nextButton.disabled = false;
+      nextButton.disabled = false; // Enable the next button for the questioner
     })
     .catch(error => {
       console.error("Error displaying questioner screen:", error);
@@ -178,12 +143,17 @@ export function displayResponderScreen(sessionId) {
       quizContainer.style.display = 'block';
       modeSelectionContainer.style.display = 'none';
       startButtonContainer.style.display = 'none';
-      usernameContainer.style.display = 'none';
-      sessionIdContainer.style.display = 'none';
+      usernameContainer.style.display = 'none'; // Hide username container if it's still visible
+      sessionIdContainer.style.display = 'none'; // Hide session ID container if it's still visible
 
-      currentQuestionIndex = 0;
-      displayQuestionForGroupParticipant(currentQuestionIndex);
+      // Additional setup for responder...
+      // Initialize current question index
+      state.currentQuestionIndex = 0;
 
+      // Display the first question
+      displayQuestionForGroupParticipant(state.currentQuestionIndex);
+
+      // Start listening for updates on the current question index from Firestore
       startListeningForQuestionUpdates(sessionId);
     })
     .catch(error => {
@@ -201,9 +171,9 @@ export function loadQuestionsParticipant() {
   db.collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists && doc.data().questions) {
-        questions = doc.data().questions;
-        currentQuestionIndex = 0;
-        displayQuestionForGroupParticipant(currentQuestionIndex);
+        state.questions = doc.data().questions;
+        state.currentQuestionIndex = 0;
+        displayQuestionForGroupParticipant(state.currentQuestionIndex);
       } else {
         console.error("No questions available in this session or session does not exist.");
       }
@@ -213,81 +183,23 @@ export function loadQuestionsParticipant() {
 
 export function onQuestionIndexUpdated(sessionData) {
   console.log('Inside onQuestionIndexUpdated');
-  if (sessionData.currentQuestionIndex !== undefined && sessionData.currentQuestionIndex !== currentQuestionIndex) {
+  if (sessionData.currentQuestionIndex !== undefined && sessionData.currentQuestionIndex !== state.currentQuestionIndex) {
+    // Submit the current answer before moving to the next question
     if (modeGroupParticipant.checked) {
       submitAnswer();
     }
-    currentQuestionIndex = sessionData.currentQuestionIndex;
-    displayQuestionForGroupParticipant(currentQuestionIndex);
+    // Update the current question index
+    state.currentQuestionIndex = sessionData.currentQuestionIndex;
+    displayQuestionForGroupParticipant(state.currentQuestionIndex);
   }
-}
-
-function submitAnswer() {
-  console.log("Inside submitAnswer");
-  const selectedOption = document.querySelector('input[name="answer"]:checked');
-  const confidenceElement = document.getElementById('confidence');
-
-  let userAnswer = null;
-  let userConfidence = null;
-
-  if (selectedOption) {
-    userAnswer = selectedOption.value;
-  }
-
-  if (confidenceElement) {
-    userConfidence = parseInt(confidenceElement.value, 10);
-    userConfidence = Math.max(0, Math.min(userConfidence, 100));
-    userConfidence = Math.round(userConfidence) / 100;
-  }
-
-  if (!selectedOption || isNaN(userConfidence)) {
-    console.warn('No answer or invalid confidence selected for current question');
-  } else {
-    const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
-    if (currentCorrectAnswer === userAnswer) {
-      score++;
-      brierScore += Math.pow(1 - userConfidence, 2);
-    } else {
-      brierScore += Math.pow(0 - userConfidence, 2);
-    }
-
-    userAnswers.push(userAnswer);
-    correctAnswers.push(currentCorrectAnswer);
-    userConfidences.push(userConfidence);
-
-    const sessionId = getCurrentSessionId();
-    const userId = document.getElementById('username').value.trim();
-
-    if (userId && sessionId) {
-      submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
-    }
-
-    if (selectedOption) {
-      selectedOption.checked = false;
-    }
-    if (confidenceElement) {
-      confidenceElement.value = '';
-    }
-  }
-}
-
-function startListeningForQuestionUpdates(sessionId) {
-  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
-    if (doc.exists) {
-      const data = doc.data();
-      if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
-        onQuestionIndexUpdated(data);
-      }
-    } else {
-      console.error("No such session!");
-    }
-  });
 }
 
 export function nextQuestion(sessionId) {
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    displayQuestionForGroupParticipant(currentQuestionIndex);
+  // Increment the current question index
+  state.currentQuestionIndex++;
+  // Check if there are more questions
+  if (state.currentQuestionIndex < state.questions.length) {
+    displayQuestionForGroupParticipant(state.currentQuestionIndex);
   } else {
     displayResults();
   }

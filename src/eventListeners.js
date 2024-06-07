@@ -1,28 +1,6 @@
-import {
-  brierScore,
-  categorySelectionContainer,
-  correctAnswers,
-  currentQuestionIndex,
-  modeGroupParticipant,
-  modeGroupQuestioner,
-  modeSelectionContainer,
-  modeSinglePlayer,
-  nextButton,
-  questionCountContainer,
-  questions,
-  quizContainer,
-  score,
-  sessionIDSelectionContainer,
-  sessionIdContainer,
-  startButtonContainer,
-  startQuizButton,
-  userAnswers,
-  userConfidences,
-  usernameContainer
-} from './initialization.js';
-
+import { modeGroupParticipant, modeGroupQuestioner, modeSinglePlayer, nextButton, state } from './initialization.js';
 import { handleModeSelection } from './modeHandlers.js';
-import { displayQuestion, displayQuestionQuestioner, displayResults, loadQuestionsSingle, nextQuestion, shuffleArray, submitAnswer } from './questionHandlers.js';
+import { displayQuestion, displayQuestionQuestioner, displayResults, nextQuestion, submitAnswer } from './questionHandlers.js';
 import { generateRandomUsername, joinSelectedSession, loadAvailableSessions, saveQuestionsToFirestore } from './sessionHandlers.js';
 import { getCurrentSessionId, updateNextButton, updateStartButtonState } from './util.js';
 
@@ -40,92 +18,124 @@ export function setupEventListeners() {
     console.log("  Single Player:", modeSinglePlayer.checked);
     console.log("  Group Participant:", modeGroupParticipant.checked);
     console.log("  Group Questioner:", modeGroupQuestioner.checked);
-    console.log("Current Question Index:", currentQuestionIndex);
-    console.log("Total Questions:", questions.length);
-    console.log("User Answers:", userAnswers);
-    console.log("Correct Answers:", correctAnswers);
-    console.log("User Confidences:", userConfidences);
-    console.log("Score:", score);
-    console.log("Brier Score:", brierScore);
+    console.log("Current Question Index:", state.currentQuestionIndex);
+    console.log("Total Questions:", state.questions.length);
+    console.log("User Answers:", state.userAnswers);
+    console.log("Correct Answers:", state.correctAnswers);
+    console.log("User Confidences:", state.userConfidences);
+    console.log("Score:", state.score);
+    console.log("Brier Score:", state.brierScore);
 
+    // Handling for Group Questioner mode
     if (modeGroupQuestioner.checked) {
       console.log("Handling Group Questioner mode");
-      currentQuestionIndex++;
-      console.log("Updated Question Index (Questioner):", currentQuestionIndex);
-      if (currentQuestionIndex < questions.length) {
-        displayQuestionQuestioner(currentQuestionIndex);
+
+      // Increment the current question index
+      state.currentQuestionIndex++;
+      console.log("Updated Question Index (Questioner):", state.currentQuestionIndex);
+
+      // Check if there are more questions
+      if (state.currentQuestionIndex < state.questions.length) {
+        displayQuestionQuestioner(state.currentQuestionIndex); // Display next question for Group Questioner
       } else {
-        displayResults();
+        displayResults(); // Display results if it's the last question
       }
-    } else if (modeGroupParticipant.checked) {
+    }
+    else if (modeGroupParticipant.checked) {
       console.log("Handling Group Participant mode");
       submitAnswer();
-      const sessionId = getCurrentSessionId();
+      const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
       console.log("Session ID:", sessionId);
-      nextQuestion(sessionId);
-    } else {
+      nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
+    }
+    else {
       console.log("Handling Single Player mode");
+      // For Single Player mode, handle answer submission and question navigation
       submitAnswer();
-      currentQuestionIndex++;
-      console.log("Updated Question Index (Single Player):", currentQuestionIndex);
-      if (currentQuestionIndex < questions.length) {
-        displayQuestion(currentQuestionIndex);
+
+      // Increment the current question index
+      state.currentQuestionIndex++;
+      console.log("Updated Question Index (Single Player):", state.currentQuestionIndex);
+
+      // Check if there are more questions
+      if (state.currentQuestionIndex < state.questions.length) {
+        displayQuestion(state.currentQuestionIndex); // Display next question for Single Player
       } else {
-        displayResults();
+        displayResults(); // Display results if it's the last question
       }
     }
   });
 
+  // Event listener for mode selection
   modeSelectionContainer.addEventListener('change', (event) => {
     startButtonContainer.style.display = 'flex';
+
     if (event.target.value === 'group-questioner') {
+      // Group Questioner specific elements
       sessionIdContainer.style.display = 'block';
       categorySelectionContainer.style.display = 'block';
       questionCountContainer.style.display = 'block';
       sessionIDSelectionContainer.style.display = 'none';
       usernameContainer.style.display = 'none';
-      startQuizButton.disabled = false;
+      document.getElementById('start-quiz').disabled = false;
       startQuizButton.removeEventListener('click', joinSelectedSession);
-      nextButton.disabled = true;
+      nextButton.disabled = true; // Initially disable the Next button
+
       document.getElementById('session-id').addEventListener('input', updateNextButton);
       document.querySelectorAll('.category-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', updateNextButton);
       });
-    } else if (event.target.value === 'group-participant') {
+    }
+    else if (event.target.value === 'group-participant') {
+      // Group Participant specific elements
       sessionIdContainer.style.display = 'none';
       usernameContainer.style.display = 'block';
       sessionIDSelectionContainer.style.display = 'block';
       loadAvailableSessions();
+      // Hide elements not used in Group Participant mode
       questionCountContainer.style.display = 'none';
       categorySelectionContainer.style.display = 'none';
-      startQuizButton.removeEventListener('click', joinSelectedSession);
+      startQuizButton.removeEventListener('click', joinSelectedSession); // Remove existing listener if any
       startQuizButton.addEventListener('click', joinSelectedSession);
-    } else if (event.target.value === 'single') {
+    }
+    else if (event.target.value === 'single') {
+      // Single Player specific elements
       sessionIdContainer.style.display = 'none';
-      usernameContainer.style.display = 'none';
+      usernameContainer.style.display = 'none'; // Hide the username input field
       questionCountContainer.style.display = 'block';
       categorySelectionContainer.style.display = 'block';
       sessionIDSelectionContainer.style.display = 'none';
-      startQuizButton.disabled = false;
+      document.getElementById('start-quiz').disabled = false; // Enable start button directly for single player
       startQuizButton.removeEventListener('click', joinSelectedSession);
     } else {
+      // Default case: Hide all specific elements
       questionCountContainer.style.display = 'none';
       categorySelectionContainer.style.display = 'none';
       sessionIDSelectionContainer.style.display = 'none';
-      startQuizButton.disabled = true;
+      document.getElementById('start-quiz').disabled = true;
       startQuizButton.removeEventListener('click', joinSelectedSession);
     }
   });
 
+  // Additional event listener for username input
   document.getElementById('username').addEventListener('input', function () {
     const usernameInput = this.value.trim();
     const startButton = document.getElementById('start-quiz');
-    startButton.disabled = !(usernameInput.length > 0 || modeGroupQuestioner.checked);
+
+    // Enable the start button only if the username is not empty or if Group Questioner mode is selected
+    if (usernameInput.length > 0 || modeGroupQuestioner.checked) {
+      startButton.disabled = false;
+    } else {
+      startButton.disabled = true;
+    }
   });
 
+  // Inside the startQuizButton event listener
   startQuizButton.addEventListener('click', () => {
     const selectedMode = document.querySelector('input[name="mode"]:checked').value;
     console.log("Selected Mode: ", selectedMode);
+
+    // Hide UI elements not needed once the quiz starts
     usernameContainer.style.display = 'none';
     modeSelectionContainer.style.display = 'none';
     startButtonContainer.style.display = 'none';
@@ -143,7 +153,7 @@ export function setupEventListeners() {
       const selectedSessionId = document.getElementById('session-id-select').value;
       if (selectedSessionId) {
         localStorage.setItem('currentSessionId', selectedSessionId);
-        window.location.href = `/${selectedSessionId}?role=responder`;
+        window.location.href = `/${selectedSessionId}?role=responder`; // Redirect to the session URL with role
       } else {
         console.log("Please select a session.");
       }
@@ -151,6 +161,7 @@ export function setupEventListeners() {
       console.log("Starting Group Questioner Mode");
       const sessionId = document.getElementById('session-id').value.trim();
       if (sessionId) {
+        // Save the session ID to Firestore and start the quiz
         const questionCount = parseInt(document.getElementById('question-count').value, 10);
         const checkboxes = document.querySelectorAll('.category-checkbox');
         const selectedFiles = Array.from(checkboxes)
@@ -173,15 +184,17 @@ export function setupEventListeners() {
 
         Promise.all(promises)
           .then(loadedQuestionsArrays => {
-            questions = [].concat(...loadedQuestionsArrays);
-            shuffleArray(questions);
-            questions = questions.slice(0, questionCount);
-            return saveQuestionsToFirestore(sessionId, questions);
+            // Flatten the array of arrays into a single array
+            state.questions = [].concat(...loadedQuestionsArrays);
+            shuffleArray(state.questions);
+            state.questions = state.questions.slice(0, questionCount);
+
+            return saveQuestionsToFirestore(sessionId, state.questions);
           })
           .then(() => {
             console.log("Session ID set successfully:", sessionId);
             localStorage.setItem('currentSessionId', sessionId);
-            window.location.href = `/${sessionId}?role=questioner`;
+            window.location.href = `/${sessionId}?role=questioner`; // Redirect to the session URL with role
           })
           .catch(error => console.error("Error setting session ID or loading questions:", error));
       } else {
