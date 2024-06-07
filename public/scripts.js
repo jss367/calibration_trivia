@@ -1,6 +1,6 @@
 const appVersion = '1.2.2';
 
-import './init.js'; // Ensure this path is correct
+import { db } from './init.js';
 
 console.log('App Version:', appVersion);
 
@@ -20,10 +20,6 @@ const modeGroupQuestioner = document.getElementById('mode-group-questioner');
 const questionCountContainer = document.getElementById('question-count-container');
 const startButtonContainer = document.getElementById('start-button-container');
 const sessionIdContainer = document.getElementById('session-id-container');
-
-import { getFirestore } from 'firebase/firestore';
-
-const db = getFirestore(); // Initialize Firestore
 
 let currentQuestionIndex = 0;
 let questions = [];

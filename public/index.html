@@ -6,26 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Calibration Trivia</title>
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script defer src="/__/firebase/9.23.0/firebase-app-compat.js"></script>
-
-    <!-- Add the Firebase services that you want to use -->
-    <script defer src="/__/firebase/9.23.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-performance-compat.js"></script>
-    <script defer src="/__/firebase/init.js"></script>
+    <!-- Load Firebase from CDN -->
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-remote-config-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-performance-compat.js"></script>
+    <script defer src="init.js"></script>
 </head>
 
 <body>
     <h1>Calibration Trivia</h1>
-
     <div id="mode-selection-container">
         <label>Select Mode:</label>
         <div>
@@ -107,7 +103,7 @@
         <!-- Leaderboard will be populated here by the JavaScript code -->
     </div>
 
-    <script src="bundle.js"></script>
+    <script src="bundle.js" type="module"></script>
 </body>
 
 </html>

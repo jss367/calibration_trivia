@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+// Import the functions from the SDKs you need
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
@@ -34,3 +34,5 @@ const performance = getPerformance(app);
 const remoteConfig = getRemoteConfig(app);
 
 console.log('Firebase initialized');
+
+export { analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage };
