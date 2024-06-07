@@ -11,7 +11,7 @@ var _modeHandlers = require('./modeHandlers.js');
 
 var _questionHandlers = require('./questionHandlers.js');
 
-var _sessionHandlers = require('./sessionHandlers.js');
+var _sessionHandler = require('./sessionHandler.js');
 
 var _util = require('./util.js');
 
@@ -89,7 +89,7 @@ function setupEventListeners() {
       sessionIDSelectionContainer.style.display = 'none';
       usernameContainer.style.display = 'none';
       document.getElementById('start-quiz').disabled = false;
-      startQuizButton.removeEventListener('click', _sessionHandlers.joinSelectedSession);
+      startQuizButton.removeEventListener('click', _sessionHandler.joinSelectedSession);
       _initialization.nextButton.disabled = true; // Initially disable the Next button
 
       document.getElementById('session-id').addEventListener('input', _util.updateNextButton);
@@ -101,12 +101,12 @@ function setupEventListeners() {
       sessionIdContainer.style.display = 'none';
       usernameContainer.style.display = 'block';
       sessionIDSelectionContainer.style.display = 'block';
-      (0, _sessionHandlers.loadAvailableSessions)();
+      (0, _sessionHandler.loadAvailableSessions)();
       // Hide elements not used in Group Participant mode
       questionCountContainer.style.display = 'none';
       categorySelectionContainer.style.display = 'none';
-      startQuizButton.removeEventListener('click', _sessionHandlers.joinSelectedSession); // Remove existing listener if any
-      startQuizButton.addEventListener('click', _sessionHandlers.joinSelectedSession);
+      startQuizButton.removeEventListener('click', _sessionHandler.joinSelectedSession); // Remove existing listener if any
+      startQuizButton.addEventListener('click', _sessionHandler.joinSelectedSession);
     } else if (event.target.value === 'single') {
       // Single Player specific elements
       sessionIdContainer.style.display = 'none';
@@ -115,14 +115,14 @@ function setupEventListeners() {
       categorySelectionContainer.style.display = 'block';
       sessionIDSelectionContainer.style.display = 'none';
       document.getElementById('start-quiz').disabled = false; // Enable start button directly for single player
-      startQuizButton.removeEventListener('click', _sessionHandlers.joinSelectedSession);
+      startQuizButton.removeEventListener('click', _sessionHandler.joinSelectedSession);
     } else {
       // Default case: Hide all specific elements
       questionCountContainer.style.display = 'none';
       categorySelectionContainer.style.display = 'none';
       sessionIDSelectionContainer.style.display = 'none';
       document.getElementById('start-quiz').disabled = true;
-      startQuizButton.removeEventListener('click', _sessionHandlers.joinSelectedSession);
+      startQuizButton.removeEventListener('click', _sessionHandler.joinSelectedSession);
     }
   });
 
@@ -153,7 +153,7 @@ function setupEventListeners() {
 
     if (selectedMode === 'single') {
       console.log("Starting Single Player Mode");
-      var randomUsername = (0, _sessionHandlers.generateRandomUsername)();
+      var randomUsername = (0, _sessionHandler.generateRandomUsername)();
       localStorage.setItem('username', randomUsername);
       quizContainer.style.display = 'block';
       loadQuestionsSingle();
@@ -203,7 +203,7 @@ function setupEventListeners() {
           shuffleArray(_initialization.state.questions);
           _initialization.state.questions = _initialization.state.questions.slice(0, questionCount);
 
-          return (0, _sessionHandlers.saveQuestionsToFirestore)(sessionId, _initialization.state.questions);
+          return (0, _sessionHandler.saveQuestionsToFirestore)(sessionId, _initialization.state.questions);
         }).then(function () {
           console.log("Session ID set successfully:", sessionId);
           localStorage.setItem('currentSessionId', sessionId);

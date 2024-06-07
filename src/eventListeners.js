@@ -1,7 +1,7 @@
 import { modeGroupParticipant, modeGroupQuestioner, modeSinglePlayer, nextButton, state } from './initialization.js';
 import { handleModeSelection } from './modeHandlers.js';
 import { displayQuestion, displayQuestionQuestioner, displayResults, nextQuestion, submitAnswer } from './questionHandlers.js';
-import { generateRandomUsername, joinSelectedSession, loadAvailableSessions, saveQuestionsToFirestore } from './sessionHandlers.js';
+import { generateRandomUsername, joinSelectedSession, loadAvailableSessions, saveQuestionsToFirestore } from './sessionHandler.js';
 import { getCurrentSessionId, updateNextButton, updateStartButtonState } from './util.js';
 
 export function setupEventListeners() {
