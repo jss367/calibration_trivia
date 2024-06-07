@@ -17,7 +17,6 @@
     <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-remote-config-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-performance-compat.js"></script>
-    <script defer src="init.js"></script>
 </head>
 
 <body>
@@ -55,7 +54,7 @@
     </div>
 
     <div id="category-selection-container" style="display: none;">
-        <!-- Add your category checkboxes here -->
+        <!-- Category selection checkboxes -->
         <label><input type="checkbox" class="category-checkbox" value="questions/animals.json"> Animals</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/art.json"> Art</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/biology.json"> Biology</label>
@@ -103,6 +102,8 @@
         <!-- Leaderboard will be populated here by the JavaScript code -->
     </div>
 
+    <!-- Ensure init.js and bundle.js are loaded as modules -->
+    <script src="init.js" type="module"></script>
     <script src="bundle.js" type="module"></script>
 </body>
 

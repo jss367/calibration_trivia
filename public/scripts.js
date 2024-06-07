@@ -1,4 +1,4 @@
-const appVersion = '1.2.2';
+const appVersion = '1.2.3';
 
 import { db } from './init.js';
 
