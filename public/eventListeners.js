@@ -1,4 +1,3 @@
-import { db } from './firebaseConfig.js';
 import {
   categorySelectionContainer,
   modeGroupQuestioner,
@@ -15,7 +14,7 @@ import {
 } from './initialization.js';
 import { handleModeSelection } from './modeHandlers.js';
 import { loadQuestionsSingle, shuffleArray } from './questionHandlers.js';
-import { generateRandomUsername, joinSelectedSession, loadAvailableSessions } from './sessionHandlers.js';
+import { generateRandomUsername, joinSelectedSession, loadAvailableSessions, saveQuestionsToFirestore } from './sessionHandlers.js';
 import { updateNextButton, updateStartButtonState } from './util.js';
 
 export function setupEventListeners() {
@@ -153,11 +152,7 @@ export function setupEventListeners() {
             shuffleArray(questions);
             questions = questions.slice(0, questionCount);
 
-            return db.collection('sessions').doc(sessionId).set({
-              questions: questions,
-              active: true,
-              currentQuestionIndex: 0
-            });
+            return saveQuestionsToFirestore(sessionId, questions);
           })
           .then(() => {
             console.log("Session ID set successfully:", sessionId);

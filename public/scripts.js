@@ -1,16 +1,6 @@
 
 
 
-
-function saveQuestionsToFirestore(sessionId, questionsArray) {
-  db.collection('sessions').doc(sessionId).set({
-    questions: questionsArray,
-    active: true // or any other relevant session data
-  })
-    .then(() => console.log('Questions saved successfully'))
-    .catch(error => console.error('Error saving questions:', error));
-}
-
 nextButton.classList.add('button-spacing');
 nextButton.addEventListener('click', () => {
   console.log("Next button has been clicked");

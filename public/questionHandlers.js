@@ -89,6 +89,45 @@ export function loadQuestionsSingle() {
     });
 }
 
+export function displayQuestion(index) {
+  // This is for single player mode
+
+  if (!questions[index]) {
+    console.error("Question not found for index: ", index);
+    return; // Exit the function if the question is not found
+  }
+
+  const question = questions[index];
+
+  // Create a new div for the question
+  const questionDiv = document.createElement('div');
+
+  // Initialize the answer input HTML
+  let answerInputHTML = '';
+
+  const options = ['A', 'B', 'C', 'D'];
+  answerInputHTML = question.options.map((option, index) => `
+    <div>
+      <input type="radio" id="option-${options[index]}" class="input-radio" name="answer" value="${option}">
+      <label for="option-${options[index]}">${options[index]}: ${option}</label>
+    </div>
+  `).join('');
+
+  const confidenceInputHTML = getConfidenceInputHTML();
+
+  questionDiv.innerHTML = `
+    <h3>Question ${index + 1} of ${questions.length}</h3>
+    <h2>${question.question}</h2>
+    ${answerInputHTML}
+    ${confidenceInputHTML}
+  `;
+
+  questionContainer.innerHTML = ''; // Clear previous question
+  questionContainer.appendChild(questionDiv); // Append new question
+
+  nextButton.style.display = 'block';
+}
+
 export function displayQuestionQuestioner(index) {
   // Implementation for displaying a question for the questioner...
 }
@@ -182,39 +221,4 @@ function shuffleArray(array) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
-}
-
-function displayQuestion(index) {
-  const question = questions[index];
-
-  if (!question) {
-    console.error("Question not found for index: ", index);
-    return;
-  }
-
-  // Create a new div for the question
-  const questionDiv = document.createElement('div');
-
-  // Initialize the answer input HTML
-  let answerInputHTML = question.options.map((option, index) => `
-    <div>
-      <input type="radio" id="option-${index}" class="input-radio" name="answer" value="${option}">
-      <label for="option-${index}">${String.fromCharCode(65 + index)}: ${option}</label>
-    </div>
-  `).join('');
-
-  // Include the confidence input HTML
-  const confidenceInputHTML = getConfidenceInputHTML();
-
-  questionDiv.innerHTML = `
-    <h3>Question ${index + 1} of ${questions.length}</h3>
-    <h2>${question.question}</h2>
-    ${answerInputHTML}
-    ${confidenceInputHTML}
-  `;
-
-  questionContainer.innerHTML = ''; // Clear previous question
-  questionContainer.appendChild(questionDiv); // Append new question
-
-  nextButton.style.display = 'block';
 }

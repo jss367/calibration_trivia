@@ -30,3 +30,12 @@ export function joinSelectedSession() {
     console.error('No session selected.');
   }
 }
+
+export function saveQuestionsToFirestore(sessionId, questionsArray) {
+  db.collection('sessions').doc(sessionId).set({
+    questions: questionsArray,
+    active: true // or any other relevant session data
+  })
+    .then(() => console.log('Questions saved successfully'))
+    .catch(error => console.error('Error saving questions:', error));
+}
