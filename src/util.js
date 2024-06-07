@@ -1,37 +1,3 @@
-export function updateStartButtonState() {
-  // Attempt to find a checked radio button
-  const checkedModeRadioButton = document.querySelector('input[name="mode"]:checked');
-
-  // Use the value if a radio button is checked, otherwise default to an empty string or a default value
-  const mode = checkedModeRadioButton ? checkedModeRadioButton.value : '';
-
-  const usernameInput = document.getElementById('username').value.trim();
-  const sessionIdInput = document.getElementById('session-id').value.trim();
-  const isCategorySelected = Array.from(document.querySelectorAll('.category-checkbox')).some(checkbox => checkbox.checked);
-
-  let enableButton = false;
-
-  // Based on mode, decide if the start button should be enabled
-  if (mode === 'single') {
-    enableButton = isCategorySelected;
-  } else if (mode === 'group-questioner') {
-    enableButton = sessionIdInput && isCategorySelected;
-  } else if (mode === 'group-participant') {
-    enableButton = usernameInput.length > 0;
-  }
-
-  document.getElementById('start-quiz').disabled = !enableButton;
-}
-
-export function updateNextButton() {
-  console.log("inside updateNextButton");
-  const sessionIdInput = document.getElementById('session-id').value.trim();
-  const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
-  const isAnyCategorySelected = Array.from(categoryCheckboxes).some(checkbox => checkbox.checked);
-
-  nextButton.disabled = !(sessionIdInput.length > 0 && isAnyCategorySelected);
-}
-
 export function getConfidenceInputHTML() {
   return `
     <div>
@@ -42,7 +8,6 @@ export function getConfidenceInputHTML() {
 }
 
 export function getCurrentSessionId() {
-  // Retrieve the session ID from local storage
   return localStorage.getItem('currentSessionId');
 }
 
@@ -58,11 +23,36 @@ export function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
     .catch(error => console.error("Error submitting answer:", error));
 }
 
+export function updateStartButtonState() {
+  const checkedModeRadioButton = document.querySelector('input[name="mode"]:checked');
+  const mode = checkedModeRadioButton ? checkedModeRadioButton.value : '';
+
+  const usernameInput = document.getElementById('username').value.trim();
+  const sessionIdInput = document.getElementById('session-id').value.trim();
+  const isCategorySelected = Array.from(document.querySelectorAll('.category-checkbox')).some(checkbox => checkbox.checked);
+
+  let enableButton = false;
+
+  if (mode === 'single') {
+    enableButton = isCategorySelected;
+  } else if (mode === 'group-questioner') {
+    enableButton = sessionIdInput && isCategorySelected;
+  } else if (mode === 'group-participant') {
+    enableButton = usernameInput.length > 0;
+  }
+
+  document.getElementById('start-quiz').disabled = !enableButton;
+}
+
+export function updateNextButton() {
+  const sessionIdInput = document.getElementById('session-id').value.trim();
+  const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+  const isAnyCategorySelected = Array.from(categoryCheckboxes).some(checkbox => checkbox.checked);
+
+  nextButton.disabled = !(sessionIdInput.length > 0 && isAnyCategorySelected);
+}
+
 export function calculateConfidenceDecileScores(answers) {
-  /**
-   * The answers that comes in is pulled from the entire database, so it contains answers from all users.
-   */
-  // Create an array to store scores for each decile
   const decileScores = Array(10).fill(0);
   const decileCounts = Array(10).fill(0);
   const decileCorrectCounts = Array(10).fill(0);

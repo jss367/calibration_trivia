@@ -1,5 +1,14 @@
 import { db } from './firebaseConfig.js';
-import { brierScore, correctAnswers, modeGroupQuestioner, questions, quizContainer, resultsContainer, score, userAnswers, userConfidences } from './initialization.js';
+import {
+  brierScore,
+  correctAnswers,
+  questions,
+  quizContainer,
+  resultsContainer,
+  score,
+  userAnswers,
+  userConfidences
+} from './initialization.js';
 import { calculateConfidenceDecileScores, getCurrentSessionId } from './util.js';
 
 export function displayResults() {
@@ -10,7 +19,6 @@ export function displayResults() {
   } else {
     brierScore /= questions.length;
 
-    // Determine the label and color based on Brier score
     let scoreLabel, scoreColor;
     if (brierScore <= 0.10) {
       scoreLabel = 'Excellent';
@@ -57,7 +65,7 @@ export function displayIndividualResults() {
     const resultPara = document.createElement('p');
 
     if (typeof correctAnswers[i] === 'object') {
-      const userAnswerString = userAnswers[i].toString(); // Convert user's answer to string
+      const userAnswerString = userAnswers[i].toString();
       const isCorrect = correctAnswers[i].includes(userAnswerString);
       resultPara.style.color = isCorrect ? 'green' : 'red';
       resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
@@ -79,7 +87,6 @@ export function displayLeaderboard(sessionId) {
       querySnapshot.forEach(doc => {
         const data = doc.data();
         const userId = doc.id;
-        // Assuming 'answer' and 'confidence' are stored in each doc
         if (!scores[userId]) {
           scores[userId] = { correct: 0, total: 0 };
         }
@@ -90,7 +97,6 @@ export function displayLeaderboard(sessionId) {
         scores[userId].total++;
       });
 
-      // Display the leaderboard
       const leaderboardDiv = document.getElementById('leaderboard-container');
       leaderboardDiv.innerHTML = '<h2>Leaderboard</h2>';
       Object.keys(scores).forEach(userId => {
