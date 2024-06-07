@@ -57,3 +57,28 @@ export function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
     .then(() => console.log('Answer submitted successfully'))
     .catch(error => console.error("Error submitting answer:", error));
 }
+
+export function calculateConfidenceDecileScores(answers) {
+  /**
+   * The answers that comes in is pulled from the entire database, so it contains answers from all users.
+   */
+  // Create an array to store scores for each decile
+  const decileScores = Array(10).fill(0);
+  const decileCounts = Array(10).fill(0);
+  const decileCorrectCounts = Array(10).fill(0);
+
+  answers.forEach(answer => {
+    const decile = Math.min(Math.floor(answer.userConfidence * 10), 9);
+    decileCounts[decile]++;
+    if (answer.correctAnswer === answer.userAnswer) {
+      decileCorrectCounts[decile]++;
+    }
+  });
+
+  return decileScores.map((_, index) => ({
+    decileRange: `${index * 10}-${(index + 1) * 10}%`,
+    score: decileCounts[index] ? decileCorrectCounts[index] / decileCounts[index] : null,
+    correct: decileCorrectCounts[index],
+    total: decileCounts[index]
+  }));
+}

@@ -1,4 +1,7 @@
+// Import necessary modules and functions
+import { startQuizButton } from './initialization.js';
 import { handleModeSelection } from './modeHandlers.js';
+import { updateStartButtonState } from './util.js';
 
 // DOM Elements
 const quizContainer = document.getElementById('quiz-container');
@@ -27,7 +30,7 @@ let userAnswers = [];
 let correctAnswers = [];
 let userConfidences = [];
 
-// Initialization function
+// Initialization
 function initialize() {
   modeSelectionContainer.addEventListener('change', handleModeSelection);
   document.getElementById('username').addEventListener('input', updateStartButtonState);
@@ -36,9 +39,6 @@ function initialize() {
     checkbox.addEventListener('change', updateStartButtonState);
   });
   updateStartButtonState(); // Initial call to set the correct state of the start button
-
-  // Initially disable the start button (except for group questioner mode)
-  startQuizButton.disabled = !modeGroupQuestioner.checked;
 
   // Retrieve the mode from local storage and set it
   const savedMode = localStorage.getItem('selectedMode');
@@ -65,26 +65,10 @@ function initialize() {
 }
 
 export {
-  brierScore,
-  categorySelectionContainer,
-  correctAnswers,
-  currentQuestionIndex, initialize, leaderboardContainer,
-  modeGroupParticipant,
-  modeGroupQuestioner,
-  modeSelectionContainer,
-  modeSinglePlayer,
-  nextButton,
-  questionContainer,
-  questionCountContainer,
-  questions,
-  quizContainer,
-  resultsContainer,
-  score,
-  sessionIDSelectionContainer,
-  sessionIdContainer,
-  startButtonContainer,
-  startQuizButton,
-  userAnswers,
-  userConfidences,
-  usernameContainer
+  brierScore, categorySelectionContainer, correctAnswers, currentQuestionIndex, leaderboardContainer, modeGroupParticipant,
+  modeGroupQuestioner, modeSelectionContainer,
+  modeSinglePlayer, nextButton, questionContainer, questionCountContainer, questions, quizContainer, resultsContainer, score, sessionIDSelectionContainer, sessionIdContainer, startButtonContainer, startQuizButton, userAnswers, userConfidences, usernameContainer
 };
+
+// Call initialize after the DOM is loaded
+document.addEventListener('DOMContentLoaded', initialize);

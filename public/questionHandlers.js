@@ -318,6 +318,22 @@ function startListeningForQuestionUpdates(sessionId) {
   });
 }
 
+export function nextQuestion(sessionId) {
+  // Increment the current question index
+  currentQuestionIndex++;
+  // Check if there are more questions
+  if (currentQuestionIndex < questions.length) {
+    // Update the current question index in the Firebase session
+    // db.collection('sessions').doc(sessionId).update({
+    // currentQuestionIndex: currentQuestionIndex
+    // });
+    displayQuestionForGroupParticipant(currentQuestionIndex);
+  } else {
+    // Handle the end of the quiz
+    displayResults();
+  }
+}
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

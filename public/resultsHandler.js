@@ -1,64 +1,8 @@
+import { db } from './firebaseConfig.js';
+import { brierScore, correctAnswers, modeGroupQuestioner, questions, quizContainer, resultsContainer, score, userAnswers, userConfidences } from './initialization.js';
+import { calculateConfidenceDecileScores, getCurrentSessionId } from './util.js';
 
-
-
-function calculateConfidenceDecileScores(answers) {
-  /**
-   * The answers that comes in is pulled from the entire database, so it contains answers from all users.
-   */
-  // Create an array to store scores for each decile
-  const decileScores = Array(10).fill(0);
-  const decileCounts = Array(10).fill(0);
-  const decileCorrectCounts = Array(10).fill(0);
-
-  answers.forEach(answer => {
-    const decile = Math.min(Math.floor(answer.userConfidence * 10), 9);
-    decileCounts[decile]++;
-    if (answer.correctAnswer === answer.userAnswer) {
-      decileCorrectCounts[decile]++;
-    }
-  });
-
-  return decileScores.map((_, index) => ({
-    decileRange: `${index * 10}-${(index + 1) * 10}%`,
-    score: decileCounts[index] ? decileCorrectCounts[index] / decileCounts[index] : null,
-    correct: decileCorrectCounts[index],
-    total: decileCounts[index]
-  }));
-}
-
-// Function to create a new session
-function createSession() {
-  const sessionId = document.getElementById('session-id').value.trim();
-  db.collection('sessions').doc(sessionId).set({
-    currentQuestionIndex: 0,
-    questions: [],
-    active: true
-  })
-    .then(() => {
-      console.log('Session created successfully with ID:', sessionId);
-      // Store sessionId in a variable or local storage to use later
-      localStorage.setItem('currentSessionId', sessionId);
-    })
-    .catch(error => console.error('Error creating session:', error));
-}
-
-function nextQuestion(sessionId) {
-  // Increment the current question index
-  currentQuestionIndex++;
-  // Check if there are more questions
-  if (currentQuestionIndex < questions.length) {
-    // Update the current question index in the Firebase session
-    // db.collection('sessions').doc(sessionId).update({
-    // currentQuestionIndex: currentQuestionIndex
-    // });
-    displayQuestionForGroupParticipant(currentQuestionIndex);
-  } else {
-    // Handle the end of the quiz
-    displayResults();
-  }
-}
-
-function displayResults() {
+export function displayResults() {
   quizContainer.style.display = 'none';
 
   if (modeGroupQuestioner.checked) {
@@ -108,7 +52,7 @@ function displayResults() {
   }
 }
 
-function displayIndividualResults() {
+export function displayIndividualResults() {
   for (let i = 0; i < questions.length; i++) {
     const resultPara = document.createElement('p');
 
@@ -127,7 +71,7 @@ function displayIndividualResults() {
   }
 }
 
-function displayLeaderboard(sessionId) {
+export function displayLeaderboard(sessionId) {
   db.collection('sessions').doc(sessionId).collection('answers')
     .get()
     .then(querySnapshot => {
@@ -161,6 +105,3 @@ function displayLeaderboard(sessionId) {
       console.error("Error getting documents: ", error);
     });
 }
-
-// Call initialize after the DOM is loaded
-document.addEventListener('DOMContentLoaded', initialize);

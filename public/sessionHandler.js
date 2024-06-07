@@ -39,3 +39,18 @@ export function saveQuestionsToFirestore(sessionId, questionsArray) {
     .then(() => console.log('Questions saved successfully'))
     .catch(error => console.error('Error saving questions:', error));
 }
+
+export function createSession() {
+  const sessionId = document.getElementById('session-id').value.trim();
+  db.collection('sessions').doc(sessionId).set({
+    currentQuestionIndex: 0,
+    questions: [],
+    active: true
+  })
+    .then(() => {
+      console.log('Session created successfully with ID:', sessionId);
+      // Store sessionId in a variable or local storage to use later
+      localStorage.setItem('currentSessionId', sessionId);
+    })
+    .catch(error => console.error('Error creating session:', error));
+}
