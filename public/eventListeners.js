@@ -1,21 +1,29 @@
 import {
+  brierScore,
   categorySelectionContainer,
+  correctAnswers,
+  currentQuestionIndex,
+  modeGroupParticipant,
   modeGroupQuestioner,
   modeSelectionContainer,
+  modeSinglePlayer,
   nextButton,
   questionCountContainer,
   questions,
   quizContainer,
+  score,
   sessionIDSelectionContainer,
   sessionIdContainer,
   startButtonContainer,
   startQuizButton,
+  userAnswers,
+  userConfidences,
   usernameContainer
 } from './initialization.js';
 import { handleModeSelection } from './modeHandlers.js';
-import { loadQuestionsSingle, shuffleArray } from './questionHandlers.js';
+import { displayQuestion, displayQuestionQuestioner, displayResults, loadQuestionsSingle, nextQuestion, shuffleArray, submitAnswer } from './questionHandlers.js';
 import { generateRandomUsername, joinSelectedSession, loadAvailableSessions, saveQuestionsToFirestore } from './sessionHandlers.js';
-import { updateNextButton, updateStartButtonState } from './util.js';
+import { getCurrentSessionId, updateNextButton, updateStartButtonState } from './util.js';
 
 export function setupEventListeners() {
   modeSelectionContainer.addEventListener('change', handleModeSelection);
@@ -26,7 +34,57 @@ export function setupEventListeners() {
   });
 
   nextButton.addEventListener('click', () => {
-    // Handle the next button click...
+    console.log("Next button has been clicked");
+    console.log("Current Mode:");
+    console.log("  Single Player:", modeSinglePlayer.checked);
+    console.log("  Group Participant:", modeGroupParticipant.checked);
+    console.log("  Group Questioner:", modeGroupQuestioner.checked);
+    console.log("Current Question Index:", currentQuestionIndex);
+    console.log("Total Questions:", questions.length);
+    console.log("User Answers:", userAnswers);
+    console.log("Correct Answers:", correctAnswers);
+    console.log("User Confidences:", userConfidences);
+    console.log("Score:", score);
+    console.log("Brier Score:", brierScore);
+
+    // Handling for Group Questioner mode
+    if (modeGroupQuestioner.checked) {
+      console.log("Handling Group Questioner mode");
+
+      // Increment the current question index
+      currentQuestionIndex++;
+      console.log("Updated Question Index (Questioner):", currentQuestionIndex);
+
+      // Check if there are more questions
+      if (currentQuestionIndex < questions.length) {
+        displayQuestionQuestioner(currentQuestionIndex); // Display next question for Group Questioner
+      } else {
+        displayResults(); // Display results if it's the last question
+      }
+    }
+    else if (modeGroupParticipant.checked) {
+      console.log("Handling Group Participant mode");
+      submitAnswer();
+      const sessionId = getCurrentSessionId(); // Retrieve the current session ID for group modes
+      console.log("Session ID:", sessionId);
+      nextQuestion(sessionId); // Advance to the next question in the session for Group Participant mode
+    }
+    else {
+      console.log("Handling Single Player mode");
+      // For Single Player mode, handle answer submission and question navigation
+      submitAnswer();
+
+      // Increment the current question index
+      currentQuestionIndex++;
+      console.log("Updated Question Index (Single Player):", currentQuestionIndex);
+
+      // Check if there are more questions
+      if (currentQuestionIndex < questions.length) {
+        displayQuestion(currentQuestionIndex); // Display next question for Single Player
+      } else {
+        displayResults(); // Display results if it's the last question
+      }
+    }
   });
 
   // Event listener for mode selection
@@ -165,4 +223,6 @@ export function setupEventListeners() {
       }
     }
   });
+
+  nextButton.classList.add('button-spacing');
 }
