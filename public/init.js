@@ -1,15 +1,16 @@
 // Import the functions you need from the SDKs you need
 import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
+import { getFunctions } from "firebase/functions";
+import { getMessaging } from "firebase/messaging";
+import { getPerformance } from "firebase/performance";
+import { getRemoteConfig } from "firebase/remote-config";
+import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-// The docs say I can leave the apiKey here:
-// Usually, you need to fastidiously guard API keys (for example, by using a vault service or setting the keys as environment variables); however, API keys for Firebase services are ok to include in code or checked-in config files.
-// https://firebase.google.com/docs/projects/api-keys
 const firebaseConfig = {
   apiKey: "AIzaSyDTFpB2roR1dV2xDVNDpig6ykuco5iNYCU",
   authDomain: "calibration-trivia.firebaseapp.com",
@@ -23,3 +24,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const db = getFirestore(app);
+const auth = getAuth(app);
+const database = getDatabase(app);
+const storage = getStorage(app);
+const messaging = getMessaging(app);
+const functions = getFunctions(app);
+const performance = getPerformance(app);
+const remoteConfig = getRemoteConfig(app);
+
+console.log('Firebase initialized');

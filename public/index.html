@@ -40,19 +40,16 @@
             <input type="radio" id="mode-group-participant" name="mode" value="group-participant">
             <label for="mode-group-participant">Group (Player)</label>
         </div>
-
     </div>
 
     <div id="username-container" style="display: none;">
         <input type="text" id="username" class="input-large" placeholder="Enter your name">
     </div>
 
-    <!-- Do I still need this div? -->
     <div id="session-id-container" style="display: none;">
         <label for="session-id">Enter Session ID:</label>
         <input type="text" id="session-id" class="input-large">
     </div>
-
 
     <div id="session-id-selection-container" style="display: none;">
         <label for="session-id-select">Choose a Session:</label>
@@ -62,6 +59,7 @@
     </div>
 
     <div id="category-selection-container" style="display: none;">
+        <!-- Add your category checkboxes here -->
         <label><input type="checkbox" class="category-checkbox" value="questions/animals.json"> Animals</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/art.json"> Art</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/biology.json"> Biology</label>
@@ -71,8 +69,8 @@
         <label><input type="checkbox" class="category-checkbox" value="questions/chemistry.json"> Chemistry</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/economics.json"> Economics</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/food.json"> Food</label>
-        <label><input type="checkbox" class="category-checkbox" value="questions/geography.json"> Geography </label>
-        <label><input type="checkbox" class="category-checkbox" value="questions/history.json"> History </label>
+        <label><input type="checkbox" class="category-checkbox" value="questions/geography.json"> Geography</label>
+        <label><input type="checkbox" class="category-checkbox" value="questions/history.json"> History</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/languages.json"> Languages</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/literature.json"> Literature</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/movies.json"> Movies</label>
@@ -84,8 +82,6 @@
         <label><input type="checkbox" class="category-checkbox" value="questions/sports.json"> Sports</label>
     </div>
 
-    <!-- <button id="submit-button" style="display: none;">Submit</button> -->
-
     <div id="question-count-container">
         <label for="question-count">How many questions?</label>
         <input type="number" id="question-count" class="input-small" min="1" value="20">
@@ -94,7 +90,6 @@
     <div id="start-button-container">
         <button id="start-quiz">Start</button>
     </div>
-
 
     <div id="quiz-container" style="display: none;">
         <div id="question-container">
@@ -111,8 +106,6 @@
     <div id="leaderboard-container" style="display: none;">
         <!-- Leaderboard will be populated here by the JavaScript code -->
     </div>
-
-
 
     <script src="bundle.js"></script>
 </body>

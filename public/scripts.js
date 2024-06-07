@@ -1,4 +1,7 @@
 const appVersion = '1.2.2';
+
+import './init.js'; // Ensure this path is correct
+
 console.log('App Version:', appVersion);
 
 const quizContainer = document.getElementById('quiz-container');
@@ -18,7 +21,9 @@ const questionCountContainer = document.getElementById('question-count-container
 const startButtonContainer = document.getElementById('start-button-container');
 const sessionIdContainer = document.getElementById('session-id-container');
 
-const db = firebase.firestore(); // Firebase Firestore initialization
+import { getFirestore } from 'firebase/firestore';
+
+const db = getFirestore(); // Initialize Firestore
 
 let currentQuestionIndex = 0;
 let questions = [];
@@ -61,7 +66,6 @@ function initialize() {
     }
   }
 }
-
 
 // Function to display the questioner's screen
 function displayQuestionerScreen(sessionId) {
@@ -194,7 +198,6 @@ function handleModeSelection() {
 
   updateStartButtonState(); // Update start button state based on the new mode
 }
-
 
 function updateStartButtonState() {
   // Attempt to find a checked radio button
