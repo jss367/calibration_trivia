@@ -1,10 +1,13 @@
 const path = require('path');
 
+console.log('Webpack Config Path:', __dirname);
+
 module.exports = {
   entry: './public/scripts.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -19,6 +22,11 @@ module.exports = {
         }
       }
     ]
+  },
+  resolve: {
+    alias: {
+      firebase: path.resolve(__dirname, 'node_modules/firebase')
+    }
   },
   mode: 'production'
 };

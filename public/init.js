@@ -10,6 +10,8 @@ import { getPerformance } from 'firebase/performance';
 import { getRemoteConfig } from 'firebase/remote-config';
 import { getStorage } from 'firebase/storage';
 
+console.log('Firebase modules imported successfully');
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDTFpB2roR1dV2xDVNDpig6ykuco5iNYCU",
@@ -23,6 +25,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+console.log('Firebase app initialized', app);
+
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const auth = getAuth(app);
@@ -33,6 +37,6 @@ const functions = getFunctions(app);
 const performance = getPerformance(app);
 const remoteConfig = getRemoteConfig(app);
 
-console.log('Firebase initialized');
+console.log('Firebase services initialized');
 
 export { analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage };

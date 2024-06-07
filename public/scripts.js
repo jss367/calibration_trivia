@@ -3,6 +3,7 @@ const appVersion = '1.2.3';
 import { db } from './init.js';
 
 console.log('App Version:', appVersion);
+console.log('Firestore instance:', db);
 
 const quizContainer = document.getElementById('quiz-container');
 const questionContainer = document.getElementById('question-container');
