@@ -1,6 +1,8 @@
 import { db } from './firebaseConfig.js';
 import {
+  brierScore,
   categorySelectionContainer,
+  correctAnswers,
   currentQuestionIndex,
   modeGroupParticipant,
   modeGroupQuestioner,
@@ -11,11 +13,14 @@ import {
   questionCountContainer,
   questions,
   quizContainer,
+  score,
   sessionIdContainer,
   startButtonContainer,
+  userAnswers,
+  userConfidences,
   usernameContainer
 } from './initialization.js';
-import { getConfidenceInputHTML } from './util.js';
+import { getConfidenceInputHTML, getCurrentSessionId, submitAnswerToFirestore } from './util.js';
 
 export function loadSessionQuestions(sessionId) {
   return db.collection('sessions').doc(sessionId).get()
@@ -133,7 +138,33 @@ export function displayQuestionQuestioner(index) {
 }
 
 export function displayQuestionForGroupParticipant(index) {
-  // Implementation for displaying a question for a group participant...
+  if (!questions[index]) {
+    console.error("Question not found for index: ", index);
+    return; // Exit the function if the question is not found
+  }
+
+  const question = questions[index];
+  const questionDiv = document.createElement('div');
+
+  let answerInputHTML = question.options.map((option, index) => `
+    <div>
+      <input type="radio" id="option-${index}" class="input-radio" name="answer" value="${option}">
+      <label for="option-${index}">${String.fromCharCode(65 + index)}: ${option}</label>
+    </div>
+  `).join('');
+
+  questionDiv.innerHTML = `
+    <h3>Question ${index + 1} of ${questions.length}</h3>
+    ${answerInputHTML}
+    ${getConfidenceInputHTML()}
+  `;
+
+  questionContainer.innerHTML = ''; // Clear previous content
+  questionContainer.appendChild(questionDiv); // Append new content
+
+  // Make sure the quiz container is visible
+  quizContainer.style.display = 'block';
+  nextButton.style.display = 'block';
 }
 
 export function displayQuestionerScreen(sessionId) {
@@ -185,18 +216,24 @@ export function displayResponderScreen(sessionId) {
     });
 }
 
-// Function to start listening for updates on the current question index from Firestore
-function startListeningForQuestionUpdates(sessionId) {
-  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
-    if (doc.exists) {
-      const data = doc.data();
-      if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
-        onQuestionIndexUpdated(data);
+export function loadQuestionsParticipant() {
+  const sessionId = getCurrentSessionId();
+  if (!sessionId) {
+    console.error("No session ID found.");
+    return;
+  }
+
+  db.collection('sessions').doc(sessionId).get()
+    .then(doc => {
+      if (doc.exists && doc.data().questions) {
+        questions = doc.data().questions;
+        currentQuestionIndex = 0;
+        displayQuestionForGroupParticipant(currentQuestionIndex);
+      } else {
+        console.error("No questions available in this session or session does not exist.");
       }
-    } else {
-      console.error("No such session!");
-    }
-  });
+    })
+    .catch(error => console.error("Error loading session questions:", error));
 }
 
 export function onQuestionIndexUpdated(sessionData) {
@@ -213,7 +250,72 @@ export function onQuestionIndexUpdated(sessionData) {
 }
 
 function submitAnswer() {
-  // Implementation for submitting an answer...
+  console.log("Inside submitAnswer");
+  // Get the selected answer and confidence level
+  const selectedOption = document.querySelector('input[name="answer"]:checked');
+  const confidenceElement = document.getElementById('confidence');
+
+  let userAnswer = null;
+  let userConfidence = null;
+
+  if (selectedOption) {
+    userAnswer = selectedOption.value;
+  }
+
+  if (confidenceElement) {
+    // Ensure confidence is within the 0-100 range
+    userConfidence = parseInt(confidenceElement.value, 10);
+    userConfidence = Math.max(0, Math.min(userConfidence, 100)); // Clamp between 0 and 100
+
+    // Convert confidence to a percentage and round it
+    userConfidence = Math.round(userConfidence) / 100;
+  }
+
+  if (!selectedOption || isNaN(userConfidence)) {
+    console.warn('No answer or invalid confidence selected for current question');
+  } else {
+    // Determine if the answer is correct and update the score
+    const currentCorrectAnswer = questions[currentQuestionIndex].correctAnswer;
+    if (currentCorrectAnswer === userAnswer) {
+      score++;
+      brierScore += Math.pow(1 - userConfidence, 2);
+    } else {
+      brierScore += Math.pow(0 - userConfidence, 2);
+    }
+
+    // Save the user's answer, the correct answer, and confidence to arrays
+    userAnswers.push(userAnswer);
+    correctAnswers.push(currentCorrectAnswer);
+    userConfidences.push(userConfidence); // Save the rounded confidence score
+
+    const sessionId = getCurrentSessionId();
+    const userId = document.getElementById('username').value.trim();
+
+    // In group mode, store the result in Firestore
+    if (userId && sessionId) {
+      submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
+    }
+
+    if (selectedOption) {
+      selectedOption.checked = false;
+    }
+    if (confidenceElement) {
+      confidenceElement.value = ''; // Clear the confidence input
+    }
+  }
+}
+
+function startListeningForQuestionUpdates(sessionId) {
+  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
+    if (doc.exists) {
+      const data = doc.data();
+      if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
+        onQuestionIndexUpdated(data);
+      }
+    } else {
+      console.error("No such session!");
+    }
+  });
 }
 
 function shuffleArray(array) {
