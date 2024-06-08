@@ -25,7 +25,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-console.log('Firebase app initialized', app);
+console.log('Firebase app initialized:', app);
 
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
@@ -37,6 +37,8 @@ const functions = getFunctions(app);
 const performance = getPerformance(app);
 const remoteConfig = getRemoteConfig(app);
 
-console.log('Firebase services initialized');
+console.log('Firebase services initialized:', {
+  analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage
+});
 
 export { analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage };
