@@ -183,7 +183,7 @@ modeSelectionContainer.addEventListener('change', (event) => {
   }
 });
 
-// Handle mode change
+
 function handleModeSelection() {
   const mode = document.querySelector('input[name="mode"]:checked').value;
   localStorage.setItem('selectedMode', mode); // Save the selected mode to local storage
@@ -193,9 +193,11 @@ function handleModeSelection() {
   sessionIdContainer.style.display = mode === 'group-questioner' ? 'block' : 'none';
   categorySelectionContainer.style.display = ['single', 'group-questioner'].includes(mode) ? 'block' : 'none';
   questionCountContainer.style.display = ['single', 'group-questioner'].includes(mode) ? 'block' : 'none';
+  startButtonContainer.style.display = 'block'; // Show the start button container
 
   updateStartButtonState(); // Update start button state based on the new mode
 }
+
 
 function updateStartButtonState() {
   // Attempt to find a checked radio button
@@ -219,7 +221,9 @@ function updateStartButtonState() {
     enableButton = usernameInput.length > 0;
   }
 
-  document.getElementById('start-quiz').disabled = !enableButton;
+  const startButton = document.getElementById('start-quiz');
+  startButton.disabled = !enableButton;
+  startButtonContainer.style.display = enableButton ? 'block' : 'none'; // Show/
 }
 
 function updateNextButton() {
