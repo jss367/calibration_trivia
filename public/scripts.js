@@ -1,10 +1,17 @@
-const appVersion = '1.2.3';
+const appVersion = '1.2.4';
 
+console.log('App Version:', appVersion);
 
 // console.log('Firebase modules imported successfully');
 // console.log('Firebase services initialized:', { auth, database, functions, messaging, performance, remoteConfig, storage });
 // console.log('App Version:', appVersion);
 // console.log('Firestore instance:', firebase.firestore());
+
+// console.log('Firebase modules imported successfully');
+// console.log('Firebase app initialized:', analytics.app);
+// console.log('Firebase services initialized:', { analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage });
+
+// console.log('Firestore instance:', db);
 
 const quizContainer = document.getElementById('quiz-container');
 const questionContainer = document.getElementById('question-container');
@@ -33,6 +40,7 @@ let userConfidences = [];
 
 // Initialization
 function initialize() {
+  console.log("Initializing");
   modeSelectionContainer.addEventListener('change', handleModeSelection);
   document.getElementById('username').addEventListener('input', updateStartButtonState);
   document.getElementById('session-id').addEventListener('input', updateStartButtonState);
@@ -58,8 +66,10 @@ function initialize() {
     console.log("Session ID from URL:", sessionIdFromURL);
     localStorage.setItem('currentSessionId', sessionIdFromURL);
     if (userRole === 'questioner') {
+      console.log("Detected role of questioner");
       displayQuestionerScreen(sessionIdFromURL);
     } else if (userRole === 'responder') {
+      console.log("Detected role of responder");
       displayResponderScreen(sessionIdFromURL);
     }
   }
@@ -68,8 +78,10 @@ function initialize() {
 // Function to display the questioner's screen
 function displayQuestionerScreen(sessionId) {
   // Load questions from the session and set up the questioner UI
+  console.log("Inside displayQuestionerScreen");
   loadSessionQuestions(sessionId)
     .then(() => {
+      console.log("Inside loadSessionQuestions(sessionId)");
       // Display the first question
       currentQuestionIndex = 0;
       displayQuestionQuestioner(currentQuestionIndex);
@@ -251,6 +263,7 @@ document.getElementById('username').addEventListener('input', function () {
 document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
 
 function loadSessionQuestions(sessionId) {
+  console.log("Inside loadSessionQuestions");
   return firebase.firestore().collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists) {
