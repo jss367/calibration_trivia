@@ -10,7 +10,7 @@
         "test": "jest",
         "build": "webpack --mode production",
         "start": "firebase serve",
-        "serve": "http-server public"
+        "serve": "http-server public --spa"
     },
     "repository": {
         "type": "git",
