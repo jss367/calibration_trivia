@@ -24,5 +24,3 @@ const performance = firebase.performance(app);
 const remoteConfig = firebase.remoteConfig(app);
 
 console.log('Firebase services initialized:', { analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage });
-
-// You can use the Firebase services directly without exporting them

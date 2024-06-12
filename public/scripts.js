@@ -1,12 +1,10 @@
 const appVersion = '1.2.3';
 
-import { db } from './init.js';
 
-console.log('Firebase modules imported successfully');
-console.log('Firebase app initialized:', analytics.app);
-console.log('Firebase services initialized:', { analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage });
-console.log('App Version:', appVersion);
-console.log('Firestore instance:', db);
+// console.log('Firebase modules imported successfully');
+// console.log('Firebase services initialized:', { auth, database, functions, messaging, performance, remoteConfig, storage });
+// console.log('App Version:', appVersion);
+// console.log('Firestore instance:', firebase.firestore());
 
 const quizContainer = document.getElementById('quiz-container');
 const questionContainer = document.getElementById('question-container');
@@ -122,7 +120,7 @@ function displayResponderScreen(sessionId) {
 
 // Function to start listening for updates on the current question index from Firestore
 function startListeningForQuestionUpdates(sessionId) {
-  db.collection('sessions').doc(sessionId).onSnapshot(doc => {
+  firebase.firestore().collection('sessions').doc(sessionId).onSnapshot(doc => {
     if (doc.exists) {
       const data = doc.data();
       if (data.currentQuestionIndex !== undefined && data.currentQuestionIndex !== currentQuestionIndex) {
@@ -249,7 +247,7 @@ document.getElementById('username').addEventListener('input', function () {
 document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
 
 function loadSessionQuestions(sessionId) {
-  return db.collection('sessions').doc(sessionId).get()
+  return firebase.firestore().collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists) {
         console.log("Fetched document:", doc.data());
@@ -277,7 +275,7 @@ function generateRandomUsername() {
 }
 
 function loadAvailableSessions() {
-  db.collection('sessions').where('active', '==', true).get()
+  firebase.firestore().collection('sessions').where('active', '==', true).get()
     .then(snapshot => {
       const sessionIdSelect = document.getElementById('session-id-select');
       sessionIdSelect.innerHTML = ''; // Clear existing options
@@ -350,7 +348,7 @@ startQuizButton.addEventListener('click', () => {
           shuffleArray(questions);
           questions = questions.slice(0, questionCount);
 
-          return db.collection('sessions').doc(sessionId).set({
+          return firebase.firestore().collection('sessions').doc(sessionId).set({
             questions: questions,
             active: true,
             currentQuestionIndex: 0
@@ -464,7 +462,7 @@ function questionerNextQuestion(sessionId) {
   // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
     // Update the current question index in the Firebase session
-    db.collection('sessions').doc(sessionId).update({
+    firebase.firestore().collection('sessions').doc(sessionId).update({
       currentQuestionIndex: currentQuestionIndex
     }).then(() => {
       console.log('Question index updated successfully.');
@@ -552,7 +550,7 @@ function displayQuestion(index) {
 }
 
 function saveQuestionsToFirestore(sessionId, questionsArray) {
-  db.collection('sessions').doc(sessionId).set({
+  firebase.firestore().collection('sessions').doc(sessionId).set({
     questions: questionsArray,
     active: true // or any other relevant session data
   })
@@ -624,7 +622,7 @@ function loadQuestionsParticipant() {
     return;
   }
 
-  db.collection('sessions').doc(sessionId).get()
+  firebase.firestore().collection('sessions').doc(sessionId).get()
     .then(doc => {
       if (doc.exists && doc.data().questions) {
         questions = doc.data().questions;
@@ -735,7 +733,7 @@ function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
   }
 
   const answerData = { answer, confidence, timestamp: firebase.firestore.FieldValue.serverTimestamp() };
-  db.collection('sessions').doc(sessionId).collection('answers').doc(userId).set(answerData)
+  firebase.firestore().collection('sessions').doc(sessionId).collection('answers').doc(userId).set(answerData)
     .then(() => console.log('Answer submitted successfully'))
     .catch(error => console.error("Error submitting answer:", error));
 }
@@ -768,7 +766,7 @@ function calculateConfidenceDecileScores(answers) {
 // Function to create a new session
 function createSession() {
   const sessionId = document.getElementById('session-id').value.trim();
-  db.collection('sessions').doc(sessionId).set({
+  firebase.firestore().collection('sessions').doc(sessionId).set({
     currentQuestionIndex: 0,
     questions: [],
     active: true
@@ -786,10 +784,6 @@ function nextQuestion(sessionId) {
   currentQuestionIndex++;
   // Check if there are more questions
   if (currentQuestionIndex < questions.length) {
-    // Update the current question index in the Firebase session
-    // db.collection('sessions').doc(sessionId).update({
-    // currentQuestionIndex: currentQuestionIndex
-    // });
     displayQuestionForGroupParticipant(currentQuestionIndex);
   } else {
     // Handle the end of the quiz
@@ -867,7 +861,7 @@ function displayIndividualResults() {
 }
 
 function displayLeaderboard(sessionId) {
-  db.collection('sessions').doc(sessionId).collection('answers')
+  firebase.firestore().collection('sessions').doc(sessionId).collection('answers')
     .get()
     .then(querySnapshot => {
       const scores = {};
