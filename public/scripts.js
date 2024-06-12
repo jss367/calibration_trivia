@@ -2,6 +2,9 @@ const appVersion = '1.2.3';
 
 import { db } from './init.js';
 
+console.log('Firebase modules imported successfully');
+console.log('Firebase app initialized:', analytics.app);
+console.log('Firebase services initialized:', { analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage });
 console.log('App Version:', appVersion);
 console.log('Firestore instance:', db);
 
