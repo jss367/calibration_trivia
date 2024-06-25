@@ -20,7 +20,7 @@ const database = firebase.database(app);
 const storage = firebase.storage(app);
 const messaging = firebase.messaging(app);
 const functions = firebase.functions(app);
-const performance = firebase.performance(app);
+// const performance = firebase.performance(app);
 const remoteConfig = firebase.remoteConfig(app);
 
-console.log('Firebase services initialized:', { analytics, auth, database, db, functions, messaging, performance, remoteConfig, storage });
+console.log('Firebase services initialized:', { analytics, auth, database, db, functions, messaging, remoteConfig, storage }); // performance
