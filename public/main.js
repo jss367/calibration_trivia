@@ -1,6 +1,6 @@
 // main.js
 
-const appVersion = '1.3.9';
+const appVersion = '1.3.10';
 console.log('App Version:', appVersion);
 
 import { initialize, handleModeSelection } from './initialization.js';
