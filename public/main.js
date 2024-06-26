@@ -6,6 +6,7 @@ console.log('App Version:', appVersion);
 import { initialize, handleModeSelection } from './initialization.js';
 import { loadQuestionsSingle, displayQuestion } from './singlePlayer.js';
 import { questionerNextQuestion } from './groupQuestioner.js';
+import { loadQuestionsParticipant } from './groupParticipant.js';
 import { createSession, joinSelectedSession, getCurrentSessionId } from './sessionManagement.js';
 import { submitAnswer, nextQuestion } from './quizLogic.js';
 import { displayResults } from './results.js';
