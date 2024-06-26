@@ -83,6 +83,17 @@ export function joinSelectedSession() {
         console.log('Joining session with ID:', selectedSessionId);
         localStorage.setItem('currentSessionId', selectedSessionId);
         console.log('currentSessionId set in localStorage:', selectedSessionId);
+
+        // Hide the entire session selection container
+        const sessionSelectionContainer = document.getElementById('session-id-selection-container');
+        sessionSelectionContainer.style.display = 'none';
+
+        // Optionally, display the selected session ID
+        const sessionInfoContainer = document.createElement('div');
+        sessionInfoContainer.id = 'session-info-container';
+        sessionInfoContainer.innerHTML = `<p>Selected Session: ${selectedSessionId}</p>`;
+        sessionSelectionContainer.parentNode.insertBefore(sessionInfoContainer, sessionSelectionContainer.nextSibling);
+
         return Promise.resolve(selectedSessionId);
     } else {
         console.error('No session selected.');
