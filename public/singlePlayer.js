@@ -66,7 +66,6 @@ export function displayQuestion(index) {
     const questionDiv = document.createElement('div');
     // Initialize the answer input HTML
     let answerInputHTML = '';
-    console.log('questionContainer style:', questionContainer.style.display);
     const options = ['A', 'B', 'C', 'D'];
     answerInputHTML = question.options.map((option, index) => `
       <div>
@@ -86,7 +85,6 @@ export function displayQuestion(index) {
 
     questionContainer.innerHTML = ''; // Clear previous question
     questionContainer.appendChild(questionDiv); // Append new question
-    console.log('questionContainer style:', questionContainer.style.display);
     nextButton.style.display = 'block';
     quizContainer.style.display = 'block';
     console.log('Quiz container display:', quizContainer.style.display);

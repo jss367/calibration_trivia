@@ -115,14 +115,18 @@ function handleGroupParticipantMode() {
 
 function handleGroupQuestionerMode() {
     console.log("Starting group questioner mode");
-    createSession();
-    loadSessionQuestions(getCurrentSessionId())
+    createSession()
+        .then((sessionId) => {
+            console.log("Session created successfully:", sessionId);
+            return loadSessionQuestions(sessionId);
+        })
         .then(() => {
             console.log("Questions loaded successfully for group questioner");
-            displayQuestionQuestioner(0);
+            const sessionId = getCurrentSessionId(); // Get the session ID after it's been set
+            displayQuestionQuestioner(0, sessionId);
         })
         .catch(error => {
-            console.error("Failed to load questions for group questioner:", error);
+            console.error("Failed to create session or load questions for group questioner:", error);
         });
 }
 
