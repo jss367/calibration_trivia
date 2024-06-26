@@ -90,7 +90,7 @@ export function displayQuestion(index) {
       ${answerInputHTML}
       ${confidenceInputHTML}
     `;
-    console.log('Generated question HTML:', questionDiv.innerHTML);
+
     console.log('questionContainer style:', questionContainer.style.display);
     questionContainer.innerHTML = ''; // Clear previous question
     questionContainer.appendChild(questionDiv); // Append new question

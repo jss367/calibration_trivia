@@ -4,7 +4,6 @@
 export const quizContainer = document.getElementById('quiz-container');
 export const questionContainer = document.getElementById('question-container');
 export const nextButton = document.getElementById('next-button');
-export const resultsContainer = document.getElementById('results-container');
 export const usernameContainer = document.getElementById('username-container');
 export const startQuizButton = document.getElementById('start-quiz');
 export const leaderboardContainer = document.getElementById('leaderboard-container');

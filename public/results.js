@@ -11,6 +11,9 @@ import {
 } from './shared.js';
 import { calculateConfidenceDecileScores } from './quizLogic.js';
 import { getCurrentSessionId } from './sessionManagement.js';
+
+const resultsContainer = document.getElementById('results-container');
+
 export function displayResults() {
     quizContainer.style.display = 'none';
 
