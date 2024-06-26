@@ -5,7 +5,7 @@ console.log('App Version:', appVersion);
 
 import { initialize, handleModeSelection } from './initialization.js';
 import { loadQuestionsSingle, displayQuestion } from './singlePlayer.js';
-import { questionerNextQuestion } from './groupQuestioner.js';
+import { questionerNextQuestion, displayQuestionQuestioner } from './groupQuestioner.js';
 import { loadQuestionsParticipant, displayQuestionForGroupParticipant } from './groupParticipant.js';
 import { createSession, joinSelectedSession, getCurrentSessionId, loadSessionQuestions } from './sessionManagement.js';
 import { submitAnswer } from './quizLogic.js';
@@ -23,45 +23,40 @@ import {
     modeGroupQuestioner,
     questions,
     currentQuestionIndex,
-
 } from './shared.js';
 
+function initializeEventListeners() {
+    document.addEventListener('DOMContentLoaded', initialize);
+    modeSelectionContainer.addEventListener('change', handleModeSelection);
+    startQuizButton.addEventListener('click', () => {
+        console.log("Start button clicked");
+        startQuiz();
+    });
+    nextButton.addEventListener('click', handleNextButton);
+    document.getElementById('username').addEventListener('input', handleUsernameInput);
+    document.getElementById('show-leaderboard').addEventListener('click', handleShowLeaderboard);
+}
 
-
-
-// Event listeners
-document.addEventListener('DOMContentLoaded', initialize);
-modeSelectionContainer.addEventListener('change', handleModeSelection);
-startQuizButton.addEventListener('click', () => {
-    console.log("Start button clicked");
-    startQuiz();
-});
-nextButton.addEventListener('click', handleNextButton);
-
-document.getElementById('username').addEventListener('input', function () {
+function handleUsernameInput() {
     const usernameInput = this.value.trim();
     const startButton = document.getElementById('start-quiz');
+    startButton.disabled = !(usernameInput.length > 0 || modeGroupQuestioner.checked);
+}
 
-    // Enable the start button only if the username is not empty or if Group Questioner mode is selected
-    if (usernameInput.length > 0 || modeGroupQuestioner.checked) {
-        startButton.disabled = false;
+function handleShowLeaderboard() {
+    const sessionId = getCurrentSessionId();
+    if (sessionId) {
+        displayLeaderboard(sessionId);
     } else {
-        startButton.disabled = true;
+        console.error('No session ID found for displaying leaderboard');
     }
-});
+}
 
-// Initially disable the start button (except for group questioner mode)
-document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
-
-nextButton.classList.add('button-spacing');
-
-// Functions
 function startQuiz() {
     console.log("startQuiz function called");
     const selectedMode = document.querySelector('input[name="mode"]:checked').value;
     console.log("Selected mode:", selectedMode);
 
-    // Hide UI elements
     hideUIElements([
         usernameContainer,
         modeSelectionContainer,
@@ -83,14 +78,11 @@ function startQuiz() {
             break;
         default:
             console.error("Unknown mode selected:", selectedMode);
-        // Handle unknown mode (e.g., show an error message to the user)
     }
 }
 
 function hideUIElements(elements) {
-    elements.forEach(element => {
-        element.style.display = 'none';
-    });
+    elements.forEach(element => element.style.display = 'none');
 }
 
 function handleSinglePlayerMode() {
@@ -102,7 +94,6 @@ function handleSinglePlayerMode() {
         })
         .catch(error => {
             console.error("Failed to load questions for single player:", error);
-            // Handle error (e.g., show an error message to the user)
         });
 }
 
@@ -132,40 +123,30 @@ function handleGroupQuestionerMode() {
         })
         .catch(error => {
             console.error("Failed to load questions for group questioner:", error);
-            // Handle error
         });
 }
-
 
 function handleNextButton() {
     if (modeGroupQuestioner.checked) {
         const sessionId = getCurrentSessionId();
         questionerNextQuestion(sessionId);
-    } else {
-        if (submitAnswer()) {  // Only proceed if submitAnswer was successful
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                if (modeGroupParticipant.checked) {
-                    displayQuestionForGroupParticipant(currentQuestionIndex);
-                } else {
-                    displayQuestion(currentQuestionIndex);
-                }
+    } else if (submitAnswer()) {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            if (modeGroupParticipant.checked) {
+                displayQuestionForGroupParticipant(currentQuestionIndex);
             } else {
-                displayResults();
+                displayQuestion(currentQuestionIndex);
             }
         } else {
-            // Alert the user that they need to answer the question and provide a confidence level
-            alert("Please select an answer and provide a confidence level before proceeding.");
+            displayResults();
         }
-    }
-} ``
-
-
-document.getElementById('show-leaderboard').addEventListener('click', () => {
-    const sessionId = getCurrentSessionId();
-    if (sessionId) {
-        displayLeaderboard(sessionId);
     } else {
-        console.error('No session ID found for displaying leaderboard');
+        alert("Please select an answer and provide a confidence level before proceeding.");
     }
-});
+}
+
+nextButton.classList.add('button-spacing');
+document.getElementById('start-quiz').disabled = !modeGroupQuestioner.checked;
+
+initializeEventListeners();
