@@ -6,26 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Calibration Trivia</title>
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script defer src="/__/firebase/9.23.0/firebase-app-compat.js"></script>
-
-    <!-- Add the Firebase services that you want to use -->
-    <script defer src="/__/firebase/9.23.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.23.0/firebase-performance-compat.js"></script>
-    <script defer src="/__/firebase/init.js"></script>
+    <!-- Load Firebase from CDN -->
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-remote-config-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-performance-compat.js"></script>
 </head>
+
 
 <body>
     <h1>Calibration Trivia</h1>
-
     <div id="mode-selection-container">
         <label>Select Mode:</label>
         <div>
@@ -40,19 +36,16 @@
             <input type="radio" id="mode-group-participant" name="mode" value="group-participant">
             <label for="mode-group-participant">Group (Player)</label>
         </div>
-
     </div>
 
     <div id="username-container" style="display: none;">
         <input type="text" id="username" class="input-large" placeholder="Enter your name">
     </div>
 
-    <!-- Do I still need this div? -->
     <div id="session-id-container" style="display: none;">
         <label for="session-id">Enter Session ID:</label>
         <input type="text" id="session-id" class="input-large">
     </div>
-
 
     <div id="session-id-selection-container" style="display: none;">
         <label for="session-id-select">Choose a Session:</label>
@@ -62,16 +55,18 @@
     </div>
 
     <div id="category-selection-container" style="display: none;">
+        <!-- Category selection checkboxes -->
         <label><input type="checkbox" class="category-checkbox" value="questions/animals.json"> Animals</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/art.json"> Art</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/biology.json"> Biology</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/cartoons.json"> Cartoons</label>
-        <label><input type="checkbox" class="category-checkbox" value="questions/computer_science.json"> Computer Science</label>
+        <label><input type="checkbox" class="category-checkbox" value="questions/computer_science.json"> Computer
+            Science</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/chemistry.json"> Chemistry</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/economics.json"> Economics</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/food.json"> Food</label>
-        <label><input type="checkbox" class="category-checkbox" value="questions/geography.json"> Geography </label>
-        <label><input type="checkbox" class="category-checkbox" value="questions/history.json"> History </label>
+        <label><input type="checkbox" class="category-checkbox" value="questions/geography.json"> Geography</label>
+        <label><input type="checkbox" class="category-checkbox" value="questions/history.json"> History</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/languages.json"> Languages</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/literature.json"> Literature</label>
         <label><input type="checkbox" class="category-checkbox" value="questions/movies.json"> Movies</label>
@@ -83,17 +78,14 @@
         <label><input type="checkbox" class="category-checkbox" value="questions/sports.json"> Sports</label>
     </div>
 
-    <!-- <button id="submit-button" style="display: none;">Submit</button> -->
-
     <div id="question-count-container">
         <label for="question-count">How many questions?</label>
         <input type="number" id="question-count" class="input-small" min="1" value="20">
     </div>
 
-    <div id="start-button-container">
+    <div id="start-button-container" style="display: none;">
         <button id="start-quiz">Start</button>
     </div>
-
 
     <div id="quiz-container" style="display: none;">
         <div id="question-container">
@@ -111,9 +103,9 @@
         <!-- Leaderboard will be populated here by the JavaScript code -->
     </div>
 
-
-
-    <script defer src="scripts.js"></script>
+    <!-- Ensure init.js and bundle.js are loaded as modules -->
+    <script src="init.js" type="module"></script>
+    <script src="bundle.js" type="module"></script>
 </body>
 
 </html>

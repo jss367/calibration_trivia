@@ -1,15 +1,4 @@
-// Import the functions you need from the SDKs you need
-import { getAnalytics } from "firebase/analytics";
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-// The docs say I can leave the apiKey here:
-// Usually, you need to fastidiously guard API keys (for example, by using a vault service or setting the keys as environment variables); however, API keys for Firebase services are ok to include in code or checked-in config files.
-// https://firebase.google.com/docs/projects/api-keys
 const firebaseConfig = {
   apiKey: "AIzaSyDTFpB2roR1dV2xDVNDpig6ykuco5iNYCU",
   authDomain: "calibration-trivia.firebaseapp.com",
@@ -21,5 +10,17 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const app = firebase.initializeApp(firebaseConfig);
+console.log('Firebase app initialized:', app);
+
+const analytics = firebase.analytics(app);
+const db = firebase.firestore(app);
+const auth = firebase.auth(app);
+const database = firebase.database(app);
+const storage = firebase.storage(app);
+const messaging = firebase.messaging(app);
+const functions = firebase.functions(app);
+// const performance = firebase.performance(app);
+const remoteConfig = firebase.remoteConfig(app);
+
+console.log('Firebase services initialized:', { analytics, auth, database, db, functions, messaging, remoteConfig, storage }); // performance
