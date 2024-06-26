@@ -19,9 +19,10 @@ export function displayLeaderboard(sessionId) {
 
                 Object.keys(userAnswers).forEach(questionIndex => {
                     const answer = userAnswers[questionIndex];
+                    const questionNum = parseInt(questionIndex);
                     scores[userId].total++;
-                    if (parseInt(questionIndex) < questions.length &&
-                        questions[parseInt(questionIndex)].correctAnswer === answer.answer) {
+                    if (questionNum < questions.length &&
+                        questions[questionNum].correctAnswer.toLowerCase() === answer.answer.toLowerCase()) {
                         scores[userId].correct++;
                     }
                 });
