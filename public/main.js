@@ -10,7 +10,7 @@ import { loadQuestionsParticipant, displayQuestionForGroupParticipant } from './
 import { createSession, joinSelectedSession, getCurrentSessionId } from './sessionManagement.js';
 import { submitAnswer, nextQuestion } from './quizLogic.js';
 import { displayResults } from './results.js';
-
+import { displayLeaderboard } from './leaderboard.js';
 import {
     startButtonContainer,
     categorySelectionContainer,
@@ -155,3 +155,13 @@ function handleNextButton() {
         }
     }
 }
+
+
+document.getElementById('show-leaderboard').addEventListener('click', () => {
+    const sessionId = getCurrentSessionId();
+    if (sessionId) {
+        displayLeaderboard(sessionId);
+    } else {
+        console.error('No session ID found for displaying leaderboard');
+    }
+});

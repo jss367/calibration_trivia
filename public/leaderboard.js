@@ -1,11 +1,10 @@
-
-import {
-    questions,
-} from './shared.js';
-
-const leaderboardContainer = document.getElementById('leaderboard-container');
+import { questions } from './shared.js';
 
 export function displayLeaderboard(sessionId) {
+    const leaderboardContainer = document.getElementById('leaderboard-container');
+    leaderboardContainer.innerHTML = '<h2>Leaderboard</h2><p>Loading...</p>';
+    leaderboardContainer.style.display = 'block';
+
     firebase.firestore().collection('sessions').doc(sessionId).collection('answers')
         .get()
         .then(querySnapshot => {
@@ -13,29 +12,35 @@ export function displayLeaderboard(sessionId) {
             querySnapshot.forEach(doc => {
                 const data = doc.data();
                 const userId = doc.id;
-                // Assuming 'answer' and 'confidence' are stored in each doc
                 if (!scores[userId]) {
                     scores[userId] = { correct: 0, total: 0 };
                 }
-                const isCorrect = questions[scores[userId].total].correctAnswer === data.answer;
-                if (isCorrect) {
-                    scores[userId].correct++;
+                const questionIndex = scores[userId].total;
+                if (questionIndex < questions.length) {
+                    const isCorrect = questions[questionIndex].correctAnswer === data.answer;
+                    if (isCorrect) {
+                        scores[userId].correct++;
+                    }
+                    scores[userId].total++;
                 }
-                scores[userId].total++;
             });
 
+            // Sort scores
+            const sortedScores = Object.entries(scores).sort((a, b) =>
+                (b[1].correct / b[1].total) - (a[1].correct / a[1].total)
+            );
+
             // Display the leaderboard
-            const leaderboardDiv = document.getElementById('leaderboard-container');
-            leaderboardDiv.innerHTML = '<h2>Leaderboard</h2>';
-            Object.keys(scores).forEach(userId => {
-                const score = scores[userId];
+            leaderboardContainer.innerHTML = '<h2>Leaderboard</h2>';
+            sortedScores.forEach(([userId, score]) => {
                 const scoreElement = document.createElement('p');
-                scoreElement.innerText = `${userId}: ${score.correct} / ${score.total}`;
-                leaderboardDiv.appendChild(scoreElement);
+                const percentage = ((score.correct / score.total) * 100).toFixed(2);
+                scoreElement.innerText = `${userId}: ${score.correct} / ${score.total} (${percentage}%)`;
+                leaderboardContainer.appendChild(scoreElement);
             });
-            leaderboardDiv.style.display = 'block';
         })
         .catch(error => {
             console.error("Error getting documents: ", error);
+            leaderboardContainer.innerHTML = '<h2>Leaderboard</h2><p>Error loading leaderboard</p>';
         });
 }
