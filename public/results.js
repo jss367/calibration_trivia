@@ -19,15 +19,10 @@ export function displayResults() {
     quizContainer.style.display = 'none';
     resultsContainer.style.display = 'block';
 
-    const showLeaderboardButton = document.getElementById('show-leaderboard');
-    if (modeGroupQuestioner.checked || modeGroupParticipant.checked) {
-        showLeaderboardButton.style.display = 'block';
-    } else {
-        showLeaderboardButton.style.display = 'none';
-    }
+    let resultsHTML = '';
 
     if (modeGroupQuestioner.checked) {
-        displayLeaderboard(getCurrentSessionId());
+        resultsHTML = '<h2>Quiz Completed</h2><p>Thank you for hosting the quiz!</p>';
     } else {
         brierScore /= questions.length;
 
@@ -55,7 +50,7 @@ export function displayResults() {
 
         const confidenceDecileScores = calculateConfidenceDecileScores(answers);
 
-        resultsContainer.innerHTML = `
+        resultsHTML = `
         <h2>Results</h2>
         <p>Correct answers: ${score} / ${questions.length}</p>
         <p style="color:${scoreColor};">Brier score: ${brierScore.toFixed(2)} (${scoreLabel})</p>
@@ -67,7 +62,17 @@ export function displayResults() {
             }
         }).join('')}
         `;
+    }
 
+    // Always add the leaderboard button
+    resultsHTML += '<button id="show-leaderboard">Show Leaderboard</button>';
+
+    resultsContainer.innerHTML = resultsHTML;
+
+    // Set up the leaderboard button click event
+    document.getElementById('show-leaderboard').onclick = () => displayLeaderboard(getCurrentSessionId());
+
+    if (!modeGroupQuestioner.checked) {
         displayIndividualResults();
     }
 }

@@ -141,20 +141,24 @@ function handleNextButton() {
     if (modeGroupQuestioner.checked) {
         const sessionId = getCurrentSessionId();
         questionerNextQuestion(sessionId);
-    } else if (modeGroupParticipant.checked) {
-        submitAnswer();
-        const sessionId = getCurrentSessionId();
-        nextQuestion(sessionId);
     } else {
-        submitAnswer();
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-            displayQuestion(currentQuestionIndex);
+        if (submitAnswer()) {  // Only proceed if submitAnswer was successful
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                if (modeGroupParticipant.checked) {
+                    displayQuestionForGroupParticipant(currentQuestionIndex);
+                } else {
+                    displayQuestion(currentQuestionIndex);
+                }
+            } else {
+                displayResults();
+            }
         } else {
-            displayResults();
+            // Alert the user that they need to answer the question and provide a confidence level
+            alert("Please select an answer and provide a confidence level before proceeding.");
         }
     }
-}
+}``
 
 
 document.getElementById('show-leaderboard').addEventListener('click', () => {
