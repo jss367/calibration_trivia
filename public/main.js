@@ -108,15 +108,17 @@ function handleSinglePlayerMode() {
 
 function handleGroupParticipantMode() {
     console.log("Starting group participant mode");
-    joinSelectedSession();
-    loadQuestionsParticipant()
+    return joinSelectedSession()
+        .then(() => {
+            console.log("Session joined successfully");
+            return loadQuestionsParticipant();
+        })
         .then(() => {
             console.log("Questions loaded successfully for group participant");
             displayQuestionForGroupParticipant(0);
         })
         .catch(error => {
-            console.error("Failed to load questions for group participant:", error);
-            // Handle error
+            console.error("Failed to start group participant mode:", error);
         });
 }
 

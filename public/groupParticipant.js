@@ -16,23 +16,29 @@ import { getCurrentSessionId } from './sessionManagement.js';
 import { getConfidenceInputHTML } from './quizLogic.js';
 
 export function loadQuestionsParticipant() {
-    const sessionId = getCurrentSessionId();
-    if (!sessionId) {
-        console.error("No session ID found.");
-        return;
-    }
+    return new Promise((resolve, reject) => {
+        const sessionId = getCurrentSessionId();
+        if (!sessionId) {
+            reject(new Error("No session ID found"));
+            return;
+        }
 
-    firebase.firestore().collection('sessions').doc(sessionId).get()
-        .then(doc => {
-            if (doc.exists && doc.data().questions) {
-                questions = doc.data().questions;
-                currentQuestionIndex = 0;
-                displayQuestionForGroupParticipant(currentQuestionIndex);
-            } else {
-                console.error("No questions available in this session or session does not exist.");
-            }
-        })
-        .catch(error => console.error("Error loading session questions:", error));
+        firebase.firestore().collection('sessions').doc(sessionId).get()
+            .then(doc => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    if (data.questions && data.questions.length > 0) {
+                        questions = data.questions;
+                        resolve();
+                    } else {
+                        reject(new Error("No questions available in this session"));
+                    }
+                } else {
+                    reject(new Error("Session not found"));
+                }
+            })
+            .catch(reject);
+    });
 }
 
 

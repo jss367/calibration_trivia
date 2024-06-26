@@ -11,6 +11,7 @@ import {
 import { submitAnswerToFirestore } from './firestore.js';
 import { getCurrentSessionId } from './sessionManagement.js';
 import { displayQuestionForGroupParticipant } from './groupParticipant.js';
+import { displayResults } from './results.js';
 
 export function getConfidenceInputHTML() {
     console.log('Inside getConfidenceInputHTML')
