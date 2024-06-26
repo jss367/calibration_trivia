@@ -88,7 +88,7 @@ export function joinSelectedSession() {
         const sessionSelectionContainer = document.getElementById('session-id-selection-container');
         sessionSelectionContainer.style.display = 'none';
 
-        // Optionally, display the selected session ID
+        // Display the selected session ID
         const sessionInfoContainer = document.createElement('div');
         sessionInfoContainer.id = 'session-info-container';
         sessionInfoContainer.innerHTML = `<p>Selected Session: ${selectedSessionId}</p>`;
