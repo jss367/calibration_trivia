@@ -12,7 +12,7 @@ import {
     currentQuestionIndex,
 
 } from './shared.js';
-
+import { displayResults } from './results.js';
 
 // Function for the Questioner to call when ready to move to the next question
 export function questionerNextQuestion(sessionId) {

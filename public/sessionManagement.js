@@ -2,17 +2,22 @@
 // Function to create a new session
 export function createSession() {
     const sessionId = document.getElementById('session-id').value.trim();
-    firebase.firestore().collection('sessions').doc(sessionId).set({
+    console.log('Creating session with ID:', sessionId);
+    return firebase.firestore().collection('sessions').doc(sessionId).set({
         currentQuestionIndex: 0,
         questions: [],
         active: true
     })
         .then(() => {
             console.log('Session created successfully with ID:', sessionId);
-            // Store sessionId in a variable or local storage to use later
             localStorage.setItem('currentSessionId', sessionId);
+            console.log('currentSessionId set in localStorage:', sessionId);
+            return sessionId;
         })
-        .catch(error => console.error('Error creating session:', error));
+        .catch(error => {
+            console.error('Error creating session:', error);
+            throw error;
+        });
 }
 
 
@@ -23,11 +28,10 @@ export function generateRandomUsername() {
 }
 
 
-
-
 export function getCurrentSessionId() {
-    // Retrieve the session ID from local storage
-    return localStorage.getItem('currentSessionId');
+    const sessionId = localStorage.getItem('currentSessionId');
+    console.log('Retrieved sessionId from localStorage:', sessionId);
+    return sessionId;
 }
 
 export function loadSessionQuestions(sessionId) {
@@ -76,9 +80,12 @@ export function loadAvailableSessions() {
 export function joinSelectedSession() {
     const selectedSessionId = document.getElementById('session-id-select').value;
     if (selectedSessionId) {
-        localStorage.setItem('currentSessionId', selectedSessionId); // Save to local storage or a variable
-        // joinSessionListener(selectedSessionId); // Start listening for updates on the selected session
+        console.log('Joining session with ID:', selectedSessionId);
+        localStorage.setItem('currentSessionId', selectedSessionId);
+        console.log('currentSessionId set in localStorage:', selectedSessionId);
+        return Promise.resolve(selectedSessionId);
     } else {
         console.error('No session selected.');
+        return Promise.reject(new Error('No session selected.'));
     }
 }
