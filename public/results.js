@@ -1,4 +1,15 @@
 
+import {
+    quizContainer,
+    modeGroupQuestioner,
+    questions,
+    userAnswers,
+    correctAnswers,
+    userConfidences,
+    score,
+    brierScore
+} from './shared.js';
+
 export function displayResults() {
     quizContainer.style.display = 'none';
 

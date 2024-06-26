@@ -1,3 +1,14 @@
+
+import {
+    questions,
+    currentQuestionIndex,
+    userAnswers,
+    correctAnswers,
+    userConfidences,
+    score,
+    brierScore
+} from './shared.js';
+
 export function getConfidenceInputHTML() {
     return `
       <div>

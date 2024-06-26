@@ -1,4 +1,17 @@
 
+import {
+    startButtonContainer,
+    sessionIdContainer,
+    usernameContainer,
+    nextButton,
+    modeSelectionContainer,
+    quizContainer,
+    modeGroupParticipant,
+    questions,
+    currentQuestionIndex,
+
+} from './shared.js';
+
 export function loadQuestionsParticipant() {
     const sessionId = getCurrentSessionId();
     if (!sessionId) {

@@ -1,3 +1,8 @@
+
+import {
+    questions,
+} from './shared.js';
+
 const leaderboardContainer = document.getElementById('leaderboard-container');
 
 export function displayLeaderboard(sessionId) {

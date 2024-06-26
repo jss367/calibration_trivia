@@ -1,6 +1,19 @@
 // initialization.js
 import { loadAvailableSessions } from './sessionManagement.js';
 
+import {
+    startButtonContainer,
+    sessionIdContainer,
+    categorySelectionContainer,
+    questionCountContainer,
+    sessionIDSelectionContainer,
+    usernameContainer,
+    startQuizButton,
+    nextButton,
+    modeSelectionContainer,
+} from './shared.js';
+
+
 export function initialize() {
     console.log("Initializing");
     modeSelectionContainer.addEventListener('change', handleModeSelection);

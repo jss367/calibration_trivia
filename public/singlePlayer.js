@@ -1,4 +1,12 @@
-const modeSinglePlayer = document.getElementById('mode-single');
+
+import {
+    nextButton,
+    modeSinglePlayer,
+    modeGroupParticipant,
+    modeGroupQuestioner,
+    questions,
+    currentQuestionIndex,
+} from './shared.js';
 
 export function loadQuestionsSingle() {
     console.log("inside loadQuestionsSingle");

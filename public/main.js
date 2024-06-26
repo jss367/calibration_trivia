@@ -1,43 +1,30 @@
 // main.js
-import { initialize, handleModeSelection, updateStartButtonState } from './initialization.js';
+import { initialize, handleModeSelection } from './initialization.js';
 import { loadQuestionsSingle, displayQuestion } from './singlePlayer.js';
-import { loadSessionQuestions, displayQuestionQuestioner, questionerNextQuestion } from './groupQuestioner.js';
-import { loadQuestionsParticipant, displayQuestionForGroupParticipant, onQuestionIndexUpdated } from './groupParticipant.js';
+import { questionerNextQuestion } from './groupQuestioner.js';
 import { createSession, joinSelectedSession, getCurrentSessionId } from './sessionManagement.js';
-import { submitAnswer, getConfidenceInputHTML, nextQuestion, calculateConfidenceDecileScores } from './quizLogic.js';
-import { displayLeaderboard } from './leaderboard.js';
+import { submitAnswer, nextQuestion } from './quizLogic.js';
 import { displayResults } from './results.js';
-import { saveQuestionsToFirestore, submitAnswerToFirestore } from './firestore.js';
 
-const appVersion = '1.3.2';
+import {
+    startButtonContainer,
+    categorySelectionContainer,
+    questionCountContainer,
+    usernameContainer,
+    startQuizButton,
+    nextButton,
+    modeSelectionContainer,
+    modeGroupParticipant,
+    modeGroupQuestioner,
+    questions,
+    currentQuestionIndex,
+
+} from './shared.js';
+
+
+const appVersion = '1.3.5';
 console.log('App Version:', appVersion);
 
-// Global variables
-let currentQuestionIndex = 0;
-let questions = [];
-let score = 0;
-let brierScore = 0;
-let userAnswers = [];
-let correctAnswers = [];
-let userConfidences = [];
-
-// DOM elements
-const quizContainer = document.getElementById('quiz-container');
-const questionContainer = document.getElementById('question-container');
-const nextButton = document.getElementById('next-button');
-const resultsContainer = document.getElementById('results-container');
-const usernameContainer = document.getElementById('username-container');
-const startQuizButton = document.getElementById('start-quiz');
-const leaderboardContainer = document.getElementById('leaderboard-container');
-const categorySelectionContainer = document.getElementById('category-selection-container');
-const sessionIDSelectionContainer = document.getElementById('session-id-selection-container');
-const modeSelectionContainer = document.getElementById('mode-selection-container');
-const modeSinglePlayer = document.getElementById('mode-single');
-const modeGroupParticipant = document.getElementById('mode-group-participant');
-const modeGroupQuestioner = document.getElementById('mode-group-questioner');
-const questionCountContainer = document.getElementById('question-count-container');
-const startButtonContainer = document.getElementById('start-button-container');
-const sessionIdContainer = document.getElementById('session-id-container');
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', initialize);
@@ -100,30 +87,3 @@ function handleNextButton() {
         }
     }
 }
-
-// Export variables and functions that need to be accessed by other modules
-export {
-    currentQuestionIndex,
-    questions,
-    score,
-    brierScore,
-    userAnswers,
-    correctAnswers,
-    userConfidences,
-    quizContainer,
-    questionContainer,
-    nextButton,
-    resultsContainer,
-    usernameContainer,
-    startQuizButton,
-    leaderboardContainer,
-    categorySelectionContainer,
-    sessionIDSelectionContainer,
-    modeSelectionContainer,
-    modeSinglePlayer,
-    modeGroupParticipant,
-    modeGroupQuestioner,
-    questionCountContainer,
-    startButtonContainer,
-    sessionIdContainer
-};

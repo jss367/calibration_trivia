@@ -1,3 +1,5 @@
+
+
 export function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
     if (!sessionId || !userId) {
         console.error('Session ID or User ID is missing.');
