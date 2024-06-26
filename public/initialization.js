@@ -21,6 +21,7 @@ export function initialize() {
 }
 
 function setupEventListeners() {
+    console.log("Inside setupEventListeners")
     modeSelectionContainer.addEventListener('change', handleModeSelection);
     document.getElementById('username').addEventListener('input', updateStartButtonState);
     document.getElementById('session-id').addEventListener('input', updateStartButtonState);
@@ -31,6 +32,7 @@ function setupEventListeners() {
 }
 
 function restoreSavedMode() {
+    console.log("Inside restoreSavedMode")
     const savedMode = localStorage.getItem('selectedMode');
     if (savedMode) {
         document.getElementById(`mode-${savedMode}`).checked = true;
@@ -102,6 +104,7 @@ export function handleModeSelection() {
 }
 
 export function updateStartButtonState() {
+    console.log("Inside updateStartButtonState")
     // Attempt to find a checked radio button
     const checkedModeRadioButton = document.querySelector('input[name="mode"]:checked');
 
@@ -127,7 +130,6 @@ export function updateStartButtonState() {
     startButton.disabled = !enableButton;
     startButtonContainer.style.display = enableButton ? 'block' : 'none'; // Show/
 }
-
 
 
 export function updateNextButton() {

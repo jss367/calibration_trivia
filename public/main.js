@@ -114,7 +114,7 @@ function handleGroupParticipantMode() {
 }
 
 function handleGroupQuestionerMode() {
-    console.log("Starting group questioner mode");
+    console.log("Inside handleGroupQuestionerMode");
     createSession()
         .then((sessionId) => {
             console.log("Session created successfully:", sessionId);
