@@ -1,6 +1,6 @@
+const webpack = require('webpack');
 const path = require('path');
-
-console.log('Webpack Config Path:', __dirname);
+const package = require('./package.json');
 
 module.exports = {
     entry: './public/main.js',
@@ -28,5 +28,10 @@ module.exports = {
             firebase: path.resolve(__dirname, 'node_modules/firebase')
         }
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.APP_VERSION': JSON.stringify(package.version)
+        })
+    ],
     mode: 'production'
 };
