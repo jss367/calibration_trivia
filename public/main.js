@@ -109,8 +109,8 @@ function handleSinglePlayerMode() {
 function handleGroupParticipantMode() {
     console.log("Starting group participant mode");
     return joinSelectedSession()
-        .then(() => {
-            console.log("Session joined successfully");
+        .then((sessionId) => {
+            console.log("Session joined successfully:", sessionId);
             return loadQuestionsParticipant();
         })
         .then(() => {
