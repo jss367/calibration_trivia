@@ -57,7 +57,7 @@ export function submitAnswer() {
 
 function parseConfidence(value) {
     let confidence = parseInt(value, 10);
-    confidence = Math.max(0, Math.min(confidence, 100));
+    confidence = Math.max(25, Math.min(confidence, 100)); // Set minimum confidence to 25%
     return Math.round(confidence) / 100;
 }
 
