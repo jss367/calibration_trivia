@@ -1,11 +1,29 @@
 // sessionManagement.test.js
 import { joinSelectedSession } from '../public/sessionManagement';
 
+// Mock localStorage
+const localStorageMock = (function () {
+    let store = {};
+    return {
+        getItem: jest.fn(key => store[key] || null),
+        setItem: jest.fn((key, value) => {
+            store[key] = value.toString();
+        }),
+        clear: jest.fn(() => {
+            store = {};
+        })
+    };
+})();
+
+Object.defineProperty(window, 'localStorage', {
+    value: localStorageMock
+});
+
 describe('joinSelectedSession', () => {
     beforeEach(() => {
         // Reset mocks before each test
-        localStorage.clear.mockClear();
-        localStorage.setItem.mockClear();
+        localStorageMock.clear();
+        localStorageMock.setItem.mockClear();
         document.body.innerHTML = `
       <div id="session-id-selection-container">
         <select id="session-id-select">
@@ -21,10 +39,12 @@ describe('joinSelectedSession', () => {
 
         await joinSelectedSession();
 
-        expect(localStorage.setItem).toHaveBeenCalledWith('currentSessionId', 'test-session');
+        expect(localStorageMock.setItem).toHaveBeenCalledWith('currentSessionId', 'test-session');
         expect(document.getElementById('session-id-selection-container').style.display).toBe('none');
-        expect(document.getElementById('session-info-container')).not.toBeNull();
-        expect(document.getElementById('session-info-container').textContent).toContain('Test Session');
+
+        const sessionInfoContainer = document.getElementById('session-info-container');
+        expect(sessionInfoContainer).not.toBeNull();
+        expect(sessionInfoContainer.textContent).toBe('Selected Session: test-session');
     });
 
     it('should reject if no session is selected', async () => {
