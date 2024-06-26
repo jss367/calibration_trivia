@@ -1,6 +1,6 @@
 // main.js
 
-const appVersion = '1.4.0';
+const appVersion = '1.5.0';
 console.log('App Version:', appVersion);
 
 import { initialize, handleModeSelection } from './initialization.js';
@@ -158,7 +158,7 @@ function handleNextButton() {
             alert("Please select an answer and provide a confidence level before proceeding.");
         }
     }
-}``
+} ``
 
 
 document.getElementById('show-leaderboard').addEventListener('click', () => {
