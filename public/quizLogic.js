@@ -6,6 +6,7 @@ import {
     userConfidences,
     score,
     brierScore,
+    baselineScore,
     modeGroupParticipant,
     modeGroupQuestioner
 } from './shared.js';
@@ -62,17 +63,26 @@ function parseConfidence(value) {
 
 function updateScores(userAnswer, userConfidence) {
     const currentCorrectAnswer = questions[userAnswers.length].correctAnswer;
+    let logScore;
     if (currentCorrectAnswer === userAnswer) {
+        logScore = Math.log(userConfidence);
         score++;
         brierScore += Math.pow(1 - userConfidence, 2);
     } else {
+        logScore = Math.log(1 - userConfidence);
         brierScore += Math.pow(0 - userConfidence, 2);
     }
+
+    const baselineLogScore = Math.log(0.5);
+    const normalizedLogScore = 100 * (logScore - baselineLogScore) / (-baselineLogScore);
+
+    baselineScore += normalizedLogScore;
 
     userAnswers.push(userAnswer);
     correctAnswers.push(currentCorrectAnswer);
     userConfidences.push(userConfidence);
 }
+
 
 function saveAnswer(userAnswer, userConfidence) {
     if (modeGroupParticipant.checked || modeGroupQuestioner.checked) {
@@ -85,9 +95,14 @@ function saveAnswer(userAnswer, userConfidence) {
 }
 
 function clearInputs(selectedOption, confidenceElement) {
-    if (selectedOption) selectedOption.checked = false;
-    if (confidenceElement) confidenceElement.value = '';
+    if (selectedOption) {
+        selectedOption.checked = false;
+    }
+    if (confidenceElement) {
+        confidenceElement.value = '';
+    }
 }
+
 
 export function calculateConfidenceDecileScores(answers) {
     const decileScores = Array(10).fill(0);

@@ -22,6 +22,7 @@ export let currentQuestionIndex = 0;
 export let questions = [];
 export let score = 0;
 export let brierScore = 0;
+export let baselineScore = 0;
 export let userAnswers = [];
 export let correctAnswers = [];
 export let userConfidences = [];

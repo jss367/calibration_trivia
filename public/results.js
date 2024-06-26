@@ -7,7 +7,8 @@ import {
     correctAnswers,
     userConfidences,
     score,
-    brierScore
+    brierScore,
+    baselineScore
 } from './shared.js';
 import { calculateConfidenceDecileScores } from './quizLogic.js';
 import { getCurrentSessionId } from './sessionManagement.js';
@@ -25,16 +26,17 @@ export function displayResults() {
         resultsHTML += '<p>Thank you for hosting the quiz!</p>';
     } else {
         brierScore /= questions.length;
+        baselineScore /= questions.length;
 
-        // Determine the label and color based on Brier score
+        // Determine the label and color based on Baseline score
         let scoreLabel, scoreColor;
-        if (brierScore <= 0.10) {
+        if (baselineScore >= 75) {
             scoreLabel = 'Excellent';
             scoreColor = 'green';
-        } else if (brierScore <= 0.20) {
+        } else if (baselineScore >= 50) {
             scoreLabel = 'Good';
             scoreColor = 'blue';
-        } else if (brierScore <= 0.30) {
+        } else if (baselineScore >= 25) {
             scoreLabel = 'Fair';
             scoreColor = 'orange';
         } else {
@@ -52,7 +54,8 @@ export function displayResults() {
 
         resultsHTML += `
         <p>Correct answers: ${score} / ${questions.length}</p>
-        <p style="color:${scoreColor};">Brier score: ${brierScore.toFixed(2)} (${scoreLabel})</p>
+        <p>Brier score: ${brierScore.toFixed(2)}</p>
+        <p style="color:${scoreColor};">Baseline score: ${baselineScore.toFixed(2)} (${scoreLabel})</p>
         ${confidenceDecileScores.map(({ decileRange, score, correct, total }) => {
             if (total === 0) {
                 return `<p>You did not answer any questions with ${decileRange}% confidence.</p>`;
