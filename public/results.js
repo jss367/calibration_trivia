@@ -19,10 +19,10 @@ export function displayResults() {
     quizContainer.style.display = 'none';
     resultsContainer.style.display = 'block';
 
-    let resultsHTML = '';
+    let resultsHTML = '<h2>Results</h2>';
 
     if (modeGroupQuestioner.checked) {
-        resultsHTML = '<h2>Quiz Completed</h2><p>Thank you for hosting the quiz!</p>';
+        resultsHTML += '<p>Thank you for hosting the quiz!</p>';
     } else {
         brierScore /= questions.length;
 
@@ -50,8 +50,7 @@ export function displayResults() {
 
         const confidenceDecileScores = calculateConfidenceDecileScores(answers);
 
-        resultsHTML = `
-        <h2>Results</h2>
+        resultsHTML += `
         <p>Correct answers: ${score} / ${questions.length}</p>
         <p style="color:${scoreColor};">Brier score: ${brierScore.toFixed(2)} (${scoreLabel})</p>
         ${confidenceDecileScores.map(({ decileRange, score, correct, total }) => {
@@ -64,13 +63,17 @@ export function displayResults() {
         `;
     }
 
-    // Always add the leaderboard button
-    resultsHTML += '<button id="show-leaderboard">Show Leaderboard</button>';
+    // Only add the leaderboard button for group modes
+    if (modeGroupQuestioner.checked || modeGroupParticipant.checked) {
+        resultsHTML += '<button id="show-leaderboard">Show Leaderboard</button>';
+    }
 
     resultsContainer.innerHTML = resultsHTML;
 
-    // Set up the leaderboard button click event
-    document.getElementById('show-leaderboard').onclick = () => displayLeaderboard(getCurrentSessionId());
+    // Set up the leaderboard button click event only for group modes
+    if (modeGroupQuestioner.checked || modeGroupParticipant.checked) {
+        document.getElementById('show-leaderboard').onclick = () => displayLeaderboard(getCurrentSessionId());
+    }
 
     if (!modeGroupQuestioner.checked) {
         displayIndividualResults();
