@@ -10,19 +10,21 @@ export function displayLeaderboard(sessionId) {
         .then(querySnapshot => {
             const scores = {};
             querySnapshot.forEach(doc => {
-                const data = doc.data();
                 const userId = doc.id;
+                const userAnswers = doc.data();
+
                 if (!scores[userId]) {
                     scores[userId] = { correct: 0, total: 0 };
                 }
-                const questionIndex = scores[userId].total;
-                if (questionIndex < questions.length) {
-                    const isCorrect = questions[questionIndex].correctAnswer === data.answer;
-                    if (isCorrect) {
+
+                Object.keys(userAnswers).forEach(questionIndex => {
+                    const answer = userAnswers[questionIndex];
+                    scores[userId].total++;
+                    if (parseInt(questionIndex) < questions.length &&
+                        questions[parseInt(questionIndex)].correctAnswer === answer.answer) {
                         scores[userId].correct++;
                     }
-                    scores[userId].total++;
-                }
+                });
             });
 
             // Sort scores
@@ -34,7 +36,7 @@ export function displayLeaderboard(sessionId) {
             leaderboardContainer.innerHTML = '<h2>Leaderboard</h2>';
             sortedScores.forEach(([userId, score]) => {
                 const scoreElement = document.createElement('p');
-                const percentage = ((score.correct / score.total) * 100).toFixed(2);
+                const percentage = score.total > 0 ? ((score.correct / score.total) * 100).toFixed(2) : '0.00';
                 scoreElement.innerText = `${userId}: ${score.correct} / ${score.total} (${percentage}%)`;
                 leaderboardContainer.appendChild(scoreElement);
             });
