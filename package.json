@@ -1,6 +1,6 @@
 {
     "name": "calibration_trivia",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "description": "Calibration Trivia Application",
     "main": "index.js",
     "directories": {

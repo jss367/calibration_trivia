@@ -10,16 +10,6 @@
         ]
     },
     {
-        "question": "In which year did the Titanic sink?",
-        "correctAnswer": "1912",
-        "options": [
-            "1912",
-            "1910",
-            "1915",
-            "1905"
-        ]
-    },
-    {
         "question": "What ancient city was destroyed by a volcanic eruption in 79 AD?",
         "correctAnswer": "Pompeii",
         "options": [
@@ -128,7 +118,7 @@
             "Gaul",
             "Britain"
         ]
-    },    
+    },
     {
         "question": "In what year did World War I start?",
         "correctAnswer": "1914",
@@ -437,6 +427,206 @@
             "Winston Churchill",
             "Clement Attlee",
             "Margaret Thatcher"
+        ]
+    },
+    {
+        "question": "What was the main cause of the Peloponnesian War?",
+        "correctAnswer": "Conflict between Athens and Sparta",
+        "options": [
+            "Invasion of Persia",
+            "Conflict between Athens and Sparta",
+            "Expansion of the Roman Empire",
+            "Trade disputes with Egypt"
+        ]
+    },
+    {
+        "question": "Who was the first emperor of China?",
+        "correctAnswer": "Qin Shi Huang",
+        "options": [
+            "Liu Bang",
+            "Kublai Khan",
+            "Qin Shi Huang",
+            "Emperor Gaozu"
+        ]
+    },
+    {
+        "question": "Which treaty ended the Thirty Years' War in 1648?",
+        "correctAnswer": "Peace of Westphalia",
+        "options": [
+            "Treaty of Versailles",
+            "Treaty of Paris",
+            "Peace of Westphalia",
+            "Treaty of Utrecht"
+        ]
+    },
+    {
+        "question": "What was the main goal of the Crusades?",
+        "correctAnswer": "To capture the Holy Land",
+        "options": [
+            "To explore new trade routes",
+            "To convert pagans in Europe",
+            "To capture the Holy Land",
+            "To establish the Holy Roman Empire"
+        ]
+    },
+    {
+        "question": "Who was the British monarch during the American Revolution?",
+        "correctAnswer": "King George III",
+        "options": [
+            "King George III",
+            "King George II",
+            "King James II",
+            "King Charles II"
+        ]
+    },
+    {
+        "question": "Which revolution is known for the slogan 'Liberty, Equality, Fraternity'?",
+        "correctAnswer": "French Revolution",
+        "options": [
+            "American Revolution",
+            "Russian Revolution",
+            "French Revolution",
+            "Haitian Revolution"
+        ]
+    },
+    {
+        "question": "Who was the first person to reach the South Pole?",
+        "correctAnswer": "Roald Amundsen",
+        "options": [
+            "Robert Falcon Scott",
+            "Roald Amundsen",
+            "Ernest Shackleton",
+            "Douglas Mawson"
+        ]
+    },
+    {
+        "question": "Which empire was known for its road system that stretched over 14,000 miles?",
+        "correctAnswer": "Inca Empire",
+        "options": [
+            "Roman Empire",
+            "Mongol Empire",
+            "Inca Empire",
+            "Ottoman Empire"
+        ]
+    },
+    {
+        "question": "Who was the leader of the Soviet Union during the Cuban Missile Crisis?",
+        "correctAnswer": "Nikita Khrushchev",
+        "options": [
+            "Joseph Stalin",
+            "Nikita Khrushchev",
+            "Leonid Brezhnev",
+            "Mikhail Gorbachev"
+        ]
+    },
+    {
+        "question": "In which year did the Titanic sink?",
+        "correctAnswer": "1912",
+        "options": [
+            "1905",
+            "1912",
+            "1918",
+            "1925"
+        ]
+    },
+    {
+        "question": "Who was the longest-reigning emperor of Japan?",
+        "correctAnswer": "Emperor Hirohito",
+        "options": [
+            "Emperor Meiji",
+            "Emperor Akihito",
+            "Emperor Hirohito",
+            "Emperor Taisho"
+        ]
+    },
+    {
+        "question": "What was the capital of the Byzantine Empire after the fall of Constantinople?",
+        "correctAnswer": "No capital (Empire collapsed)",
+        "options": [
+            "Rome",
+            "Athens",
+            "No capital (Empire collapsed)",
+            "Alexandria"
+        ]
+    },
+    {
+        "question": "Which king signed the Magna Carta in 1215?",
+        "correctAnswer": "King John",
+        "options": [
+            "King Richard I",
+            "King Edward I",
+            "King Henry II",
+            "King John"
+        ]
+    },
+    {
+        "question": "Which ancient philosopher was a student of Plato and tutor to Alexander the Great?",
+        "correctAnswer": "Aristotle",
+        "options": [
+            "Socrates",
+            "Aristotle",
+            "Pythagoras",
+            "Epicurus"
+        ]
+    },
+    {
+        "question": "Which battle in 1066 marked the beginning of Norman rule in England?",
+        "correctAnswer": "Battle of Hastings",
+        "options": [
+            "Battle of Stamford Bridge",
+            "Battle of Bannockburn",
+            "Battle of Hastings",
+            "Battle of Agincourt"
+        ]
+    },
+    {
+        "question": "Which ancient city was known as Byzantium before it was renamed?",
+        "correctAnswer": "Constantinople",
+        "options": [
+            "Athens",
+            "Rome",
+            "Constantinople",
+            "Carthage"
+        ]
+    },
+    {
+        "question": "What was the primary purpose of the Domesday Book commissioned by William the Conqueror?",
+        "correctAnswer": "To assess land and resource ownership",
+        "options": [
+            "To record laws and statutes",
+            "To assess land and resource ownership",
+            "To document the history of England",
+            "To record noble lineages"
+        ]
+    },
+    {
+        "question": "Which empire was ruled by the House of Osman?",
+        "correctAnswer": "Ottoman Empire",
+        "options": [
+            "Holy Roman Empire",
+            "Mughal Empire",
+            "Ottoman Empire",
+            "Safavid Empire"
+        ]
+    },
+    {
+        "question": "Who was the author of 'The Social Contract'?",
+        "correctAnswer": "Jean-Jacques Rousseau",
+        "options": [
+            "John Locke",
+            "Thomas Hobbes",
+            "Montesquieu",
+            "Jean-Jacques Rousseau"
+        ]
+    },
+    {
+        "question": "In which year did the Russian Revolution begin?",
+        "correctAnswer": "1917",
+        "options": [
+            "1905",
+            "1914",
+            "1917",
+            "1923"
         ]
     }
 ]
