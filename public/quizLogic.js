@@ -5,7 +5,9 @@ import {
     correctAnswers,
     userConfidences,
     score,
-    brierScore
+    brierScore,
+    modeGroupParticipant,
+    modeGroupQuestioner
 } from './shared.js';
 import { submitAnswerToFirestore } from './firestore.js';
 import { getCurrentSessionId } from './sessionManagement.js';
@@ -13,7 +15,7 @@ import { displayQuestionForGroupParticipant } from './groupParticipant.js';
 import { displayResults } from './results.js';
 
 export function getConfidenceInputHTML() {
-    console.log('Inside getConfidenceInputHTML')
+    console.log('Inside getConfidenceInputHTML');
     return `
       <div>
         <label for="confidence">Confidence:</label>
@@ -23,13 +25,10 @@ export function getConfidenceInputHTML() {
 }
 
 export function nextQuestion(sessionId) {
-    // Increment the current question index
     currentQuestionIndex++;
-    // Check if there are more questions
     if (currentQuestionIndex < questions.length) {
         displayQuestionForGroupParticipant(currentQuestionIndex);
     } else {
-        // Handle the end of the quiz
         displayResults();
     }
 }
@@ -39,25 +38,29 @@ export function submitAnswer() {
     const selectedOption = document.querySelector('input[name="answer"]:checked');
     const confidenceElement = document.getElementById('confidence');
 
-    let userAnswer = null;
-    let userConfidence = null;
-
-    if (selectedOption) {
-        userAnswer = selectedOption.value;
-    }
-
-    if (confidenceElement) {
-        userConfidence = parseInt(confidenceElement.value, 10);
-        userConfidence = Math.max(0, Math.min(userConfidence, 100));
-        userConfidence = Math.round(userConfidence) / 100;
-    }
+    let userAnswer = selectedOption ? selectedOption.value : null;
+    let userConfidence = confidenceElement ? parseConfidence(confidenceElement.value) : null;
 
     if (!userAnswer || isNaN(userConfidence)) {
         console.warn('No answer or invalid confidence selected for current question');
-        // You might want to show an alert to the user here
-        return false;  // Indicate that submission was not successful
+        return false;
     }
 
+    updateScores(userAnswer, userConfidence);
+    saveAnswer(userAnswer, userConfidence);
+
+    clearInputs(selectedOption, confidenceElement);
+
+    return true;
+}
+
+function parseConfidence(value) {
+    let confidence = parseInt(value, 10);
+    confidence = Math.max(0, Math.min(confidence, 100));
+    return Math.round(confidence) / 100;
+}
+
+function updateScores(userAnswer, userConfidence) {
     const currentCorrectAnswer = questions[userAnswers.length].correctAnswer;
     if (currentCorrectAnswer === userAnswer) {
         score++;
@@ -69,22 +72,21 @@ export function submitAnswer() {
     userAnswers.push(userAnswer);
     correctAnswers.push(currentCorrectAnswer);
     userConfidences.push(userConfidence);
+}
 
-    const sessionId = getCurrentSessionId();
-    const userId = document.getElementById('username').value.trim();
-
-    if (userId && sessionId) {
-        submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
+function saveAnswer(userAnswer, userConfidence) {
+    if (modeGroupParticipant.checked || modeGroupQuestioner.checked) {
+        const sessionId = getCurrentSessionId();
+        const userId = document.getElementById('username').value.trim();
+        if (userId && sessionId) {
+            submitAnswerToFirestore(sessionId, userId, userAnswer, userConfidence);
+        }
     }
+}
 
-    if (selectedOption) {
-        selectedOption.checked = false;
-    }
-    if (confidenceElement) {
-        confidenceElement.value = '';
-    }
-
-    return true;  // Indicate that submission was successful
+function clearInputs(selectedOption, confidenceElement) {
+    if (selectedOption) selectedOption.checked = false;
+    if (confidenceElement) confidenceElement.value = '';
 }
 
 export function calculateConfidenceDecileScores(answers) {
