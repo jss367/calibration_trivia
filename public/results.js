@@ -68,16 +68,18 @@ export function displayIndividualResults() {
     for (let i = 0; i < questions.length; i++) {
         const resultPara = document.createElement('p');
 
+        // Round the confidence to 2 decimal places
+        const confidencePercentage = Math.round(userConfidences[i] * 100);
+
         if (typeof correctAnswers[i] === 'object') {
-            const userAnswerString = userAnswers[i].toString(); // Convert user's answer to string
+            const userAnswerString = userAnswers[i].toString();
             const isCorrect = correctAnswers[i].includes(userAnswerString);
             resultPara.style.color = isCorrect ? 'green' : 'red';
-            resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswerString} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
-
+            resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswerString} with ${confidencePercentage}% confidence.<br>The correct answer is ${correctAnswers[i].join(' or ')}.`;
         } else {
             const isCorrect = correctAnswers[i] === userAnswers[i];
             resultPara.style.color = isCorrect ? 'green' : 'red';
-            resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswers[i]} with ${userConfidences[i] * 100}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
+            resultPara.innerHTML = `Question ${i + 1}: ${questions[i].question}<br>Your answer was ${userAnswers[i]} with ${confidencePercentage}% confidence.<br>The correct answer is ${correctAnswers[i]}.`;
         }
         resultsContainer.appendChild(resultPara);
     }

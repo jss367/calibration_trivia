@@ -1,4 +1,8 @@
 // main.js
+
+const appVersion = '1.3.9';
+console.log('App Version:', appVersion);
+
 import { initialize, handleModeSelection } from './initialization.js';
 import { loadQuestionsSingle, displayQuestion } from './singlePlayer.js';
 import { questionerNextQuestion } from './groupQuestioner.js';
@@ -22,8 +26,6 @@ import {
 } from './shared.js';
 
 
-const appVersion = '1.3.6';
-console.log('App Version:', appVersion);
 
 
 // Event listeners

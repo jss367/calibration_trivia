@@ -5,10 +5,7 @@ import {
     questions,
     questionContainer
 } from './shared.js';
-import {
 
-
-} from './shared.js';
 
 import { getConfidenceInputHTML } from './quizLogic.js';
 export function loadQuestionsSingle() {
