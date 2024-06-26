@@ -25,7 +25,7 @@ import {
 
 import { updateNextButton, loadAvailableSessions } from './initialization.js';
 import { joinSelectedSession, getCurrentSessionId } from './sessionManagement.js';
-import { loadQuestionsSingle, displayQuestion } from './singlePlayer.js';
+import { loadQuestionsSingle, displayQuestionSinglePlayer } from './singlePlayer.js';
 import { displayQuestionQuestioner } from './groupQuestioner.js';
 import { submitAnswer, nextQuestion } from './quizLogic.js';
 import { displayResults } from './results.js';
@@ -212,7 +212,7 @@ export function initNextButtonListener() {
 
             // Check if there are more questions
             if (currentQuestionIndex < questions.length) {
-                displayQuestion(currentQuestionIndex); // Display next question for Single Player
+                displayQuestionSinglePlayer(currentQuestionIndex); // Display next question for Single Player
             } else {
                 displayResults(); // Display results if it's the last question
             }
