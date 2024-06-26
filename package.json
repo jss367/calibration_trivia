@@ -38,6 +38,7 @@
         "jest-environment-jsdom": "^29.0.0"
     },
     "dependencies": {
-        "firebase": "^10.12.2"
+        "firebase": "^10.12.2",
+        "superstatic": "^9.0.3"
     }
 }
