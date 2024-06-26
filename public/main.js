@@ -61,11 +61,35 @@ function startQuiz() {
     categorySelectionContainer.style.display = 'none';
 
     if (selectedMode === 'single') {
-        loadQuestionsSingle();
+        loadQuestionsSingle()
+            .then(() => {
+                displayQuestion(0);
+            })
+            .catch(error => {
+                console.error("Failed to load questions:", error);
+                // Handle error (e.g., show an error message to the user)
+            });
     } else if (selectedMode === 'group-participant') {
         joinSelectedSession();
+        // Assuming loadQuestionsParticipant returns a promise
+        loadQuestionsParticipant()
+            .then(() => {
+                displayQuestionForGroupParticipant(0);
+            })
+            .catch(error => {
+                console.error("Failed to load participant questions:", error);
+                // Handle error
+            });
     } else if (selectedMode === 'group-questioner') {
         createSession();
+        loadSessionQuestions(getCurrentSessionId())
+            .then(() => {
+                displayQuestionQuestioner(0);
+            })
+            .catch(error => {
+                console.error("Failed to load questioner questions:", error);
+                // Handle error
+            });
     }
 }
 
