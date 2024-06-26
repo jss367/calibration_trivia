@@ -52,8 +52,8 @@ export function loadQuestionsSingle() {
 }
 
 
-export function displayQuestion(index) {
-    console.log('Inside displayQuestion with index: ', index);
+export function displayQuestionSinglePlayer(index) {
+    console.log('Inside displayQuestionSinglePlayer with index: ', index);
     // This is for single player mode
 
     if (!questions[index]) {

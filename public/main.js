@@ -4,7 +4,7 @@ const appVersion = process.env.APP_VERSION;
 console.log('App Version:', appVersion);
 
 import { initialize, handleModeSelection, setupShareButton } from './initialization.js';
-import { loadQuestionsSingle, displayQuestion } from './singlePlayer.js';
+import { loadQuestionsSingle, displayQuestionSinglePlayer } from './singlePlayer.js';
 import { questionerNextQuestion, displayQuestionerScreen } from './groupQuestioner.js';
 import { loadQuestionsParticipant, displayQuestionForGroupParticipant } from './groupParticipant.js';
 import { createSession, joinSelectedSession, getCurrentSessionId, loadSessionQuestions } from './sessionManagement.js';
@@ -90,7 +90,7 @@ function handleSinglePlayerMode() {
     loadQuestionsSingle()
         .then(() => {
             console.log("Questions loaded successfully for single player");
-            displayQuestion(0);
+            displayQuestionSinglePlayer(0);
         })
         .catch(error => {
             console.error("Failed to load questions for single player:", error);
@@ -141,7 +141,7 @@ function handleNextButton() {
             if (modeGroupParticipant.checked) {
                 displayQuestionForGroupParticipant(currentQuestionIndex);
             } else {
-                displayQuestion(currentQuestionIndex);
+                displayQuestionSinglePlayer(currentQuestionIndex);
             }
         } else {
             displayResults();
