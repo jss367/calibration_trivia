@@ -88,5 +88,125 @@
             "Pringles",
             "Cheetos"
         ]
+    },
+    {
+        "question": "What is the name of the French dish that consists of slow-cooked meat and white beans?",
+        "correctAnswer": "Cassoulet",
+        "options": [
+            "Ratatouille",
+            "Coq au Vin",
+            "Cassoulet",
+            "Bouillabaisse"
+        ]
+    },
+    {
+        "question": "What is the main ingredient in the traditional Middle Eastern dish hummus?",
+        "correctAnswer": "Chickpeas",
+        "options": [
+            "Lentils",
+            "Chickpeas",
+            "Eggplant",
+            "Yogurt"
+        ]
+    },
+    {
+        "question": "Which spice, often used in Indian cuisine, is known for its bright yellow color?",
+        "correctAnswer": "Turmeric",
+        "options": [
+            "Saffron",
+            "Paprika",
+            "Turmeric",
+            "Cumin"
+        ]
+    },
+    {
+        "question": "What is the name of the Mexican dish that consists of a tortilla filled with meat, cheese, and other ingredients, then folded and grilled?",
+        "correctAnswer": "Quesadilla",
+        "options": [
+            "Taco",
+            "Quesadilla",
+            "Burrito",
+            "Enchilada"
+        ]
+    },
+    {
+        "question": "Which Italian pasta dish is made with eggs, cheese, pancetta, and pepper?",
+        "correctAnswer": "Carbonara",
+        "options": [
+            "Alfredo",
+            "Bolognese",
+            "Carbonara",
+            "Pesto"
+        ]
+    },
+    {
+        "question": "What is the main ingredient in the Japanese dish miso soup?",
+        "correctAnswer": "Miso Paste",
+        "options": [
+            "Soy Sauce",
+            "Miso Paste",
+            "Fish Sauce",
+            "Sake"
+        ]
+    },
+    {
+        "question": "Which dessert, originating from Austria, consists of a layered pastry with a filling of apples, sugar, cinnamon, and raisins?",
+        "correctAnswer": "Apple Strudel",
+        "options": [
+            "Tiramisu",
+            "Apple Strudel",
+            "Sachertorte",
+            "Baklava"
+        ]
+    },
+    {
+        "question": "What is the name of the Spanish cold soup made from tomatoes, peppers, cucumbers, and onions?",
+        "correctAnswer": "Gazpacho",
+        "options": [
+            "Paella",
+            "Gazpacho",
+            "Caldo Verde",
+            "Minestrone"
+        ]
+    },
+    {
+        "question": "Which popular street food in Turkey consists of grilled meat, usually lamb, served on a skewer?",
+        "correctAnswer": "Kebab",
+        "options": [
+            "Falafel",
+            "Shawarma",
+            "Kebab",
+            "Dolma"
+        ]
+    },
+    {
+        "question": "What is the name of the Vietnamese soup that is made with broth, rice noodles, herbs, and meat?",
+        "correctAnswer": "Pho",
+        "options": [
+            "Ramen",
+            "Pho",
+            "Tom Yum",
+            "Laksa"
+        ]
+    },
+    {
+        "question": "Which cheese is traditionally used in the Greek salad?",
+        "correctAnswer": "Feta",
+        "options": [
+            "Feta",
+            "Mozzarella",
+            "Cheddar",
+            "Brie"
+        ]
+    },
+    {
+        "question": "Which Japanese dish is made from vinegared rice, usually with some sugar and salt, combined with a variety of ingredients such as seafood, vegetables, and occasionally tropical fruits?",
+        "correctAnswer": "Sushi",
+        "options": [
+            "Tempura",
+            "Sushi",
+            "Ramen",
+            "Sashimi"
+        ]
     }
 ]
