@@ -1,27 +1,15 @@
-
-
 import {
-    startButtonContainer,
-    sessionIdContainer,
-    categorySelectionContainer,
-    questionCountContainer,
-    nextButton,
-    modeSelectionContainer, questionContainer,
+    questionContainer,
     quizContainer,
     questions,
     currentQuestionIndex,
-
 } from './shared.js';
 import { displayResults } from './results.js';
-
-// Function for the Questioner to call when ready to move to the next question
+import { getCurrentSessionId, loadSessionQuestions } from './sessionManagement.js';
 export function questionerNextQuestion(sessionId) {
-    // Increment the current question index
     currentQuestionIndex++;
 
-    // Check if there are more questions
     if (currentQuestionIndex < questions.length) {
-        // Update the current question index in the Firebase session
         firebase.firestore().collection('sessions').doc(sessionId).update({
             currentQuestionIndex: currentQuestionIndex
         }).then(() => {
@@ -31,59 +19,65 @@ export function questionerNextQuestion(sessionId) {
             console.error('Error updating question index:', error);
         });
     } else {
-        // Handle the end of the quiz
         displayResults();
     }
 }
 
-
-// Function to display the questioner's screen
 export function displayQuestionerScreen(sessionId) {
-    // Load questions from the session and set up the questioner UI
-    console.log("Inside displayQuestionerScreen");
-    loadSessionQuestions(sessionId)
-        .then(() => {
-            console.log("Inside loadSessionQuestions(sessionId)");
-            // Display the first question
-            currentQuestionIndex = 0;
-            displayQuestionQuestioner(currentQuestionIndex);
-
-            // Set up questioner-specific UI elements
-            quizContainer.style.display = 'block';
-            modeSelectionContainer.style.display = 'none';
-            startButtonContainer.style.display = 'none';
-            questionCountContainer.style.display = 'none';
-            categorySelectionContainer.style.display = 'none';
-            sessionIdContainer.style.display = 'block'; // Show the session ID
-            sessionIdContainer.innerHTML = `<p>Session ID: ${sessionId}</p>`;
-
-            // Show the next button for the questioner to proceed to the next question
-            nextButton.style.display = 'block';
-            nextButton.disabled = false; // Enable the next button for the questioner
-        })
-        .catch(error => {
-            console.error("Error displaying questioner screen:", error);
-        });
+    console.log("Inside displayQuestionerScreen for session:", sessionId);
+    // Hide unnecessary UI elements
+    document.getElementById('mode-selection-container').style.display = 'none';
+    document.getElementById('start-button-container').style.display = 'none';
+    // Show questioner-specific UI elements
+    document.getElementById('quiz-container').style.display = 'block';
+    // Display the first question
+    displayQuestionQuestioner(0, sessionId);
+    // Show the next button
+    const nextButton = document.getElementById('next-button');
+    nextButton.style.display = 'block';
+    nextButton.disabled = false;
 }
 
+function shareSession() {
+    const sessionId = getCurrentSessionId();
+    const shareUrl = `${window.location.origin}/${sessionId}?role=participant`;
+    const shareText = `Join my Calibration Trivia session! Session ID: ${sessionId}`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'Join Calibration Trivia Session',
+            text: shareText,
+            url: shareUrl,
+        }).then(() => {
+            console.log('Session shared successfully');
+        }).catch((error) => {
+            console.log('Error sharing session:', error);
+            fallbackShare(shareUrl);
+        });
+    } else {
+        fallbackShare(shareUrl);
+    }
+}
+
+function fallbackShare(shareUrl) {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+        alert('Session link copied to clipboard!');
+    }).catch((error) => {
+        console.error('Failed to copy session link:', error);
+        alert('Failed to copy session link. Please copy this URL manually: ' + shareUrl);
+    });
+}
 
 export function displayQuestionQuestioner(index) {
-    // This is for group questioner mode
-
     if (!questions[index]) {
         console.error("Question not found for index: ", index);
-        return; // Exit the function if the question is not found
+        return;
     }
 
     const question = questions[index];
-
-    // Create a new div for the question
     const questionDiv = document.createElement('div');
 
-    // Initialize the answer input HTML
-    let answerInputHTML = '';
-
-    answerInputHTML = question.options.map((option, index) => `
+    let answerInputHTML = question.options.map((option, index) => `
     <div>
       <label>${String.fromCharCode(65 + index)}: ${option}</label>
     </div>
@@ -95,7 +89,7 @@ export function displayQuestionQuestioner(index) {
     ${answerInputHTML}
   `;
 
-    questionContainer.innerHTML = ''; // Clear previous question
-    questionContainer.appendChild(questionDiv); // Append new question
-    quizContainer.style.display = 'block'; // Ensure the quiz container is visible
+    questionContainer.innerHTML = '';
+    questionContainer.appendChild(questionDiv);
+    quizContainer.style.display = 'block';
 }

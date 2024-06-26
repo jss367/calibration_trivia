@@ -1,13 +1,29 @@
+import { questions } from './shared.js';
 
-// Function to create a new session
 export function createSession() {
     const sessionId = document.getElementById('session-id').value.trim();
     console.log('Creating session with ID:', sessionId);
-    return firebase.firestore().collection('sessions').doc(sessionId).set({
-        currentQuestionIndex: 0,
-        questions: [],
-        active: true
-    })
+
+    // Get selected categories
+    const selectedCategories = Array.from(document.querySelectorAll('.category-checkbox:checked'))
+        .map(checkbox => checkbox.value);
+
+    // Get question count
+    const questionCount = parseInt(document.getElementById('question-count').value, 10);
+
+    // Load questions from selected categories
+    return loadQuestionsFromCategories(selectedCategories)
+        .then(loadedQuestions => {
+            // Shuffle and limit questions to the selected count
+            const shuffledQuestions = shuffleArray(loadedQuestions).slice(0, questionCount);
+
+            // Create session with questions
+            return firebase.firestore().collection('sessions').doc(sessionId).set({
+                currentQuestionIndex: 0,
+                questions: shuffledQuestions,
+                active: true
+            });
+        })
         .then(() => {
             console.log('Session created successfully with ID:', sessionId);
             localStorage.setItem('currentSessionId', sessionId);
@@ -20,11 +36,24 @@ export function createSession() {
         });
 }
 
-
 export function generateRandomUsername() {
     const prefix = "Player_";
     const randomNum = Math.floor(Math.random() * 10000); // Random number between 0 and 9999
     return prefix + randomNum.toString().padStart(4, '0'); // Pad with zeros to ensure a uniform length
+}
+
+function loadQuestionsFromCategories(categories) {
+    const promises = categories.map(category =>
+        fetch(category)
+            .then(response => response.json())
+            .catch(error => {
+                console.error(`Error loading questions from ${category}:`, error);
+                return [];
+            })
+    );
+
+    return Promise.all(promises)
+        .then(questionSets => questionSets.flat());
 }
 
 
@@ -41,7 +70,8 @@ export function loadSessionQuestions(sessionId) {
             if (doc.exists) {
                 console.log("Fetched document:", doc.data());
                 if (doc.data().questions && doc.data().questions.length > 0) {
-                    questions = doc.data().questions;
+                    questions.length = 0; // Clear existing questions
+                    questions.push(...doc.data().questions); // Add new questions
                 } else {
                     console.log("No questions available in this session!");
                     throw new Error("No questions available");
@@ -57,9 +87,6 @@ export function loadSessionQuestions(sessionId) {
         });
 }
 
-
-
-
 export function loadAvailableSessions() {
     firebase.firestore().collection('sessions').where('active', '==', true).get()
         .then(snapshot => {
@@ -74,7 +101,6 @@ export function loadAvailableSessions() {
         })
         .catch(error => console.error("Error fetching sessions:", error));
 }
-
 
 // This function would be called when the participant selects a session and clicks a "Join Session" button
 export function joinSelectedSession() {
@@ -99,4 +125,12 @@ export function joinSelectedSession() {
         console.error('No session selected.');
         return Promise.reject(new Error('No session selected.'));
     }
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }

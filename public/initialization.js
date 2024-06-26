@@ -11,10 +11,17 @@ import {
     nextButton,
     modeSelectionContainer,
 } from './shared.js';
-
+import { displayQuestionerScreen } from './groupQuestioner.js';
 
 export function initialize() {
     console.log("Initializing");
+    setupEventListeners();
+    restoreSavedMode();
+    handleURLParameters();
+}
+
+function setupEventListeners() {
+    console.log("Inside setupEventListeners")
     modeSelectionContainer.addEventListener('change', handleModeSelection);
     document.getElementById('username').addEventListener('input', updateStartButtonState);
     document.getElementById('session-id').addEventListener('input', updateStartButtonState);
@@ -22,15 +29,21 @@ export function initialize() {
         checkbox.addEventListener('change', updateStartButtonState);
     });
     updateStartButtonState();
+}
 
+function restoreSavedMode() {
+    console.log("Inside restoreSavedMode")
     const savedMode = localStorage.getItem('selectedMode');
     if (savedMode) {
         document.getElementById(`mode-${savedMode}`).checked = true;
         handleModeSelection();
     }
+}
 
-    // Check URL for session ID and user role
+function handleURLParameters() {
+    console.log("Inside handleURLParameters");
     const pathSegments = window.location.pathname.split('/').filter(segment => segment);
+    console.log("pathSegments: ", pathSegments);
     const sessionIdFromURL = pathSegments[0];
     const urlParams = new URLSearchParams(window.location.search);
     const userRole = urlParams.get('role');
@@ -38,14 +51,76 @@ export function initialize() {
     if (sessionIdFromURL) {
         console.log("Session ID from URL:", sessionIdFromURL);
         localStorage.setItem('currentSessionId', sessionIdFromURL);
+
         if (userRole === 'questioner') {
             console.log("Detected role of questioner");
-            displayQuestionerScreen(sessionIdFromURL);
-        } else if (userRole === 'responder') {
-            console.log("Detected role of responder");
-            displayResponderScreen(sessionIdFromURL);
+            handleQuestionerRejoin(sessionIdFromURL);
+        } else if (userRole === 'participant') {
+            console.log("Detected role of participant");
+            handleParticipantJoin(sessionIdFromURL);
         }
     }
+}
+
+export function setupShareButton(sessionId) {
+    const sessionIdContainer = document.getElementById('session-id-container');
+    sessionIdContainer.innerHTML = `
+        <p>Session ID: ${sessionId}</p>
+        <button id="share-session">Share Session</button>
+    `;
+
+    document.getElementById('share-session').addEventListener('click', () => shareSession(sessionId));
+}
+
+function shareSession(sessionId) {
+    const shareUrl = `${window.location.origin}/${sessionId}?role=participant`;
+    const shareText = `Join my Calibration Trivia session! Session ID: ${sessionId}`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'Join Calibration Trivia Session',
+            text: shareText,
+            url: shareUrl,
+        }).then(() => {
+            console.log('Session shared successfully');
+        }).catch((error) => {
+            console.log('Error sharing session:', error);
+            fallbackShare(shareUrl);
+        });
+    } else {
+        fallbackShare(shareUrl);
+    }
+}
+
+function fallbackShare(shareUrl) {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+        alert('Session link copied to clipboard!');
+    }).catch((error) => {
+        console.error('Failed to copy session link:', error);
+        alert('Failed to copy session link. Please copy this URL manually: ' + shareUrl);
+    });
+}
+
+function handleQuestionerRejoin(sessionId) {
+    // Logic for questioner rejoining an existing session
+    // This might involve loading the current state of the quiz
+    // and displaying the appropriate screen
+    loadSessionQuestions(sessionId)
+        .then(() => displayQuestionerScreen(sessionId))
+        .catch(error => {
+            console.error("Error rejoining questioner session:", error);
+            // Handle error (e.g., show an error message, reset to initial state)
+        });
+}
+
+function handleParticipantJoin(sessionId) {
+    // Logic for participant joining a session
+    loadSessionQuestions(sessionId)
+        .then(() => displayParticipantScreen(sessionId))
+        .catch(error => {
+            console.error("Error joining participant session:", error);
+            // Handle error (e.g., show an error message, reset to initial state)
+        });
 }
 
 export function handleModeSelection() {
@@ -68,6 +143,7 @@ export function handleModeSelection() {
 }
 
 export function updateStartButtonState() {
+    console.log("Inside updateStartButtonState")
     // Attempt to find a checked radio button
     const checkedModeRadioButton = document.querySelector('input[name="mode"]:checked');
 
@@ -93,7 +169,6 @@ export function updateStartButtonState() {
     startButton.disabled = !enableButton;
     startButtonContainer.style.display = enableButton ? 'block' : 'none'; // Show/
 }
-
 
 
 export function updateNextButton() {
