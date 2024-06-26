@@ -6,6 +6,7 @@ import {
     userConfidences,
     score,
     brierScore,
+    baselineScore,
     modeGroupParticipant,
     modeGroupQuestioner
 } from './shared.js';
@@ -62,12 +63,21 @@ function parseConfidence(value) {
 
 function updateScores(userAnswer, userConfidence) {
     const currentCorrectAnswer = questions[userAnswers.length].correctAnswer;
+    const logScore = (currentCorrectAnswer === userAnswer)
+        ? Math.log(userConfidence)
+        : Math.log(1 - userConfidence);
+    const baselineLogScore = (currentCorrectAnswer === userAnswer)
+        ? Math.log(0.5)
+        : Math.log(0.5);
+
     if (currentCorrectAnswer === userAnswer) {
         score++;
         brierScore += Math.pow(1 - userConfidence, 2);
     } else {
         brierScore += Math.pow(0 - userConfidence, 2);
     }
+
+    baselineScore += 100 * (logScore - baselineLogScore);
 
     userAnswers.push(userAnswer);
     correctAnswers.push(currentCorrectAnswer);
