@@ -8,8 +8,9 @@ import {
     score,
     brierScore
 } from './shared.js';
-
+import { submitAnswerToFirestore } from './firestore.js';
 import { getCurrentSessionId } from './sessionManagement.js';
+import { displayQuestionForGroupParticipant } from './groupParticipant.js';
 
 export function getConfidenceInputHTML() {
     console.log('Inside getConfidenceInputHTML')

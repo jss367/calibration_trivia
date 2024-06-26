@@ -23,11 +23,10 @@ export function generateRandomUsername() {
 }
 
 
-
-
 export function getCurrentSessionId() {
-    // Retrieve the session ID from local storage
-    return localStorage.getItem('currentSessionId');
+    const sessionId = localStorage.getItem('currentSessionId');
+    console.log('Retrieved sessionId from localStorage:', sessionId);
+    return sessionId;
 }
 
 export function loadSessionQuestions(sessionId) {
