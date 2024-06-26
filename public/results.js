@@ -9,7 +9,8 @@ import {
     score,
     brierScore
 } from './shared.js';
-
+import { calculateConfidenceDecileScores } from './quizLogic.js';
+import { getCurrentSessionId } from './sessionManagement.js';
 export function displayResults() {
     quizContainer.style.display = 'none';
 

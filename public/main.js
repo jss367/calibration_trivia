@@ -22,14 +22,17 @@ import {
 } from './shared.js';
 
 
-const appVersion = '1.3.5';
+const appVersion = '1.3.6';
 console.log('App Version:', appVersion);
 
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', initialize);
 modeSelectionContainer.addEventListener('change', handleModeSelection);
-startQuizButton.addEventListener('click', startQuiz);
+startQuizButton.addEventListener('click', () => {
+    console.log("Start button clicked");
+    startQuiz();
+});
 nextButton.addEventListener('click', handleNextButton);
 
 document.getElementById('username').addEventListener('input', function () {
@@ -51,7 +54,9 @@ nextButton.classList.add('button-spacing');
 
 // Functions
 function startQuiz() {
+    console.log("startQuiz function called");
     const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+    console.log("Selected mode:", selectedMode);
 
     // Hide UI elements
     usernameContainer.style.display = 'none';
@@ -59,35 +64,41 @@ function startQuiz() {
     startButtonContainer.style.display = 'none';
     questionCountContainer.style.display = 'none';
     categorySelectionContainer.style.display = 'none';
+    console.log("UI elements hidden");
 
     if (selectedMode === 'single') {
+        console.log("Starting single player mode");
         loadQuestionsSingle()
             .then(() => {
+                console.log("Questions loaded successfully for single player");
                 displayQuestion(0);
             })
             .catch(error => {
-                console.error("Failed to load questions:", error);
+                console.error("Failed to load questions for single player:", error);
                 // Handle error (e.g., show an error message to the user)
             });
     } else if (selectedMode === 'group-participant') {
+        console.log("Starting group participant mode");
         joinSelectedSession();
-        // Assuming loadQuestionsParticipant returns a promise
         loadQuestionsParticipant()
             .then(() => {
+                console.log("Questions loaded successfully for group participant");
                 displayQuestionForGroupParticipant(0);
             })
             .catch(error => {
-                console.error("Failed to load participant questions:", error);
+                console.error("Failed to load questions for group participant:", error);
                 // Handle error
             });
     } else if (selectedMode === 'group-questioner') {
+        console.log("Starting group questioner mode");
         createSession();
         loadSessionQuestions(getCurrentSessionId())
             .then(() => {
+                console.log("Questions loaded successfully for group questioner");
                 displayQuestionQuestioner(0);
             })
             .catch(error => {
-                console.error("Failed to load questioner questions:", error);
+                console.error("Failed to load questions for group questioner:", error);
                 // Handle error
             });
     }

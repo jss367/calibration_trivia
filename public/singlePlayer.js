@@ -1,11 +1,13 @@
 
 import {
     nextButton,
-    modeSinglePlayer,
-    modeGroupParticipant, questionContainer,
-    modeGroupQuestioner,
+    quizContainer,
     questions,
-    currentQuestionIndex,
+    questionContainer
+} from './shared.js';
+import {
+
+
 } from './shared.js';
 
 import { getConfidenceInputHTML } from './quizLogic.js';
@@ -54,6 +56,9 @@ export function loadQuestionsSingle() {
 
 
 export function displayQuestion(index) {
+    console.log('Inside displayQuestion with index: ', index);
+    console.log('questionContainer:', questionContainer);
+    console.log('questionContainer style:', questionContainer.style.display);
     // This is for single player mode
 
     if (!questions[index]) {
@@ -62,13 +67,13 @@ export function displayQuestion(index) {
     }
 
     const question = questions[index];
-
+    console.log('Question is ', question);
     // Create a new div for the question
     const questionDiv = document.createElement('div');
-
+    console.log('questionContainer:', questionContainer);
     // Initialize the answer input HTML
     let answerInputHTML = '';
-
+    console.log('questionContainer style:', questionContainer.style.display);
     const options = ['A', 'B', 'C', 'D'];
     answerInputHTML = question.options.map((option, index) => `
       <div>
@@ -85,11 +90,17 @@ export function displayQuestion(index) {
       ${answerInputHTML}
       ${confidenceInputHTML}
     `;
-
+    console.log('Generated question HTML:', questionDiv.innerHTML);
+    console.log('questionContainer style:', questionContainer.style.display);
     questionContainer.innerHTML = ''; // Clear previous question
     questionContainer.appendChild(questionDiv); // Append new question
-
+    console.log('questionContainer style:', questionContainer.style.display);
     nextButton.style.display = 'block';
+    quizContainer.style.display = 'block';
+    console.log('Quiz container display:', quizContainer.style.display);
+
+    console.log('End of displayQuestion')
+    console.log('questionContainer:', questionContainer);
 }
 
 export function saveQuestionsToFirestore(sessionId, questionsArray) {

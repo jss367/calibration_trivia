@@ -8,7 +8,6 @@ import {
     questionCountContainer,
     sessionIDSelectionContainer,
     usernameContainer,
-    startQuizButton,
     nextButton,
     modeSelectionContainer,
 } from './shared.js';
@@ -50,6 +49,7 @@ export function initialize() {
 }
 
 export function handleModeSelection() {
+    console.log("inside handleModeSelection");
     const mode = document.querySelector('input[name="mode"]:checked').value;
     localStorage.setItem('selectedMode', mode);
 
