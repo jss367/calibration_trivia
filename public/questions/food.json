@@ -21,21 +21,21 @@
     },
     {
         "question": "Which cheese, known for being full of holes, is originally from Switzerland?",
-        "correctAnswer": "Swiss Cheese",
+        "correctAnswer": "Emmental",
         "options": [
             "Gouda",
-            "Swiss Cheese",
+            "Emmental",
             "Cheddar",
             "Brie"
         ]
     },
     {
         "question": "What is the term for the Japanese cooking technique where food, typically seafood, is grilled over a charcoal fire?",
-        "correctAnswer": "Yakitori",
+        "correctAnswer": "Robatayaki",
         "options": [
             "Sushi",
             "Tempura",
-            "Yakitori",
+            "Robatayaki",
             "Sashimi"
         ]
     },
@@ -80,8 +80,8 @@
         ]
     },
     {
-        "question": "Which American snack food is famous for its orange, cheese-flavored powder and tube-shaped packaging?",
-        "correctAnswer": "Cheetos",
+        "question": "Which American snack food is famous for its uniform, stackable chips and tube-shaped packaging?",
+        "correctAnswer": "Pringles",
         "options": [
             "Doritos",
             "Lays",
