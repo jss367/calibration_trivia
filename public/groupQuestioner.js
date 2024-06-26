@@ -24,28 +24,18 @@ export function questionerNextQuestion(sessionId) {
 }
 
 export function displayQuestionerScreen(sessionId) {
-    console.log("Inside displayQuestionerScreen");
-    loadSessionQuestions(sessionId)
-        .then(() => {
-            console.log("Inside loadSessionQuestions(sessionId)");
-            currentQuestionIndex = 0;
-            displayQuestionQuestioner(currentQuestionIndex);
-
-            const sessionIdContainer = document.getElementById('session-id-container');
-            sessionIdContainer.innerHTML = `
-                <p>Session ID: ${sessionId}</p>
-                <button id="share-session">Share Session</button>
-            `;
-
-            document.getElementById('share-session').addEventListener('click', shareSession);
-
-            const nextButton = document.getElementById('next-button');
-            nextButton.style.display = 'block';
-            nextButton.disabled = false;
-        })
-        .catch(error => {
-            console.error("Error displaying questioner screen:", error);
-        });
+    console.log("Inside displayQuestionerScreen for session:", sessionId);
+    // Hide unnecessary UI elements
+    document.getElementById('mode-selection-container').style.display = 'none';
+    document.getElementById('start-button-container').style.display = 'none';
+    // Show questioner-specific UI elements
+    document.getElementById('quiz-container').style.display = 'block';
+    // Display the first question
+    displayQuestionQuestioner(0, sessionId);
+    // Show the next button
+    const nextButton = document.getElementById('next-button');
+    nextButton.style.display = 'block';
+    nextButton.disabled = false;
 }
 
 function shareSession() {

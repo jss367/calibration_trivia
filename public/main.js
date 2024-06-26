@@ -3,9 +3,9 @@
 const appVersion = '1.5.0';
 console.log('App Version:', appVersion);
 
-import { initialize, handleModeSelection } from './initialization.js';
+import { initialize, handleModeSelection, setupShareButton } from './initialization.js';
 import { loadQuestionsSingle, displayQuestion } from './singlePlayer.js';
-import { questionerNextQuestion, displayQuestionQuestioner } from './groupQuestioner.js';
+import { questionerNextQuestion, displayQuestionerScreen } from './groupQuestioner.js';
 import { loadQuestionsParticipant, displayQuestionForGroupParticipant } from './groupParticipant.js';
 import { createSession, joinSelectedSession, getCurrentSessionId, loadSessionQuestions } from './sessionManagement.js';
 import { submitAnswer } from './quizLogic.js';
@@ -114,16 +114,17 @@ function handleGroupParticipantMode() {
 }
 
 function handleGroupQuestionerMode() {
-    console.log("Inside handleGroupQuestionerMode");
+    console.log("Starting group questioner mode");
     createSession()
         .then((sessionId) => {
             console.log("Session created successfully:", sessionId);
             return loadSessionQuestions(sessionId);
         })
         .then(() => {
+            const sessionId = getCurrentSessionId();
             console.log("Questions loaded successfully for group questioner");
-            const sessionId = getCurrentSessionId(); // Get the session ID after it's been set
-            displayQuestionQuestioner(0, sessionId);
+            displayQuestionerScreen(sessionId);
+            setupShareButton(sessionId);
         })
         .catch(error => {
             console.error("Failed to create session or load questions for group questioner:", error);

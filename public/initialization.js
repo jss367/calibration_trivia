@@ -11,7 +11,7 @@ import {
     nextButton,
     modeSelectionContainer,
 } from './shared.js';
-
+import { displayQuestionerScreen } from './groupQuestioner.js';
 
 export function initialize() {
     console.log("Initializing");
@@ -60,6 +60,45 @@ function handleURLParameters() {
             handleParticipantJoin(sessionIdFromURL);
         }
     }
+}
+
+export function setupShareButton(sessionId) {
+    const sessionIdContainer = document.getElementById('session-id-container');
+    sessionIdContainer.innerHTML = `
+        <p>Session ID: ${sessionId}</p>
+        <button id="share-session">Share Session</button>
+    `;
+
+    document.getElementById('share-session').addEventListener('click', () => shareSession(sessionId));
+}
+
+function shareSession(sessionId) {
+    const shareUrl = `${window.location.origin}/${sessionId}?role=participant`;
+    const shareText = `Join my Calibration Trivia session! Session ID: ${sessionId}`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'Join Calibration Trivia Session',
+            text: shareText,
+            url: shareUrl,
+        }).then(() => {
+            console.log('Session shared successfully');
+        }).catch((error) => {
+            console.log('Error sharing session:', error);
+            fallbackShare(shareUrl);
+        });
+    } else {
+        fallbackShare(shareUrl);
+    }
+}
+
+function fallbackShare(shareUrl) {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+        alert('Session link copied to clipboard!');
+    }).catch((error) => {
+        console.error('Failed to copy session link:', error);
+        alert('Failed to copy session link. Please copy this URL manually: ' + shareUrl);
+    });
 }
 
 function handleQuestionerRejoin(sessionId) {
