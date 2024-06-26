@@ -1,4 +1,19 @@
 
+
+import {
+    startButtonContainer,
+    sessionIdContainer,
+    categorySelectionContainer,
+    questionCountContainer,
+    nextButton,
+    modeSelectionContainer, questionContainer,
+    quizContainer,
+    questions,
+    currentQuestionIndex,
+
+} from './shared.js';
+
+
 // Function for the Questioner to call when ready to move to the next question
 export function questionerNextQuestion(sessionId) {
     // Increment the current question index

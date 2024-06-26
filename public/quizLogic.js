@@ -1,4 +1,18 @@
+
+import {
+    questions,
+    currentQuestionIndex,
+    userAnswers,
+    correctAnswers,
+    userConfidences,
+    score,
+    brierScore
+} from './shared.js';
+
+import { getCurrentSessionId } from './sessionManagement.js';
+
 export function getConfidenceInputHTML() {
+    console.log('Inside getConfidenceInputHTML')
     return `
       <div>
         <label for="confidence">Confidence:</label>

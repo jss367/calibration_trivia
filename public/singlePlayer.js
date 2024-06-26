@@ -1,56 +1,64 @@
-const modeSinglePlayer = document.getElementById('mode-single');
 
+import {
+    nextButton,
+    quizContainer,
+    questions,
+    questionContainer
+} from './shared.js';
+import {
+
+
+} from './shared.js';
+
+import { getConfidenceInputHTML } from './quizLogic.js';
 export function loadQuestionsSingle() {
-    console.log("inside loadQuestionsSingle");
-    const questionCount = parseInt(document.getElementById('question-count').value, 10);
-    const checkboxes = document.querySelectorAll('.category-checkbox');
-    const selectedFiles = Array.from(checkboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
+    return new Promise((resolve, reject) => {
+        // Your existing logic to load questions
+        const questionCount = parseInt(document.getElementById('question-count').value, 10);
+        const checkboxes = document.querySelectorAll('.category-checkbox');
+        const selectedFiles = Array.from(checkboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value);
 
-    // Continue only if at least one category is selected
-    if (selectedFiles.length === 0) {
-        console.log("Please select at least one category."); // Should this be an error?
-        return;
-    }
-
-    const promises = selectedFiles.map(file => fetch(file).then(response => {
-        if (!response.ok) {
-            throw new Error(`Network response was not ok for file ${file}`);
+        if (selectedFiles.length === 0) {
+            console.log("Please select at least one category.");
+            reject(new Error("No categories selected"));
+            return;
         }
-        return response.json().catch(err => {
-            throw new Error(`Invalid JSON in file ${file}: ${err.message}`);
-        });
-    }));
 
-    Promise.all(promises)
-        .then(loadedQuestionsArrays => {
-            // Flatten the array of arrays into a single array
-            questions = [].concat(...loadedQuestionsArrays);
+        const promises = selectedFiles.map(file =>
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok for file ${file}`);
+                    }
+                    return response.json();
+                })
+                .catch(err => {
+                    throw new Error(`Invalid JSON in file ${file}: ${err.message}`);
+                })
+        );
 
-            // Shuffle questions array here
-            shuffleArray(questions);
-
-            // Only keep as many questions as the user requested
-            questions = questions.slice(0, questionCount);
-
-            console.log("modeSinglePlayer.checked is ", modeSinglePlayer.checked);
-            console.log("modeGroupParticipant.checked is ", modeGroupParticipant.checked);
-            console.log("modeGroupQuestioner.checked is ", modeGroupQuestioner.checked);
-
-            // Switch this to just one of the modes
-            if (modeSinglePlayer.checked) {
-                displayQuestion(currentQuestionIndex);
-            }
-        })
-        .catch((error) => {
-            console.error('Error loading questions:', error.message);
-        });
+        Promise.all(promises)
+            .then(loadedQuestionsArrays => {
+                // Flatten the array of arrays into a single array
+                questions = [].concat(...loadedQuestionsArrays);
+                shuffleArray(questions);
+                questions = questions.slice(0, questionCount);
+                resolve();
+            })
+            .catch(error => {
+                console.error("Error loading questions:", error);
+                reject(error);
+            });
+    });
 }
 
 
-
 export function displayQuestion(index) {
+    console.log('Inside displayQuestion with index: ', index);
+    console.log('questionContainer:', questionContainer);
+    console.log('questionContainer style:', questionContainer.style.display);
     // This is for single player mode
 
     if (!questions[index]) {
@@ -59,13 +67,13 @@ export function displayQuestion(index) {
     }
 
     const question = questions[index];
-
+    console.log('Question is ', question);
     // Create a new div for the question
     const questionDiv = document.createElement('div');
-
+    console.log('questionContainer:', questionContainer);
     // Initialize the answer input HTML
     let answerInputHTML = '';
-
+    console.log('questionContainer style:', questionContainer.style.display);
     const options = ['A', 'B', 'C', 'D'];
     answerInputHTML = question.options.map((option, index) => `
       <div>
@@ -83,10 +91,16 @@ export function displayQuestion(index) {
       ${confidenceInputHTML}
     `;
 
+    console.log('questionContainer style:', questionContainer.style.display);
     questionContainer.innerHTML = ''; // Clear previous question
     questionContainer.appendChild(questionDiv); // Append new question
-
+    console.log('questionContainer style:', questionContainer.style.display);
     nextButton.style.display = 'block';
+    quizContainer.style.display = 'block';
+    console.log('Quiz container display:', quizContainer.style.display);
+
+    console.log('End of displayQuestion')
+    console.log('questionContainer:', questionContainer);
 }
 
 export function saveQuestionsToFirestore(sessionId, questionsArray) {

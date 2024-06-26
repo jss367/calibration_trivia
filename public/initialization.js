@@ -1,6 +1,18 @@
 // initialization.js
 import { loadAvailableSessions } from './sessionManagement.js';
 
+import {
+    startButtonContainer,
+    sessionIdContainer,
+    categorySelectionContainer,
+    questionCountContainer,
+    sessionIDSelectionContainer,
+    usernameContainer,
+    nextButton,
+    modeSelectionContainer,
+} from './shared.js';
+
+
 export function initialize() {
     console.log("Initializing");
     modeSelectionContainer.addEventListener('change', handleModeSelection);
@@ -37,6 +49,7 @@ export function initialize() {
 }
 
 export function handleModeSelection() {
+    console.log("inside handleModeSelection");
     const mode = document.querySelector('input[name="mode"]:checked').value;
     localStorage.setItem('selectedMode', mode);
 

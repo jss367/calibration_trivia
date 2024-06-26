@@ -1,4 +1,20 @@
 
+import {
+    startButtonContainer,
+    sessionIdContainer,
+    usernameContainer,
+    nextButton,
+    modeSelectionContainer,
+    quizContainer,
+    modeGroupParticipant,
+    questions,
+    currentQuestionIndex, questionContainer
+
+} from './shared.js';
+
+import { getCurrentSessionId } from './sessionManagement.js';
+import { getConfidenceInputHTML } from './quizLogic.js';
+
 export function loadQuestionsParticipant() {
     const sessionId = getCurrentSessionId();
     if (!sessionId) {
