@@ -1,4 +1,4 @@
-
+import { currentQuestionIndex } from './shared.js';
 
 export function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
     if (!sessionId || !userId) {
@@ -6,8 +6,16 @@ export function submitAnswerToFirestore(sessionId, userId, answer, confidence) {
         return;
     }
 
-    const answerData = { answer, confidence, timestamp: firebase.firestore.FieldValue.serverTimestamp() };
-    firebase.firestore().collection('sessions').doc(sessionId).collection('answers').doc(userId).set(answerData)
+    const answerData = {
+        answer,
+        confidence,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    firebase.firestore().collection('sessions').doc(sessionId)
+        .collection('answers').doc(userId).set({
+            [currentQuestionIndex]: answerData
+        }, { merge: true })
         .then(() => console.log('Answer submitted successfully'))
         .catch(error => console.error("Error submitting answer:", error));
 }

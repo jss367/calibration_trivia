@@ -1,7 +1,7 @@
-
 import {
     quizContainer,
     modeGroupQuestioner,
+    modeGroupParticipant,
     questions,
     userAnswers,
     correctAnswers,
@@ -11,14 +11,18 @@ import {
 } from './shared.js';
 import { calculateConfidenceDecileScores } from './quizLogic.js';
 import { getCurrentSessionId } from './sessionManagement.js';
+import { displayLeaderboard } from './leaderboard.js';
 
 const resultsContainer = document.getElementById('results-container');
 
 export function displayResults() {
     quizContainer.style.display = 'none';
+    resultsContainer.style.display = 'block';
+
+    let resultsHTML = '<h2>Results</h2>';
 
     if (modeGroupQuestioner.checked) {
-        displayLeaderboard(getCurrentSessionId());
+        resultsHTML += '<p>Thank you for hosting the quiz!</p>';
     } else {
         brierScore /= questions.length;
 
@@ -46,8 +50,7 @@ export function displayResults() {
 
         const confidenceDecileScores = calculateConfidenceDecileScores(answers);
 
-        resultsContainer.innerHTML = `
-        <h2>Results</h2>
+        resultsHTML += `
         <p>Correct answers: ${score} / ${questions.length}</p>
         <p style="color:${scoreColor};">Brier score: ${brierScore.toFixed(2)} (${scoreLabel})</p>
         ${confidenceDecileScores.map(({ decileRange, score, correct, total }) => {
@@ -57,9 +60,22 @@ export function displayResults() {
                 return `<p>When you were ${decileRange}% confident, you were correct ${Math.round(score * 100)}% of the time (${correct}/${total}).</p>`;
             }
         }).join('')}
-      `;
+        `;
+    }
 
-        resultsContainer.style.display = 'block';
+    // Only add the leaderboard button for group modes
+    if (modeGroupQuestioner.checked || modeGroupParticipant.checked) {
+        resultsHTML += '<button id="show-leaderboard">Show Leaderboard</button>';
+    }
+
+    resultsContainer.innerHTML = resultsHTML;
+
+    // Set up the leaderboard button click event only for group modes
+    if (modeGroupQuestioner.checked || modeGroupParticipant.checked) {
+        document.getElementById('show-leaderboard').onclick = () => displayLeaderboard(getCurrentSessionId());
+    }
+
+    if (!modeGroupQuestioner.checked) {
         displayIndividualResults();
     }
 }
@@ -68,10 +84,10 @@ export function displayIndividualResults() {
     for (let i = 0; i < questions.length; i++) {
         const resultPara = document.createElement('p');
 
-        // Round the confidence to 2 decimal places
+        // Round the confidence to whole number percentage
         const confidencePercentage = Math.round(userConfidences[i] * 100);
 
-        if (typeof correctAnswers[i] === 'object') {
+        if (Array.isArray(correctAnswers[i])) {
             const userAnswerString = userAnswers[i].toString();
             const isCorrect = correctAnswers[i].includes(userAnswerString);
             resultPara.style.color = isCorrect ? 'green' : 'red';
