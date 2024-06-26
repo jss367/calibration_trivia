@@ -1,4 +1,4 @@
-const { calculateConfidenceDecileScores } = require('../public/scripts.js');
+const { calculateConfidenceDecileScores } = require('../public/main.js');
 
 
 describe('calculateConfidenceDecileScores', () => {
