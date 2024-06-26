@@ -6,7 +6,7 @@ import {
     categorySelectionContainer,
     questionCountContainer,
     nextButton,
-    modeSelectionContainer,
+    modeSelectionContainer, questionContainer,
     quizContainer,
     questions,
     currentQuestionIndex,

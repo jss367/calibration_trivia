@@ -2,11 +2,13 @@
 import {
     nextButton,
     modeSinglePlayer,
-    modeGroupParticipant,
+    modeGroupParticipant, questionContainer,
     modeGroupQuestioner,
     questions,
     currentQuestionIndex,
 } from './shared.js';
+
+import { getConfidenceInputHTML } from './quizLogic.js';
 
 export function loadQuestionsSingle() {
     console.log("inside loadQuestionsSingle");

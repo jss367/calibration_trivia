@@ -8,9 +8,10 @@ import {
     quizContainer,
     modeGroupParticipant,
     questions,
-    currentQuestionIndex,
+    currentQuestionIndex, questionContainer
 
 } from './shared.js';
+import { getConfidenceInputHTML } from './quizLogic.js';
 
 export function loadQuestionsParticipant() {
     const sessionId = getCurrentSessionId();
