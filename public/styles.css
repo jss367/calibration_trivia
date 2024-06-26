@@ -1,78 +1,93 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 button {
-  cursor: pointer;
-  padding: 8px 16px;
-  font-size: 16px;
+    cursor: pointer;
+    padding: 8px 16px;
+    font-size: 16px;
 }
 
 #next-button {
-  display: block;
-  margin: 20px auto;
+    display: block;
+    margin: 20px auto;
 }
 
 
 .input-large {
-  width: 200px;
-  height: 40px;
+    width: 200px;
+    height: 40px;
 }
 
 .input-radio {
-  width: 100;
+    width: 100;
 }
 
 .input-small {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
 
 #username-container,
 #question-count-container {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 #question-count-container {
-  margin-top: 10px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+    margin-top: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 #start-button-container {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 #start-quiz {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #start-quiz:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 label {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 
 #start-quiz:disabled {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+#share-session {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#share-session:hover {
+    background-color: #45a049;
 }
