@@ -110,14 +110,14 @@
         ]
     },
     {
-        "question": "What is the term for a substance that speeds up a chemical reaction without being consumed?",
-        "correctAnswer": "Catalyst",
-        "options": [
-            "Enzyme",
-            "Reactant",
-            "Catalyst",
-            "Solvent"
-        ]
+    "question": "What is the term for a substance that changes the rate of a chemical reaction by providing an alternative reaction pathway, while being chemically unchanged at the end of the reaction?",
+    "correctAnswer": "Catalyst",
+    "options": [
+        "Enzyme",
+        "Reactant",
+        "Catalyst",
+        "Solvent"
+    ]
     },
     {
         "question": "What is the process by which green plants and some other organisms use sunlight to synthesize foods from carbon dioxide and water?",
@@ -140,13 +140,13 @@
         ]
     },
     {
-        "question": "What type of chemical reaction involves the exchange of ions between two compounds and results in the formation of a precipitate or gas?",
-        "correctAnswer": "Double displacement reaction",
-        "options": [
-            "Synthesis reaction",
-            "Decomposition reaction",
-            "Single displacement reaction",
-            "Double displacement reaction"
-        ]
+    "question": "What type of chemical reaction involves the exchange of positive and negative ions between two compounds, typically following the pattern AB + CD → AD + CB?",
+    "correctAnswer": "Double displacement reaction",
+    "options": [
+        "Synthesis reaction",
+        "Decomposition reaction",
+        "Single displacement reaction",
+        "Double displacement reaction"
+    ]
     }
 ]
