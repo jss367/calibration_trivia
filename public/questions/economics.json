@@ -319,14 +319,4 @@
             "Consumer Confidence Index"
         ]
     },
-    {
-        "question": "Who is the economist credited with the development of the concept of 'creative destruction' as a theory of economic innovation and progress?",
-        "correctAnswer": "Joseph Schumpeter",
-        "options": [
-            "Adam Smith",
-            "John Maynard Keynes",
-            "Milton Friedman",
-            "Joseph Schumpeter"
-        ]
-    }
 ]
