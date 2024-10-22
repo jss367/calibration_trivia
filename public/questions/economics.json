@@ -110,16 +110,6 @@
         ]
     },
     {
-        "question": "What term, coined by economist Raghuram Rajan, refers to a situation where governments induce socially unwelcome behaviour by individuals or businesses by subsidizing the costs associated with the behaviour?",
-        "correctAnswer": "Government induced distortions",
-        "options": [
-            "Moral hazard",
-            "Principal-agent problem",
-            "Information asymmetry",
-            "Government induced distortions"
-        ]
-    },
-    {
         "question": "In econometrics, what is the term for a variable that correlates with both the independent variable and the dependent variable, leading to biased and inconsistent estimate of the parameter of interest?",
         "correctAnswer": "Endogenous variable",
         "options": [
