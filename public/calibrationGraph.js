@@ -82,8 +82,18 @@ export function renderCalibrationGraph(decileScores) {
         .error-bar { stroke: #2563eb; stroke-width: 2; }
         .axis-label { font-size: 12px; fill: #333; }
         .tick-label { font-size: 10px; fill: #666; }
+        .graph-title { font-size: 14px; font-weight: bold; fill: #333; }
     `;
     svg.appendChild(style);
+
+    // Add title
+    const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    title.setAttribute('class', 'graph-title');
+    title.setAttribute('x', WIDTH / 2);
+    title.setAttribute('y', 15);
+    title.setAttribute('text-anchor', 'middle');
+    title.textContent = 'Calibration';
+    svg.appendChild(title);
 
     // Draw grid lines
     [25, 50, 75].forEach(val => {

@@ -91,3 +91,10 @@ label {
 #share-session:hover {
     background-color: #45a049;
 }
+
+#calibration-graph {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+}
