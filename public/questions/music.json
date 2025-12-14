@@ -278,5 +278,65 @@
             "Wolfgang Amadeus Mozart",
             "Giuseppe Verdi"
         ]
+    },
+    {
+        "question": "Which avant-garde composer is known for pioneering prepared piano techniques in works like 'Sonatas and Interludes'?",
+        "correctAnswer": "John Cage",
+        "options": [
+            "Karlheinz Stockhausen",
+            "John Cage",
+            "Olivier Messiaen",
+            "Pierre Boulez"
+        ]
+    },
+    {
+        "question": "What unusual meter underpins Pink Floyd's song 'Money'?",
+        "correctAnswer": "7/4 time",
+        "options": [
+            "5/4 time",
+            "6/8 time",
+            "7/4 time",
+            "9/8 time"
+        ]
+    },
+    {
+        "question": "Which progressive rock band released the 18-minute title track 'Close to the Edge' in 1972?",
+        "correctAnswer": "Yes",
+        "options": [
+            "Genesis",
+            "Yes",
+            "King Crimson",
+            "Emerson, Lake & Palmer"
+        ]
+    },
+    {
+        "question": "Which composer created the minimalist piece 'Music for 18 Musicians'?",
+        "correctAnswer": "Steve Reich",
+        "options": [
+            "Philip Glass",
+            "Steve Reich",
+            "Terry Riley",
+            "La Monte Young"
+        ]
+    },
+    {
+        "question": "Which jazz saxophonist's 1959 album 'Giant Steps' is renowned for its rapidly shifting chord changes?",
+        "correctAnswer": "John Coltrane",
+        "options": [
+            "Sonny Rollins",
+            "John Coltrane",
+            "Ornette Coleman",
+            "Cannonball Adderley"
+        ]
+    },
+    {
+        "question": "Which scale supplies the harmonic palette for much of Claude Debussy's prelude 'Voiles'?",
+        "correctAnswer": "Whole-tone scale",
+        "options": [
+            "Pentatonic scale",
+            "Whole-tone scale",
+            "Octatonic scale",
+            "Harmonic minor scale"
+        ]
     }
 ]
