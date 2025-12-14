@@ -210,6 +210,16 @@
         ]
     },
     {
+        "question": "What philosophical thought experiment asks whether you would push a person onto train tracks to save five others?",
+        "correctAnswer": "The Trolley Problem",
+        "options": [
+            "The Prisoner's Dilemma",
+            "Pascal's Wager",
+            "The Trolley Problem",
+            "Newcomb's Problem"
+        ]
+    },
+    {
         "question": "In philosophy, what term describes the belief in the existence of realities beyond perceptual or intellectual apprehension that are central to being and directly accessible by subjective experience?",
         "correctAnswer": "Mysticism",
         "options": [

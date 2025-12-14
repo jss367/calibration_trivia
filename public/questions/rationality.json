@@ -88,5 +88,155 @@
             "Naturalism",
             "Realism"
         ]
+    },
+    {
+        "question": "What cognitive bias describes our tendency to search for, interpret, and recall information that confirms our preexisting beliefs?",
+        "correctAnswer": "Confirmation bias",
+        "options": [
+            "Anchoring bias",
+            "Confirmation bias",
+            "Availability heuristic",
+            "Hindsight bias"
+        ]
+    },
+    {
+        "question": "What is the name of the cognitive bias where people rely too heavily on the first piece of information they encounter?",
+        "correctAnswer": "Anchoring bias",
+        "options": [
+            "Primacy effect",
+            "Anchoring bias",
+            "Framing effect",
+            "Recency bias"
+        ]
+    },
+    {
+        "question": "What term describes the tendency to overestimate the likelihood of events that are easier to recall from memory?",
+        "correctAnswer": "Availability heuristic",
+        "options": [
+            "Representativeness heuristic",
+            "Availability heuristic",
+            "Recency bias",
+            "Salience bias"
+        ]
+    },
+    {
+        "question": "Who co-founded LessWrong along with Eliezer Yudkowsky?",
+        "correctAnswer": "Robin Hanson",
+        "options": [
+            "Scott Alexander",
+            "Robin Hanson",
+            "Nick Bostrom",
+            "Paul Graham"
+        ]
+    },
+    {
+        "question": "What decision theory problem involves choosing between one box or two boxes, where a predictor has anticipated your choice?",
+        "correctAnswer": "Newcomb's Problem",
+        "options": [
+            "The Monty Hall Problem",
+            "Newcomb's Problem",
+            "The Prisoner's Dilemma",
+            "Pascal's Mugging"
+        ]
+    },
+    {
+        "question": "What term describes the cognitive bias where people believe they knew an outcome all along after learning what happened?",
+        "correctAnswer": "Hindsight bias",
+        "options": [
+            "Confirmation bias",
+            "Hindsight bias",
+            "Overconfidence bias",
+            "Attribution bias"
+        ]
+    },
+    {
+        "question": "What is the name of Nick Bostrom's influential 2014 book about the risks of artificial superintelligence?",
+        "correctAnswer": "Superintelligence: Paths, Dangers, Strategies",
+        "options": [
+            "The Alignment Problem",
+            "Human Compatible",
+            "Superintelligence: Paths, Dangers, Strategies",
+            "Life 3.0"
+        ]
+    },
+    {
+        "question": "What fallacy occurs when someone continues a course of action because of previously invested resources, even when it's no longer rational?",
+        "correctAnswer": "Sunk cost fallacy",
+        "options": [
+            "Gambler's fallacy",
+            "Sunk cost fallacy",
+            "Planning fallacy",
+            "Escalation of commitment"
+        ]
+    },
+    {
+        "question": "What principle states that the simplest explanation that fits the evidence is usually correct?",
+        "correctAnswer": "Occam's Razor",
+        "options": [
+            "Occam's Razor",
+            "Hanlon's Razor",
+            "Hitchens's Razor",
+            "Bayes' Theorem"
+        ]
+    },
+    {
+        "question": "What cognitive bias leads people to systematically underestimate the time needed to complete tasks?",
+        "correctAnswer": "Planning fallacy",
+        "options": [
+            "Optimism bias",
+            "Planning fallacy",
+            "Dunning-Kruger effect",
+            "Overconfidence bias"
+        ]
+    },
+    {
+        "question": "What term describes the phenomenon where people with limited knowledge in a domain overestimate their competence?",
+        "correctAnswer": "Dunning-Kruger effect",
+        "options": [
+            "Imposter syndrome",
+            "Dunning-Kruger effect",
+            "Overconfidence bias",
+            "Illusory superiority"
+        ]
+    },
+    {
+        "question": "What movement, closely associated with the rationality community, focuses on using evidence and reason to do the most good?",
+        "correctAnswer": "Effective Altruism",
+        "options": [
+            "Utilitarianism",
+            "Effective Altruism",
+            "Longtermism",
+            "Rationalist philanthropy"
+        ]
+    },
+    {
+        "question": "What LessWrong concept describes pre-written responses that people give without actually thinking about the question?",
+        "correctAnswer": "Cached thoughts",
+        "options": [
+            "Cached thoughts",
+            "Belief in belief",
+            "Bottom line thinking",
+            "Motivated reasoning"
+        ]
+    },
+    {
+        "question": "What bias describes the tendency to judge a decision by its outcome rather than by the quality of the decision at the time it was made?",
+        "correctAnswer": "Outcome bias",
+        "options": [
+            "Hindsight bias",
+            "Outcome bias",
+            "Survivorship bias",
+            "Results-oriented thinking"
+        ]
+    },
+    {
+        "question": "What term describes the error of only considering successful examples while ignoring failures that are no longer visible?",
+        "correctAnswer": "Survivorship bias",
+        "options": [
+            "Selection bias",
+            "Survivorship bias",
+            "Availability heuristic",
+            "Publication bias"
+        ]
     }
 ]
