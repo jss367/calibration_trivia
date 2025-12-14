@@ -98,5 +98,205 @@
             "Resonance",
             "Reflection"
         ]
+    },
+    {
+        "question": "What is the speed of light in a vacuum, approximately?",
+        "correctAnswer": "300,000 km/s",
+        "options": [
+            "150,000 km/s",
+            "300,000 km/s",
+            "500,000 km/s",
+            "1,000,000 km/s"
+        ]
+    },
+    {
+        "question": "Which physicist developed the theory of general relativity?",
+        "correctAnswer": "Albert Einstein",
+        "options": [
+            "Isaac Newton",
+            "Albert Einstein",
+            "Niels Bohr",
+            "Max Planck"
+        ]
+    },
+    {
+        "question": "What does E=mc² describe?",
+        "correctAnswer": "Mass-energy equivalence",
+        "options": [
+            "Gravitational attraction",
+            "Mass-energy equivalence",
+            "Electromagnetic induction",
+            "Quantum uncertainty"
+        ]
+    },
+    {
+        "question": "What particle is the carrier of the electromagnetic force?",
+        "correctAnswer": "Photon",
+        "options": [
+            "Gluon",
+            "Photon",
+            "W boson",
+            "Graviton"
+        ]
+    },
+    {
+        "question": "What principle states that it is impossible to simultaneously know both the exact position and exact momentum of a particle?",
+        "correctAnswer": "Heisenberg's uncertainty principle",
+        "options": [
+            "Pauli exclusion principle",
+            "Heisenberg's uncertainty principle",
+            "Schrödinger's equation",
+            "Complementarity principle"
+        ]
+    },
+    {
+        "question": "What is the name of the particle accelerator at CERN that discovered the Higgs boson?",
+        "correctAnswer": "Large Hadron Collider",
+        "options": [
+            "Large Hadron Collider",
+            "Stanford Linear Accelerator",
+            "Tevatron",
+            "Relativistic Heavy Ion Collider"
+        ]
+    },
+    {
+        "question": "Which law states that for every action, there is an equal and opposite reaction?",
+        "correctAnswer": "Newton's third law",
+        "options": [
+            "Newton's first law",
+            "Newton's second law",
+            "Newton's third law",
+            "Law of universal gravitation"
+        ]
+    },
+    {
+        "question": "What is the SI unit of electrical resistance?",
+        "correctAnswer": "Ohm",
+        "options": [
+            "Volt",
+            "Ampere",
+            "Ohm",
+            "Watt"
+        ]
+    },
+    {
+        "question": "What phenomenon causes a straw to appear bent when placed in a glass of water?",
+        "correctAnswer": "Refraction",
+        "options": [
+            "Reflection",
+            "Refraction",
+            "Diffraction",
+            "Dispersion"
+        ]
+    },
+    {
+        "question": "What is absolute zero in Celsius?",
+        "correctAnswer": "-273.15°C",
+        "options": [
+            "-273.15°C",
+            "-100°C",
+            "0°C",
+            "-459.67°C"
+        ]
+    },
+    {
+        "question": "Which subatomic particle has a negative charge?",
+        "correctAnswer": "Electron",
+        "options": [
+            "Proton",
+            "Neutron",
+            "Electron",
+            "Positron"
+        ]
+    },
+    {
+        "question": "What is the name of the effect where light bends around massive objects due to gravity?",
+        "correctAnswer": "Gravitational lensing",
+        "options": [
+            "Light diffraction",
+            "Gravitational lensing",
+            "Optical aberration",
+            "Cosmic refraction"
+        ]
+    },
+    {
+        "question": "What type of radiation has the shortest wavelength?",
+        "correctAnswer": "Gamma rays",
+        "options": [
+            "Radio waves",
+            "Ultraviolet",
+            "X-rays",
+            "Gamma rays"
+        ]
+    },
+    {
+        "question": "What is the phenomenon where two particles remain connected and the state of one instantly influences the other, regardless of distance?",
+        "correctAnswer": "Quantum entanglement",
+        "options": [
+            "Quantum tunneling",
+            "Quantum entanglement",
+            "Wave function collapse",
+            "Quantum superposition"
+        ]
+    },
+    {
+        "question": "Who proposed that matter has wave-like properties, forming the basis of wave-particle duality?",
+        "correctAnswer": "Louis de Broglie",
+        "options": [
+            "Werner Heisenberg",
+            "Louis de Broglie",
+            "Erwin Schrödinger",
+            "Paul Dirac"
+        ]
+    },
+    {
+        "question": "What is the term for the minimum energy needed to remove an electron from an atom?",
+        "correctAnswer": "Ionization energy",
+        "options": [
+            "Activation energy",
+            "Ionization energy",
+            "Binding energy",
+            "Work function"
+        ]
+    },
+    {
+        "question": "Which physicist is credited with discovering radioactivity?",
+        "correctAnswer": "Henri Becquerel",
+        "options": [
+            "Marie Curie",
+            "Henri Becquerel",
+            "Ernest Rutherford",
+            "Wilhelm Röntgen"
+        ]
+    },
+    {
+        "question": "What is the term for the bending of waves around obstacles or through openings?",
+        "correctAnswer": "Diffraction",
+        "options": [
+            "Refraction",
+            "Reflection",
+            "Diffraction",
+            "Interference"
+        ]
+    },
+    {
+        "question": "In which medium does sound travel fastest?",
+        "correctAnswer": "Solids",
+        "options": [
+            "Vacuum",
+            "Air",
+            "Water",
+            "Solids"
+        ]
+    },
+    {
+        "question": "What is the name of the hypothetical particle that mediates gravity?",
+        "correctAnswer": "Graviton",
+        "options": [
+            "Higgs boson",
+            "Graviton",
+            "Gluon",
+            "Photon"
+        ]
     }
 ]

@@ -98,5 +98,205 @@
             "Bogey",
             "Albatross"
         ]
+    },
+    {
+        "question": "How many players are on a standard basketball team on the court at one time?",
+        "correctAnswer": "5",
+        "options": [
+            "4",
+            "5",
+            "6",
+            "7"
+        ]
+    },
+    {
+        "question": "Which country has won the most FIFA World Cup titles?",
+        "correctAnswer": "Brazil",
+        "options": [
+            "Germany",
+            "Italy",
+            "Brazil",
+            "Argentina"
+        ]
+    },
+    {
+        "question": "What is the diameter of a basketball hoop in inches?",
+        "correctAnswer": "18 inches",
+        "options": [
+            "16 inches",
+            "18 inches",
+            "20 inches",
+            "22 inches"
+        ]
+    },
+    {
+        "question": "In which sport would you perform a 'slam dunk'?",
+        "correctAnswer": "Basketball",
+        "options": [
+            "Volleyball",
+            "Basketball",
+            "Tennis",
+            "Handball"
+        ]
+    },
+    {
+        "question": "How many holes are played in a standard round of golf?",
+        "correctAnswer": "18",
+        "options": [
+            "9",
+            "12",
+            "18",
+            "21"
+        ]
+    },
+    {
+        "question": "Which tennis tournament is played on grass courts?",
+        "correctAnswer": "Wimbledon",
+        "options": [
+            "French Open",
+            "US Open",
+            "Australian Open",
+            "Wimbledon"
+        ]
+    },
+    {
+        "question": "What is the maximum score in a single game of ten-pin bowling?",
+        "correctAnswer": "300",
+        "options": [
+            "200",
+            "250",
+            "300",
+            "350"
+        ]
+    },
+    {
+        "question": "In American football, how many points is a touchdown worth?",
+        "correctAnswer": "6",
+        "options": [
+            "3",
+            "6",
+            "7",
+            "8"
+        ]
+    },
+    {
+        "question": "Which swimmer has won the most Olympic gold medals?",
+        "correctAnswer": "Michael Phelps",
+        "options": [
+            "Mark Spitz",
+            "Michael Phelps",
+            "Ryan Lochte",
+            "Ian Thorpe"
+        ]
+    },
+    {
+        "question": "What is the national sport of Japan?",
+        "correctAnswer": "Sumo wrestling",
+        "options": [
+            "Judo",
+            "Karate",
+            "Sumo wrestling",
+            "Kendo"
+        ]
+    },
+    {
+        "question": "How long is a marathon in miles?",
+        "correctAnswer": "26.2 miles",
+        "options": [
+            "24.0 miles",
+            "25.0 miles",
+            "26.2 miles",
+            "28.0 miles"
+        ]
+    },
+    {
+        "question": "In cricket, how many runs are scored when the ball is hit over the boundary without bouncing?",
+        "correctAnswer": "6",
+        "options": [
+            "4",
+            "5",
+            "6",
+            "8"
+        ]
+    },
+    {
+        "question": "Which boxer was known as 'The Greatest' and 'The People's Champion'?",
+        "correctAnswer": "Muhammad Ali",
+        "options": [
+            "Mike Tyson",
+            "Muhammad Ali",
+            "Joe Frazier",
+            "George Foreman"
+        ]
+    },
+    {
+        "question": "How many players are on an ice hockey team on the ice at one time, including the goalie?",
+        "correctAnswer": "6",
+        "options": [
+            "5",
+            "6",
+            "7",
+            "8"
+        ]
+    },
+    {
+        "question": "What is the term for three consecutive strikes in bowling?",
+        "correctAnswer": "Turkey",
+        "options": [
+            "Triple",
+            "Turkey",
+            "Hat trick",
+            "Trifecta"
+        ]
+    },
+    {
+        "question": "In which city were the first modern Olympic Games held in 1896?",
+        "correctAnswer": "Athens",
+        "options": [
+            "Paris",
+            "London",
+            "Athens",
+            "Rome"
+        ]
+    },
+    {
+        "question": "What is the only Grand Slam tennis tournament played on clay courts?",
+        "correctAnswer": "French Open",
+        "options": [
+            "Australian Open",
+            "French Open",
+            "Wimbledon",
+            "US Open"
+        ]
+    },
+    {
+        "question": "How many periods are there in a standard NHL hockey game?",
+        "correctAnswer": "3",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ]
+    },
+    {
+        "question": "Which country invented the sport of badminton?",
+        "correctAnswer": "England",
+        "options": [
+            "China",
+            "India",
+            "England",
+            "Japan"
+        ]
+    },
+    {
+        "question": "What is the term for scoring zero points in tennis?",
+        "correctAnswer": "Love",
+        "options": [
+            "Zero",
+            "Nil",
+            "Love",
+            "Deuce"
+        ]
     }
 ]
