@@ -120,16 +120,6 @@
         ]
     },
     {
-        "question": "Which physicist is known for the 'Theory of Relativity'?",
-        "correctAnswer": "Albert Einstein",
-        "options": [
-            "Isaac Newton",
-            "Niels Bohr",
-            "Albert Einstein",
-            "Max Planck"
-        ]
-    },
-    {
         "question": "What is the capital of Bhutan?",
         "correctAnswer": "Thimphu",
         "options": [
@@ -177,6 +167,246 @@
             "Vietnam",
             "Cambodia",
             "Laos"
+        ]
+    },
+    {
+        "question": "What is the capital of Eritrea?",
+        "correctAnswer": "Asmara",
+        "options": [
+            "Asmara",
+            "Massawa",
+            "Keren",
+            "Mendefera"
+        ]
+    },
+    {
+        "question": "Which country has the longest coastline in the world?",
+        "correctAnswer": "Canada",
+        "options": [
+            "Russia",
+            "Australia",
+            "Canada",
+            "Indonesia"
+        ]
+    },
+    {
+        "question": "What is the deepest point in the world's oceans?",
+        "correctAnswer": "Challenger Deep",
+        "options": [
+            "Puerto Rico Trench",
+            "Java Trench",
+            "Challenger Deep",
+            "Tonga Trench"
+        ]
+    },
+    {
+        "question": "Which two countries share the world's longest international border?",
+        "correctAnswer": "Canada and United States",
+        "options": [
+            "Russia and China",
+            "Argentina and Chile",
+            "Canada and United States",
+            "Kazakhstan and Russia"
+        ]
+    },
+    {
+        "question": "What is the capital of Suriname?",
+        "correctAnswer": "Paramaribo",
+        "options": [
+            "Georgetown",
+            "Paramaribo",
+            "Cayenne",
+            "Bridgetown"
+        ]
+    },
+    {
+        "question": "Which African country is completely surrounded by South Africa?",
+        "correctAnswer": "Lesotho",
+        "options": [
+            "Swaziland",
+            "Botswana",
+            "Lesotho",
+            "Namibia"
+        ]
+    },
+    {
+        "question": "What is the name of the narrow strait that separates Europe from Africa at the western end of the Mediterranean?",
+        "correctAnswer": "Strait of Gibraltar",
+        "options": [
+            "Strait of Hormuz",
+            "Bosporus Strait",
+            "Strait of Gibraltar",
+            "Dardanelles"
+        ]
+    },
+    {
+        "question": "Which country has the most time zones?",
+        "correctAnswer": "France",
+        "options": [
+            "Russia",
+            "United States",
+            "China",
+            "France"
+        ]
+    },
+    {
+        "question": "What is the capital of Burkina Faso?",
+        "correctAnswer": "Ouagadougou",
+        "options": [
+            "Bamako",
+            "Niamey",
+            "Ouagadougou",
+            "Accra"
+        ]
+    },
+    {
+        "question": "Which river forms part of the border between the United States and Mexico?",
+        "correctAnswer": "Rio Grande",
+        "options": [
+            "Colorado River",
+            "Rio Grande",
+            "Gila River",
+            "Pecos River"
+        ]
+    },
+    {
+        "question": "What is the smallest country in the world by land area?",
+        "correctAnswer": "Vatican City",
+        "options": [
+            "Monaco",
+            "Nauru",
+            "Vatican City",
+            "San Marino"
+        ]
+    },
+    {
+        "question": "Which mountain range forms a natural border between Europe and Asia?",
+        "correctAnswer": "Ural Mountains",
+        "options": [
+            "Caucasus Mountains",
+            "Alps",
+            "Ural Mountains",
+            "Carpathian Mountains"
+        ]
+    },
+    {
+        "question": "What is the capital of the Comoros?",
+        "correctAnswer": "Moroni",
+        "options": [
+            "Moroni",
+            "Victoria",
+            "Port Louis",
+            "Antananarivo"
+        ]
+    },
+    {
+        "question": "Which country is home to the world's largest salt flat?",
+        "correctAnswer": "Bolivia",
+        "options": [
+            "Argentina",
+            "Chile",
+            "Bolivia",
+            "Peru"
+        ]
+    },
+    {
+        "question": "What is the name of the archipelago that includes the islands of Java, Sumatra, and Borneo?",
+        "correctAnswer": "Malay Archipelago",
+        "options": [
+            "Philippine Archipelago",
+            "Malay Archipelago",
+            "Polynesian Islands",
+            "Melanesian Islands"
+        ]
+    },
+    {
+        "question": "Which country has three capital cities?",
+        "correctAnswer": "South Africa",
+        "options": [
+            "Bolivia",
+            "South Africa",
+            "Netherlands",
+            "Malaysia"
+        ]
+    },
+    {
+        "question": "What is the capital of Equatorial Guinea?",
+        "correctAnswer": "Malabo",
+        "options": [
+            "Libreville",
+            "Malabo",
+            "Yaoundé",
+            "Douala"
+        ]
+    },
+    {
+        "question": "Which desert is located in northern Chile and is considered the driest place on Earth?",
+        "correctAnswer": "Atacama Desert",
+        "options": [
+            "Namib Desert",
+            "Atacama Desert",
+            "Kalahari Desert",
+            "Patagonian Desert"
+        ]
+    },
+    {
+        "question": "What is the name of the sea that lies between Italy and the Balkan Peninsula?",
+        "correctAnswer": "Adriatic Sea",
+        "options": [
+            "Aegean Sea",
+            "Ionian Sea",
+            "Adriatic Sea",
+            "Tyrrhenian Sea"
+        ]
+    },
+    {
+        "question": "Which country is the world's largest landlocked country?",
+        "correctAnswer": "Kazakhstan",
+        "options": [
+            "Mongolia",
+            "Kazakhstan",
+            "Chad",
+            "Niger"
+        ]
+    },
+    {
+        "question": "What is the capital of Liechtenstein?",
+        "correctAnswer": "Vaduz",
+        "options": [
+            "Vaduz",
+            "Bern",
+            "Luxembourg",
+            "Andorra la Vella"
+        ]
+    },
+    {
+        "question": "Which river is the longest river in Asia?",
+        "correctAnswer": "Yangtze River",
+        "options": [
+            "Yellow River",
+            "Mekong River",
+            "Yangtze River",
+            "Ganges River"
+        ]
+    },
+    {
+        "question": "What is the name of the narrow land bridge that connects North and South America?",
+        "correctAnswer": "Isthmus of Panama",
+        "options": [
+            "Isthmus of Tehuantepec",
+            "Isthmus of Panama",
+            "Isthmus of Suez",
+            "Isthmus of Corinth"
+        ]
+    },
+    {
+        "question": "Which country has the most islands in the world?",
+        "correctAnswer": "Sweden",
+        "options": [
+            "Indonesia",
+            "Philippines",
+            "Sweden",
+            "Norway"
         ]
     }
 ]
