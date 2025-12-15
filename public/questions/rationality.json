@@ -31,11 +31,11 @@
     },
     {
         "question": "Which blog on rationality is known for hosting 'open threads' where readers can discuss anything they want?",
-        "correctAnswer": "SlateStarCodex",
+        "correctAnswer": "SlateStarCodex / Astral Codex Ten",
         "options": [
             "LessWrong",
             "Overcoming Bias",
-            "SlateStarCodex",
+            "SlateStarCodex / Astral Codex Ten",
             "RationalWiki"
         ]
     },

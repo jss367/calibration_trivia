@@ -240,7 +240,7 @@
         ]
     },
     {
-        "question": "Which country has the most time zones?",
+        "question": "Which country, including its overseas territories, has the most time zones?",
         "correctAnswer": "France",
         "options": [
             "Russia",
