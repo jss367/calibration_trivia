@@ -178,5 +178,55 @@
             "Brown Bear",
             "Black Bear"
         ]
+    },
+    {
+        "question": "Which primate is known to produce venom in glands near its elbows and deliver it with a lick before biting?",
+        "correctAnswer": "Slow Loris",
+        "options": [
+            "Slow Loris",
+            "Tarsier",
+            "Aye-aye",
+            "Galago"
+        ]
+    },
+    {
+        "question": "Which seabird holds the record for the largest wingspan of any living bird, often exceeding 11 feet?",
+        "correctAnswer": "Wandering Albatross",
+        "options": [
+            "Wandering Albatross",
+            "Andean Condor",
+            "Marabou Stork",
+            "Kori Bustard"
+        ]
+    },
+    {
+        "question": "Which small amphibian carries enough tetrodotoxin to fatally poison a human if ingested or handled improperly?",
+        "correctAnswer": "Golden Poison Dart Frog",
+        "options": [
+            "Golden Poison Dart Frog",
+            "Rough-skinned Newt",
+            "Surinam Toad",
+            "Axolotl"
+        ]
+    },
+    {
+        "question": "Which social insect has formed a supercolony stretching thousands of miles around the Mediterranean and Pacific coasts?",
+        "correctAnswer": "Argentine Ant",
+        "options": [
+            "Argentine Ant",
+            "Red Imported Fire Ant",
+            "Yellow Crazy Ant",
+            "African Driver Ant"
+        ]
+    },
+    {
+        "question": "Which fish species uses a divided eye to simultaneously watch above and below the waterline while swimming at the surface?",
+        "correctAnswer": "Four-eyed Fish",
+        "options": [
+            "Four-eyed Fish",
+            "Archerfish",
+            "Spotted Gar",
+            "Needlefish"
+        ]
     }
 ]
