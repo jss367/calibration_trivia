@@ -330,16 +330,6 @@
         ]
     },
     {
-        "question": "Which NFL team has won the most Super Bowl titles?",
-        "correctAnswer": "Pittsburgh Steelers",
-        "options": [
-            "Dallas Cowboys",
-            "New England Patriots",
-            "San Francisco 49ers",
-            "Pittsburgh Steelers"
-        ]
-    },
-    {
         "question": "In soccer, what is awarded to a player who receives two yellow cards in one match?",
         "correctAnswer": "A red card",
         "options": [
