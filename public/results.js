@@ -11,6 +11,7 @@ import {
     baselineScore
 } from './shared.js';
 import { calculateConfidenceDecileScores } from './quizLogic.js';
+import { renderCalibrationGraph } from './calibrationGraph.js';
 import { getCurrentSessionId } from './sessionManagement.js';
 import { displayLeaderboard } from './leaderboard.js';
 
@@ -72,6 +73,11 @@ export function displayResults() {
     }
 
     resultsContainer.innerHTML = resultsHTML;
+
+    // Render calibration graph at top of results (only for non-questioner modes)
+    if (!modeGroupQuestioner.checked) {
+        renderCalibrationGraph(confidenceDecileScores);
+    }
 
     // Set up the leaderboard button click event only for group modes
     if (modeGroupQuestioner.checked || modeGroupParticipant.checked) {
