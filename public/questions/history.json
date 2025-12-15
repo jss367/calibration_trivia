@@ -628,5 +628,55 @@
             "1917",
             "1923"
         ]
+    },
+    {
+        "question": "Which treaty ended the Thirty Years' War and established principles of state sovereignty?",
+        "correctAnswer": "Peace of Westphalia",
+        "options": [
+            "Treaty of Utrecht",
+            "Peace of Westphalia",
+            "Treaty of Tordesillas",
+            "Treaty of Vienna"
+        ]
+    },
+    {
+        "question": "What was the major slave uprising led by Spartacus against the Roman Republic called?",
+        "correctAnswer": "Third Servile War",
+        "options": [
+            "Sicilian Revolt",
+            "Social War",
+            "Third Servile War",
+            "Catiline Conspiracy"
+        ]
+    },
+    {
+        "question": "Which Chinese admiral commanded the early 15th-century 'treasure voyages' across the Indian Ocean?",
+        "correctAnswer": "Zheng He",
+        "options": [
+            "Qi Jiguang",
+            "Zheng He",
+            "Yue Fei",
+            "Koxinga"
+        ]
+    },
+    {
+        "question": "Which 1260 battle marked the first major Mongol defeat and halted their advance into the Levant?",
+        "correctAnswer": "Battle of Ain Jalut",
+        "options": [
+            "Battle of Manzikert",
+            "Battle of Ain Jalut",
+            "Battle of Hattin",
+            "Battle of Las Navas de Tolosa"
+        ]
+    },
+    {
+        "question": "Which U.S. economic program provided large-scale aid to rebuild Western Europe after World War II?",
+        "correctAnswer": "Marshall Plan",
+        "options": [
+            "New Deal",
+            "Marshall Plan",
+            "Truman Doctrine",
+            "Molotov Plan"
+        ]
     }
 ]
