@@ -208,5 +208,55 @@
             "Inception",
             "Total Recall"
         ]
+    },
+    {
+        "question": "Which 1953 film by Yasujirō Ozu is renowned for its use of 'tatami shots' and contemplative 'pillow shots'?",
+        "correctAnswer": "Tokyo Story",
+        "options": [
+            "Tokyo Story",
+            "Seven Samurai",
+            "Rashomon",
+            "Ugetsu"
+        ]
+    },
+    {
+        "question": "What object do Rita and Betty use to unlock the mysterious blue box in David Lynch's 'Mulholland Drive'?",
+        "correctAnswer": "A blue key",
+        "options": [
+            "A blue key",
+            "A silver locket",
+            "A red lighter",
+            "A black ring"
+        ]
+    },
+    {
+        "question": "Who directed the 1983 essay film 'Sans Soleil', which blends travelogue footage with speculative narration?",
+        "correctAnswer": "Chris Marker",
+        "options": [
+            "Chris Marker",
+            "Agnès Varda",
+            "Jean-Luc Godard",
+            "Werner Herzog"
+        ]
+    },
+    {
+        "question": "Which film was the first feature to make extensive use of the Steadicam, debuting the technology in 1976?",
+        "correctAnswer": "Bound for Glory",
+        "options": [
+            "Rocky",
+            "Marathon Man",
+            "Bound for Glory",
+            "Taxi Driver"
+        ]
+    },
+    {
+        "question": "What aspect ratio is used in Wes Anderson's 'The Grand Budapest Hotel' to depict the 1930s storyline?",
+        "correctAnswer": "1.37:1",
+        "options": [
+            "2.39:1",
+            "1.85:1",
+            "1.66:1",
+            "1.37:1"
+        ]
     }
 ]
