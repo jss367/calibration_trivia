@@ -308,5 +308,105 @@
             "Jacques Derrida",
             "Gilles Deleuze"
         ]
+    },
+    {
+        "question": "Which philosopher wrote 'The Second Sex', a foundational text in feminist philosophy?",
+        "correctAnswer": "Simone de Beauvoir",
+        "options": [
+            "Simone de Beauvoir",
+            "Judith Butler",
+            "Hannah Arendt",
+            "Angela Davis"
+        ]
+    },
+    {
+        "question": "Who proposed the 'veil of ignorance' as a thought experiment for deriving principles of justice?",
+        "correctAnswer": "John Rawls",
+        "options": [
+            "Robert Nozick",
+            "John Rawls",
+            "Thomas Hobbes",
+            "John Locke"
+        ]
+    },
+    {
+        "question": "Which medieval philosopher is known for integrating Aristotelian philosophy with Christian theology in 'Summa Theologica'?",
+        "correctAnswer": "Thomas Aquinas",
+        "options": [
+            "Thomas Aquinas",
+            "Augustine of Hippo",
+            "Peter Abelard",
+            "Anselm of Canterbury"
+        ]
+    },
+    {
+        "question": "Who argued for a social contract grounded in the idea that individuals surrender freedoms for security in 'Leviathan'?",
+        "correctAnswer": "Thomas Hobbes",
+        "options": [
+            "Thomas Hobbes",
+            "Jean-Jacques Rousseau",
+            "John Locke",
+            "Montesquieu"
+        ]
+    },
+    {
+        "question": "Which philosopher developed the concept of 'amor fati', the love of one's fate?",
+        "correctAnswer": "Friedrich Nietzsche",
+        "options": [
+            "Søren Kierkegaard",
+            "Arthur Schopenhauer",
+            "Friedrich Nietzsche",
+            "Baruch Spinoza"
+        ]
+    },
+    {
+        "question": "Who is the philosopher known for the phrase 'the banality of evil' after reporting on the Eichmann trial?",
+        "correctAnswer": "Hannah Arendt",
+        "options": [
+            "Hannah Arendt",
+            "Susan Sontag",
+            "Simone Weil",
+            "Mary Wollstonecraft"
+        ]
+    },
+    {
+        "question": "Which ancient Indian text is a key source for Vedanta philosophy and features a dialogue between a prince and Krishna?",
+        "correctAnswer": "Bhagavad Gita",
+        "options": [
+            "Bhagavad Gita",
+            "Upanishads",
+            "Rig Veda",
+            "Mahabharata"
+        ]
+    },
+    {
+        "question": "Who introduced the method of phenomenology to study structures of consciousness?",
+        "correctAnswer": "Edmund Husserl",
+        "options": [
+            "Edmund Husserl",
+            "Martin Heidegger",
+            "Maurice Merleau-Ponty",
+            "Jean-Paul Sartre"
+        ]
+    },
+    {
+        "question": "Which Enlightenment thinker argued that private property originates from mixing one's labor with nature?",
+        "correctAnswer": "John Locke",
+        "options": [
+            "Jean-Jacques Rousseau",
+            "John Locke",
+            "Adam Smith",
+            "Voltaire"
+        ]
+    },
+    {
+        "question": "Who is the existentialist philosopher who emphasized authenticity and the leap of faith in works like 'Fear and Trembling'?",
+        "correctAnswer": "Søren Kierkegaard",
+        "options": [
+            "Søren Kierkegaard",
+            "Martin Heidegger",
+            "Gabriel Marcel",
+            "Karl Jaspers"
+        ]
     }
 ]
