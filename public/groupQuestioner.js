@@ -6,6 +6,30 @@ import {
 } from './shared.js';
 import { displayResults } from './results.js';
 import { getCurrentSessionId, loadSessionQuestions } from './sessionManagement.js';
+
+export function questionerPreviousQuestion(sessionId) {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+
+        firebase.firestore().collection('sessions').doc(sessionId).update({
+            currentQuestionIndex: currentQuestionIndex
+        }).then(() => {
+            console.log('Question index updated successfully (back).');
+            displayQuestionQuestioner(currentQuestionIndex);
+            updateBackButtonVisibility();
+        }).catch(error => {
+            console.error('Error updating question index:', error);
+        });
+    }
+}
+
+function updateBackButtonVisibility() {
+    const backButton = document.getElementById('back-button');
+    if (backButton) {
+        backButton.style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
+    }
+}
+
 export function questionerNextQuestion(sessionId) {
     currentQuestionIndex++;
 
@@ -15,6 +39,7 @@ export function questionerNextQuestion(sessionId) {
         }).then(() => {
             console.log('Question index updated successfully.');
             displayQuestionQuestioner(currentQuestionIndex);
+            updateBackButtonVisibility();
         }).catch(error => {
             console.error('Error updating question index:', error);
         });

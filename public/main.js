@@ -5,7 +5,7 @@ console.log('App Version:', appVersion);
 
 import { initialize, handleModeSelection, setupShareButton } from './initialization.js';
 import { loadQuestionsSingle, displayQuestionSinglePlayer } from './singlePlayer.js';
-import { questionerNextQuestion, displayQuestionerScreen } from './groupQuestioner.js';
+import { questionerNextQuestion, questionerPreviousQuestion, displayQuestionerScreen } from './groupQuestioner.js';
 import { loadQuestionsParticipant, displayQuestionForGroupParticipant } from './groupParticipant.js';
 import { createSession, joinSelectedSession, getCurrentSessionId, loadSessionQuestions } from './sessionManagement.js';
 import { submitAnswer } from './quizLogic.js';
@@ -33,6 +33,7 @@ function initializeEventListeners() {
         startQuiz();
     });
     nextButton.addEventListener('click', handleNextButton);
+    document.getElementById('back-button').addEventListener('click', handleBackButton);
     document.getElementById('username').addEventListener('input', handleUsernameInput);
     document.getElementById('show-leaderboard').addEventListener('click', handleShowLeaderboard);
 }
@@ -129,6 +130,13 @@ function handleGroupQuestionerMode() {
         .catch(error => {
             console.error("Failed to create session or load questions for group questioner:", error);
         });
+}
+
+function handleBackButton() {
+    if (modeGroupQuestioner.checked) {
+        const sessionId = getCurrentSessionId();
+        questionerPreviousQuestion(sessionId);
+    }
 }
 
 function handleNextButton() {

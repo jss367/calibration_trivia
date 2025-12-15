@@ -9,9 +9,19 @@ button {
     font-size: 16px;
 }
 
+#quiz-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+}
+
 #next-button {
     display: block;
-    margin: 20px auto;
+}
+
+#back-button {
+    display: none;
 }
 
 
