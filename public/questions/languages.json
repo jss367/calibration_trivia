@@ -90,16 +90,6 @@
         ]
     },
     {
-        "question": "Which language has the largest number of native speakers in Africa?",
-        "correctAnswer": "Swahili",
-        "options": [
-            "Zulu",
-            "Swahili",
-            "Amharic",
-            "Somali"
-        ]
-    },
-    {
         "question": "What is the official language of Iran?",
         "correctAnswer": "Persian",
         "options": [
