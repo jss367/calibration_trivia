@@ -308,5 +308,55 @@
             "Herfindahl-Hirschman Index",
             "Consumer Confidence Index"
         ]
+    },
+    {
+        "question": "The Sonnenschein-Mantel-Debreu theorem implies what about aggregate excess demand functions in general equilibrium models?",
+        "correctAnswer": "They can take almost any shape consistent with Walras' law and homogeneity of degree zero",
+        "options": [
+            "They must be downward sloping like individual demand curves",
+            "They ensure uniqueness of the competitive equilibrium",
+            "They can take almost any shape consistent with Walras' law and homogeneity of degree zero",
+            "They require aggregate demand to be linear in prices"
+        ]
+    },
+    {
+        "question": "In mechanism design, which condition (combined with no-veto power) is necessary and sufficient for a social choice rule to be implementable in Nash equilibrium?",
+        "correctAnswer": "Maskin monotonicity",
+        "options": [
+            "Bayesian incentive compatibility",
+            "Maskin monotonicity",
+            "Strategy-proofness",
+            "Clarke pivotality"
+        ]
+    },
+    {
+        "question": "The Blanchard-Kahn conditions for linear rational expectations models require what for a unique, stable equilibrium?",
+        "correctAnswer": "The number of unstable eigenvalues must equal the number of forward-looking (jump) variables",
+        "options": [
+            "All eigenvalues must lie inside the unit circle",
+            "The number of unstable eigenvalues must equal the number of predetermined state variables",
+            "The number of unstable eigenvalues must equal the number of forward-looking (jump) variables",
+            "At least one eigenvalue must be exactly one"
+        ]
+    },
+    {
+        "question": "Under the Permanent Income Hypothesis with rational expectations and quadratic utility, consumption should approximately follow which process?",
+        "correctAnswer": "A martingale or random walk driven by innovations to permanent income",
+        "options": [
+            "A deterministic upward trend equal to wage growth",
+            "A martingale or random walk driven by innovations to permanent income",
+            "A stationary AR(1) process around zero",
+            "A cycle with frequency determined by business investment"
+        ]
+    },
+    {
+        "question": "Myerson's Revenue Equivalence Theorem states that, under standard regularity conditions, all auction formats that allocate the item efficiently will have what property?",
+        "correctAnswer": "They yield the same expected revenue and bidder utilities up to an additive constant",
+        "options": [
+            "They produce higher revenue when more bidders are risk-averse",
+            "They yield the same expected revenue and bidder utilities up to an additive constant",
+            "They require the auctioneer to reveal reserve prices",
+            "They make truthful bidding a dominant strategy in all formats"
+        ]
     }
 ]
