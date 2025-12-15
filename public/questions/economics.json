@@ -358,5 +358,55 @@
             "They require the auctioneer to reveal reserve prices",
             "They make truthful bidding a dominant strategy in all formats"
         ]
+    },
+    {
+        "question": "In a Ramsey optimal taxation framework with heterogeneous agents, what condition ensures that long-run capital taxes should converge to zero?",
+        "correctAnswer": "The government has access to non-distorting lump-sum taxes or transfers",
+        "options": [
+            "The government has access to non-distorting lump-sum taxes or transfers",
+            "The elasticity of labor supply is perfectly inelastic",
+            "The intertemporal elasticity of substitution equals one",
+            "The economy features complete markets for idiosyncratic risk"
+        ]
+    },
+    {
+        "question": "According to the Lucas critique, why do econometric policy evaluations based on historical correlations often fail?",
+        "correctAnswer": "Policy changes alter agents' decision rules, so structural parameters must be modeled explicitly",
+        "options": [
+            "Policy changes alter agents' decision rules, so structural parameters must be modeled explicitly",
+            "Inflation systematically biases all OLS estimates downward",
+            "Historical correlations are always spurious in macroeconomic data",
+            "Rational expectations imply policy interventions have no real effects"
+        ]
+    },
+    {
+        "question": "In dynamic stochastic general equilibrium models, the transversality condition rules out what type of equilibrium behavior?",
+        "correctAnswer": "Explosive asset accumulation that violates households' intertemporal budget constraints",
+        "options": [
+            "Stationary fluctuations around a balanced growth path",
+            "Explosive asset accumulation that violates households' intertemporal budget constraints",
+            "Temporary deviations from Euler equations due to shocks",
+            "Multiple equilibria arising from sunspot expectations"
+        ]
+    },
+    {
+        "question": "Kydland and Prescott's concept of time inconsistency implies what about discretionary policy without credible commitment mechanisms?",
+        "correctAnswer": "It leads to higher inflation or deficits relative to the socially optimal rule-based policy",
+        "options": [
+            "It leads to higher inflation or deficits relative to the socially optimal rule-based policy",
+            "It always results in deflationary spirals in the long run",
+            "It eliminates the need for independent central banks",
+            "It ensures that private agents perfectly anticipate policy shocks"
+        ]
+    },
+    {
+        "question": "In a search-and-matching labor market model, what does the Hosios condition equate to achieve efficiency?",
+        "correctAnswer": "Workers' bargaining weight equals the elasticity of the matching function with respect to unemployment",
+        "options": [
+            "The vacancy posting cost equals the unemployment benefit",
+            "Workers' bargaining weight equals the elasticity of the matching function with respect to unemployment",
+            "Firms' vacancy yield equals the marginal product of labor",
+            "The job-finding rate equals the separation rate in steady state"
+        ]
     }
 ]
