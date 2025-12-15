@@ -408,5 +408,65 @@
             "Firms' vacancy yield equals the marginal product of labor",
             "The job-finding rate equals the separation rate in steady state"
         ]
+    },
+    {
+        "question": "What is the term for inflation that occurs alongside stagnant economic growth and high unemployment?",
+        "correctAnswer": "Stagflation",
+        "options": [
+            "Hyperinflation",
+            "Deflation",
+            "Stagflation",
+            "Disinflation"
+        ]
+    },
+    {
+        "question": "Which monetary policy rule suggests setting interest rates based on deviations of inflation from target and output from potential?",
+        "correctAnswer": "Taylor rule",
+        "options": [
+            "Fisher rule",
+            "Quantity theory",
+            "Taylor rule",
+            "Okun's rule"
+        ]
+    },
+    {
+        "question": "In behavioral economics, what bias describes the tendency to overvalue immediate rewards at the expense of long-term intentions?",
+        "correctAnswer": "Present bias",
+        "options": [
+            "Anchoring bias",
+            "Present bias",
+            "Endowment effect",
+            "Confirmation bias"
+        ]
+    },
+    {
+        "question": "Which concept measures how much the quantity demanded of a good responds to a change in income?",
+        "correctAnswer": "Income elasticity of demand",
+        "options": [
+            "Price elasticity of demand",
+            "Cross-price elasticity",
+            "Income elasticity of demand",
+            "Elasticity of substitution"
+        ]
+    },
+    {
+        "question": "What is the collective action problem in which individual users deplete or spoil a shared resource despite knowing it is against everyone's long-term interest?",
+        "correctAnswer": "Tragedy of the commons",
+        "options": [
+            "Free-rider problem",
+            "Moral hazard",
+            "Tragedy of the commons",
+            "Information asymmetry"
+        ]
+    },
+    {
+        "question": "Which trade theory explains that countries export goods that intensively use their abundant factors of production?",
+        "correctAnswer": "Heckscher-Ohlin model",
+        "options": [
+            "Absolute advantage",
+            "Heckscher-Ohlin model",
+            "Gravity model",
+            "Infant industry theory"
+        ]
     }
 ]
