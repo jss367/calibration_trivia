@@ -40,12 +40,31 @@ export function submitAnswer() {
     const confidenceElement = document.getElementById('confidence');
 
     let userAnswer = selectedOption ? selectedOption.value : null;
-    let userConfidence = confidenceElement ? parseConfidence(confidenceElement.value) : null;
 
-    if (!userAnswer || isNaN(userConfidence)) {
-        console.warn('No answer or invalid confidence selected for current question');
+    // Validate confidence before parsing
+    const rawConfidence = confidenceElement ? parseInt(confidenceElement.value, 10) : NaN;
+
+    if (!userAnswer) {
+        alert('Please select an answer.');
         return false;
     }
+
+    if (isNaN(rawConfidence)) {
+        alert('Please enter a confidence value.');
+        return false;
+    }
+
+    if (rawConfidence < 25) {
+        alert('Confidence must be at least 25% (since there are 4 answer choices, random guessing gives 25%).');
+        return false;
+    }
+
+    if (rawConfidence > 100) {
+        alert('Confidence cannot exceed 100%.');
+        return false;
+    }
+
+    let userConfidence = rawConfidence / 100;
 
     updateScores(userAnswer, userConfidence);
     saveAnswer(userAnswer, userConfidence);
@@ -53,12 +72,6 @@ export function submitAnswer() {
     clearInputs(selectedOption, confidenceElement);
 
     return true;
-}
-
-function parseConfidence(value) {
-    let confidence = parseInt(value, 10);
-    confidence = Math.max(25, Math.min(confidence, 100)); // Set minimum confidence to 25%
-    return Math.round(confidence) / 100;
 }
 
 function updateScores(userAnswer, userConfidence) {
