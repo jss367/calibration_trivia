@@ -10,16 +10,6 @@
         ]
     },
     {
-        "question": "What is the only country in the world where Portuguese is the official language?",
-        "correctAnswer": "Brazil",
-        "options": [
-            "Portugal",
-            "Angola",
-            "Mozambique",
-            "Brazil"
-        ]
-    },
-    {
         "question": "Which language uses the Cyrillic script?",
         "correctAnswer": "Russian",
         "options": [

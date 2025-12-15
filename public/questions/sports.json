@@ -61,7 +61,7 @@
     },
     {
         "question": "Who holds the record for the most Grand Slam tennis titles won in the Men's Singles category?",
-        "correctAnswer": "Roger Federer",
+        "correctAnswer": "Novak Djokovic",
         "options": [
             "Roger Federer",
             "Rafael Nadal",
@@ -190,7 +190,7 @@
         ]
     },
     {
-        "question": "What is the national sport of Japan?",
+        "question": "What sport is widely considered Japan's traditional national sport?",
         "correctAnswer": "Sumo wrestling",
         "options": [
             "Judo",
@@ -280,7 +280,7 @@
         ]
     },
     {
-        "question": "Which country invented the sport of badminton?",
+        "question": "In which country were the first official rules of modern badminton established?",
         "correctAnswer": "England",
         "options": [
             "China",
