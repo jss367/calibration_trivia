@@ -298,5 +298,65 @@
             "Love",
             "Deuce"
         ]
+    },
+    {
+        "question": "Which country has hosted the Tour de France cycling race since its inception?",
+        "correctAnswer": "France",
+        "options": [
+            "Belgium",
+            "France",
+            "Italy",
+            "Spain"
+        ]
+    },
+    {
+        "question": "In baseball, what is it called when a batter hits a home run with the bases loaded?",
+        "correctAnswer": "Grand slam",
+        "options": [
+            "Grand slam",
+            "Inside-the-park",
+            "Walk-off",
+            "Solo shot"
+        ]
+    },
+    {
+        "question": "How many lanes are used in an Olympic swimming pool for competition?",
+        "correctAnswer": "8",
+        "options": [
+            "6",
+            "7",
+            "8",
+            "9"
+        ]
+    },
+    {
+        "question": "Which NFL team has won the most Super Bowl titles?",
+        "correctAnswer": "Pittsburgh Steelers",
+        "options": [
+            "Dallas Cowboys",
+            "New England Patriots",
+            "San Francisco 49ers",
+            "Pittsburgh Steelers"
+        ]
+    },
+    {
+        "question": "In soccer, what is awarded to a player who receives two yellow cards in one match?",
+        "correctAnswer": "A red card",
+        "options": [
+            "A penalty kick",
+            "A red card",
+            "A free kick",
+            "A substitution"
+        ]
+    },
+    {
+        "question": "Which track and field event involves throwing a spear-like object for distance?",
+        "correctAnswer": "Javelin throw",
+        "options": [
+            "Discus throw",
+            "Shot put",
+            "Hammer throw",
+            "Javelin throw"
+        ]
     }
 ]
