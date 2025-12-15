@@ -230,16 +230,6 @@
         ]
     },
     {
-        "question": "Which mammal can hibernate underwater for more than two months by drastically slowing its heart rate?",
-        "correctAnswer": "American Beaver",
-        "options": [
-            "American Beaver",
-            "Platypus",
-            "North American River Otter",
-            "Muskrat"
-        ]
-    },
-    {
         "question": "What large flightless bird native to Africa uses its wings to help steer while running at high speeds?",
         "correctAnswer": "Ostrich",
         "options": [

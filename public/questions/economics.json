@@ -100,7 +100,7 @@
         ]
     },
     {
-        "question": "In econometrics, what is the term for a variable that correlates with both the independent variable and the dependent variable, leading to biased and inconsistent estimate of the parameter of interest?",
+        "question": "In econometrics, what is the term for a regressor that is correlated with the error term, causing biased and inconsistent estimates of the parameter of interest?",
         "correctAnswer": "Endogenous variable",
         "options": [
             "Latent variable",
@@ -108,7 +108,7 @@
             "Exogenous variable",
             "Dummy variable"
         ]
-    },
+    }
     {
         "question": "Which school of economic thought focuses on the role of institutions in shaping economic behaviour and maintains that modern economies should develop effective institutions to support the workings of markets?",
         "correctAnswer": "Institutional economics",
