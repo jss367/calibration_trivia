@@ -278,5 +278,65 @@
             "Eastern Chipmunk",
             "Groundhog"
         ]
+    },
+    {
+        "question": "Which bird is the only one capable of sustained hovering and flying backward?",
+        "correctAnswer": "Hummingbird",
+        "options": [
+            "Hummingbird",
+            "Swift",
+            "Kingfisher",
+            "Barn Swallow"
+        ]
+    },
+    {
+        "question": "Which mammal has the longest gestation period, lasting up to 22 months?",
+        "correctAnswer": "African Elephant",
+        "options": [
+            "African Elephant",
+            "Blue Whale",
+            "White Rhinoceros",
+            "Giraffe"
+        ]
+    },
+    {
+        "question": "Which marine fish is considered the fastest in the ocean, reaching speeds over 68 mph?",
+        "correctAnswer": "Sailfish",
+        "options": [
+            "Sailfish",
+            "Swordfish",
+            "Mako Shark",
+            "Marlin"
+        ]
+    },
+    {
+        "question": "Which monotreme is known for its duck-like bill and egg-laying reproduction?",
+        "correctAnswer": "Platypus",
+        "options": [
+            "Platypus",
+            "Echidna",
+            "Capybara",
+            "Muskrat"
+        ]
+    },
+    {
+        "question": "Which reptile has a bite force strong enough to crush turtle shells and is native to Central and South America?",
+        "correctAnswer": "Black Caiman",
+        "options": [
+            "Black Caiman",
+            "American Alligator",
+            "Saltwater Crocodile",
+            "Gharial"
+        ]
+    },
+    {
+        "question": "Which ungulate's high blood pressure and specialized valves prevent fainting when it raises and lowers its head quickly?",
+        "correctAnswer": "Giraffe",
+        "options": [
+            "Giraffe",
+            "Moose",
+            "Okapi",
+            "Bison"
+        ]
     }
 ]
