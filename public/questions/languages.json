@@ -98,5 +98,55 @@
             "Hebrew",
             "Ladino"
         ]
+    },
+    {
+        "question": "Which language has the largest number of native speakers in Africa?",
+        "correctAnswer": "Swahili",
+        "options": [
+            "Zulu",
+            "Swahili",
+            "Amharic",
+            "Somali"
+        ]
+    },
+    {
+        "question": "What is the official language of Iran?",
+        "correctAnswer": "Persian",
+        "options": [
+            "Arabic",
+            "Kurdish",
+            "Persian",
+            "Turkish"
+        ]
+    },
+    {
+        "question": "Which indigenous language is widely spoken in the Andes region of South America?",
+        "correctAnswer": "Quechua",
+        "options": [
+            "Aymara",
+            "Guarani",
+            "Quechua",
+            "Mapudungun"
+        ]
+    },
+    {
+        "question": "Which language family includes Spanish, French, and Italian?",
+        "correctAnswer": "Romance",
+        "options": [
+            "Romance",
+            "Germanic",
+            "Slavic",
+            "Afroasiatic"
+        ]
+    },
+    {
+        "question": "What is the most widely spoken constructed international auxiliary language?",
+        "correctAnswer": "Esperanto",
+        "options": [
+            "Interlingua",
+            "Esperanto",
+            "Ido",
+            "Lojban"
+        ]
     }
 ]
