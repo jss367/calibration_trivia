@@ -22,6 +22,7 @@ export function displayResults() {
     resultsContainer.style.display = 'block';
 
     let resultsHTML = '<h2>Results</h2>';
+    let confidenceDecileScores = null;
 
     if (modeGroupQuestioner.checked) {
         resultsHTML += '<p>Thank you for hosting the quiz!</p>';
@@ -51,7 +52,7 @@ export function displayResults() {
             userConfidence: userConfidences[index],
         }));
 
-        const confidenceDecileScores = calculateConfidenceDecileScores(answers);
+        confidenceDecileScores = calculateConfidenceDecileScores(answers);
 
         resultsHTML += `
         <p>Correct answers: ${score} / ${questions.length}</p>
@@ -75,7 +76,7 @@ export function displayResults() {
     resultsContainer.innerHTML = resultsHTML;
 
     // Render calibration graph at top of results (only for non-questioner modes)
-    if (!modeGroupQuestioner.checked) {
+    if (confidenceDecileScores) {
         renderCalibrationGraph(confidenceDecileScores);
     }
 
