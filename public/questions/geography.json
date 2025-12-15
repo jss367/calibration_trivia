@@ -408,5 +408,55 @@
             "Sweden",
             "Norway"
         ]
+    },
+    {
+        "question": "Which strait separates the Gulf Stream from the Labrador Current before they enter the North Atlantic?",
+        "correctAnswer": "Strait of Belle Isle",
+        "options": [
+            "Strait of Gibraltar",
+            "Strait of Belle Isle",
+            "Denmark Strait",
+            "Davis Strait"
+        ]
+    },
+    {
+        "question": "What is the highest permanent human settlement in the world?",
+        "correctAnswer": "La Rinconada, Peru",
+        "options": [
+            "Lhasa, China",
+            "El Alto, Bolivia",
+            "La Rinconada, Peru",
+            "Leadville, United States"
+        ]
+    },
+    {
+        "question": "Which river system drains the Okavango Delta before disappearing into the Kalahari sands?",
+        "correctAnswer": "Okavango River",
+        "options": [
+            "Orange River",
+            "Okavango River",
+            "Limpopo River",
+            "Zambezi River"
+        ]
+    },
+    {
+        "question": "What microstate lies entirely inside the Italian peninsula south of Rome and is not San Marino?",
+        "correctAnswer": "Vatican City",
+        "options": [
+            "Monaco",
+            "Vatican City",
+            "Andorra",
+            "Liechtenstein"
+        ]
+    },
+    {
+        "question": "Which mountain pass links Pakistan's Gilgit-Baltistan region with China's Xinjiang Uyghur Autonomous Region?",
+        "correctAnswer": "Khunjerab Pass",
+        "options": [
+            "Khyber Pass",
+            "Khunjerab Pass",
+            "Rohtang Pass",
+            "Salang Pass"
+        ]
     }
 ]
