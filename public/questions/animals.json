@@ -228,5 +228,55 @@
             "Spotted Gar",
             "Needlefish"
         ]
+    },
+    {
+        "question": "Which mammal can hibernate underwater for more than two months by drastically slowing its heart rate?",
+        "correctAnswer": "American Beaver",
+        "options": [
+            "American Beaver",
+            "Platypus",
+            "North American River Otter",
+            "Muskrat"
+        ]
+    },
+    {
+        "question": "What large flightless bird native to Africa uses its wings to help steer while running at high speeds?",
+        "correctAnswer": "Ostrich",
+        "options": [
+            "Ostrich",
+            "Emu",
+            "Rhea",
+            "Cassowary"
+        ]
+    },
+    {
+        "question": "Which reptile can run bipedally across water for short distances, earning it the nickname 'Jesus lizard'?",
+        "correctAnswer": "Common Basilisk",
+        "options": [
+            "Common Basilisk",
+            "Green Iguana",
+            "Frilled Lizard",
+            "Komodo Dragon"
+        ]
+    },
+    {
+        "question": "Which marine mammal uses echolocation clicks to stun prey, a hunting technique called 'buzzing'?",
+        "correctAnswer": "Sperm Whale",
+        "options": [
+            "Sperm Whale",
+            "Orca",
+            "Bottlenose Dolphin",
+            "Beluga Whale"
+        ]
+    },
+    {
+        "question": "What burrowing mammal can tolerate low-oxygen environments thanks to hemoglobin that binds oxygen unusually tightly?",
+        "correctAnswer": "Naked Mole-Rat",
+        "options": [
+            "Naked Mole-Rat",
+            "Star-nosed Mole",
+            "Eastern Chipmunk",
+            "Groundhog"
+        ]
     }
 ]
