@@ -338,5 +338,55 @@
             "Octatonic scale",
             "Harmonic minor scale"
         ]
+    },
+    {
+        "question": "Which late Romantic symphony quotes a medieval plainchant for the Dies irae and uses an enormous orchestra, including offstage brass?",
+        "correctAnswer": "Gustav Mahler's Symphony No. 2",
+        "options": [
+            "Hector Berlioz's Symphonie fantastique",
+            "Gustav Mahler's Symphony No. 2",
+            "Richard Strauss's Ein Heldenleben",
+            "Jean Sibelius's Symphony No. 7"
+        ]
+    },
+    {
+        "question": "Which Baroque work pioneered the concerto grosso form with concertino and ripieno groups alternating?",
+        "correctAnswer": "Arcangelo Corelli's Concerto Grosso Op. 6",
+        "options": [
+            "Johann Sebastian Bach's Brandenburg Concerto No. 3",
+            "Antonio Vivaldi's The Four Seasons",
+            "Arcangelo Corelli's Concerto Grosso Op. 6",
+            "George Frideric Handel's Water Music"
+        ]
+    },
+    {
+        "question": "Which composer expanded serialism by applying twelve-tone techniques to rhythm, dynamics, and timbre in 'Structures I'?",
+        "correctAnswer": "Pierre Boulez",
+        "options": [
+            "Pierre Boulez",
+            "Arnold Schoenberg",
+            "Anton Webern",
+            "Karlheinz Stockhausen"
+        ]
+    },
+    {
+        "question": "Which jazz composition is built on a 16-measure AABA form of only two chords (B♭7 and E♭7), encouraging modal improvisation?",
+        "correctAnswer": "Miles Davis's 'So What'",
+        "options": [
+            "John Coltrane's 'Giant Steps'",
+            "Miles Davis's 'So What'",
+            "Duke Ellington's 'Take the 'A' Train'",
+            "Thelonious Monk's 'Round Midnight'"
+        ]
+    },
+    {
+        "question": "Which modern pianist became the first to record all of Franz Liszt's transcriptions of Beethoven's symphonies, inspiring renewed interest in the repertoire?",
+        "correctAnswer": "Idil Biret",
+        "options": [
+            "Vladimir Ashkenazy",
+            "Idil Biret",
+            "Mitsuko Uchida",
+            "Daniel Barenboim"
+        ]
     }
 ]
