@@ -198,6 +198,96 @@
             "Inheritance",
             "Polymorphism"
         ]
+    },
+    {
+        "question": "What complexity class contains decision problems solvable by a quantum computer in polynomial time with bounded error?",
+        "correctAnswer": "BQP",
+        "options": [
+            "P",
+            "NP",
+            "BQP",
+            "co-NP"
+        ]
+    },
+    {
+        "question": "Which theorem shows that any deterministic comparison-based sorting algorithm requires Ω(n log n) comparisons in the worst case?",
+        "correctAnswer": "Information-theoretic lower bound",
+        "options": [
+            "Master theorem",
+            "Information-theoretic lower bound",
+            "Chernoff bound",
+            "Central limit theorem"
+        ]
+    },
+    {
+        "question": "In distributed systems, what does the FLP impossibility result state?",
+        "correctAnswer": "No deterministic consensus algorithm can guarantee termination in a fully asynchronous system with even one faulty process",
+        "options": [
+            "Consensus is impossible without synchronized clocks",
+            "No deterministic consensus algorithm can guarantee termination in a fully asynchronous system with even one faulty process",
+            "Consensus requires a majority of processes to be honest",
+            "Consensus cannot be achieved if any process can crash"
+        ]
+    },
+    {
+        "question": "Which distributed consensus algorithm is designed around leader election and log replication with majority quorums?",
+        "correctAnswer": "Raft",
+        "options": [
+            "MapReduce",
+            "Raft",
+            "Lamport clocks",
+            "Vector clocks"
+        ]
+    },
+    {
+        "question": "What data structure guarantees O(log n) time for insert, delete, and search by maintaining near-perfect balance using recoloring and rotations?",
+        "correctAnswer": "Red-black tree",
+        "options": [
+            "Skip list",
+            "B-tree",
+            "Red-black tree",
+            "Binary heap"
+        ]
+    },
+    {
+        "question": "Which impossibility result asserts that no deterministic Turing machine can decide whether an arbitrary program halts on a given input?",
+        "correctAnswer": "Halting problem undecidability",
+        "options": [
+            "Church-Turing thesis",
+            "Rice's theorem",
+            "Halting problem undecidability",
+            "Cook-Levin theorem"
+        ]
+    },
+    {
+        "question": "What optimization technique forms the basis of dynamic programming by breaking problems into overlapping subproblems?",
+        "correctAnswer": "Optimal substructure",
+        "options": [
+            "Greedy-choice property",
+            "Optimal substructure",
+            "Divide-and-conquer",
+            "Backtracking"
+        ]
+    },
+    {
+        "question": "In cache coherence protocols like MESI, what does the 'I' state represent?",
+        "correctAnswer": "Invalid",
+        "options": [
+            "Inflight",
+            "Independent",
+            "Invalid",
+            "Indexed"
+        ]
+    },
+    {
+        "question": "Which theorem underpins the design of error-correcting codes by providing a bound on the achievable code rate for a given channel capacity?",
+        "correctAnswer": "Shannon's channel coding theorem",
+        "options": [
+            "Nyquist sampling theorem",
+            "Shannon's channel coding theorem",
+            "Shannon-Hartley theorem",
+            "Gilbert-Varshamov bound"
+        ]
     }
 ]
 
