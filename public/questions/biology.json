@@ -238,5 +238,65 @@
             "Endosymbiotic theory",
             "Evolutionary theory"
         ]
+    },
+    {
+        "question": "In mitochondrial genetics, what concept explains why clinical symptoms appear only after mutant mitochondrial DNA exceeds a critical proportion?",
+        "correctAnswer": "Heteroplasmic threshold effect",
+        "options": [
+            "Paternal leakage",
+            "Heteroplasmic threshold effect",
+            "Genomic imprinting",
+            "Mitochondrial bottleneck"
+        ]
+    },
+    {
+        "question": "During bacterial translation elongation, which factor delivers aminoacyl-tRNA to the ribosomal A site?",
+        "correctAnswer": "EF-Tu bound to GTP",
+        "options": [
+            "IF-2 bound to GTP",
+            "EF-Tu bound to GTP",
+            "EF-G bound to GDP",
+            "RF-1 bound to GTP"
+        ]
+    },
+    {
+        "question": "Which enzyme catalyzes the first committed step of de novo purine nucleotide synthesis?",
+        "correctAnswer": "Glutamine-PRPP amidotransferase",
+        "options": [
+            "Adenylosuccinate synthetase",
+            "IMP dehydrogenase",
+            "Glutamine-PRPP amidotransferase",
+            "Carbamoyl phosphate synthetase II"
+        ]
+    },
+    {
+        "question": "In canonical Wnt signaling, which kinase in the destruction complex phosphorylates \u03b2-catenin to mark it for degradation?",
+        "correctAnswer": "GSK-3\u03b2",
+        "options": [
+            "Protein kinase A",
+            "mTORC1",
+            "GSK-3\u03b2",
+            "Cyclin-dependent kinase 1"
+        ]
+    },
+    {
+        "question": "Which histone modification is most strongly associated with transcriptional elongation by RNA polymerase II across gene bodies?",
+        "correctAnswer": "Trimethylation of H3K36",
+        "options": [
+            "Acetylation of H4K16",
+            "Trimethylation of H3K4",
+            "Trimethylation of H3K36",
+            "Monoubiquitination of H2BK120"
+        ]
+    },
+    {
+        "question": "In adaptive immunity, which enzyme initiates both somatic hypermutation and class-switch recombination in activated B cells?",
+        "correctAnswer": "Activation-induced cytidine deaminase",
+        "options": [
+            "Uracil-DNA glycosylase",
+            "DNA polymerase \u03b7",
+            "Activation-induced cytidine deaminase",
+            "Recombination activating gene 1"
+        ]
     }
 ]
