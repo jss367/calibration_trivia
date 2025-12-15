@@ -188,5 +188,55 @@
             "Central Processing Unit",
             "Computer Personal Unit"
         ]
+    },
+    {
+        "question": "What phenomenon did the 1919 Eddington expedition observe to provide early evidence for general relativity?",
+        "correctAnswer": "Gravitational deflection of starlight during a solar eclipse",
+        "options": [
+            "Frame dragging near Earth",
+            "Time dilation in radioactive decay",
+            "Gravitational deflection of starlight during a solar eclipse",
+            "Redshift of distant galaxies"
+        ]
+    },
+    {
+        "question": "Which process enables neutrinos to change flavor as they propagate, implying they have nonzero mass?",
+        "correctAnswer": "Neutrino oscillation",
+        "options": [
+            "Neutrino annihilation",
+            "Muon capture",
+            "Neutrino oscillation",
+            "Beta decay"
+        ]
+    },
+    {
+        "question": "In CRISPR-Cas9 genome editing, what is the primary role of the guide RNA?",
+        "correctAnswer": "Direct Cas9 to a complementary DNA sequence for cleavage",
+        "options": [
+            "Deliver donor DNA into the nucleus",
+            "Direct Cas9 to a complementary DNA sequence for cleavage",
+            "Repair the double-strand break via homologous recombination",
+            "Deactivate off-target nucleases"
+        ]
+    },
+    {
+        "question": "The fractional quantum Hall effect arises due to which emergent quasiparticles carrying a fraction of the electron's charge?",
+        "correctAnswer": "Anyons",
+        "options": [
+            "Magnons",
+            "Excitons",
+            "Anyons",
+            "Polarons"
+        ]
+    },
+    {
+        "question": "What mechanism explains how massive stars avoid immediate collapse during core-collapse supernovae by transferring energy to the outer layers?",
+        "correctAnswer": "Neutrino heating behind the stalled shock",
+        "options": [
+            "Magnetic reconnection in the envelope",
+            "Prompt photodisintegration of iron",
+            "Neutrino heating behind the stalled shock",
+            "Rapid rotation sustaining centrifugal support"
+        ]
     }
 ]
