@@ -298,5 +298,75 @@
             "Gluon",
             "Photon"
         ]
+    },
+    {
+        "question": "What parameter makes relativistic velocity addition linear when expressed as a hyperbolic angle?",
+        "correctAnswer": "Rapidity",
+        "options": [
+            "Proper time",
+            "Lorentz factor",
+            "Rapidity",
+            "Invariant interval"
+        ]
+    },
+    {
+        "question": "Which tensor encodes the tidal curvature and gravitational radiation in a vacuum spacetime?",
+        "correctAnswer": "Weyl tensor",
+        "options": [
+            "Ricci tensor",
+            "Stress-energy tensor",
+            "Weyl tensor",
+            "Metric tensor"
+        ]
+    },
+    {
+        "question": "In quantum field theory, what function describes how a coupling constant varies with the renormalization scale?",
+        "correctAnswer": "Beta function",
+        "options": [
+            "Partition function",
+            "Beta function",
+            "Wave function",
+            "Structure function"
+        ]
+    },
+    {
+        "question": "What master equation captures the Markovian, non-unitary evolution of an open quantum system's density matrix?",
+        "correctAnswer": "Lindblad equation",
+        "options": [
+            "Gross-Pitaevskii equation",
+            "Dirac equation",
+            "Liouville equation",
+            "Lindblad equation"
+        ]
+    },
+    {
+        "question": "What dimensionless ratio in plasma physics compares thermal pressure to magnetic pressure?",
+        "correctAnswer": "Plasma beta",
+        "options": [
+            "Alfvén Mach number",
+            "Reynolds number",
+            "Plasma beta",
+            "Debye length"
+        ]
+    },
+    {
+        "question": "Which instability causes long-wavelength density perturbations in a self-gravitating medium to grow exponentially?",
+        "correctAnswer": "Jeans instability",
+        "options": [
+            "Rayleigh-Taylor instability",
+            "Jeans instability",
+            "Kelvin-Helmholtz instability",
+            "Weibel instability"
+        ]
+    },
+    {
+        "question": "What lower temperature bound arises from balancing scattering-induced momentum diffusion and damping in Doppler cooling?",
+        "correctAnswer": "Doppler limit",
+        "options": [
+            "Lamb-Dicke limit",
+            "Doppler limit",
+            "Schottky limit",
+            "Standard quantum limit"
+        ]
     }
 ]
