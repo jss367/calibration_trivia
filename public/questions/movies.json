@@ -258,5 +258,235 @@
             "1.66:1",
             "1.37:1"
         ]
+    },
+    {
+        "question": "Which 1972 film, directed by Francis Ford Coppola, is considered one of the greatest films ever made and features the Corleone crime family?",
+        "correctAnswer": "The Godfather",
+        "options": [
+            "Goodfellas",
+            "The Godfather",
+            "Scarface",
+            "Casino"
+        ]
+    },
+    {
+        "question": "What is the name of the fictional African nation in the Marvel film 'Black Panther'?",
+        "correctAnswer": "Wakanda",
+        "options": [
+            "Zamunda",
+            "Wakanda",
+            "Genosha",
+            "Latveria"
+        ]
+    },
+    {
+        "question": "Which director is known for films such as 'Inception', 'Interstellar', and 'The Dark Knight'?",
+        "correctAnswer": "Christopher Nolan",
+        "options": [
+            "David Fincher",
+            "Christopher Nolan",
+            "Denis Villeneuve",
+            "Ridley Scott"
+        ]
+    },
+    {
+        "question": "In which 1975 film does a great white shark terrorize a small beach community?",
+        "correctAnswer": "Jaws",
+        "options": [
+            "The Deep",
+            "Jaws",
+            "Open Water",
+            "The Meg"
+        ]
+    },
+    {
+        "question": "Which Soviet filmmaker developed the theory of 'montage' and directed 'Battleship Potemkin' (1925)?",
+        "correctAnswer": "Sergei Eisenstein",
+        "options": [
+            "Dziga Vertov",
+            "Sergei Eisenstein",
+            "Andrei Tarkovsky",
+            "Vsevolod Pudovkin"
+        ]
+    },
+    {
+        "question": "What cinematographic technique, named after a Hitchcock film, involves zooming in while simultaneously dollying out?",
+        "correctAnswer": "Dolly zoom (Vertigo effect)",
+        "options": [
+            "Dutch angle",
+            "Dolly zoom (Vertigo effect)",
+            "Whip pan",
+            "Rack focus"
+        ]
+    },
+    {
+        "question": "Which 1941 film, often considered the greatest ever made, was Orson Welles' directorial debut?",
+        "correctAnswer": "Citizen Kane",
+        "options": [
+            "The Magnificent Ambersons",
+            "Citizen Kane",
+            "Touch of Evil",
+            "The Third Man"
+        ]
+    },
+    {
+        "question": "What is the name of the filming technique where scenes are shot in sequence order, rarely used due to cost?",
+        "correctAnswer": "Shooting in continuity",
+        "options": [
+            "Chronological filming",
+            "Sequential production",
+            "Shooting in continuity",
+            "Linear capture"
+        ]
+    },
+    {
+        "question": "Which Iranian director made 'Taste of Cherry' (1997), which won the Palme d'Or at Cannes?",
+        "correctAnswer": "Abbas Kiarostami",
+        "options": [
+            "Asghar Farhadi",
+            "Abbas Kiarostami",
+            "Jafar Panahi",
+            "Majid Majidi"
+        ]
+    },
+    {
+        "question": "What term describes the French New Wave technique of jump cutting within a scene to create discontinuity?",
+        "correctAnswer": "Jump cut",
+        "options": [
+            "Match cut",
+            "Jump cut",
+            "Cross dissolve",
+            "L-cut"
+        ]
+    },
+    {
+        "question": "Which cinematographer shot 'Roger Deakins' films including 'Blade Runner 2049' and '1917', winning multiple Oscars?",
+        "correctAnswer": "Roger Deakins",
+        "options": [
+            "Emmanuel Lubezki",
+            "Roger Deakins",
+            "Robert Richardson",
+            "Janusz Kamiński"
+        ]
+    },
+    {
+        "question": "What 1927 German Expressionist film by Fritz Lang depicts a futuristic dystopian city?",
+        "correctAnswer": "Metropolis",
+        "options": [
+            "The Cabinet of Dr. Caligari",
+            "Metropolis",
+            "Nosferatu",
+            "M"
+        ]
+    },
+    {
+        "question": "Which Danish filmmaker founded the Dogme 95 movement and directed 'Melancholia' and 'Dancer in the Dark'?",
+        "correctAnswer": "Lars von Trier",
+        "options": [
+            "Thomas Vinterberg",
+            "Lars von Trier",
+            "Nicolas Winding Refn",
+            "Susanne Bier"
+        ]
+    },
+    {
+        "question": "What is the term for the film technique where a character breaks the fourth wall and addresses the audience directly?",
+        "correctAnswer": "Direct address",
+        "options": [
+            "Aside",
+            "Direct address",
+            "Soliloquy",
+            "Voice-over"
+        ]
+    },
+    {
+        "question": "Which Akira Kurosawa film inspired George Lucas's 'Star Wars' and was remade as 'The Magnificent Seven'?",
+        "correctAnswer": "Seven Samurai",
+        "options": [
+            "Yojimbo",
+            "Seven Samurai",
+            "Rashomon",
+            "The Hidden Fortress"
+        ]
+    },
+    {
+        "question": "What is the MacGuffin in Alfred Hitchcock's 'Psycho'?",
+        "correctAnswer": "The stolen $40,000",
+        "options": [
+            "The Bates Motel",
+            "The stolen $40,000",
+            "Norman's mother",
+            "The shower curtain"
+        ]
+    },
+    {
+        "question": "Which film theorist wrote 'What Is Cinema?' and championed the concept of 'objective reality' in film?",
+        "correctAnswer": "André Bazin",
+        "options": [
+            "André Bazin",
+            "Christian Metz",
+            "Siegfried Kracauer",
+            "Rudolf Arnheim"
+        ]
+    },
+    {
+        "question": "What technique did director Terrence Malick use extensively in 'The Tree of Life', filming actors during unscripted moments?",
+        "correctAnswer": "Capturing organic moments",
+        "options": [
+            "Improvisation",
+            "Capturing organic moments",
+            "Vérité style",
+            "Method filming"
+        ]
+    },
+    {
+        "question": "Which 1960 Italian film by Federico Fellini follows a gossip journalist through Rome's decadent nightlife?",
+        "correctAnswer": "La Dolce Vita",
+        "options": [
+            "8½",
+            "La Dolce Vita",
+            "Amarcord",
+            "La Strada"
+        ]
+    },
+    {
+        "question": "What color timing technique gives 'The Matrix' its distinctive green tint in scenes set within the simulation?",
+        "correctAnswer": "Color grading with green bias",
+        "options": [
+            "Day-for-night shooting",
+            "Color grading with green bias",
+            "Bleach bypass",
+            "Cross-processing"
+        ]
+    },
+    {
+        "question": "Which Polish director created the 'Three Colors' trilogy (Blue, White, Red)?",
+        "correctAnswer": "Krzysztof Kieślowski",
+        "options": [
+            "Andrzej Wajda",
+            "Roman Polanski",
+            "Krzysztof Kieślowski",
+            "Agnieszka Holland"
+        ]
+    },
+    {
+        "question": "What is the term for a long take that follows characters through complex choreographed movements without cuts?",
+        "correctAnswer": "Oner (single take)",
+        "options": [
+            "Tracking shot",
+            "Oner (single take)",
+            "Sequence shot",
+            "Master shot"
+        ]
+    },
+    {
+        "question": "Which 1962 French film by Chris Marker is composed almost entirely of still photographs?",
+        "correctAnswer": "La Jetée",
+        "options": [
+            "Sans Soleil",
+            "La Jetée",
+            "Hiroshima Mon Amour",
+            "Last Year at Marienbad"
+        ]
     }
 ]
