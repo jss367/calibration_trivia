@@ -288,6 +288,16 @@
             "Shannon-Hartley theorem",
             "Gilbert-Varshamov bound"
         ]
+    },
+    {
+        "question": "What does the acronym SQL stand for?",
+        "correctAnswer": "Structured Query Language",
+        "options": [
+            "Simple Query Language",
+            "Structured Query Language",
+            "Standard Query Logic",
+            "System Query Language"
+        ]
     }
 ]
 

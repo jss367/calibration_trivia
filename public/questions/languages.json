@@ -288,5 +288,15 @@
             "Etymology",
             "Semantics"
         ]
+    },
+    {
+        "question": "Which of the following languages is written from right to left?",
+        "correctAnswer": "Arabic",
+        "options": [
+            "Hindi",
+            "Arabic",
+            "Greek",
+            "Thai"
+        ]
     }
 ]

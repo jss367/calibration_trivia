@@ -288,5 +288,15 @@
             "Gumball",
             "We Bare Bears"
         ]
+    },
+    {
+        "question": "What is the name of the time-traveling dog in 'The Adventures of Rocky and Bullwinkle'?",
+        "correctAnswer": "Mr. Peabody",
+        "options": [
+            "Sherman",
+            "Mr. Peabody",
+            "Snuffles",
+            "Gromit"
+        ]
     }
 ]
