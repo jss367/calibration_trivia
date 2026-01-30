@@ -238,5 +238,65 @@
             "Availability heuristic",
             "Publication bias"
         ]
+    },
+    {
+        "question": "What logical fallacy involves attacking the person making an argument rather than the argument itself?",
+        "correctAnswer": "Ad hominem",
+        "options": [
+            "Straw man",
+            "Ad hominem",
+            "Red herring",
+            "Tu quoque"
+        ]
+    },
+    {
+        "question": "What term describes the tendency to favor information that supports what we already believe?",
+        "correctAnswer": "Confirmation bias",
+        "options": [
+            "Anchoring bias",
+            "Confirmation bias",
+            "Selection bias",
+            "Attribution bias"
+        ]
+    },
+    {
+        "question": "What is the name of the logical fallacy that assumes something is true because it has not been proven false?",
+        "correctAnswer": "Argument from ignorance",
+        "options": [
+            "Circular reasoning",
+            "False dilemma",
+            "Argument from ignorance",
+            "Appeal to authority"
+        ]
+    },
+    {
+        "question": "What cognitive bias causes people to prefer avoiding losses over acquiring equivalent gains?",
+        "correctAnswer": "Loss aversion",
+        "options": [
+            "Endowment effect",
+            "Loss aversion",
+            "Status quo bias",
+            "Risk aversion"
+        ]
+    },
+    {
+        "question": "What term describes misrepresenting someone's argument to make it easier to attack?",
+        "correctAnswer": "Straw man fallacy",
+        "options": [
+            "Red herring",
+            "Straw man fallacy",
+            "False equivalence",
+            "Slippery slope"
+        ]
+    },
+    {
+        "question": "What is the term for the tendency to see patterns in random information?",
+        "correctAnswer": "Apophenia",
+        "options": [
+            "Pareidolia",
+            "Apophenia",
+            "Clustering illusion",
+            "Pattern matching"
+        ]
     }
 ]

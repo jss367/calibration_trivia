@@ -208,5 +208,95 @@
             "Ramen",
             "Sashimi"
         ]
+    },
+    {
+        "question": "What is the name of the traditional Korean fermented vegetable dish, typically made with napa cabbage and radishes?",
+        "correctAnswer": "Kimchi",
+        "options": [
+            "Banchan",
+            "Kimchi",
+            "Bibimbap",
+            "Japchae"
+        ]
+    },
+    {
+        "question": "Which country is the origin of the croissant?",
+        "correctAnswer": "Austria",
+        "options": [
+            "France",
+            "Austria",
+            "Italy",
+            "Belgium"
+        ]
+    },
+    {
+        "question": "What type of pasta is shaped like small ears?",
+        "correctAnswer": "Orecchiette",
+        "options": [
+            "Farfalle",
+            "Orecchiette",
+            "Conchiglie",
+            "Rotini"
+        ]
+    },
+    {
+        "question": "What is the main ingredient in the Japanese dish takoyaki?",
+        "correctAnswer": "Octopus",
+        "options": [
+            "Squid",
+            "Shrimp",
+            "Octopus",
+            "Crab"
+        ]
+    },
+    {
+        "question": "Which French term refers to a cooking method where food is vacuum-sealed and cooked in a water bath at a precise temperature?",
+        "correctAnswer": "Sous vide",
+        "options": [
+            "Braising",
+            "Poaching",
+            "Sous vide",
+            "Confit"
+        ]
+    },
+    {
+        "question": "What is the name of the traditional Ethiopian bread that is also used as an eating utensil?",
+        "correctAnswer": "Injera",
+        "options": [
+            "Naan",
+            "Injera",
+            "Lavash",
+            "Chapati"
+        ]
+    },
+    {
+        "question": "Which nut is used to make marzipan?",
+        "correctAnswer": "Almonds",
+        "options": [
+            "Hazelnuts",
+            "Almonds",
+            "Pistachios",
+            "Cashews"
+        ]
+    },
+    {
+        "question": "What is the name of the Japanese cooking technique of deep-frying foods in a light batter?",
+        "correctAnswer": "Tempura",
+        "options": [
+            "Tonkatsu",
+            "Tempura",
+            "Karaage",
+            "Korokke"
+        ]
+    },
+    {
+        "question": "Which spice gives curry its characteristic yellow color?",
+        "correctAnswer": "Turmeric",
+        "options": [
+            "Saffron",
+            "Turmeric",
+            "Cumin",
+            "Paprika"
+        ]
     }
 ]

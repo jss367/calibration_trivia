@@ -148,5 +148,165 @@
         "Single displacement reaction",
         "Double displacement reaction"
     ]
+    },
+    {
+        "question": "What is the name of the chemical bond formed by the transfer of electrons from one atom to another?",
+        "correctAnswer": "Ionic bond",
+        "options": [
+            "Covalent bond",
+            "Ionic bond",
+            "Hydrogen bond",
+            "Van der Waals bond"
+        ]
+    },
+    {
+        "question": "What is the term for the amount of substance that contains Avogadro's number of particles?",
+        "correctAnswer": "Mole",
+        "options": [
+            "Gram",
+            "Mole",
+            "Molecule",
+            "Atom"
+        ]
+    },
+    {
+        "question": "Which element is the most reactive non-metal?",
+        "correctAnswer": "Fluorine",
+        "options": [
+            "Chlorine",
+            "Oxygen",
+            "Fluorine",
+            "Nitrogen"
+        ]
+    },
+    {
+        "question": "What is the chemical formula for table salt?",
+        "correctAnswer": "NaCl",
+        "options": [
+            "KCl",
+            "NaCl",
+            "CaCl2",
+            "MgCl2"
+        ]
+    },
+    {
+        "question": "What is the process called when a gas turns directly into a solid?",
+        "correctAnswer": "Deposition",
+        "options": [
+            "Condensation",
+            "Freezing",
+            "Deposition",
+            "Sublimation"
+        ]
+    },
+    {
+        "question": "Which scientist proposed the plum pudding model of the atom?",
+        "correctAnswer": "J.J. Thomson",
+        "options": [
+            "Ernest Rutherford",
+            "J.J. Thomson",
+            "Niels Bohr",
+            "John Dalton"
+        ]
+    },
+    {
+        "question": "What type of reaction releases energy to its surroundings?",
+        "correctAnswer": "Exothermic",
+        "options": [
+            "Endothermic",
+            "Exothermic",
+            "Isothermic",
+            "Adiabatic"
+        ]
+    },
+    {
+        "question": "What is the name for a substance that speeds up a chemical reaction without being consumed?",
+        "correctAnswer": "Catalyst",
+        "options": [
+            "Reagent",
+            "Catalyst",
+            "Solvent",
+            "Inhibitor"
+        ]
+    },
+    {
+        "question": "Which group of elements in the periodic table are known as the noble gases?",
+        "correctAnswer": "Group 18",
+        "options": [
+            "Group 1",
+            "Group 17",
+            "Group 18",
+            "Group 2"
+        ]
+    },
+    {
+        "question": "What is the chemical symbol for potassium?",
+        "correctAnswer": "K",
+        "options": [
+            "P",
+            "Po",
+            "K",
+            "Pt"
+        ]
+    },
+    {
+        "question": "What is the name of the process where an acid and a base react to form water and a salt?",
+        "correctAnswer": "Neutralization",
+        "options": [
+            "Oxidation",
+            "Reduction",
+            "Neutralization",
+            "Hydrolysis"
+        ]
+    },
+    {
+        "question": "Which element has the atomic number 6?",
+        "correctAnswer": "Carbon",
+        "options": [
+            "Nitrogen",
+            "Carbon",
+            "Oxygen",
+            "Boron"
+        ]
+    },
+    {
+        "question": "What is the term for atoms of the same element with different numbers of neutrons?",
+        "correctAnswer": "Isotopes",
+        "options": [
+            "Ions",
+            "Isotopes",
+            "Isomers",
+            "Allotropes"
+        ]
+    },
+    {
+        "question": "Which type of chemical bond is the weakest?",
+        "correctAnswer": "Van der Waals forces",
+        "options": [
+            "Covalent bond",
+            "Ionic bond",
+            "Hydrogen bond",
+            "Van der Waals forces"
+        ]
+    },
+    {
+        "question": "What is the chemical formula for sulfuric acid?",
+        "correctAnswer": "H2SO4",
+        "options": [
+            "HCl",
+            "HNO3",
+            "H2SO4",
+            "H3PO4"
+        ]
+    },
+    {
+        "question": "What is the name for the horizontal rows in the periodic table?",
+        "correctAnswer": "Periods",
+        "options": [
+            "Groups",
+            "Periods",
+            "Families",
+            "Series"
+        ]
     }
 ]

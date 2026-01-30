@@ -238,5 +238,65 @@
             "Neutrino heating behind the stalled shock",
             "Rapid rotation sustaining centrifugal support"
         ]
+    },
+    {
+        "question": "What is the name of the force that holds quarks together inside protons and neutrons?",
+        "correctAnswer": "Strong nuclear force",
+        "options": [
+            "Weak nuclear force",
+            "Electromagnetic force",
+            "Strong nuclear force",
+            "Gravitational force"
+        ]
+    },
+    {
+        "question": "What phenomenon occurs when light bends as it passes from one medium to another?",
+        "correctAnswer": "Refraction",
+        "options": [
+            "Reflection",
+            "Refraction",
+            "Diffraction",
+            "Dispersion"
+        ]
+    },
+    {
+        "question": "What is the name of the layer of Earth's atmosphere where weather occurs?",
+        "correctAnswer": "Troposphere",
+        "options": [
+            "Stratosphere",
+            "Mesosphere",
+            "Troposphere",
+            "Thermosphere"
+        ]
+    },
+    {
+        "question": "What particle is responsible for carrying the electromagnetic force?",
+        "correctAnswer": "Photon",
+        "options": [
+            "Gluon",
+            "Photon",
+            "W boson",
+            "Graviton"
+        ]
+    },
+    {
+        "question": "What is the term for the minimum amount of energy required to start a nuclear chain reaction?",
+        "correctAnswer": "Critical mass",
+        "options": [
+            "Activation energy",
+            "Critical mass",
+            "Binding energy",
+            "Threshold energy"
+        ]
+    },
+    {
+        "question": "Which organ in the human body is responsible for producing insulin?",
+        "correctAnswer": "Pancreas",
+        "options": [
+            "Liver",
+            "Pancreas",
+            "Kidney",
+            "Spleen"
+        ]
     }
 ]

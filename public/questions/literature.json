@@ -218,5 +218,85 @@
             "Walt Whitman",
             "Robert Frost"
         ]
+    },
+    {
+        "question": "Who wrote the novel 'Crime and Punishment'?",
+        "correctAnswer": "Fyodor Dostoevsky",
+        "options": [
+            "Leo Tolstoy",
+            "Fyodor Dostoevsky",
+            "Anton Chekhov",
+            "Ivan Turgenev"
+        ]
+    },
+    {
+        "question": "What is the name of the whale in Herman Melville's novel 'Moby-Dick'?",
+        "correctAnswer": "Moby Dick",
+        "options": [
+            "Ahab",
+            "Moby Dick",
+            "Pequod",
+            "Ishmael"
+        ]
+    },
+    {
+        "question": "Which Nobel Prize-winning author wrote 'The Old Man and the Sea'?",
+        "correctAnswer": "Ernest Hemingway",
+        "options": [
+            "John Steinbeck",
+            "Ernest Hemingway",
+            "William Faulkner",
+            "F. Scott Fitzgerald"
+        ]
+    },
+    {
+        "question": "Who wrote the fantasy series 'The Lord of the Rings'?",
+        "correctAnswer": "J.R.R. Tolkien",
+        "options": [
+            "C.S. Lewis",
+            "J.R.R. Tolkien",
+            "Terry Pratchett",
+            "George R.R. Martin"
+        ]
+    },
+    {
+        "question": "What is the name of the protagonist in Franz Kafka's novella 'The Metamorphosis'?",
+        "correctAnswer": "Gregor Samsa",
+        "options": [
+            "Josef K.",
+            "Gregor Samsa",
+            "Karl Rossmann",
+            "Georg Bendemann"
+        ]
+    },
+    {
+        "question": "Which author created the character of Atticus Finch?",
+        "correctAnswer": "Harper Lee",
+        "options": [
+            "Mark Twain",
+            "Harper Lee",
+            "John Steinbeck",
+            "Truman Capote"
+        ]
+    },
+    {
+        "question": "What is the title of the first book in the Harry Potter series?",
+        "correctAnswer": "Harry Potter and the Philosopher's Stone",
+        "options": [
+            "Harry Potter and the Chamber of Secrets",
+            "Harry Potter and the Philosopher's Stone",
+            "Harry Potter and the Prisoner of Azkaban",
+            "Harry Potter and the Goblet of Fire"
+        ]
+    },
+    {
+        "question": "Who wrote 'Don Quixote', often considered the first modern novel?",
+        "correctAnswer": "Miguel de Cervantes",
+        "options": [
+            "Gabriel Garcia Marquez",
+            "Miguel de Cervantes",
+            "Jorge Luis Borges",
+            "Federico Garcia Lorca"
+        ]
     }
 ]

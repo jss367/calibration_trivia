@@ -128,5 +128,165 @@
             "Ido",
             "Lojban"
         ]
+    },
+    {
+        "question": "Which of the following languages has the most native speakers in Africa?",
+        "correctAnswer": "Hausa",
+        "options": [
+            "Swahili",
+            "Yoruba",
+            "Hausa",
+            "Amharic"
+        ]
+    },
+    {
+        "question": "What is the only language to use an ideographic writing system that is still in widespread use?",
+        "correctAnswer": "Chinese",
+        "options": [
+            "Japanese",
+            "Chinese",
+            "Korean",
+            "Vietnamese"
+        ]
+    },
+    {
+        "question": "Which language family does Finnish belong to?",
+        "correctAnswer": "Uralic",
+        "options": [
+            "Indo-European",
+            "Uralic",
+            "Altaic",
+            "Slavic"
+        ]
+    },
+    {
+        "question": "What is the term for a simplified language that develops between groups that do not share a common language?",
+        "correctAnswer": "Pidgin",
+        "options": [
+            "Creole",
+            "Pidgin",
+            "Dialect",
+            "Jargon"
+        ]
+    },
+    {
+        "question": "Which ancient language was deciphered using the Rosetta Stone?",
+        "correctAnswer": "Egyptian hieroglyphics",
+        "options": [
+            "Sumerian cuneiform",
+            "Egyptian hieroglyphics",
+            "Linear B",
+            "Phoenician"
+        ]
+    },
+    {
+        "question": "What is the official language of Brazil?",
+        "correctAnswer": "Portuguese",
+        "options": [
+            "Spanish",
+            "Portuguese",
+            "Brazilian",
+            "French"
+        ]
+    },
+    {
+        "question": "Which language is known for having the most grammatical cases, with approximately 15 cases?",
+        "correctAnswer": "Finnish",
+        "options": [
+            "Russian",
+            "Hungarian",
+            "Finnish",
+            "Latin"
+        ]
+    },
+    {
+        "question": "What is the most commonly spoken first language in the European Union?",
+        "correctAnswer": "German",
+        "options": [
+            "English",
+            "French",
+            "German",
+            "Spanish"
+        ]
+    },
+    {
+        "question": "Which language uses tonal distinctions to differentiate word meanings, with six tones?",
+        "correctAnswer": "Vietnamese",
+        "options": [
+            "Mandarin Chinese",
+            "Thai",
+            "Vietnamese",
+            "Cantonese"
+        ]
+    },
+    {
+        "question": "What is the term for a language that has no native speakers but is used for communication between different groups?",
+        "correctAnswer": "Lingua franca",
+        "options": [
+            "Pidgin",
+            "Creole",
+            "Lingua franca",
+            "Vernacular"
+        ]
+    },
+    {
+        "question": "Which writing system is used for most languages of India?",
+        "correctAnswer": "Devanagari",
+        "options": [
+            "Arabic",
+            "Devanagari",
+            "Tamil",
+            "Bengali"
+        ]
+    },
+    {
+        "question": "What is the most widely spoken Slavic language?",
+        "correctAnswer": "Russian",
+        "options": [
+            "Polish",
+            "Ukrainian",
+            "Russian",
+            "Czech"
+        ]
+    },
+    {
+        "question": "Which language isolate is spoken in the Basque region of Spain and France?",
+        "correctAnswer": "Basque",
+        "options": [
+            "Catalan",
+            "Galician",
+            "Basque",
+            "Occitan"
+        ]
+    },
+    {
+        "question": "What ancient language was the liturgical language of Buddhism and contains many early Buddhist scriptures?",
+        "correctAnswer": "Pali",
+        "options": [
+            "Sanskrit",
+            "Pali",
+            "Prakrit",
+            "Tibetan"
+        ]
+    },
+    {
+        "question": "Which language has the longest alphabet, with 74 letters?",
+        "correctAnswer": "Khmer",
+        "options": [
+            "Georgian",
+            "Armenian",
+            "Khmer",
+            "Thai"
+        ]
+    },
+    {
+        "question": "What is the study of the origin and history of words called?",
+        "correctAnswer": "Etymology",
+        "options": [
+            "Linguistics",
+            "Phonology",
+            "Etymology",
+            "Semantics"
+        ]
     }
 ]
