@@ -118,22 +118,28 @@ function clearInputs(selectedOption, confidenceElement) {
 
 
 export function calculateConfidenceDecileScores(answers) {
-    const decileScores = Array(10).fill(0);
-    const decileCounts = Array(10).fill(0);
-    const decileCorrectCounts = Array(10).fill(0);
+    // Buckets: 25-30%, 30-40%, 40-50%, 50-60%, 60-70%, 70-80%, 80-90%, 90-100%
+    const bucketRanges = ['25-30', '30-40', '40-50', '50-60', '60-70', '70-80', '80-90', '90-100'];
+    const bucketCounts = Array(8).fill(0);
+    const bucketCorrectCounts = Array(8).fill(0);
 
     answers.forEach(answer => {
-        const decile = Math.min(Math.floor(answer.userConfidence * 10), 9);
-        decileCounts[decile]++;
+        let bucket;
+        if (answer.userConfidence < 0.30) {
+            bucket = 0; // 25-30%
+        } else {
+            bucket = Math.min(Math.floor((answer.userConfidence - 0.30) / 0.10) + 1, 7);
+        }
+        bucketCounts[bucket]++;
         if (answer.correctAnswer === answer.userAnswer) {
-            decileCorrectCounts[decile]++;
+            bucketCorrectCounts[bucket]++;
         }
     });
 
-    return decileScores.map((_, index) => ({
-        decileRange: `${index * 10}-${(index + 1) * 10}%`,
-        score: decileCounts[index] ? decileCorrectCounts[index] / decileCounts[index] : null,
-        correct: decileCorrectCounts[index],
-        total: decileCounts[index]
+    return bucketRanges.map((range, index) => ({
+        decileRange: `${range}%`,
+        score: bucketCounts[index] ? bucketCorrectCounts[index] / bucketCounts[index] : null,
+        correct: bucketCorrectCounts[index],
+        total: bucketCounts[index]
     }));
 }
