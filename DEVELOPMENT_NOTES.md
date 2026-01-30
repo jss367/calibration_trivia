@@ -1,6 +1,6 @@
-## Deployment
+## Build and Deploy
 
-firebase deploy
+npm run build && firebase deploy
 
 ## Build locally
 
