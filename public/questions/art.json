@@ -188,5 +188,115 @@
             "Pointillism",
             "Cubism"
         ]
+    },
+    {
+        "question": "Which Dutch painter is famous for 'Girl with a Pearl Earring'?",
+        "correctAnswer": "Johannes Vermeer",
+        "options": [
+            "Rembrandt",
+            "Johannes Vermeer",
+            "Frans Hals",
+            "Jan van Eyck"
+        ]
+    },
+    {
+        "question": "What art movement, founded by André Breton, sought to release the creative potential of the unconscious mind?",
+        "correctAnswer": "Surrealism",
+        "options": [
+            "Dadaism",
+            "Surrealism",
+            "Expressionism",
+            "Futurism"
+        ]
+    },
+    {
+        "question": "Which Mexican artist is known for her self-portraits and works inspired by nature and Mexican folk art?",
+        "correctAnswer": "Frida Kahlo",
+        "options": [
+            "María Izquierdo",
+            "Frida Kahlo",
+            "Remedios Varo",
+            "Leonora Carrington"
+        ]
+    },
+    {
+        "question": "What is the term for the technique of painting on fresh wet plaster?",
+        "correctAnswer": "Fresco",
+        "options": [
+            "Tempera",
+            "Encaustic",
+            "Fresco",
+            "Gouache"
+        ]
+    },
+    {
+        "question": "Which artist painted the ceiling of the Sistine Chapel?",
+        "correctAnswer": "Michelangelo",
+        "options": [
+            "Leonardo da Vinci",
+            "Raphael",
+            "Michelangelo",
+            "Botticelli"
+        ]
+    },
+    {
+        "question": "What art movement emerged in New York in the 1940s and 1950s, characterized by spontaneous, automatic, or subconscious creation?",
+        "correctAnswer": "Abstract Expressionism",
+        "options": [
+            "Pop Art",
+            "Minimalism",
+            "Abstract Expressionism",
+            "Neo-Expressionism"
+        ]
+    },
+    {
+        "question": "Which Japanese artist is known for her infinity rooms and polka dot installations?",
+        "correctAnswer": "Yayoi Kusama",
+        "options": [
+            "Takashi Murakami",
+            "Yayoi Kusama",
+            "Katsushika Hokusai",
+            "Yoko Ono"
+        ]
+    },
+    {
+        "question": "What is the name of Leonardo da Vinci's famous painting depicting the last meal of Jesus with his apostles?",
+        "correctAnswer": "The Last Supper",
+        "options": [
+            "The Last Judgment",
+            "The Last Supper",
+            "The Assumption",
+            "The Transfiguration"
+        ]
+    },
+    {
+        "question": "Which art movement used geometric shapes and multiple perspectives to represent subjects?",
+        "correctAnswer": "Cubism",
+        "options": [
+            "Fauvism",
+            "Cubism",
+            "Futurism",
+            "Constructivism"
+        ]
+    },
+    {
+        "question": "Who painted 'The Birth of Venus', showing the goddess emerging from the sea?",
+        "correctAnswer": "Sandro Botticelli",
+        "options": [
+            "Titian",
+            "Sandro Botticelli",
+            "Raphael",
+            "Caravaggio"
+        ]
+    },
+    {
+        "question": "What is the term for art that represents objects as they appear in nature without stylization?",
+        "correctAnswer": "Realism",
+        "options": [
+            "Naturalism",
+            "Realism",
+            "Hyperrealism",
+            "Verism"
+        ]
     }
 ]
