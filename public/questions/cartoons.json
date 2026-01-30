@@ -168,5 +168,125 @@
             "Sandy Cheeks",
             "Patrick Star"
         ]
+    },
+    {
+        "question": "What is the name of the robot from the animated series 'Futurama'?",
+        "correctAnswer": "Bender",
+        "options": [
+            "Clamps",
+            "Bender",
+            "Roberto",
+            "Calculon"
+        ]
+    },
+    {
+        "question": "Which cartoon features a boy genius and his talking dog who use a time machine called the WABAC?",
+        "correctAnswer": "The Adventures of Rocky and Bullwinkle",
+        "options": [
+            "Dexter's Laboratory",
+            "The Adventures of Rocky and Bullwinkle",
+            "Jimmy Neutron",
+            "Phineas and Ferb"
+        ]
+    },
+    {
+        "question": "What is the name of the fictional restaurant where SpongeBob works?",
+        "correctAnswer": "The Krusty Krab",
+        "options": [
+            "The Chum Bucket",
+            "The Krusty Krab",
+            "Weenie Hut Jr's",
+            "Goofy Goober's"
+        ]
+    },
+    {
+        "question": "Which cartoon features two stepbrothers who build extraordinary inventions during summer vacation?",
+        "correctAnswer": "Phineas and Ferb",
+        "options": [
+            "Dexter's Laboratory",
+            "Johnny Test",
+            "Phineas and Ferb",
+            "The Fairly OddParents"
+        ]
+    },
+    {
+        "question": "What is the name of Bart Simpson's best friend?",
+        "correctAnswer": "Milhouse Van Houten",
+        "options": [
+            "Nelson Muntz",
+            "Milhouse Van Houten",
+            "Ralph Wiggum",
+            "Martin Prince"
+        ]
+    },
+    {
+        "question": "Which cartoon character says 'I'm the king of the world!' while standing on the bow of a school bus?",
+        "correctAnswer": "Otto Mann",
+        "options": [
+            "Homer Simpson",
+            "Beavis",
+            "Otto Mann",
+            "Peter Griffin"
+        ]
+    },
+    {
+        "question": "What is the name of the dragon in the animated film 'Shrek'?",
+        "correctAnswer": "Dragon",
+        "options": [
+            "Toothless",
+            "Smaug",
+            "Mushu",
+            "Dragon"
+        ]
+    },
+    {
+        "question": "Which cartoon features four ninja turtles named after Renaissance artists?",
+        "correctAnswer": "Teenage Mutant Ninja Turtles",
+        "options": [
+            "Street Sharks",
+            "Teenage Mutant Ninja Turtles",
+            "Biker Mice from Mars",
+            "Samurai Pizza Cats"
+        ]
+    },
+    {
+        "question": "What is the name of Dexter's annoying sister in 'Dexter's Laboratory'?",
+        "correctAnswer": "Dee Dee",
+        "options": [
+            "Debbie",
+            "Dee Dee",
+            "Diana",
+            "Donna"
+        ]
+    },
+    {
+        "question": "Which animated series features a family living in Orbit City in the future?",
+        "correctAnswer": "The Jetsons",
+        "options": [
+            "Futurama",
+            "The Jetsons",
+            "Duck Dodgers",
+            "The Flintstones"
+        ]
+    },
+    {
+        "question": "What is the name of the superhero alter ego of Timmy Turner's fairy godparents in 'The Fairly OddParents'?",
+        "correctAnswer": "The Crimson Chin",
+        "options": [
+            "Crash Nebula",
+            "The Crimson Chin",
+            "Mighty Mom and Dyno Dad",
+            "The Bronze Kneecap"
+        ]
+    },
+    {
+        "question": "Which cartoon features a blue jay and a raccoon working at a park?",
+        "correctAnswer": "Regular Show",
+        "options": [
+            "Adventure Time",
+            "Regular Show",
+            "Gumball",
+            "We Bare Bears"
+        ]
     }
 ]
